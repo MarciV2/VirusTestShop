@@ -11,13 +11,13 @@
 						 "wfjkg4P2Na9W5df", 
 						 "virustestshopdb"
 						);
-		$sql = "SELECT * FROM adressen";
+		$sql = "SELECT * FROM DUAL";
 
 		$db_erg = mysqli_query( $db_link, $sql );
 		if ( ! $db_erg )
 		{
 		echo "FEHLER!";
-		  die('Ungültige Abfrage: ' . mysqli_error());
+		  die('UngÃ¼ltige Abfrage: ' . mysqli_error());
 		} else{
 		echo "erfolgreich!";
 		}
