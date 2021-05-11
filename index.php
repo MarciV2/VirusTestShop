@@ -2,27 +2,30 @@
 <html>
 <head>
     <Title>VirusTestShop</Title>
-	<link rel="shortcut icon" href="http://virustestshop.azurewebsites.net/logo.png">
+    <link rel="shortcut icon" href="http://virustestshop.azurewebsites.net/logo.png">
 </head>
 <body>
-	<!-- <?php
-	$db_link = mysqli_connect (
-	"db4free.net:3306",
-	"virustestshouser",
-	"wfjkg4P2Na9W5df", //rwU64HdFv!hMX
-	"virustestshopdb"
-	);
-	$sql = "SELECT * FROM DUAL";
+    <script>
+        var mysql = require('mysql');
 
-	$db_erg = mysqli_query( $db_link, $sql );
-	if ( ! $db_erg )
-	{
-	echo "FEHLER!";
-	die('Ungültige Abfrage: ' . mysqli_error());
-	} else{
-	echo "erfolgreich!";
-	}
+        var con = mysql.createConnection({
+            host: "localhost",
+            user: "yourusername",
+            password: "yourpassword",
+            database: "mydb"
+        });
 
-	?> -->
+        con.connect(function (err) {
+            if (err) throw err;
+            console.log("Connected!");
+            var sql = "INSERT INTO customers (name, address) VALUES ('Company Inc', 'Highway 37')";
+            con.query(sql, function (err, result) {
+                if (err) throw err;
+                console.log("1 record inserted");
+            });
+        });
+
+    </script>
+
 </body>
 </html>
