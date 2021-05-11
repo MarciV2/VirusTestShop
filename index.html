@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Page Title</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type"text/css" href="style/style.css" />
+<link rel="icon" type="image/png" href="/logo.png" >
+
+</head>
+<body>
+
+  <div class="LandingLogin" id="LandingLogin">
+    <form action="../scripts/LoginVerarbeitung.php" method="POST">
+      <label id="Loginname" class="LabelLogin">Login:</label><center><input type="text" placeholder="Login" name="LoginName" id="Loginname1" required></center>
+      <label id="LoginPasswort" class="LabelLogin">Passwort:</label><center><input type="text" placeholder="Passwort" name="LoginPasswort" id="LoginPasswort" require></center>
+      <a class="login" id="login" onclick="performLogin()">Login</a>
+      <a class="cancel"  id="cancel" onclick="einAusblendenLoginForm('ausblenden')">Cancel</a>
+      <label class="LabelChkbox" for id="LoginCheckbox">Anmeldedaten merken</label><input class="chkbox" type="checkbox" name="LoginCheckbox" id="LoginCheckbox">
+      <label onclick="nichtRegistriertHandler()" class="NotRegistered">Noch keinen Account?</label>
+    </form>
+  </div>
+
+  <div class="RegisterForm" id="RegisterForm">
+    <form action="../scripts/RegistrierungsVerarbeitung.php" method="POST">
+      <div class="regForm" id="regForm">
+          <h><b>Registrierung</b></h>
+          <div class="registrierung" id="registrierung">        
+                  <label  for="loginname"><b>Login-Name:</b></label><input type="text" placeholder="Login-Name" name="loginname" required>
+                  <label  for="passwort"><b>Passwort:</b></label><input type="text" placeholder="Passwort" name="passwort" required>
+                  <label  for="wdhlg-passwort"><b>Passwort wiederholen:</b></label><input type="text" placeholder="Passwort wiederholen" name="wdhlg-passwort" required>
+                  <label  for="vorname"><b>Vorname:</b></label><input type="text" placeholder="Vorname" name="vorname" required>
+                  <label  for="nachname"><b>Nachname:</b></label><input type="text" placeholder="Nachname" name="nachname" required>
+                  <label  for="straße"><b>Straße:</b></label><input type="text" placeholder="Straße" name="strasse" required>
+                  <label  for="hausnummer"><b>Hausnummer:</b></label><input type="text" placeholder="XXX" name="hausnummer" required>
+                  <label  for="plz"><b>Postleitzahl:</b></label><input type="text" placeholder="XXXXX" name="plz" required>
+                  <label  for="email"><b>E-Mail:</b></label><input id="email" type="text" placeholder="email@email.de" name="email" onfocusout="checkIfMail(regForm/registrierung/email)" required>
+                  <label  for="wdhlg-email"><b>E-Mail wiederholen:</b></label><input id="emailFeld1" type="text" placeholder="email@email.de" name="wdhlg-email" required>           
+          </div>
+          <input class="chkbox" type ="checkbox" name="agb-akzeptieren" required><label class="chkBox" for="agb-akzeptieren">AGB's akzeptieren</label>
+                  <button class="btn" type ="submit">Registrierung abschließen</button>
+      </div>
+      </form>
+  </div>
+
+<div class="header">
+  <h1>Virus Test</h1>
+  <p>Wir testen Sie!</p>
+  <link rel="stylesheet" type"text/css" href="style/style.css" />
+</div>
+
+<div class="navbar">
+  <a href="index.html">Startseite</a>
+  <a href="content/produktangebote.html">Produktangebot</a>
+  <a href="https://www.bundesregierung.de/breg-de/themen/coronavirus">Coronainformationen</a>
+  <a onclick="einAusblendenLoginForm('anzeigen')" class="right">Login/Kundenbereich</a>
+</div>
+
+<div class="content">
+<h1>Herzlich Willkommen bei Ihren Virus Testern</h1>
+
+	<p>
+    Bei uns finden sie Produkte für Ihre lieben zu Hause und für Ihr Gesundheitsunternehmen zum angenehmen testen des Corona-Viruses.<br>
+    Seit 2021 sind wir für Sie da, sowohl mit Tests als auch mit Schulungen für Tester.<br>
+    Schauen Sie sich unsere Produkte gerne an.<br>
+  </p>
+</div>
+
+
+<div class="footer">
+	<p>
+		<a href="content/impressum.html"> Impressum</a>
+	</p>
+</div>
+
+
+
+</body>
+
+<script type="text/javascript" src="/scripts/scripts.js"></script>
+</html>
+

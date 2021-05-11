@@ -1,0 +1,189 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+h {
+	font-size:28px;
+}
+
+
+/* Style the header */
+.header {
+  	padding: 80px;
+  	text-align: center;
+  	background: #1E90FF;
+  	color: white;
+}
+
+
+/* Increase the font size of the h1 element */
+.header h1 {
+  font-size: 40px;
+}
+
+/* Style the top navigation bar */
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* Style the navigation bar links */
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Right-aligned link */
+.navbar a.right {
+  float: right;
+}
+
+/* Change color on hover */
+.navbar a:hover {
+  	background-color: #ddd;
+  	color: black;
+}
+
+.footer {
+  	padding: 5px; /* Some padding */
+  	text-align: center; /* Center text*/
+  	background: #ddd; /* Grey background */
+}
+
+.content {	
+	padding: 15px;
+	border: 5px solid #C0C0C0;
+	align-self: center;
+}	
+
+
+.content h{
+	text-align: center;
+	display: absolute;
+}
+
+.content a{
+	display: block;
+	color: black;
+	height: 50px;
+}
+
+.content input{
+	padding: 10px;
+}
+.content input.chkbox{
+	float: right;
+}
+.RegisterForm {
+	visibility: hidden;
+	position: absolute;
+	background-color: #333;
+}
+.regForm {
+	top: 5%;	
+	text-align: center;
+	padding: 15px;
+
+}
+
+.registrierungContent {
+	background: white;
+	padding: 15px;
+		
+}
+
+.registrierung label{
+	padding: 15px;
+	height: 10px;
+	margin-top: 10px;
+	display: block;
+}
+
+.registrierung input {
+	padding: 15px;
+	height: 5px; 	
+}
+
+
+.registrierung.btn {
+	display: block;    
+	margin:10px auto;
+	height: 15px;
+	width: 300px;
+}
+
+.LandingLogin {	
+	margin-top: 80px;
+	right: 0;
+	left: auto;
+	padding-top: 10px;
+	width: 225px;
+	height: 165px;	
+	top: 245px;
+	z-index: 25;
+	background: #1E90FF; 
+	border: solid #000000 2px; 
+	position: absolute;
+	visibility: hidden;
+}
+
+.LandingLogin label.LabelLogin{
+	color: aliceblue;
+	padding-left: 32px;
+}
+
+.LandingLogin label.LabelChkbox{
+	color: aliceblue;
+	padding-left: 25px;
+}
+
+.LandingLogin label.NotRegistered{
+	color: black;
+	padding-left: 25px;
+}
+
+.LandingLogin label.NotRegistered:hover{
+	color: aliceblue;	
+}
+
+.LandingLogin a{
+  	display: block;
+ 	color: black;
+	background-color: aliceblue;
+	border-style:solid;
+	border-width: 1px;
+	border-color: black;
+  	text-align: center;
+ 	padding: 6px 8px;
+ 	cursor: pointer;
+	text-decoration: none;
+	margin-top: 5px;
+}
+
+.LandingLogin a.cancel{
+	float: right;
+	margin-right: 31px;
+}
+.LandingLogin a.login{
+	float: left;
+	margin-left: 31px;
+}
+
+.LandingLogin a.cancel:hover{
+	color: red;
+	border-color: red;
+}
+
+.LandingLogin a.login:hover{
+	background-color: #333;
+	border-color: aliceblue;
+	color: white;
+}
+
+	
