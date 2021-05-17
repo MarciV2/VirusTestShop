@@ -14,33 +14,62 @@
     <form action="../scripts/LoginVerarbeitung.php" method="POST">
       <label id="Loginname" class="LabelLogin">Login:</label><center><input type="text" placeholder="Login" name="LoginName" id="Loginname1" required></center>
       <label id="LoginPasswort" class="LabelLogin">Passwort:</label><center><input type="text" placeholder="Passwort" name="LoginPasswort" id="LoginPasswort" require></center>
-      <a class="login" id="login" onclick="performLogin()">Login</a>
+      <input type="submit" class="login" id="login" onclick="performLogin()" value=Login>
       <a class="cancel"  id="cancel" onclick="einAusblendenLoginForm('ausblenden')">Cancel</a>
       <label class="LabelChkbox" for id="LoginCheckbox">Anmeldedaten merken</label><input class="chkbox" type="checkbox" name="LoginCheckbox" id="LoginCheckbox">
       <label onclick="nichtRegistriertHandler()" class="NotRegistered">Noch keinen Account?</label>
     </form>
   </div>
 
-  <div class="RegisterForm" id="RegisterForm">
+  <div class="RegisterForm" id="RegisterForm" onmouseout="">
     <form action="../scripts/RegistrierungsVerarbeitung.php" method="POST">
       <div class="regForm" id="regForm">
-          <h><b>Registrierung</b></h>
-          <div class="registrierung" id="registrierung">        
-                  <label  for="loginname"><b>Login-Name:</b></label><input type="text" placeholder="Login-Name" name="loginname" required>
-                  <label  for="passwort"><b>Passwort:</b></label><input type="text" placeholder="Passwort" name="passwort" required>
-                  <label  for="wdhlg-passwort"><b>Passwort wiederholen:</b></label><input type="text" placeholder="Passwort wiederholen" name="wdhlg-passwort" required>
-                  <label  for="vorname"><b>Vorname:</b></label><input type="text" placeholder="Vorname" name="vorname" required>
-                  <label  for="nachname"><b>Nachname:</b></label><input type="text" placeholder="Nachname" name="nachname" required>
-                  <label  for="straße"><b>Straße:</b></label><input type="text" placeholder="Straße" name="strasse" required>
-                  <label  for="hausnummer"><b>Hausnummer:</b></label><input type="text" placeholder="XXX" name="hausnummer" required>
-                  <label  for="plz"><b>Postleitzahl:</b></label><input type="text" placeholder="XXXXX" name="plz" required>
-                  <label  for="email"><b>E-Mail:</b></label><input id="email" type="text" placeholder="email@email.de" name="email" onfocusout="checkIfMail(regForm/registrierung/email)" required>
-                  <label  for="wdhlg-email"><b>E-Mail wiederholen:</b></label><input id="emailFeld1" type="text" placeholder="email@email.de" name="wdhlg-email" required>           
+          <center><h><b>Registrierung</b></h></center>
+          <div class="registrierung" id="registrierung"> 
+            <center>
+            <table>
+              
+                <tr>
+                  <td><input class="big" type="text" placeholder="Login-Name" name="loginname" required></td>
+                </tr>
+                <tr>
+                  <td><input class="big" type="password" placeholder="Passwort" name="passwort" required><br></td>
+                  <td><input class="big" type="password" placeholder="Passwort wiederholen" name="wdhlg-passwort" required></td>
+                </tr>
+                <tr>
+                  <td><input class="big" type="text" placeholder="Vorname" name="vorname" required></td>
+                  <td><input class="big" type="text" placeholder="Nachname" name="nachname" required></td>
+                </tr>
+                <tr>
+                  <td><input class="big" type="text" placeholder="Straße" name="strasse" required></td>
+                  <td><input type="number" name="hausnummer" placeholder="Nr." min="1" max = "999" required><input type="number" placeholder="PLZ" name="plz" min="1000" max="99999" required></td>
+                </tr>
+                <tr>
+                  <td><input class="big" tyoe="text" placeholder="Stadt" name="stadt" required></td>
+                  <td><input class="big" type="text" placeholder="Stadtteil" name="stadtteil" required></td>
+                </tr>
+                <tr>
+                  <td><input class="big" type="text" placeholder="Land" name="land" required></td>
+                  <td><input class="big" type="text" placeholder="Bundesland" name="bundesland" required></td>
+                </tr>
+                <tr>
+                  <td><input class="big" type="email" placeholder="E-Mail" name="email" required></td>
+                  <td><input class="big" type="email" placeholder="E-Mail wiederholen" name="wdhlg-email" required></td>
+                </tr>
+                <tr>
+                  <td><input class="big" type="text" placeholder="Telefon: Vorwahl + Nummer" name="telefon" required></td>
+                  <td><label>Firmenkunde: </label><select name="firmenkunde"><option value="0">Nein</option><option value="1">Ja</option></select></td>
+                </tr>
+              </table>
+            
+            <br>
+            <label class="agb" id="AGB" onmouseover="hoverAGBs('grey')" onmouseout="hoverAGBs('black')" onclick="clickAGBs()">Akzeptieren Sie unsere AGBs</label><input type ="checkbox" name="agb"><br>
+            <input type="submit" value="Abschicken">
+            <br>
+          </center>
           </div>
-          <input class="chkbox" type ="checkbox" name="agb-akzeptieren" required><label class="chkBox" for="agb-akzeptieren">AGB's akzeptieren</label>
-                  <button class="btn" type ="submit">Registrierung abschließen</button>
       </div>
-      </form>
+    </form>
   </div>
 
 <div class="header">
@@ -53,7 +82,7 @@
   <a href="index.html">Startseite</a>
   <a href="content/produktangebote.html">Produktangebot</a>
   <a href="https://www.bundesregierung.de/breg-de/themen/coronavirus">Coronainformationen</a>
-  <a onclick="einAusblendenLoginForm('anzeigen')" class="right">Login/Kundenbereich</a>
+  <a onclick="einAusblendenLoginForm('toggle')" class="right">Login/Kundenbereich</a>
 </div>
 
 <div class="content">

@@ -20,7 +20,7 @@ USE `VTS` ;
 DROP TABLE IF EXISTS `VTS`.`Kategorie` ;
 
 CREATE TABLE IF NOT EXISTS `VTS`.`Kategorie` (
-  `Kategorie_ID` INT NOT NULL,
+  `Kategorie_ID` INT NOT NULL AUTO_INCREMENT,
   `Bezeichnung` VARCHAR(45) NULL,
   PRIMARY KEY (`Kategorie_ID`))
 ENGINE = InnoDB;
@@ -32,7 +32,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `VTS`.`Hersteller` ;
 
 CREATE TABLE IF NOT EXISTS `VTS`.`Hersteller` (
-  `Hersteller_ID` INT NOT NULL,
+  `Hersteller_ID` INT NOT NULL AUTO_INCREMENT,
   `Name` VARCHAR(45) NULL,
   PRIMARY KEY (`Hersteller_ID`))
 ENGINE = InnoDB;
@@ -44,7 +44,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `VTS`.`Artikel` ;
 
 CREATE TABLE IF NOT EXISTS `VTS`.`Artikel` (
-  `Artikel_ID` INT NOT NULL,
+  `Artikel_ID` INT NOT NULL AUTO_INCREMENT,
   `Artikelname` VARCHAR(45) NOT NULL,
   `Kategorie_ID` INT NOT NULL,
   `Hersteller_ID` INT NULL,
@@ -73,7 +73,7 @@ CREATE INDEX `fk_Artikel_Hersteller1_idx` ON `VTS`.`Artikel` (`Hersteller_ID` AS
 DROP TABLE IF EXISTS `VTS`.`Adresse` ;
 
 CREATE TABLE IF NOT EXISTS `VTS`.`Adresse` (
-  `Adresse_ID` INT NOT NULL,
+  `Adresse_ID` INT NOT NULL AUTO_INCREMENT,
   `Straße` VARCHAR(45) NULL,
   `Hausnummer` VARCHAR(45) NULL,
   `PLZ` INT NULL,
@@ -91,7 +91,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `VTS`.`Kundentyp` ;
 
 CREATE TABLE IF NOT EXISTS `VTS`.`Kundentyp` (
-  `Kundentyp_ID` INT NOT NULL,
+  `Kundentyp_ID` INT NOT NULL AUTO_INCREMENT,
   `Bezeichung` VARCHAR(45) NULL,
   PRIMARY KEY (`Kundentyp_ID`))
 ENGINE = InnoDB;
@@ -103,7 +103,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `VTS`.`Kunde` ;
 
 CREATE TABLE IF NOT EXISTS `VTS`.`Kunde` (
-  `Kunde_ID` INT NOT NULL,
+  `Kunde_ID` INT NOT NULL AUTO_INCREMENT,
   `Name` VARCHAR(45) NOT NULL,
   `Vorname` VARCHAR(45) NOT NULL,
   `Telefon` VARCHAR(45) NOT NULL,
@@ -137,7 +137,7 @@ CREATE UNIQUE INDEX `Email_UNIQUE` ON `VTS`.`Kunde` (`Email` ASC);
 DROP TABLE IF EXISTS `VTS`.`Bezahlmethode` ;
 
 CREATE TABLE IF NOT EXISTS `VTS`.`Bezahlmethode` (
-  `Bezahlmethode_ID` INT NOT NULL,
+  `Bezahlmethode_ID` INT NOT NULL AUTO_INCREMENT,
   `Bezeichnung` VARCHAR(45) NULL,
   PRIMARY KEY (`Bezahlmethode_ID`))
 ENGINE = InnoDB;
@@ -149,7 +149,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `VTS`.`Bestellstatus` ;
 
 CREATE TABLE IF NOT EXISTS `VTS`.`Bestellstatus` (
-  `Bestellstatus_ID` INT NOT NULL,
+  `Bestellstatus_ID` INT NOT NULL AUTO_INCREMENT,
   `Bezeichnung` VARCHAR(45) NULL,
   PRIMARY KEY (`Bestellstatus_ID`))
 ENGINE = InnoDB;
@@ -161,7 +161,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `VTS`.`Bestellung` ;
 
 CREATE TABLE IF NOT EXISTS `VTS`.`Bestellung` (
-  `Bestellung_ID` INT NOT NULL,
+  `Bestellung_ID` INT NOT NULL AUTO_INCREMENT,
   `Bestelldatum` TIMESTAMP(6) NOT NULL,
   `Versanddatum` TIMESTAMP(6) NULL,
   `Lieferkosten` DOUBLE NOT NULL,
@@ -215,7 +215,7 @@ CREATE INDEX `fk_Bestellung_Bestellstatus1_idx` ON `VTS`.`Bestellung` (`Bestells
 DROP TABLE IF EXISTS `VTS`.`Packung` ;
 
 CREATE TABLE IF NOT EXISTS `VTS`.`Packung` (
-  `Packung_ID` INT NOT NULL,
+  `Packung_ID` INT NOT NULL AUTO_INCREMENT,
   `Packungsgroessee` INT NULL,
   `Verkaufspreis` DOUBLE NULL,
   `Mindestbestand` INT NULL,
@@ -238,7 +238,7 @@ CREATE INDEX `fk_Packung_Artikel1_idx` ON `VTS`.`Packung` (`Artikel_ID` ASC);
 DROP TABLE IF EXISTS `VTS`.`Bestellungsposition` ;
 
 CREATE TABLE IF NOT EXISTS `VTS`.`Bestellungsposition` (
-  `Bestellungsposition_ID` INT NOT NULL,
+  `Bestellungsposition_ID` INT NOT NULL AUTO_INCREMENT,
   `Preis` DOUBLE NULL,
   `Anzahl` INT NULL,
   `Bestellpositionsnummer` VARCHAR(45) NOT NULL,
@@ -270,7 +270,7 @@ CREATE INDEX `fk_Bestellungsposition_Packung1_idx` ON `VTS`.`Bestellungsposition
 DROP TABLE IF EXISTS `VTS`.`Bestellfaehigkeit` ;
 
 CREATE TABLE IF NOT EXISTS `VTS`.`Bestellfaehigkeit` (
-  `Bestellfaehigkeit_ID` INT NOT NULL,
+  `Bestellfaehigkeit_ID` INT NOT NULL AUTO_INCREMENT,
   `Kundentyp_ID` INT NOT NULL,
   `Kategorie_ID` INT NOT NULL,
   PRIMARY KEY (`Bestellfaehigkeit_ID`),
@@ -297,7 +297,7 @@ CREATE INDEX `fk_Bestellfaehigkeit_Kategorie1_idx` ON `VTS`.`Bestellfaehigkeit` 
 DROP TABLE IF EXISTS `VTS`.`Lieferant` ;
 
 CREATE TABLE IF NOT EXISTS `VTS`.`Lieferant` (
-  `Lieferant_ID` INT NOT NULL,
+  `Lieferant_ID` INT NOT NULL AUTO_INCREMENT,
   `Name` VARCHAR(45) NULL,
   `Adresse_ID` INT NOT NULL,
   PRIMARY KEY (`Lieferant_ID`),
@@ -317,7 +317,7 @@ CREATE INDEX `fk_Lieferant_Adresse1_idx` ON `VTS`.`Lieferant` (`Adresse_ID` ASC)
 DROP TABLE IF EXISTS `VTS`.`Lieferfaehigkeit` ;
 
 CREATE TABLE IF NOT EXISTS `VTS`.`Lieferfaehigkeit` (
-  `Lieferfaehigkeit_ID` INT NOT NULL,
+  `Lieferfaehigkeit_ID` INT NOT NULL AUTO_INCREMENT,
   `Preis` DOUBLE NULL,
   `Versandkosten` DOUBLE NULL,
   `Lieferant_ID` INT NOT NULL,
@@ -349,9 +349,9 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `VTS`;
-INSERT INTO `VTS`.`Kategorie` (`Kategorie_ID`, `Bezeichnung`) VALUES (0, 'Test');
-INSERT INTO `VTS`.`Kategorie` (`Kategorie_ID`, `Bezeichnung`) VALUES (1, 'Medizinischer Test');
-INSERT INTO `VTS`.`Kategorie` (`Kategorie_ID`, `Bezeichnung`) VALUES (2, 'Training');
+INSERT INTO `VTS`.`Kategorie` (`Kategorie_ID`, `Bezeichnung`) VALUES (1, 'Test');
+INSERT INTO `VTS`.`Kategorie` (`Kategorie_ID`, `Bezeichnung`) VALUES (2, 'Medizinischer Test');
+INSERT INTO `VTS`.`Kategorie` (`Kategorie_ID`, `Bezeichnung`) VALUES (3, 'Training');
 
 COMMIT;
 
@@ -383,20 +383,20 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `VTS`;
-INSERT INTO `VTS`.`Artikel` (`Artikel_ID`, `Artikelname`, `Kategorie_ID`, `Hersteller_ID`, `Beschreibung`) VALUES (0, 'Corona Schnelltest Selbsttest', 0, 1, 'Gibt erste Anhaltspunkte darüber, ob aktuell eine Covid-19 Infektion vorliegen könnte');
-INSERT INTO `VTS`.`Artikel` (`Artikel_ID`, `Artikelname`, `Kategorie_ID`, `Hersteller_ID`, `Beschreibung`) VALUES (1, 'Corona Schnelltest Selbsttest', 0, 12, 'Antigen-Schnelltest für die Eigenanwendung. Gibt erste Anhaltspunkte darüber, ob aktuell eine Covid-19 Infektion vorliegen könnte');
-INSERT INTO `VTS`.`Artikel` (`Artikel_ID`, `Artikelname`, `Kategorie_ID`, `Hersteller_ID`, `Beschreibung`) VALUES (2, 'Corona Schnelltest Selbsttest', 0, 2, 'Liefert ein schnelles Ergebnis über das mögliche Vorliegen einer Infektion mit SARS-CoV-2');
-INSERT INTO `VTS`.`Artikel` (`Artikel_ID`, `Artikelname`, `Kategorie_ID`, `Hersteller_ID`, `Beschreibung`) VALUES (3, 'Corona Schnelltest Selbsttest', 0, 3, 'Antigen-Schnelltest für die Eigenanwendung. Gibt erste Anhaltspunkte darüber, ob aktuell eine Infektion mit SARS-CoV-2 vorliegen könnte');
-INSERT INTO `VTS`.`Artikel` (`Artikel_ID`, `Artikelname`, `Kategorie_ID`, `Hersteller_ID`, `Beschreibung`) VALUES (4, 'Corona Schnelltest Selbsttest', 0, 4, 'Gibt erste Anhaltspunkte darüber, ob aktuell eine Infektion mit SARS-CoV-2 vorliegen könnte');
-INSERT INTO `VTS`.`Artikel` (`Artikel_ID`, `Artikelname`, `Kategorie_ID`, `Hersteller_ID`, `Beschreibung`) VALUES (5, 'Corona Schnelltest Selbsttest', 0, 5, 'Antigen-Schnelltest für die Eigenanwendung. Gibt erste Anhaltspunkte darüber, ob aktuell eine Infektion mit SARS-CoV-2 vorliegen könnte');
-INSERT INTO `VTS`.`Artikel` (`Artikel_ID`, `Artikelname`, `Kategorie_ID`, `Hersteller_ID`, `Beschreibung`) VALUES (6, 'Corona Schnelltest Selbsttest', 0, 6, 'Liefert ein schnelles Ergebnis über das mögliche Vorliegen viraler SARS-CoV-2-Antigenen');
-INSERT INTO `VTS`.`Artikel` (`Artikel_ID`, `Artikelname`, `Kategorie_ID`, `Hersteller_ID`, `Beschreibung`) VALUES (7, 'Corona Schnelltest Selbsttest', 0, 7, 'Antigen-Schnelltest für die Eigenanwendung. Gibt erste Anhaltspunkte darüber, ob aktuell eine Covid-19 Infektion vorliegen könnte');
-INSERT INTO `VTS`.`Artikel` (`Artikel_ID`, `Artikelname`, `Kategorie_ID`, `Hersteller_ID`, `Beschreibung`) VALUES (8, 'Corona Schnelltest Selbsttest', 0, 8, 'liefert ein schnelles Ergebnis über das mögliche Vorliegen einer Infektion mit SARS-CoV-2.');
-INSERT INTO `VTS`.`Artikel` (`Artikel_ID`, `Artikelname`, `Kategorie_ID`, `Hersteller_ID`, `Beschreibung`) VALUES (9, 'Schnelltest Schulung', 2, NULL, 'Kontraindikationen für die Durchführung der Schnelltests');
-INSERT INTO `VTS`.`Artikel` (`Artikel_ID`, `Artikelname`, `Kategorie_ID`, `Hersteller_ID`, `Beschreibung`) VALUES (10, 'Corona Antigen Schnelltest', 1, 6, 'Einfache Anwendung - Vorderer Nasenabstrich');
-INSERT INTO `VTS`.`Artikel` (`Artikel_ID`, `Artikelname`, `Kategorie_ID`, `Hersteller_ID`, `Beschreibung`) VALUES (11, 'Antigen Schnelltest VORDERER NASENABSTRICH', 1, 9, 'Schmerzfrei - Vorderer Nasenabstrich');
-INSERT INTO `VTS`.`Artikel` (`Artikel_ID`, `Artikelname`, `Kategorie_ID`, `Hersteller_ID`, `Beschreibung`) VALUES (12, 'Antigen Schnelltest VORDERER NASENABSTRICH', 1, 10, 'Einfache Durchführung - Vorderer Nasenabstrich');
-INSERT INTO `VTS`.`Artikel` (`Artikel_ID`, `Artikelname`, `Kategorie_ID`, `Hersteller_ID`, `Beschreibung`) VALUES (13, 'Antigen Schnelltest VORDERER NASENABSTRICH', 1, 11, 'Hohe Sensitivität (98,1%) und Spezifität (100%)');
+INSERT INTO `VTS`.`Artikel` (`Artikel_ID`, `Artikelname`, `Kategorie_ID`, `Hersteller_ID`, `Beschreibung`) VALUES (1, 'Corona Schnelltest Selbsttest', 1, 1, 'Gibt erste Anhaltspunkte darüber, ob aktuell eine Covid-19 Infektion vorliegen könnte');
+INSERT INTO `VTS`.`Artikel` (`Artikel_ID`, `Artikelname`, `Kategorie_ID`, `Hersteller_ID`, `Beschreibung`) VALUES (2, 'Corona Schnelltest Selbsttest', 1, 12, 'Antigen-Schnelltest für die Eigenanwendung. Gibt erste Anhaltspunkte darüber, ob aktuell eine Covid-19 Infektion vorliegen könnte');
+INSERT INTO `VTS`.`Artikel` (`Artikel_ID`, `Artikelname`, `Kategorie_ID`, `Hersteller_ID`, `Beschreibung`) VALUES (3, 'Corona Schnelltest Selbsttest', 1, 2, 'Liefert ein schnelles Ergebnis über das mögliche Vorliegen einer Infektion mit SARS-CoV-2');
+INSERT INTO `VTS`.`Artikel` (`Artikel_ID`, `Artikelname`, `Kategorie_ID`, `Hersteller_ID`, `Beschreibung`) VALUES (4, 'Corona Schnelltest Selbsttest', 1, 3, 'Antigen-Schnelltest für die Eigenanwendung. Gibt erste Anhaltspunkte darüber, ob aktuell eine Infektion mit SARS-CoV-2 vorliegen könnte');
+INSERT INTO `VTS`.`Artikel` (`Artikel_ID`, `Artikelname`, `Kategorie_ID`, `Hersteller_ID`, `Beschreibung`) VALUES (5, 'Corona Schnelltest Selbsttest', 1, 4, 'Gibt erste Anhaltspunkte darüber, ob aktuell eine Infektion mit SARS-CoV-2 vorliegen könnte');
+INSERT INTO `VTS`.`Artikel` (`Artikel_ID`, `Artikelname`, `Kategorie_ID`, `Hersteller_ID`, `Beschreibung`) VALUES (6, 'Corona Schnelltest Selbsttest', 1, 5, 'Antigen-Schnelltest für die Eigenanwendung. Gibt erste Anhaltspunkte darüber, ob aktuell eine Infektion mit SARS-CoV-2 vorliegen könnte');
+INSERT INTO `VTS`.`Artikel` (`Artikel_ID`, `Artikelname`, `Kategorie_ID`, `Hersteller_ID`, `Beschreibung`) VALUES (7, 'Corona Schnelltest Selbsttest', 1, 6, 'Liefert ein schnelles Ergebnis über das mögliche Vorliegen viraler SARS-CoV-2-Antigenen');
+INSERT INTO `VTS`.`Artikel` (`Artikel_ID`, `Artikelname`, `Kategorie_ID`, `Hersteller_ID`, `Beschreibung`) VALUES (8, 'Corona Schnelltest Selbsttest', 1, 7, 'Antigen-Schnelltest für die Eigenanwendung. Gibt erste Anhaltspunkte darüber, ob aktuell eine Covid-19 Infektion vorliegen könnte');
+INSERT INTO `VTS`.`Artikel` (`Artikel_ID`, `Artikelname`, `Kategorie_ID`, `Hersteller_ID`, `Beschreibung`) VALUES (9, 'Corona Schnelltest Selbsttest', 1, 8, 'liefert ein schnelles Ergebnis über das mögliche Vorliegen einer Infektion mit SARS-CoV-2.');
+INSERT INTO `VTS`.`Artikel` (`Artikel_ID`, `Artikelname`, `Kategorie_ID`, `Hersteller_ID`, `Beschreibung`) VALUES (10, 'Schnelltest Schulung', 3, NULL, 'Kontraindikationen für die Durchführung der Schnelltests');
+INSERT INTO `VTS`.`Artikel` (`Artikel_ID`, `Artikelname`, `Kategorie_ID`, `Hersteller_ID`, `Beschreibung`) VALUES (11, 'Corona Antigen Schnelltest', 2, 6, 'Einfache Anwendung - Vorderer Nasenabstrich');
+INSERT INTO `VTS`.`Artikel` (`Artikel_ID`, `Artikelname`, `Kategorie_ID`, `Hersteller_ID`, `Beschreibung`) VALUES (12, 'Antigen Schnelltest VORDERER NASENABSTRICH', 2, 9, 'Schmerzfrei - Vorderer Nasenabstrich');
+INSERT INTO `VTS`.`Artikel` (`Artikel_ID`, `Artikelname`, `Kategorie_ID`, `Hersteller_ID`, `Beschreibung`) VALUES (13, 'Antigen Schnelltest VORDERER NASENABSTRICH', 2, 10, 'Einfache Durchführung - Vorderer Nasenabstrich');
+INSERT INTO `VTS`.`Artikel` (`Artikel_ID`, `Artikelname`, `Kategorie_ID`, `Hersteller_ID`, `Beschreibung`) VALUES (14, 'Antigen Schnelltest VORDERER NASENABSTRICH', 2, 11, 'Hohe Sensitivität (98,1%) und Spezifität (100%)');
 
 COMMIT;
 
@@ -406,7 +406,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `VTS`;
-INSERT INTO `VTS`.`Adresse` (`Adresse_ID`, `Straße`, `Hausnummer`, `PLZ`, `Stadt`, `Stadtteil`, `Bundesland`, `Land`) VALUES (0, 'Vorstadtstraße', '24', 73494, 'Rosenberg', 'Hohenberg', 'Baden-Württemberg', 'Deutschland');
+INSERT INTO `VTS`.`Adresse` (`Adresse_ID`, `Straße`, `Hausnummer`, `PLZ`, `Stadt`, `Stadtteil`, `Bundesland`, `Land`) VALUES (1, 'Vorstadtstraße', '24', 73494, 'Rosenberg', 'Hohenberg', 'Baden-Württemberg', 'Deutschland');
 
 COMMIT;
 
@@ -416,8 +416,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `VTS`;
-INSERT INTO `VTS`.`Kundentyp` (`Kundentyp_ID`, `Bezeichung`) VALUES (0, 'Privatkunde');
-INSERT INTO `VTS`.`Kundentyp` (`Kundentyp_ID`, `Bezeichung`) VALUES (1, 'Medizinischer Kunde');
+INSERT INTO `VTS`.`Kundentyp` (`Kundentyp_ID`, `Bezeichung`) VALUES (1, 'Privatkunde');
+INSERT INTO `VTS`.`Kundentyp` (`Kundentyp_ID`, `Bezeichung`) VALUES (2, 'Medizinischer Kunde');
 
 COMMIT;
 
@@ -427,7 +427,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `VTS`;
-INSERT INTO `VTS`.`Kunde` (`Kunde_ID`, `Name`, `Vorname`, `Telefon`, `Email`, `Passwort`, `Adresse_ID`, `Kundentyp_ID`) VALUES (0, 'Vidmar', 'Marcel', '015755797545', 'marcel.vidmar.mv@gmail.com', 'gast', 0, 0);
+INSERT INTO `VTS`.`Kunde` (`Kunde_ID`, `Name`, `Vorname`, `Telefon`, `Email`, `Passwort`, `Adresse_ID`, `Kundentyp_ID`) VALUES (1, 'Vidmar', 'Marcel', '015755797545', 'marcel.vidmar.mv@gmail.com', 'gast', 1, 1);
 
 COMMIT;
 
@@ -437,9 +437,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `VTS`;
-INSERT INTO `VTS`.`Bezahlmethode` (`Bezahlmethode_ID`, `Bezeichnung`) VALUES (0, 'PayPal');
-INSERT INTO `VTS`.`Bezahlmethode` (`Bezahlmethode_ID`, `Bezeichnung`) VALUES (1, 'Überweisung');
-INSERT INTO `VTS`.`Bezahlmethode` (`Bezahlmethode_ID`, `Bezeichnung`) VALUES (2, 'Rechnung');
+INSERT INTO `VTS`.`Bezahlmethode` (`Bezahlmethode_ID`, `Bezeichnung`) VALUES (1, 'PayPal');
+INSERT INTO `VTS`.`Bezahlmethode` (`Bezahlmethode_ID`, `Bezeichnung`) VALUES (2, 'Überweisung');
+INSERT INTO `VTS`.`Bezahlmethode` (`Bezahlmethode_ID`, `Bezeichnung`) VALUES (3, 'Rechnung');
 
 COMMIT;
 
@@ -449,14 +449,14 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `VTS`;
-INSERT INTO `VTS`.`Bestellstatus` (`Bestellstatus_ID`, `Bezeichnung`) VALUES (0, 'Aufgegeben');
-INSERT INTO `VTS`.`Bestellstatus` (`Bestellstatus_ID`, `Bezeichnung`) VALUES (1, 'Warte auf Bezahlung');
-INSERT INTO `VTS`.`Bestellstatus` (`Bestellstatus_ID`, `Bezeichnung`) VALUES (2, 'Mahnung');
-INSERT INTO `VTS`.`Bestellstatus` (`Bestellstatus_ID`, `Bezeichnung`) VALUES (3, 'Abgebrochen');
-INSERT INTO `VTS`.`Bestellstatus` (`Bestellstatus_ID`, `Bezeichnung`) VALUES (4, 'In Bearbeitung');
-INSERT INTO `VTS`.`Bestellstatus` (`Bestellstatus_ID`, `Bezeichnung`) VALUES (5, 'In Zustellung');
-INSERT INTO `VTS`.`Bestellstatus` (`Bestellstatus_ID`, `Bezeichnung`) VALUES (6, 'Zugestellt');
-INSERT INTO `VTS`.`Bestellstatus` (`Bestellstatus_ID`, `Bezeichnung`) VALUES (7, 'Archiviert');
+INSERT INTO `VTS`.`Bestellstatus` (`Bestellstatus_ID`, `Bezeichnung`) VALUES (1, 'Aufgegeben');
+INSERT INTO `VTS`.`Bestellstatus` (`Bestellstatus_ID`, `Bezeichnung`) VALUES (2, 'Warte auf Bezahlung');
+INSERT INTO `VTS`.`Bestellstatus` (`Bestellstatus_ID`, `Bezeichnung`) VALUES (3, 'Mahnung');
+INSERT INTO `VTS`.`Bestellstatus` (`Bestellstatus_ID`, `Bezeichnung`) VALUES (4, 'Abgebrochen');
+INSERT INTO `VTS`.`Bestellstatus` (`Bestellstatus_ID`, `Bezeichnung`) VALUES (5, 'In Bearbeitung');
+INSERT INTO `VTS`.`Bestellstatus` (`Bestellstatus_ID`, `Bezeichnung`) VALUES (6, 'In Zustellung');
+INSERT INTO `VTS`.`Bestellstatus` (`Bestellstatus_ID`, `Bezeichnung`) VALUES (7, 'Zugestellt');
+INSERT INTO `VTS`.`Bestellstatus` (`Bestellstatus_ID`, `Bezeichnung`) VALUES (8, 'Archiviert');
 
 COMMIT;
 
@@ -466,22 +466,22 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `VTS`;
-INSERT INTO `VTS`.`Packung` (`Packung_ID`, `Packungsgroessee`, `Verkaufspreis`, `Mindestbestand`, `Lagermenge`, `Artikel_ID`) VALUES (0, 5, 20.95, 100, 30, 0);
-INSERT INTO `VTS`.`Packung` (`Packung_ID`, `Packungsgroessee`, `Verkaufspreis`, `Mindestbestand`, `Lagermenge`, `Artikel_ID`) VALUES (1, 1, 3.95, 250, 350, 1);
-INSERT INTO `VTS`.`Packung` (`Packung_ID`, `Packungsgroessee`, `Verkaufspreis`, `Mindestbestand`, `Lagermenge`, `Artikel_ID`) VALUES (2, 5, 19.99, 100, 200, 1);
-INSERT INTO `VTS`.`Packung` (`Packung_ID`, `Packungsgroessee`, `Verkaufspreis`, `Mindestbestand`, `Lagermenge`, `Artikel_ID`) VALUES (3, 5, 22.95, 100, 90, 2);
-INSERT INTO `VTS`.`Packung` (`Packung_ID`, `Packungsgroessee`, `Verkaufspreis`, `Mindestbestand`, `Lagermenge`, `Artikel_ID`) VALUES (4, 5, 18.95, 100, 250, 3);
-INSERT INTO `VTS`.`Packung` (`Packung_ID`, `Packungsgroessee`, `Verkaufspreis`, `Mindestbestand`, `Lagermenge`, `Artikel_ID`) VALUES (5, 5, 18.95, 100, 125, 4);
-INSERT INTO `VTS`.`Packung` (`Packung_ID`, `Packungsgroessee`, `Verkaufspreis`, `Mindestbestand`, `Lagermenge`, `Artikel_ID`) VALUES (6, 20, 69.95, 50, 94, 4);
-INSERT INTO `VTS`.`Packung` (`Packung_ID`, `Packungsgroessee`, `Verkaufspreis`, `Mindestbestand`, `Lagermenge`, `Artikel_ID`) VALUES (7, 5, 20.95, NULL, NULL, 5);
-INSERT INTO `VTS`.`Packung` (`Packung_ID`, `Packungsgroessee`, `Verkaufspreis`, `Mindestbestand`, `Lagermenge`, `Artikel_ID`) VALUES (8, 5, 19.95, NULL, NULL, 6);
-INSERT INTO `VTS`.`Packung` (`Packung_ID`, `Packungsgroessee`, `Verkaufspreis`, `Mindestbestand`, `Lagermenge`, `Artikel_ID`) VALUES (9, 1, 4.35, NULL, NULL, 7);
+INSERT INTO `VTS`.`Packung` (`Packung_ID`, `Packungsgroessee`, `Verkaufspreis`, `Mindestbestand`, `Lagermenge`, `Artikel_ID`) VALUES (1, 5, 20.95, 100, 30, 1);
+INSERT INTO `VTS`.`Packung` (`Packung_ID`, `Packungsgroessee`, `Verkaufspreis`, `Mindestbestand`, `Lagermenge`, `Artikel_ID`) VALUES (2, 1, 3.95, 250, 350, 2);
+INSERT INTO `VTS`.`Packung` (`Packung_ID`, `Packungsgroessee`, `Verkaufspreis`, `Mindestbestand`, `Lagermenge`, `Artikel_ID`) VALUES (3, 5, 19.99, 100, 200, 2);
+INSERT INTO `VTS`.`Packung` (`Packung_ID`, `Packungsgroessee`, `Verkaufspreis`, `Mindestbestand`, `Lagermenge`, `Artikel_ID`) VALUES (4, 5, 22.95, 100, 90, 3);
+INSERT INTO `VTS`.`Packung` (`Packung_ID`, `Packungsgroessee`, `Verkaufspreis`, `Mindestbestand`, `Lagermenge`, `Artikel_ID`) VALUES (5, 5, 18.95, 100, 250, 4);
+INSERT INTO `VTS`.`Packung` (`Packung_ID`, `Packungsgroessee`, `Verkaufspreis`, `Mindestbestand`, `Lagermenge`, `Artikel_ID`) VALUES (6, 5, 18.95, 100, 125, 5);
+INSERT INTO `VTS`.`Packung` (`Packung_ID`, `Packungsgroessee`, `Verkaufspreis`, `Mindestbestand`, `Lagermenge`, `Artikel_ID`) VALUES (7, 20, 69.95, 50, 94, 5);
+INSERT INTO `VTS`.`Packung` (`Packung_ID`, `Packungsgroessee`, `Verkaufspreis`, `Mindestbestand`, `Lagermenge`, `Artikel_ID`) VALUES (8, 5, 20.95, NULL, NULL, 6);
+INSERT INTO `VTS`.`Packung` (`Packung_ID`, `Packungsgroessee`, `Verkaufspreis`, `Mindestbestand`, `Lagermenge`, `Artikel_ID`) VALUES (9, 5, 19.95, NULL, NULL, 7);
 INSERT INTO `VTS`.`Packung` (`Packung_ID`, `Packungsgroessee`, `Verkaufspreis`, `Mindestbestand`, `Lagermenge`, `Artikel_ID`) VALUES (10, 1, 4.35, NULL, NULL, 8);
-INSERT INTO `VTS`.`Packung` (`Packung_ID`, `Packungsgroessee`, `Verkaufspreis`, `Mindestbestand`, `Lagermenge`, `Artikel_ID`) VALUES (11, 1, 13.70, NULL, NULL, 9);
-INSERT INTO `VTS`.`Packung` (`Packung_ID`, `Packungsgroessee`, `Verkaufspreis`, `Mindestbestand`, `Lagermenge`, `Artikel_ID`) VALUES (12, 20, 94.00, NULL, NULL, 10);
+INSERT INTO `VTS`.`Packung` (`Packung_ID`, `Packungsgroessee`, `Verkaufspreis`, `Mindestbestand`, `Lagermenge`, `Artikel_ID`) VALUES (11, 1, 4.35, NULL, NULL, 9);
+INSERT INTO `VTS`.`Packung` (`Packung_ID`, `Packungsgroessee`, `Verkaufspreis`, `Mindestbestand`, `Lagermenge`, `Artikel_ID`) VALUES (12, 1, 13.70, NULL, NULL, 10);
 INSERT INTO `VTS`.`Packung` (`Packung_ID`, `Packungsgroessee`, `Verkaufspreis`, `Mindestbestand`, `Lagermenge`, `Artikel_ID`) VALUES (13, 20, 94.00, NULL, NULL, 11);
 INSERT INTO `VTS`.`Packung` (`Packung_ID`, `Packungsgroessee`, `Verkaufspreis`, `Mindestbestand`, `Lagermenge`, `Artikel_ID`) VALUES (14, 20, 94.00, NULL, NULL, 12);
-INSERT INTO `VTS`.`Packung` (`Packung_ID`, `Packungsgroessee`, `Verkaufspreis`, `Mindestbestand`, `Lagermenge`, `Artikel_ID`) VALUES (15, 25, 117.51, NULL, NULL, 13);
+INSERT INTO `VTS`.`Packung` (`Packung_ID`, `Packungsgroessee`, `Verkaufspreis`, `Mindestbestand`, `Lagermenge`, `Artikel_ID`) VALUES (15, 20, 94.00, NULL, NULL, 13);
+INSERT INTO `VTS`.`Packung` (`Packung_ID`, `Packungsgroessee`, `Verkaufspreis`, `Mindestbestand`, `Lagermenge`, `Artikel_ID`) VALUES (16, 25, 117.51, NULL, NULL, 14);
 
 COMMIT;
 
@@ -491,11 +491,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `VTS`;
-INSERT INTO `VTS`.`Bestellfaehigkeit` (`Bestellfaehigkeit_ID`, `Kundentyp_ID`, `Kategorie_ID`) VALUES (0, 0, 0);
-INSERT INTO `VTS`.`Bestellfaehigkeit` (`Bestellfaehigkeit_ID`, `Kundentyp_ID`, `Kategorie_ID`) VALUES (1, 0, 1);
-INSERT INTO `VTS`.`Bestellfaehigkeit` (`Bestellfaehigkeit_ID`, `Kundentyp_ID`, `Kategorie_ID`) VALUES (2, 1, 0);
-INSERT INTO `VTS`.`Bestellfaehigkeit` (`Bestellfaehigkeit_ID`, `Kundentyp_ID`, `Kategorie_ID`) VALUES (3, 1, 1);
-INSERT INTO `VTS`.`Bestellfaehigkeit` (`Bestellfaehigkeit_ID`, `Kundentyp_ID`, `Kategorie_ID`) VALUES (4, 1, 2);
+INSERT INTO `VTS`.`Bestellfaehigkeit` (`Bestellfaehigkeit_ID`, `Kundentyp_ID`, `Kategorie_ID`) VALUES (1, 1, 1);
+INSERT INTO `VTS`.`Bestellfaehigkeit` (`Bestellfaehigkeit_ID`, `Kundentyp_ID`, `Kategorie_ID`) VALUES (2, 1, 2);
+INSERT INTO `VTS`.`Bestellfaehigkeit` (`Bestellfaehigkeit_ID`, `Kundentyp_ID`, `Kategorie_ID`) VALUES (3, 2, 1);
+INSERT INTO `VTS`.`Bestellfaehigkeit` (`Bestellfaehigkeit_ID`, `Kundentyp_ID`, `Kategorie_ID`) VALUES (4, 2, 2);
+INSERT INTO `VTS`.`Bestellfaehigkeit` (`Bestellfaehigkeit_ID`, `Kundentyp_ID`, `Kategorie_ID`) VALUES (5, 2, 3);
 
 COMMIT;
 

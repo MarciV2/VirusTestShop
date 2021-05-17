@@ -1,39 +1,70 @@
 <?php
 $servername = 'localhost';
-$dbname = 'testdatenbank';
-$username = 'root';
-$passwort = '';
+$dbname = 'vts';
+$dbusername = 'root';
+$dbpasswort = '';
 $serverdaten = "mysql:host=$servername;dbname=$dbname";
+SESSION_START();
 
-require
+error_reporting(E_ALL);
+# Datenbankverbindung herstellen
+$verbindung = mysqli_connect($servername, $dbusername, $passwort);
 
-try{
-$verbindung = new PDO($serverdaten,$username,$passwort);
-}
-catch(Exception $FehlerPDO){
-    print $FehlerPDO->getMessage();
-    echo '<script>alert("WaitWaitWaitWhat?")</script>';
-}
-
-if(isset ($verbindung))
+# Verbindung hergestellt?
+if(!$verbindung)
 {
-    $verbindung->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $strLoginNutzerJSON = file_get_contents("nutzer.json");
-    $arrayLoginNutzerJSON = json_decode($strLoginNutzerJSON, true);
-    foreach($arrayLoginNutzerJSON as $key)
+    die("Keine Verbindung hergestellt: ". mysqli_error($mysqlError));
+}
+
+$datenbank = mysqli_select_db($verbindung, $dbname);
+
+if(!$datenbank)
+{
+    echo "Kann die Datenbank nicht verwenden" . mysqli_error($mysqlError);
+    mysqli_close($verbindung);      # Verbindung schliessen bei vorangegagenem Zugriffsfehler
+    include("datenbankverbindungfehler.php");                           # Programm beenden
+}
+
+if(!empty($_POST["submit"]))
+{
+    # Um ANgriffen wie SQL-Injections vorzubeugen müssen die im Loginformular eingegebenen
+    # Werte escapen
+    $loginname = mysqli_real_escape_string($verbindung, $_POST["LoginName"]);
+    $loginpasswort = mysqli_real_escape_string($verbindung, $_POST["LoginPasswort"]);
+
+    $sql = "SELECT * FROM kunde WHERE 
+            Kunde_ID ='$loginname' AND
+            Passwort ='$loginpasswort' 
+            LIMIT 1";
+
+    $queryErgebnis = mysqli_query($verbindung, $sql);
+    $anzahlReihen = @mysqli_num_rows($queryErgebnis);
+
+    if ($anzahlReihen > 0)
     {
-        echo $key<br>;
-    }
-    //$sqlStatement = "SELECT `NutzerName`, `NutzerPasswort` FROM `registriertenutzer` WHERE NutzerName='b4stY' && NutzerPasswort='sfasd2' ";
-}
+        $_SESSION["login"] = 1;
 
-if(true)
-{
-    echo '<script type="text/javascript">
-    alert("Sollte funktioniert haben");
-    </script>';
-}
-else{
+        $_SESSION["user"] = mysqli_fetch_array($queryErgebnis, MYSQLI_ASSOC);
+    }
+        #letzter LOGIN setzem`??
+        else 
+        {
+            echo "Logindaten sind inkorrekt. <br>";
+        }
+    
+
+    #User eingeloggt?
+
+    if($_SESSION["login"] == 0)
+    {
+        includ("index.html");
+        mysqli_close($verbindung);
+        exit;
+    }
     
 }
+
+echo "Login erfolgreich";
+
+mysqli_close($verbindung);
 ?>

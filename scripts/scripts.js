@@ -1,15 +1,58 @@
 function einAusblendenLoginForm(einAusblenden)
 {
-	if(einAusblenden == "anzeigen")
+	if(einAusblenden == "toggle")
 	{
-		document.getElementById('LandingLogin').style.visibility="visible";
+		var loginForm = document.getElementById("LandingLogin");
+		var loginFormStyle = getComputedStyle(loginForm);
+		var regForm = document.getElementById("RegisterForm");
+		var regFormStyle = getComputedStyle(regForm)
+		var hidden = "hidden";
+		var logBool = loginFormStyle.visibility.localeCompare(hidden);
+		var regBool = regFormStyle.visibility.localeCompare(hidden);
+
+		if(!logBool && !regBool)
+		{
+			document.getElementById("LandingLogin").style.visibility="visible";
+		}
+		else if(!logBool && regBool)
+		{
+			document.getElementById("RegisterForm").style.visibility="hidden";
+		}
+		else if(logBool && !regBool)
+		{
+			document.getElementById("LandingLogin").style.visibility="hidden";
+		}
+		else{
+			document.getElementById("RegisterForm").style.visibility="hidden";
+			document.getElementById("LandingLogin").style.visibility="hidden";
+		}
+
 	}
-	else if(einAusblenden == "ausblenden")
+
+	if(einAusblenden == "ausblenden")
 	{
-		document.getElementById('LandingLogin').style.visibility="hidden";
+		document.getElementById('LandingLogin').style.visibility="hidden";		
 	}
 }
 
+function nichtRegistriertHandler(){
+	einAusblendenLoginForm('ausblenden');
+		
+	var registerForm = document.getElementById('RegisterForm');
+	var registerFormStyle = getComputedStyle(registerForm);
+	var regFormVisibilityValue = registerFormStyle.visibility;
+	var hidden = "hidden"
+	var boolHidden = hidden.localeCompare(regFormVisibilityValue);
+
+	if(!boolHidden)
+	{
+		document.getElementById('RegisterForm').style.visibility="visible";
+	}
+	else
+	{
+		document.getElementById('RegisterForm').style.visibility="hidden";
+	}
+}
 
 function performLogin(){
 	class LoginNutzer{
@@ -28,21 +71,25 @@ function performLogin(){
 	let jetzigerNutzer = new LoginNutzer(document.getElementById('Loginname1').value,
 	document.getElementById('LoginPasswort').value,
 	document.getElementById('LoginCheckbox').value);
+	
 	jNutzerJSON = JSON.stringify(jetzigerNutzer);
 	localStorage.setItem("Nutzer",jNutzerJSON);
 
 }
 
-function closeForm() {
-	document.getElementById("LoginForm").style.visibility = "hidden";
+
+
+
+
+function hoverAGBs(farbe){
+	document.getElementById('AGB').style.color=farbe;
 }
 
-function nichtRegistriertHandler(){
-	einAusblendenLoginForm('ausblenden');
-	document.getElementById('RegisterForm').style.visibility="visible";
+function clickAGBs(){
+	window.open();
 }
 
-function checkIfMail() {
+/*function checkIfMail() {
 	var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 	
 	if(document.getElementById("emailFeld1").value.match(mailformat))
@@ -71,7 +118,7 @@ function checkifMail1EqMail2()
 		
 	}
 }
-
+*/
 function getAlert(TextForAlert){
 	alert(TextForAlert);
 }

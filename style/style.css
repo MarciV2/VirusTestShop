@@ -77,46 +77,63 @@ h {
 .content input{
 	padding: 10px;
 }
-.content input.chkbox{
-	float: right;
-}
+
 .RegisterForm {
 	visibility: hidden;
+	width: 60%;
+	height: 550px;
+	margin-top: 55px;
+	margin-left: 20%;
 	position: absolute;
-	background-color: #333;
-}
-.regForm {
-	top: 5%;	
-	text-align: center;
-	padding: 15px;
-
+  	background: yellow;
+	
 }
 
-.registrierungContent {
-	background: white;
-	padding: 15px;
-		
+.registrierung{
+	background:yellow;
+	margin-top: 25px;
+	margin-bottom: 2%;
 }
 
-.registrierung label{
-	padding: 15px;
-	height: 10px;
-	margin-top: 10px;
-	display: block;
+.registrierung td{
+	padding: 3px;
+	width: 250px;
 }
+
 
 .registrierung input {
 	padding: 15px;
-	height: 5px; 	
+	height: 5px; 
+	-webkit-border-radius: 5px;	
+}
+
+.registrierung input.big{
+	width: 178px;
 }
 
 
-.registrierung.btn {
-	display: block;    
-	margin:10px auto;
-	height: 15px;
-	width: 300px;
+.registrierung input[type=submit]{
+	background-color: aliceblue;
+	border-width: 2px;
+	border-color: black;
+	line-height: 6px;
+	font-weight: bold;
+
 }
+
+.registrierung input[type=submit]:hover{
+	background-color: black;
+	color: aliceblue;
+	border-color: aliceblue;
+	cursor: pointer;
+	text-align: center;	
+}
+
+.registrierung input[type=checkbox]{
+	min-height: 15px;
+}
+
+
 
 .LandingLogin {	
 	margin-top: 80px;
@@ -152,6 +169,29 @@ h {
 	color: aliceblue;	
 }
 
+.LandingLogin input.login{
+	display: block;
+	color: black;
+   	background-color: aliceblue;
+   	border-style:solid;
+   	border-width: 1px;
+   	border-color: black;
+	text-align: center;
+	padding: 7px 10px;
+	cursor: pointer;
+ 	text-decoration: none;
+  	margin-top: 5px;
+  	float: left;
+   	margin-left: 31px;
+}
+
+.LandingLogin input.login:hover{
+	background-color: #333;
+	border-color: aliceblue;
+	color: white;
+}
+
+
 .LandingLogin a{
   	display: block;
  	color: black;
@@ -170,20 +210,10 @@ h {
 	float: right;
 	margin-right: 31px;
 }
-.LandingLogin a.login{
-	float: left;
-	margin-left: 31px;
-}
 
 .LandingLogin a.cancel:hover{
 	color: red;
 	border-color: red;
-}
-
-.LandingLogin a.login:hover{
-	background-color: #333;
-	border-color: aliceblue;
-	color: white;
 }
 
 	
