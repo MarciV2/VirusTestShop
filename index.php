@@ -1,3 +1,6 @@
+<?php SESSION_START();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +22,70 @@
    
     
 </head>
+<!--Register Form begin -->
+<div class="RegisterForm" id="RegisterForm" onmouseout="">
+    <form action="/php/RegistrierungsVerarbeitung.php" method="POST">
+        <div class="regForm" id="regForm">
+            <center><h><b>Registrierung</b></h></center>
+            <div class="registrierung" id="registrierung"> 
+            <center>
+            <table>
+              
+                <tr>
+                  <td><input class="big" type="text" placeholder="Login-Name" name="regloginname" id="RegLoginname" required /></td>
+                </tr>
+                <tr>
+                  <td><input class="big" type="password" placeholder="Passwort" name="passwort" required/><br></td>
+                  <td><input class="big" type="password" placeholder="Passwort wiederholen" name="wdhlg-passwort" required/></td>
+                </tr>
+                <tr>
+                  <td><input class="big" type="text" placeholder="Vorname" name="vorname" required></td>
+                  <td><input class="big" type="text" placeholder="Nachname" name="nachname" required></td>
+                </tr>
+                <tr>
+                  <td><input class="big" type="text" placeholder="Straße" name="strasse" required></td>
+                  <td><input type="number" name="hausnummer" placeholder="Nr." min="1" max = "999" required><input type="number" placeholder="PLZ" name="plz" min="1000" max="99999" required></td>
+                </tr>
+                <tr>
+                  <td><input class="big" tyoe="text" placeholder="Stadt" name="stadt" required></td>
+                  <td><input class="big" type="text" placeholder="Stadtteil" name="stadtteil" required></td>
+                </tr>
+                <tr>
+                  <td><input class="big" type="text" placeholder="Land" name="land" required></td>
+                  <td><input class="big" type="text" placeholder="Bundesland" name="bundesland" required></td>
+                </tr>
+                <tr>
+                  <td><input class="big" type="email" placeholder="E-Mail" name="email" required></td>
+                  <td><input class="big" type="email" placeholder="E-Mail wiederholen" name="wdhlg-email" required></td>
+                </tr>
+                <tr>
+                  <td><input class="big" type="text" placeholder="Telefon: Vorwahl + Nummer" name="telefon" required></td>
+                  <td><label>Firmenkunde: </label><select name="firmenkunde"><option value="0">Nein</option><option value="1">Ja</option></select></td>
+                </tr>
+            </table>
+            
+            <br>
+            <label class="agb" id="AGB" onmouseover="hoverAGBs('grey')" onmouseout="hoverAGBs('black')" onclick="clickAGBs()">Akzeptieren Sie unsere AGBs</label><input type ="checkbox" name="agb"><br>
+            <input type="submit" name="submitReg" value="Abschicken">
+            <br>
+            </center>
+            </div>
+        </div>
+    </form>
+</div>
+<!--Register Form Ende -->
+<!-- Begin LoginForm -->
+<div class="LandingLogin" id="LandingLogin">
+            <form action="/php/LoginVerarbeitung.php" method="POST">
+                <label id="Loginname" class="LabelLogin">Login:</label><center><input type="text" placeholder="Login" name="LoginName" id="LogLoginname" required></center>
+                <label id="LoginPasswort" class="LabelLogin">Passwort:</label><center><input type="text" placeholder="Passwort" name="LoginPasswort" id="LoginPasswort" require></center>
+                <input type="submit" class="login" id="login" value=Login>
+                <a class="cancel"  id="cancel" onclick="einAusblendenLoginRegForm()">Cancel</a>
+                <label class="LabelChkbox" for id="LoginCheckbox">Anmeldedaten merken</label><input class="chkbox" type="checkbox" name="LoginCheckbox" id="LoginCheckbox">
+                <label onclick="nichtRegistriertHandler()" class="NotRegistered">Noch keinen Account?</label>
+            </form>
+        </div>
+
 <body>
     <div class="windowedPage">
         <!-- Start your project here-->
@@ -71,16 +138,16 @@
                 <div class="d-flex align-items-center">
                     <!-- Shopping icon -->
                     <a class="text-reset me-4" href="./content/warenkorb.html">
-                        <i class="fas fa-shopping-cart" style="color: #ffffff"></i>
-                        <span class="badge rounded-pill badge-notification bg-danger">11</span>
+                        <i class="fas fa-shopping-cart" id="WarenkorbButton" style="color: #ffffff"></i>
+                        <span class="badge rounded-pill badge-notification bg-danger" id="Warenkorb">11</span>
                     </a>
                     <!-- Bell icon -->
                     <a class="text-reset me-4" href="#">
                         <i class="fas fa-bell" style="color: #ffffff"></i>
                     </a>
                     <!-- Account icon -->
-                    <a class="text-reset me-3" href="#">
-                        <i class="fas fa-user-circle" style="color: #ffffff"></i>
+                    <a onclick="einAusblendenLoginRegForm()" class="text-reset me-3"  >
+                        <i class="fas fa-user-circle" id="LoginButton"  style="color: #ffffff"></i>
                     </a>
 
 
@@ -88,9 +155,9 @@
                 <!-- Right elements -->
             </div>
         </nav>
-        <!-- Navbar -->
+        <!-- Ende Navbar -->
         <!-- Background image -->
-        <div class="p-5 text-center bg-image" style="background-image: url('./Share/vts_logo_anim.gif'); height: 350px">
+        <div class="p-5 text-center bg-image" style="background-image: url('./img/vts_logo_anim.gif'); height: 350px">
             <div class="mask" style="background-color: rgba(0, 0, 0, 0);">
                 <div class="d-flex justify-content-center align-items-center h-100">
                 </div>
@@ -118,97 +185,8 @@
             Bei Fragen stehen wir Ihnen gerne hier [LINK] zur Verfügung
         </p>
 
+      
         <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-
-        
-
-        <!-- Footer -->
-        <footer class="text-center text-lg-start bg-light text-muted">
-            <hr style="margin-top: 0" />
-            <!-- Section: Links  -->
-            <section class="">
-                <div class="container text-center text-md-start mt-5">
-                    <!-- Grid row -->
-                    <div class="row mt-3">
-                        <!-- Grid column -->
-                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                            <!-- Content -->
-                            <h4 class="text-uppercase fw-bold mb-4">
-                                <img src="./img/logo.png" height="40" style="margin-right: 15px">VirusTestShop
-                            </h4>
-                            <p>
-                                Deutschlands führender Shop für Corona Tests und Schulungen
-                            </p>
-                        </div>
-                        <!-- Grid column -->
-                        <!-- Grid column -->
-                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                            <!-- Links -->
-                            <h6 class="text-uppercase fw-bold mb-4">
-                                Produkte
-                            </h6>
-                            <p>
-                                <a href="./content/produktangebot.html" class="text-reset">Corona Schnelltests</a>
-                            </p>
-                            <p>
-                                <a href="./content/produktangebot.html" class="text-reset">Corona PCR-Tests</a>
-                            </p>
-                            <p>
-                                <a href="./content/produktangebot.html" class="text-reset">Schulungen</a>
-                            </p>
-                        </div>
-                        <!-- Grid column -->
-                        <!-- Grid column -->
-                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                            <!-- Links -->
-                            <h6 class="text-uppercase fw-bold mb-4">
-                                Nützliche Links
-                            </h6>
-                            <p>
-                                <a href="./content/agb.html" class="text-reset">ABG</a>
-                            </p>
-                            <p>
-                                <a href="./content/impressum.html" class="text-reset">Impressum</a>
-                            </p>
-                            <p>
-                                <a href="./content/datenschutz.html" class="text-reset">Datenschutz</a>
-                            </p>
-                        </div>
-                        <!-- Grid column -->
-                        <!-- Grid column -->
-                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-                            <!-- Links -->
-                            <h6 class="text-uppercase fw-bold mb-4">
-                                Kontakt
-                            </h6>
-                            <p><i class="fas fa-home me-3"></i> Heidenheim an der Brenz, DE 89518</p>
-                            <p>
-                                <i class="fas fa-envelope me-3"></i>
-                                corona-testshop@example.com
-                            </p>
-                            <p><i class="fas fa-phone me-3"></i> + 01 234 567 89</p>
-                        </div>
-                        <!-- Grid column -->
-                    </div>
-                    <!-- Grid row -->
-                </div>
-            </section>
-            <!-- Section: Links  -->
-            <!-- Copyright -->
-            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-                © 2021 Copyright:
-                <a class="text-reset fw-bold" href="#">virustestshop.de</a>
-            </div>
-            <!-- Copyright -->
-        </footer>
-        <!-- Footer -->
 
     </div>
 
@@ -219,8 +197,34 @@
     <!-- MDB -->
     <script type="text/javascript" src="./js/mdb.min.js"></script>
     <!-- Custom scripts -->
-    <script src="./js/index.js"></script>
+	
+    <?php
+        if(isset($_SESSION))
+        {
+            if(isset($_SESSION["login"]))
+            {
+            echo "<script type=text/javascript>console.log($_SESSION[login]);</script>";
+            switch($_SESSION["login"])
+            {
+                case 0 : break;
+                case 1 : break;
+                default : break;
+            }
+            }
+            else
+            {
+                $_SESSION["login"] = 0;
+            }
+        }
 
-    <script src="./src/simple-notify/simple-notify.min.js"></script>
+    ?>
+
+    <script type="text/javascript" src="./src/simple-notify/simple-notify.min.js"></script>
+    <script type=text/javascript src=./js/index.js><?php echo "checkLogin($_SESSION[login])</script>"?>;
+
+    
+    
 </body>
 </html>
+
+

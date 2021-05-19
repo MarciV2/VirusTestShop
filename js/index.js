@@ -23,3 +23,9 @@ new Notify({
     gap: 20,
     distance: 20
 })
+
+function checkLogin(login)
+{
+    console.log("Test checkLogin"+login);
+}
+
