@@ -100,13 +100,13 @@
 
             <div class="card itemCard">
                 <div class="row">
-                    <div class="col-lg-7 col-7">
+                    <div class="col-lg-7 col-sm-7 col-5">
                         <h5 style="padding-top: 10px; padding-left: 20px">Produkt </h5>
                     </div>
-                    <div class="col-lg-3 col-2">
+                    <div class="col-lg-3 col-sm-2 col-3">
                         <h5 style="padding-top: 10px">Anzahl </h5>
                     </div>
-                    <div class="col-lg-2 col-3">
+                    <div class="col-lg-2 col-sm-3 col-4">
                         <h5 style="padding-top: 10px">Preis in €</h5>
                     </div>
                 </div>
@@ -116,36 +116,36 @@
                 <ul class="list-group list-group-flush" id="list_of_elements_in_chart">
 
 
-                    <li class="list-group-item">
+                    <!--<li class="list-group-item">
                         <div class="row">
-                            <div class="col-lg-7 col-7">
+                            <div class="col-lg-7 col-sm-7 col-5">
                                 <div class="row">
                                     <div class="col-lg-2 col-4 d-md-block d-none">
                                         <img src="https://www.disapo.de/documents/products/Detailansicht/17295755-coronatest.jpeg" height="100px" />
                                     </div>
                                     <div class="col-lg-8 col-8 d-flex align-items-center">
-                                        <h5 style="padding-top: 5px; margin-left: 3%">1x Corona Schnelltest </h5>
+                                        <h5 style="padding-top: 7px; margin-left: 3%">1x Corona Schnelltest </h5>
                                     </div>
                                 </div>
 
                             </div>
-                            <div class="col-lg-3 col-2 d-flex align-items-center">
+                            <div class="col-lg-3 col-sm-2 col-3 d-flex align-items-center">
                                 <input id="number1" onchange="test()" type="number" value="1" min="1" style="text-align: center; border: none; border-bottom: 2px solid #1E90FF; width: 60%">
                             </div>
-                            <div class="col-lg-2 col-3 d-flex align-items-center">
+                            <div class="col-lg-2 col-sm-3 col-4 d-flex align-items-center">
                                 <div class="row" style="width: 100%">
                                     <div class="col-lg-9 col-md-7 col-9" style="padding-left: 20%">
                                         99,99
                                     </div>
-                                    <div class="col-lg-3 col-md-5 col-3" style="align-items: end">
+                                    <div class="col-lg-3 col-md-5 col-3 d-flex justify-content-end" style="margin-top: 5px">
                                         <i class="fas fa-times"></i>
                                     </div>
                                 </div>
 
                             </div>
                         </div>
-                    </li>
-
+                    </li>-->
+                   
 
                 </ul>
             </div>
@@ -162,25 +162,25 @@
 
 
                     var newChild = "<div class='row'>";
-                    newChild = newChild + "<div class='col-md-8'>";
+                    newChild = newChild + "<div class='col-lg-7 col-sm-7 col-5'>";
                     newChild = newChild + "<div class='row'>";
-                    newChild = newChild + "<div class='col-md-2'>";
+                    newChild = newChild + "<div class='col-lg-2 col-4 d-md-block d-none'>";
                     newChild = newChild + "<img src='" + image_link + "' height='100px' />";
                     newChild = newChild + "</div>";
-                    newChild = newChild + "<div class='col-md-8 d-flex align-items-center'>";
-                    newChild = newChild + "<h5 style='padding-top: 5px'>" + product_name + "</h5>";
+                    newChild = newChild + "<div class='col-lg-8 col-8 d-flex align-items-center'>";
+                    newChild = newChild + "<h5 style='padding-top: 7px; margin-left: 3%'>" + product_name + "</h5>";
                     newChild = newChild + "</div>";
                     newChild = newChild + "</div>";
                     newChild = newChild + "</div>";
-                    newChild = newChild + "<div class='col-md-3 d-flex align-items-center'>";
-                    newChild = newChild + "<input id='number" + i + "' onchange=\"updatePriceForRow('number" + i + "', 'price" + i + "', " + single_price + ")\" type='number' value='" + i + "' min='1' style='text-align: center; border: none; border-bottom: 2px solid #1E90FF; width: 40%'>";
+                    newChild = newChild + "<div class='col-lg-3 col-sm-2 col-3 d-flex align-items-center'>";
+                    newChild = newChild + "<input id='number" + i + "' onchange=\"updatePriceForRow('number" + i + "', 'price" + i + "', " + single_price + ")\" type='number' value='" + i + "' min='1' style='text-align: center; border: none; border-bottom: 2px solid #1E90FF; width: 60%'>";
                     newChild = newChild + "</div>";
-                    newChild = newChild + "<div class='col-md-1 d-flex align-items-center'>";
-                    newChild = newChild + "<div class='row'>";
-                    newChild = newChild + "<div class='col-md-8' id='price" + i + "'>";
+                    newChild = newChild + "<div class='col-lg-2 col-sm-3 col-4 d-flex align-items-center'>";
+                    newChild = newChild + "<div class='row' style='width: 100%'>";
+                    newChild = newChild + "<div class='col-lg-9 col-md-7 col-9' style='padding-left: 20%' id='price" + i + "'>";
                     newChild = newChild + (single_price * amount + "").replace(".", ",");
                     newChild = newChild + "</div>";
-                    newChild = newChild + "<div class='col-md-4'>";
+                    newChild = newChild + "<div class='col-lg-3 col-md-5 col-3 d-flex justify-content-end' style='margin-top: 5px'>";
                     newChild = newChild + "<i class='fas fa-times' onclick=\"removeChartRow('list_group_item" + i + "', '" + product_name + "')\"></i>";
                     newChild = newChild + "</div>";
                     newChild = newChild + "</div>";
