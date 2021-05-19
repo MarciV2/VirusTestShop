@@ -1,111 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Page Title</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type"text/css" href="style/style.css" />
-<link rel="icon" type="image/png" href="/logo.png" >
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Corona Shop</title>
+    <!-- MDB icon -->
+    <link rel="icon" href="./img/logo.png" type="image/x-icon" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
+    <!-- MDB -->
+    <link rel="stylesheet" href="css/mdb.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
 
+   
+    
 </head>
 <body>
+    <div class="windowedPage">
+        <!-- Start your project here-->
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top windowedPageNavbar-transparent" id="navbar">
+            <div class="container-fluid">
+                <button class="navbar-toggler"
+                        type="button"
+                        data-mdb-toggle="collapse"
+                        data-mdb-target="#navbarExample01"
+                        aria-controls="navbarExample01"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarExample01" margin="200px">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item active">
+                            <a class="nav-link" aria-current="page" href="./index.html" style="color: white; font-weight: 900">Startseite</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./produktangebot.html" style="color: white">Produktangebot</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle"
+                               style="color: white"
+                               href="#"
+                               id="navbarDropdownMenuLink"
+                               role="button"
+                               data-mdb-toggle="dropdown"
+                               aria-expanded="false">
+                                Anleitungen
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li>
+                                    <a class="dropdown-item" href="https://www.stuttgarter-nachrichten.de/inhalt.corona-schnelltest-anleitung-mhsd.1c6201bd-dc78-4b03-b7d8-cf7d324b9b77.html">Corona Schnelltest</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Corona PCR-Test</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.bundesregierung.de/breg-de/themen/coronavirus" style="color: white">Über Corona</a>
+                        </li>
+                    </ul>
+                </div>
 
-  <div class="LandingLogin" id="LandingLogin">
-    <form action="../scripts/LoginVerarbeitung.php" method="POST">
-      <label id="Loginname" class="LabelLogin">Login:</label><center><input type="text" placeholder="Login" name="LoginName" id="Loginname1" required></center>
-      <label id="LoginPasswort" class="LabelLogin">Passwort:</label><center><input type="text" placeholder="Passwort" name="LoginPasswort" id="LoginPasswort" require></center>
-      <input type="submit" class="login" id="login" onclick="performLogin()" value=Login>
-      <a class="cancel"  id="cancel" onclick="einAusblendenLoginForm('ausblenden')">Cancel</a>
-      <label class="LabelChkbox" for id="LoginCheckbox">Anmeldedaten merken</label><input class="chkbox" type="checkbox" name="LoginCheckbox" id="LoginCheckbox">
-      <label onclick="nichtRegistriertHandler()" class="NotRegistered">Noch keinen Account?</label>
-    </form>
-  </div>
-
-  <div class="RegisterForm" id="RegisterForm" onmouseout="">
-    <form action="../scripts/RegistrierungsVerarbeitung.php" method="POST">
-      <div class="regForm" id="regForm">
-          <center><h><b>Registrierung</b></h></center>
-          <div class="registrierung" id="registrierung"> 
-            <center>
-            <table>
-              
-                <tr>
-                  <td><input class="big" type="text" placeholder="Login-Name" name="loginname" required></td>
-                </tr>
-                <tr>
-                  <td><input class="big" type="password" placeholder="Passwort" name="passwort" required><br></td>
-                  <td><input class="big" type="password" placeholder="Passwort wiederholen" name="wdhlg-passwort" required></td>
-                </tr>
-                <tr>
-                  <td><input class="big" type="text" placeholder="Vorname" name="vorname" required></td>
-                  <td><input class="big" type="text" placeholder="Nachname" name="nachname" required></td>
-                </tr>
-                <tr>
-                  <td><input class="big" type="text" placeholder="Straße" name="strasse" required></td>
-                  <td><input type="number" name="hausnummer" placeholder="Nr." min="1" max = "999" required><input type="number" placeholder="PLZ" name="plz" min="1000" max="99999" required></td>
-                </tr>
-                <tr>
-                  <td><input class="big" tyoe="text" placeholder="Stadt" name="stadt" required></td>
-                  <td><input class="big" type="text" placeholder="Stadtteil" name="stadtteil" required></td>
-                </tr>
-                <tr>
-                  <td><input class="big" type="text" placeholder="Land" name="land" required></td>
-                  <td><input class="big" type="text" placeholder="Bundesland" name="bundesland" required></td>
-                </tr>
-                <tr>
-                  <td><input class="big" type="email" placeholder="E-Mail" name="email" required></td>
-                  <td><input class="big" type="email" placeholder="E-Mail wiederholen" name="wdhlg-email" required></td>
-                </tr>
-                <tr>
-                  <td><input class="big" type="text" placeholder="Telefon: Vorwahl + Nummer" name="telefon" required></td>
-                  <td><label>Firmenkunde: </label><select name="firmenkunde"><option value="0">Nein</option><option value="1">Ja</option></select></td>
-                </tr>
-              </table>
-            
-            <br>
-            <label class="agb" id="AGB" onmouseover="hoverAGBs('grey')" onmouseout="hoverAGBs('black')" onclick="clickAGBs()">Akzeptieren Sie unsere AGBs</label><input type ="checkbox" name="agb"><br>
-            <input type="submit" value="Abschicken">
-            <br>
-          </center>
-          </div>
-      </div>
-    </form>
-  </div>
-
-<div class="header">
-  <h1>Virus Test</h1>
-  <p>Wir testen Sie!</p>
-  <link rel="stylesheet" type"text/css" href="style/style.css" />
-</div>
-
-<div class="navbar">
-  <a href="index.html">Startseite</a>
-  <a href="content/produktangebote.html">Produktangebot</a>
-  <a href="https://www.bundesregierung.de/breg-de/themen/coronavirus">Coronainformationen</a>
-  <a onclick="einAusblendenLoginForm('toggle')" class="right">Login/Kundenbereich</a>
-</div>
-
-<div class="content">
-<h1>Herzlich Willkommen bei Ihren Virus Testern</h1>
-
-	<p>
-    Bei uns finden sie Produkte für Ihre lieben zu Hause und für Ihr Gesundheitsunternehmen zum angenehmen testen des Corona-Viruses.<br>
-    Seit 2021 sind wir für Sie da, sowohl mit Tests als auch mit Schulungen für Tester.<br>
-    Schauen Sie sich unsere Produkte gerne an.<br>
-  </p>
-</div>
+                <!-- Right elements -->
+                <div class="d-flex align-items-center">
+                    <!-- Shopping icon -->
+                    <a class="text-reset me-4" href="./warenkorb.html">
+                        <i class="fas fa-shopping-cart" style="color: #ffffff"></i>
+                        <span class="badge rounded-pill badge-notification bg-danger">11</span>
+                    </a>
+                    <!-- Bell icon -->
+                    <a class="text-reset me-4" href="#">
+                        <i class="fas fa-bell" style="color: #ffffff"></i>
+                    </a>
+                    <!-- Account icon -->
+                    <a class="text-reset me-3" href="#">
+                        <i class="fas fa-user-circle" style="color: #ffffff"></i>
+                    </a>
 
 
-<div class="footer">
-	<p>
-		<a href="content/impressum.html"> Impressum</a>
-	</p>
-</div>
+                </div>
+                <!-- Right elements -->
+            </div>
+        </nav>
+        <!-- Navbar -->
+        <!-- Background image -->
+        <div class="p-5 text-center bg-image" style="background-image: url('./img/corona.jpg'); height: 350px">
+            <div class="mask" style="background-color: rgba(0, 0, 0, 0.4);">
+                <div class="d-flex justify-content-center align-items-center h-100">
+                </div>
+            </div>
+        </div>
+        <!-- Background image -->
 
+        <br />
+        <br />
+        <br />
+        <h1 style="text-align: center">
+            Get yourself tested!
+        </h1>
+        <br />
+        <br />
+        <h3 style="text-align: center">
+            Herzlich Willkommen bei Ihren Virus Testern!
+        </h3>
+        <br />
+        <br />
+        <p style="text-align: center">
+            Bei uns finden sie Produkte für Ihre Lieben zu Hause und für Ihr Unternehmen zum angenehmen Testen des Corona-Viruses.<br />
+            Seit 2021 sind wir für Sie da, sowohl mit Tests als auch mit Schulungen für Tester.<br />
+            Schauen Sie sich unsere Produkte gerne an.
+            Bei Fragen stehen wir Ihnen gerne hier [LINK] zur Verfügung
+        </p>
 
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
 
+    </div>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <!-- End your project here-->
+    <!-- MDB -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!-- Custom scripts -->
+    <script src="./js/index.js"></script>
+
+    <script src="./src/simple-notify/simple-notify.min.js"></script>
 </body>
-
-<script type="text/javascript" src="/scripts/scripts.js"></script>
 </html>
-
