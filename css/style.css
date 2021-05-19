@@ -75,6 +75,9 @@
 	cursor: pointer;
 }
 
+.home-image {
+	transform: scale(2.0, 2.0);
+}
 
 
 
