@@ -107,7 +107,7 @@
                             <a class="nav-link" aria-current="page" href="./index.php" style="color: white; font-weight: 900">Startseite</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./content/produktangebot.html" style="color: white">Produktangebot</a>
+                            <a class="nav-link" href="./content/produktangebot.php" style="color: white">Produktangebot</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle"
@@ -137,9 +137,9 @@
                 <!-- Right elements -->
                 <div class="d-flex align-items-center">
                     <!-- Shopping icon -->
-                    <a class="text-reset me-4" href="./content/warenkorb.html">
-                        <i class="fas fa-shopping-cart" id="WarenkorbButton" style="color: #ffffff"></i>
-                        <span class="badge rounded-pill badge-notification bg-danger" id="Warenkorb">11</span>
+                    <a class="text-reset me-4" href="./warenkorb.html">
+                        <i class="fas fa-shopping-cart" style="color: #ffffff"></i>
+                        <span id="product_counter" class="badge rounded-pill badge-notification bg-danger">11</span>
                     </a>
                     <!-- Bell icon -->
                     <a class="text-reset me-4" href="#">
@@ -214,13 +214,13 @@
                                 Produkte
                             </h6>
                             <p>
-                                <a href="./content/produktangebot.html" class="text-reset">Corona Schnelltests</a>
+                                <a href="./content/produktangebot.php" class="text-reset">Corona Schnelltests</a>
                             </p>
                             <p>
-                                <a href="./content/produktangebot.html" class="text-reset">Corona PCR-Tests</a>
+                                <a href="./content/produktangebot.php" class="text-reset">Corona PCR-Tests</a>
                             </p>
                             <p>
-                                <a href="./content/produktangebot.html" class="text-reset">Schulungen</a>
+                                <a href="./content/produktangebot.php" class="text-reset">Schulungen</a>
                             </p>
                         </div>
                         <!-- Grid column -->
