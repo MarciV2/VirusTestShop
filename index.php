@@ -231,13 +231,13 @@
                                 Nützliche Links
                             </h6>
                             <p>
-                                <a href="./agb.html" class="text-reset">ABG</a>
+                                <a href="./content/agb.html" class="text-reset">ABG</a>
                             </p>
                             <p>
-                                <a href="./impressum.html" class="text-reset">Impressum</a>
+                                <a href="./content/impressum.html" class="text-reset">Impressum</a>
                             </p>
                             <p>
-                                <a href="./datenschutz.html" class="text-reset">Datenschutz</a>
+                                <a href="./content/datenschutz.html" class="text-reset">Datenschutz</a>
                             </p>
                         </div>
                         <!-- Grid column -->
