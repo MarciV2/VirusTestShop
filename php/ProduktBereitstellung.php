@@ -48,9 +48,9 @@
         $value = $reihe["Artikel_ID"] . ";" . $reihe["Artikelname"] . ";" . $reihe["Kategorie_ID"] . ";" . $reihe["Hersteller_ID"] . ";";
         array_push($valueProduktArray, $value);        
     }
-    setcookie("ArtikelCookie",json_encode($valueProduktArray),time()+3600);
+    setcookie("ArtikelCookie",json_encode($valueProduktArray),time()+3600,'/');
 
-    #cookie für die Packungen setzen für die WEiterverarbeitung der Produktangebot.php
+    #cookie für die Packungen setzen für die Weiterverarbeitung der Produktangebot.php
     $sqlPackungen = "SELECT * FROM `packung`";
     $sqlPackungenCheck = mysqli_query($verbindung, $sqlPackungen);
     $valuePackungsArray = array();
@@ -58,5 +58,5 @@
         $value= $reihe2["Packung_ID"] .";". $reihe2["Packungsgroessee"] . ";" . $reihe2["Verkaufspreis"] .";". $reihe2["Verkaufspreis"] .";" . $reihe2["Mindestbestand"] . ";" . $reihe2["Lagermenge"] . ";" . $reihe2["Artikel_ID"] . ";";
         array_push($valuePackungsArray,$value);
     }
-    setcookie("PackungCookie",json_encode($valuePackungsArray),time()+3600);
+    setcookie("PackungCookie",json_encode($valuePackungsArray),time()+3600,'/');
 ?>
