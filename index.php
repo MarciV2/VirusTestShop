@@ -104,7 +104,7 @@
                 <div class="collapse navbar-collapse" id="navbarExample01" margin="200px">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item active">
-                            <a class="nav-link" aria-current="page" href="./index.html" style="color: white; font-weight: 900">Startseite</a>
+                            <a class="nav-link" aria-current="page" href="./index.php" style="color: white; font-weight: 900">Startseite</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./content/produktangebot.html" style="color: white">Produktangebot</a>
@@ -188,10 +188,93 @@
       
         <br />
 
+        <!-- Footer -->
+        <footer class="text-center text-lg-start bg-light text-muted">
+            <hr style="margin-top: 0" />
+            <!-- Section: Links  -->
+            <section class="">
+                <div class="container text-center text-md-start mt-5">
+                    <!-- Grid row -->
+                    <div class="row mt-3">
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                            <!-- Content -->
+                            <h4 class="text-uppercase fw-bold mb-4">
+                                <img src="../img/logo.png" height="40" style="margin-right: 15px">VirusTestShop
+                            </h4>
+                            <p>
+                                Deutschlands führender Shop für Corona Tests und Schulungen
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+                        <!-- Grid column -->
+                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                Produkte
+                            </h6>
+                            <p>
+                                <a href="./content/produktangebot.html" class="text-reset">Corona Schnelltests</a>
+                            </p>
+                            <p>
+                                <a href="./content/produktangebot.html" class="text-reset">Corona PCR-Tests</a>
+                            </p>
+                            <p>
+                                <a href="./content/produktangebot.html" class="text-reset">Schulungen</a>
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                Nützliche Links
+                            </h6>
+                            <p>
+                                <a href="./agb.html" class="text-reset">ABG</a>
+                            </p>
+                            <p>
+                                <a href="./impressum.html" class="text-reset">Impressum</a>
+                            </p>
+                            <p>
+                                <a href="./datenschutz.html" class="text-reset">Datenschutz</a>
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+                        <!-- Grid column -->
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                Kontakt
+                            </h6>
+                            <p><i class="fas fa-home me-3"></i> Heidenheim an der Brenz, DE 89518</p>
+                            <p>
+                                <i class="fas fa-envelope me-3"></i>
+                                corona-testshop@example.com
+                            </p>
+                            <p><i class="fas fa-phone me-3"></i> + 01 234 567 89</p>
+                        </div>
+                        <!-- Grid column -->
+                    </div>
+                    <!-- Grid row -->
+                </div>
+            </section>
+            <!-- Section: Links  -->
+            <!-- Copyright -->
+            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+                © 2021 Copyright:
+                <a class="text-reset fw-bold" href="#">virustestshop.de</a>
+            </div>
+            <!-- Copyright -->
+        </footer>
+        <!-- Footer -->
+
     </div>
 
     <br />
     <br />
+
+
 
     <!-- End your project here-->
     <!-- MDB -->
