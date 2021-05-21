@@ -12,9 +12,18 @@ function addProductToChart(product_name, product_id) {
         distance: 70
     })
 
-    var amount_of_this_product_in_chart = parseInt(getCookie("product_id_" + product_id));
-    
-    document.cookie = "product_id_" + product_id + "=" + (amount_of_this_product_in_chart + 1);
+    var chart_cookie = JSON.parse(getCookie("chart_cookie"));
+    var current_number_of_product = chart_cookie[product_id];
+
+    if (!current_number_of_product) {
+        current_number_of_product = 0;
+    }
+
+    current_number_of_product = current_number_of_product + 1;
+    chart_cookie[product_id] = current_number_of_product;
+
+    document.cookie = "chart_cookie=" + JSON.stringify(chart_cookie) + "; path=/";
+
 
     setTotalAmountOfProductsInChart();
 }
@@ -38,22 +47,18 @@ function getCookie(cname) {
             return c.substring(name.length, c.length);
         }
     }
-    return 0;
+    return "{}";
 }
 
 function getSumOfProductsInChart() {
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
+    var chart_cookie = JSON.parse(getCookie("chart_cookie"));
+    var sum = 0;
 
-    var total_amount = 0;
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        var cookie = c.split('=');
-        var number = parseInt(cookie[1]);
-        total_amount = total_amount + number;
-    }
+    Object.keys(chart_cookie).forEach(function (k) {
+        sum = sum + chart_cookie[k];
+    });
 
-    return total_amount;
+    return sum;
 }
 
 setTotalAmountOfProductsInChart();
