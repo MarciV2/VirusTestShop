@@ -101,7 +101,35 @@
             </div>
         </div>
         <!-- Background image -->
+        <script>
+        function URL_add_parameter(url, param, value){
+                                        var hash       = {};
+                                        var parser     = document.createElement('a');
 
+                                        parser.href    = url;
+
+                                        var parameters = parser.search.split(/\?|&/);
+
+                                        for(var i=0; i < parameters.length; i++) {
+                                            if(!parameters[i])
+                                                continue;
+
+                                            var ary      = parameters[i].split('=');
+                                            hash[ary[0]] = ary[1];
+                                        }
+
+                                        hash[param] = value;
+
+                                        var list = [];  
+                                        Object.keys(hash).forEach(function (key) {
+                                            list.push(key + '=' + hash[key]);
+                                        });
+
+                                        parser.search = '?' + list.join('&');
+                                        return parser.href;
+                                    }
+                                   
+        </script>
         <div style="padding: 25px; background-color: #f9f9f9">
             <div class="row">
                 <div class="col-xl-2">
@@ -110,14 +138,17 @@
                             Kategorien
                         </h4>
                         <div style="padding-left: 20px">
-                            <a href="#">
-                                <div>Corona Schnelltests</div>
+                         <a href="#">
+                                <div onclick="location.href = URL_add_parameter(location.href, 'kategorie', ' ');">Alle anzeigen</div>
                             </a>
                             <a href="#">
-                                <div>Corona PCR-Tests</div>
+                                <div onclick="location.href = URL_add_parameter(location.href, 'kategorie', 'Corona Schnelltests');">Corona Schnelltests</div>
                             </a>
                             <a href="#">
-                                <div>Schulungen</div>
+                                <div onclick="location.href = URL_add_parameter(location.href, 'kategorie', 'Corona PCR-Tests');">Corona PCR-Tests</div>
+                            </a>
+                            <a href="#">
+                                <div onclick="location.href = URL_add_parameter(location.href, 'kategorie', 'Schulungen');">Schulungen</div>
                             </a>
                         </div>
 
@@ -131,12 +162,38 @@
                             <div class="col-md-4">
                                 <div class="d-flex justify-content-start">
                                     <h6 style="padding-top: 12px; padding-left: 10px; padding-right: 10px; color: #1E90FF"> Sortierung: </h6>
-                                    <select class="select" style="width: 100%">
-                                        <option value="price_asc">Preis aufsteigend</option>
-                                        <option value="price_desc">Preis absteigend</option>
-                                        <option value="amount_asc">Menge aufsteigend</option>
-                                        <option value="amount_desc">Menge absteigend</option>
+                                    <select class="select" style="width: 100%" id="selectOrderBy" onchange="onOrderChange()">
+                                        <option value="Preis ASC">Preis aufsteigend</option>
+                                        <option value="Preis DESC">Preis absteigend</option>
+                                        <option value="Packungsgroesse ASC">Packungsgroesse aufsteigend</option>
+                                        <option value="Packungsgroesse DESC">Packungsgroesse absteigend</option>
                                     </select>
+                                    <script>
+                                    function get(name) {
+                                        if (name = (new RegExp('[?&]' + encodeURIComponent(name) + '=([^&]*)')).exec(location.search))
+                                        return decodeURIComponent(name[1]);
+                                    }
+                                     if(!get("kategorie")) location.href = URL_add_parameter(location.href, 'kategorie', ' ');
+                                    if(!get("orderBy")) location.href = URL_add_parameter(location.href, 'orderBy', document.getElementById("selectOrderBy").value);
+                                    else{
+                                    var index=0;
+                                    switch(get("orderBy")){
+                                        case "Preis ASC"  : index=0; break;
+                                        case "Preis DESC" : index=1; break;
+                                        case "Packungsgroesse ASC"  : index=2; break;
+                                        case "Packungsgroesse DESC" : index=3; break;
+                                        default : break;
+
+                                    }
+                                    document.getElementById("selectOrderBy").selectedIndex=index;
+                                    }
+
+                                    
+
+                                    function onOrderChange(){
+                                    location.href = URL_add_parameter(location.href, 'orderBy', document.getElementById("selectOrderBy").value);
+                                       }
+                                    </script>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -144,70 +201,86 @@
                             </div>
 
                             <div class="col-md-4">
-                                <div style="text-align: right; padding-top: 10px; padding-right: 10px; padding-right: 10px; color: #1E90FF">
-                                    16 Artikel gefunden
+                                <div  id="artikel_count" style="text-align: right; padding-top: 10px; padding-right: 10px; padding-right: 10px; color: #1E90FF">
+                                    0 Artikel gefunden
                                 </div>
                             </div>
                         </div>
                     </div>
                   
 
-                    <script>
-                        var product_names = ["1x Corona Schnelltest", "10x Corona Schnelltest", "100x Corona Schnelltest", "500x Corona Schnelltest", "1000x Corona Schnelltest", "3000x Corona Schnelltest"];
-                        var product_descriptions = ["test"];
-                        var product_ids = [0, 1, 2, 3, 4, 5];
+                  
 
 
+                   <script>
 
-                        for (var i = 0; i < 2; i++) {
+                   function readCookie(name) {
+                    var nameEQ = name + "=";
+                    var ca = document.cookie.split(';');
+                    for(var i=0;i < ca.length;i++) {
+                        var c = ca[i];
+                        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                        if (c.indexOf(nameEQ) == 0) return decodeURIComponent(c.substring(nameEQ.length,c.length)).replaceAll("+"," ");
+                    }
+                    return null;
+                   }
 
-                            var new_item_row = document.createElement('div');
+
+                   var packungen = JSON.parse(readCookie("PackungCookie"));
+                   console.log(packungen);
+                   //Anzeige gefundene Artikel aktualisieren
+                   document.getElementById("artikel_count").innerText = packungen.length+ " Artikel gefunden";
+
+                   var new_item_row = document.createElement('div');
                             new_item_row.setAttribute("class", "row no-gutters");
                             new_item_row.setAttribute("id", "item_row" + i);
 
-                            for (var j = 1; j < 4; j++) {
+                   for(var i=0; i<packungen.length;i++){
+                       var packung=packungen[i].split(";");
+                      
+                      var itemCard = "<div class='card itemCard'>";
 
-                                var product_name = product_names[(3 * i) + j - 1];
-                                var product_description = "ANBIO CORONA SPUCK SCHNELLTEST COVID-19 (Einzelverpackt für die Eigenanwendung)";
-                                var product_id = product_ids[(3 * i) + j - 1];
+                      var product_id=packung[0];
+                      var product_name="";
+                    if(packung[1]!="") product_name=packung[1]+" - "+packung[2];
+                    else  product_name=packung[2];
+                    var product_description="";
+                    if(packung[3].length<=64)product_description=packung[3];
+                    else {
+                        product_description=packung[3].substring(0,54)+"... <a href=''>weiter lesen</a>";
+                    }
+                    var product_preis=packung[5]+"€";
 
-                                var newChild = "<div class='card itemCard'>";
-                                newChild = newChild + "<div class='p-5 text-center bg-image' style=\"background-image: url('https://www.disapo.de/documents/products/Detailansicht/17295755-coronatest.jpeg'); height: 350px; background-size : contain\">";
-                                newChild = newChild + "<div style='position:absolute; top: 0; right: 0; margin: 20px'>";
-                                newChild = newChild + "<span class='badge' style='background-color: #1E90FF; float: right; font-size:larger'>4,99€</span>";
-                                newChild = newChild + "</div>";
-                                newChild = newChild + "</div>";
-                                newChild = newChild + "<div class='card-body'>";
-                                newChild = newChild + "<h5 class='card-title'>" + product_name + "</h5>";
-                                newChild = newChild + "<p>";
-                                newChild = newChild + product_description;
-                                newChild = newChild + "</p>";
-                                newChild = newChild + "<div class='row no-gutters'>";
-                                newChild = newChild + "<div class='col-md-7'>";
-                                newChild = newChild + "<a class='btn btn-primary btn-rounded buttonToChartMarginBottom' onclick=\"addProductToChart(\'" + product_name + "\', " + product_id + ")\" style='display: block; background-color: #1E90FF'>In den Warenkorb</a>";
-                                newChild = newChild + "</div>";
-                                newChild = newChild + "<div class='col-md-5'>";
-                                newChild = newChild + "<a href='./produkt.html' class='btn btn-primary btn-rounded' style='display: block; background-color: #1E90FF'>Details</a>";
-                                newChild = newChild + "</div>";
-                                newChild = newChild + "</div>";
-                                newChild = newChild + "</div>";
-                                newChild = newChild + "</div>";
+                    itemCard = itemCard + "<div class='p-5 text-center bg-image' style=\"background-image: url('../img/"+product_id+".png'); height: 350px; background-size : contain\">";
+                    itemCard = itemCard + "<div style='position:absolute; top: 0; right: 0; margin: 20px'>";
+                    itemCard = itemCard + "<span class='badge' style='background-color: #1E90FF; float: right; font-size:larger'>"+product_preis+"</span>";
+                    itemCard = itemCard + "</div>";
+                    itemCard = itemCard + "</div>";
+                    itemCard = itemCard + "<div class='card-body'>";
+                    itemCard = itemCard + "<h5 class='card-title'>" + product_name + "</h5>";
+                    itemCard = itemCard + "<p>";
+                    itemCard = itemCard + product_description;
+                    itemCard = itemCard + "</p>";
+                    itemCard = itemCard + "<div class='row no-gutters'>";
+                    itemCard = itemCard + "<div class='col-md-7'>";
+                    itemCard = itemCard + "<a class='btn btn-primary btn-rounded buttonTocartMarginBottom' onclick=\"addProductTocart(\'" + "product_name" + "\', " + "product_id" + ")\" style='display: block; background-color: #1E90FF'>In den Warenkorb</a>";
+                    itemCard = itemCard + "</div>";
+                    itemCard = itemCard + "<div class='col-md-5'>";
+                    itemCard = itemCard + "<a href='./produkt.html' class='btn btn-primary btn-rounded' style='display: block; background-color: #1E90FF'>Details</a>";
+                    itemCard = itemCard + "</div>";
+                    itemCard = itemCard + "</div>";
+                    itemCard = itemCard + "</div>";
+                    itemCard = itemCard + "</div>";
 
-                                var htmlObject = document.createElement('div');
+                    var htmlObject = document.createElement('div');
                                 htmlObject.setAttribute("class", "col-lg-4 col-md-6");
-                                htmlObject.innerHTML = newChild;
+                                htmlObject.innerHTML = itemCard;
                                 new_item_row.appendChild(htmlObject);
-                            }
+                    }
 
-                            document.getElementById('product_container').appendChild(new_item_row);
-
-                        }
-
+                    document.getElementById('product_container').appendChild(new_item_row);
 
                     </script>
-
-
-
                 </div>
             </div>
 

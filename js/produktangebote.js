@@ -1,4 +1,4 @@
-function addProductToChart(product_name, product_id) {
+function addProductToCart(product_name, product_id) {
     new Notify({
         title: unescape("Zu Einkaufswagen hinzugef%FCgt"),
         text: product_name,
@@ -12,25 +12,25 @@ function addProductToChart(product_name, product_id) {
         distance: 70
     })
 
-    var chart_cookie = JSON.parse(getCookie("chart_cookie"));
-    var current_number_of_product = chart_cookie[product_id];
+    var cart_cookie = JSON.parse(getCookie("cart_cookie"));
+    var current_number_of_product = cart_cookie[product_id];
 
     if (!current_number_of_product) {
         current_number_of_product = 0;
     }
 
     current_number_of_product = current_number_of_product + 1;
-    chart_cookie[product_id] = current_number_of_product;
+    cart_cookie[product_id] = current_number_of_product;
 
-    document.cookie = "chart_cookie=" + JSON.stringify(chart_cookie) + "; path=/";
+    document.cookie = "cart_cookie=" + JSON.stringify(cart_cookie) + "; path=/";
 
 
-    setTotalAmountOfProductsInChart();
+    setTotalAmountOfProductsIncart();
 }
 
-function setTotalAmountOfProductsInChart() {
+function setTotalAmountOfProductsIncart() {
     var product_counter = document.getElementById('product_counter');
-    product_counter.innerHTML = getSumOfProductsInChart();
+    product_counter.innerHTML = getSumOfProductsIncart();
 }
 
 
@@ -50,15 +50,15 @@ function getCookie(cname) {
     return "{}";
 }
 
-function getSumOfProductsInChart() {
-    var chart_cookie = JSON.parse(getCookie("chart_cookie"));
+function getSumOfProductsIncart() {
+    var cart_cookie = JSON.parse(getCookie("cart_cookie"));
     var sum = 0;
 
-    Object.keys(chart_cookie).forEach(function (k) {
-        sum = sum + chart_cookie[k];
+    Object.keys(cart_cookie).forEach(function (k) {
+        sum = sum + cart_cookie[k];
     });
 
     return sum;
 }
 
-setTotalAmountOfProductsInChart();
+setTotalAmountOfProductsIncart();

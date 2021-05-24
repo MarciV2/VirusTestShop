@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -19,6 +19,16 @@
     <link rel="stylesheet" href="../css/style.css"/>
   </head>
   <body>
+
+
+      <script>
+          function get(name) {
+              if (name = (new RegExp('[?&]' + encodeURIComponent(name) + '=([^&]*)')).exec(location.search))
+                  return decodeURIComponent(name[1]);
+          }
+
+          var product_id = get("product_id");
+      </script>
       <div class="windowedPage">
           <!-- Start your project here-->
           <!-- Navbar -->
@@ -99,6 +109,32 @@
 
           <div style="padding: 25px; background-color: #f9f9f9">
 
+              <script>
+                  function readCookie(name) {
+                      var nameEQ = name + "=";
+                      var ca = document.cookie.split(';');
+                      for (var i = 0; i < ca.length; i++) {
+                          var c = ca[i];
+                          while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                          if (c.indexOf(nameEQ) == 0) return decodeURIComponent(c.substring(nameEQ.length, c.length)).replaceAll("+", " ");
+                      }
+                      return null;
+                  }
+
+                  var packungen = JSON.parse(readCookie("PackungCookie"));
+                  var packung=null;
+                  for (var i = 0; i < packungen.length;i++) {
+                      if (packungen[i][0] == product_id)
+                      var packung = packungen[i].split(";");
+                  }
+                  var product_name = "";
+                  if (packung[1] != "") product_name = packung[1] + " - " + packung[2];
+                  console.log(packung);
+
+              </script>
+
+
+
               <div class="card itemCard">
                   <div class="row">
                       <div class="col-md-5" style="margin-top: 0px">
@@ -108,8 +144,8 @@
                       </div>
                       <div class="col-md-7">
                           <div style="width: 100%;">
-                              <h2 style="margin-top: 40px">
-                                  Corona Antigen-Schnelltest
+                              <h2 style="margin-top: 40px" id="name">
+                                  <script>document.getElementById("name").innerHTML=product_name</script>
                               </h2>
                               <h3>
                                   <div class="d-flex justify-content-start">

@@ -39,24 +39,58 @@
                                    # Programm beenden
     }
 
-
-    #Cookie für die Produkte setzen zur Weiterverarbeitung auf der Produktangebot.php
-    $sqlProdukte = "SELECT * FROM `artikel`";
-    $sqlProdukteCheck = mysqli_query($verbindung,$sqlProdukte);
-    $valueProduktArray = array();
-    while($reihe = mysqli_fetch_assoc($sqlProdukteCheck)){
-        $value = $reihe["Artikel_ID"] . ";" . $reihe["Artikelname"] . ";" . $reihe["Kategorie_ID"] . ";" . $reihe["Hersteller_ID"] . ";";
-        array_push($valueProduktArray, $value);        
-    }
-    setcookie("ArtikelCookie",json_encode($valueProduktArray),time()+3600,'/');
-
     #cookie für die Packungen setzen für die Weiterverarbeitung der Produktangebot.php
-    $sqlPackungen = "SELECT * FROM `packung`";
+
+    //Sortier-Kriterium
+   $orderByParam=$_GET['orderBy'];
+   //Switch abfrage gegen SQL-Injection
+   switch($orderByParam){
+        case "Preis ASC"  : 
+        case "Preis DESC" :
+        case "Packungsgroesse ASC"  : 
+        case "Packungsgroesse DESC" : break;
+        default : $orderByParam="Preis ASC"; break;
+    }
+    //Kategorie-abfrage
+    $kategorie=$_GET['kategorie'];
+    console_log($kategorie);
+   //Switch gegen SQL-Injection
+   switch($kategorie){
+        case "Corona Schnelltests"  : $kategorie="\n WHERE k.Bezeichnung = 'Test' \n"; break;
+        case "Corona PCR-Tests" :$kategorie="\n WHERE k.Bezeichnung = 'Medizinischer Test' \n"; break;
+        case "Schulungen"  : $kategorie="\n WHERE k.Bezeichnung = 'Training' \n"; break;
+        default : $kategorie=""; break;
+    }
+
+    $sqlPackungen = "SELECT 
+        p.Packung_ID, 
+        h.Name AS Hersteller, 
+        a.Artikelname AS Artikelname, 
+        a.Beschreibung AS Beschreibung, 
+        p.Packungsgroessee AS Packungsgroesse, 
+        p.Verkaufspreis AS Preis, 
+        p.Lagermenge AS Bestand,
+        k.Bezeichnung AS Kategorie  
+
+        FROM 
+        packung p 
+        JOIN artikel a ON a.Artikel_ID=p.Packung_ID 
+        LEFT JOIN hersteller h ON h.Hersteller_ID=a.Hersteller_ID 
+        LEFT JOIN kategorie k ON k.kategorie_ID=a.kategorie_ID" . $kategorie . 
+        " ORDER BY " . $orderByParam;
+
+
     $sqlPackungenCheck = mysqli_query($verbindung, $sqlPackungen);
+   console_log( $sqlPackungen);
+   //console_log(mysqli_error($verbindung));
     $valuePackungsArray = array();
     while($reihe2 = mysqli_fetch_assoc($sqlPackungenCheck)){ 
-        $value= $reihe2["Packung_ID"] .";". $reihe2["Packungsgroessee"] . ";" . $reihe2["Verkaufspreis"] .";". $reihe2["Verkaufspreis"] .";" . $reihe2["Mindestbestand"] . ";" . $reihe2["Lagermenge"] . ";" . $reihe2["Artikel_ID"] . ";";
+        $value= $reihe2["Packung_ID"] .";". $reihe2["Hersteller"] . ";" . $reihe2["Artikelname"] .";". $reihe2["Beschreibung"] .";" . $reihe2["Packungsgroesse"] . ";" . $reihe2["Preis"] . ";". $reihe2["Bestand"] . ";" ;
         array_push($valuePackungsArray,$value);
     }
-    setcookie("PackungCookie",json_encode($valuePackungsArray),time()+3600,'/');
+    setcookie("PackungCookie",json_encode($valuePackungsArray),time()+3600);
+
+
+
+
 ?>
