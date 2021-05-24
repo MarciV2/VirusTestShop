@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Corona Shop</title>
+    <!-- MDB icon -->
+    <link rel="icon" href="../img/logo.png" type="image/x-icon" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
+    <!-- Google Fonts Roboto -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+    />
+    <!-- MDB -->
+    <link rel="stylesheet" href="../css/mdb.min.css" />
+    <link rel="stylesheet" href="../css/style.css"/>
+
+      <style>
+          .stepper-wrapper {
+              font-family: Arial;
+              margin-top: 50px;
+              display: flex;
+              justify-content: space-between;
+              margin-bottom: 20px;
+          }
+
+          .stepper-item {
+              position: relative;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              flex: 1;
+
+              @media (max-width: 768px) {
+                  font-size: 12px;
+              }
+          }
+
+              .stepper-item::before {
+                  position: absolute;
+                  content: "";
+                  border-bottom: 2px solid #ccc;
+                  width: 100%;
+                  top: 20px;
+                  left: -50%;
+                  z-index: 2;
+              }
+
+              .stepper-item::after {
+                  position: absolute;
+                  content: "";
+                  border-bottom: 2px solid #ccc;
+                  width: 100%;
+                  top: 20px;
+                  left: 50%;
+                  z-index: 2;
+              }
+
+              .stepper-item .step-counter {
+                  position: relative;
+                  z-index: 5;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  width: 40px;
+                  height: 40px;
+                  border-radius: 50%;
+                  background: #ccc;
+                  margin-bottom: 6px;
+              }
+
+              .stepper-item.active {
+                  font-weight: bold;
+              }
+
+              .stepper-item.completed .step-counter {
+                  background-color: #07b31b;
+              }
+
+              .stepper-item.completed::after {
+                  position: absolute;
+                  content: "";
+                  border-bottom: 2px solid #07b31b;
+                  width: 100%;
+                  top: 20px;
+                  left: 50%;
+                  z-index: 3;
+              }
+
+              .stepper-item:first-child::before {
+                  content: none;
+              }
+
+              .stepper-item:last-child::after {
+                  content: none;
+              }
+
+              .stepper-item:hover {
+                  cursor: pointer;
+                  background-color: #f0f0f0
+              }
+
+      </style>
+  </head>
+  <body>
+      <div class="windowedPage">
+          <!-- Start your project here-->
+          <!-- Navbar -->
+          <nav class="navbar navbar-expand-lg navbar-light fixed-top windowedPageNavbar">
+              <div class="container-fluid">
+                  <button class="navbar-toggler"
+                          type="button"
+                          data-mdb-toggle="collapse"
+                          data-mdb-target="#navbarExample01"
+                          aria-controls="navbarExample01"
+                          aria-expanded="false"
+                          aria-label="Toggle navigation">
+                      <i class="fas fa-bars"></i>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarExample01" margin="200px">
+                      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                          <li class="nav-item active">
+                              <a class="nav-link" aria-current="page" href="../index.php" style="color: white">Startseite</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="./produktangebot.html" style="color: white; font-weight: 900">Produktangebot</a>
+                          </li>
+                          <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle"
+                                 style="color: white"
+                                 href="#"
+                                 id="navbarDropdownMenuLink"
+                                 role="button"
+                                 data-mdb-toggle="dropdown"
+                                 aria-expanded="false">
+                                  Anleitungen
+                              </a>
+                              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                  <li>
+                                      <a class="dropdown-item" href="https://www.stuttgarter-nachrichten.de/inhalt.corona-schnelltest-anleitung-mhsd.1c6201bd-dc78-4b03-b7d8-cf7d324b9b77.html">Corona Schnelltest</a>
+                                  </li>
+                                  <li>
+                                      <a class="dropdown-item" href="#">Corona PCR-Test</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="https://www.bundesregierung.de/breg-de/themen/coronavirus" style="color: white">Über Corona</a>
+                          </li>
+                      </ul>
+                  </div>
+
+                  <!-- Right elements -->
+                  <div class="d-flex align-items-center">
+                      <!-- Shopping icon -->
+                      <a class="text-reset me-4" href="./warenkorb.html">
+                          <i class="fas fa-shopping-cart" style="color: #ffffff"></i>
+                          <span class="badge rounded-pill badge-notification bg-danger">11</span>
+                      </a>
+                      <!-- Bell icon -->
+                      <a class="text-reset me-4" href="#">
+                          <i class="fas fa-bell" style="color: #ffffff"></i>
+                      </a>
+                      <!-- Account icon -->
+                      <a class="text-reset me-3" href="#">
+                          <i class="fas fa-user-circle" style="color: #ffffff"></i>
+                      </a>
+
+
+                  </div>
+                  <!-- Right elements -->
+              </div>
+          </nav>
+          <!-- Navbar -->
+          <!-- Background image -->
+          <div class="p-5 text-center bg-image" style="background-image: url('../img/corona.jpg'); height: 350px">
+              <div class="mask" style="background-color: rgba(0, 0, 0, 0.4);">
+                  <div class="d-flex justify-content-center align-items-center h-100">
+                  </div>
+              </div>
+          </div>
+          <!-- Background image -->
+
+          <div style="padding: 25px; background-color: #f9f9f9">
+
+
+
+
+
+
+              <div class="card itemCard">
+
+                  <div class="stepper-wrapper">
+                      <div class="stepper-item active" id="stepper_step_1" onclick="goToStep1()">
+                          <div class="step-counter">1</div>
+                          <div class="step-name">Lieferadresse</div>
+                      </div>
+                      <div class="stepper-item" id="stepper_step_2" onclick="goToStep2()">
+                          <div class="step-counter">2</div>
+                          <div class="step-name">Zahlungsmethode</div>
+                      </div>
+                      <div class="stepper-item" id="stepper_step_3" onclick="goToStep3()">
+                          <div class="step-counter">3</div>
+                          <div class="step-name">Bestellung abgeschlossen</div>
+                      </div>
+                  </div>
+
+                  <hr />
+
+                  <!-- Lieferadresse Tab -->
+                  <div id="tab_lieferadresse" style="display: block">
+                      <div style="padding: 3% 25%">
+                          <div class="form-check" style="margin-bottom: 35px">
+                              <input class="form-check-input"
+                                     type="checkbox"
+                                     value=""
+                                     id="useAlternativeAddress"
+                                     onclick="useAlternativeAddress()"
+                                     checked />
+                              <label class="form-check-label" for="flexCheckChecked">
+                                  In diesem Account hinterlegte Adresse verwenden
+                              </label>
+                          </div>
+
+                          <h2>Alternative Lieferadresse</h2>
+                          <h4 style="margin-top: 25px">Persönliche Angaben</h4>
+                          <div class="row">
+                              <div class="col-sm-6">
+                                  <div class="form-outline" style="margin-bottom: 15px">
+                                      <input type="text" id="vorname" class="form-control" disabled/>
+                                      <label class="form-label" for="typeText">Vorname*</label>
+                                  </div>
+                              </div>
+                              <div class="col-sm-6">
+                                  <div class="form-outline" style="margin-bottom: 15px">
+                                      <input type="text" id="nachname" class="form-control" disabled/>
+                                      <label class="form-label" for="typeText">Nachname*</label>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-outline">
+                              <input type="text" id="email" class="form-control" disabled/>
+                              <label class="form-label" for="typeText">E-Mail-Adresse*</label>
+                          </div>
+                          <h4 style="margin-top: 25px">Adressangaben</h4>
+                          <div class="row">
+                              <div class="col-sm-7">
+                                  <div class="form-outline" style="margin-bottom: 15px">
+                                      <input type="text" id="strasse" class="form-control" disabled/>
+                                      <label class="form-label" for="typeText">Straße*</label>
+                                  </div>
+                              </div>
+                              <div class="col-sm-5">
+                                  <div class="form-outline" style="margin-bottom: 15px">
+                                      <input type="text" id="hausnummer" class="form-control" disabled/>
+                                      <label class="form-label" for="typeText">Hausnummer*</label>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-sm-5">
+                                  <div class="form-outline" style="margin-bottom: 15px">
+                                      <input type="text" id="plz" class="form-control" disabled/>
+                                      <label class="form-label" for="typeText">Postleitzahl*</label>
+                                  </div>
+                              </div>
+                              <div class="col-sm-7">
+                                  <div class="form-outline" style="margin-bottom: 15px">
+                                      <input type="text" id="stadt" class="form-control" disabled/>
+                                      <label class="form-label" for="typeText">Stadt*</label>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-sm-6">
+                                  <div class="form-outline" style="margin-bottom: 15px">
+                                      <input type="text" id="land" class="form-control" disabled/>
+                                      <label class="form-label" for="typeText">Land*</label>
+                                  </div>
+                              </div>
+                              <div class="col-sm-6">
+                                  <div class="form-outline" style="margin-bottom: 15px">
+                                      <input type="text" id="bundesland" class="form-control" disabled/>
+                                      <label class="form-label" for="typeText">Bundesland</label>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+                  </div>
+                  <!-- Zahlungsart Tab -->
+                  <div id="tab_zahlungsart" style="display: none">
+                      <div style="padding: 3% 25%">
+
+                          <div class="card itemCard">
+                              <ul class="list-group list-group-flush" id="list_of_elements_in_chart">
+
+
+                                  <li class="list-group-item itemCardPayment" id="payment_paypal" onclick="selectPaypal()">
+                                      <div class="row">
+                                          <div class="col-5">
+                                              <img src="https://rgblog.exali.de/wp-content/uploads/2018/01/paypal-784404_1280.png" height="60px" />
+                                          </div>
+                                          <div class="col-6 d-flex align-items-center">
+                                              <h4 style="padding-top: 12px; margin-left: 3%">PayPal</h4>
+                                          </div>
+                                          <div class="col-1 d-flex align-items-center">
+                                              <i id="checkmark_paypal" class="fas fa-check" style="padding-top: 7px; margin-right: 3%; display: none"></i>
+                                          </div>
+                                      </div>
+                                  </li>
+
+                                  <li class="list-group-item itemCardPayment" id="payment_credit" onclick="selectCreditcard()">
+                                      <div class="row">
+                                          <div class="col-5">
+                                              <img src="../img/kreditkarte.png" height="60px" width="210px" />
+                                          </div>
+                                          <div class="col-6 d-flex align-items-center">
+                                              <h4 style="padding-top: 12px; margin-left: 3%">Kreditkarte</h4>
+                                          </div>
+                                          <div class="col-1 d-flex align-items-center">
+                                              <i id="checkmark_credit" class="fas fa-check" style="padding-top: 7px; margin-right: 3%; display: none"></i>
+                                          </div>
+                                      </div>
+                                  </li>
+
+                                  <li class="list-group-item itemCardPayment" id="payment_giro" onclick="selectGiropay()">
+                                      <div class="row">
+                                          <div class="col-5">
+                                              <img src="https://www.giropay.de/fileadmin/user_upload/giropay/logos/giropay_960px_color_rgb.png" height="60px" />
+                                          </div>
+                                          <div class="col-6 d-flex align-items-center">
+                                              <h4 style="padding-top: 12px; margin-left: 3%">GiroPay</h4>
+                                          </div>
+                                          <div class="col-1 d-flex align-items-center">
+                                              <i id="checkmark_giro" class="fas fa-check" style="padding-top: 7px; margin-right: 3%; display: none"></i>
+                                          </div>
+                                      </div>
+                                  </li>
+                              </ul>
+                          </div>
+
+                          <div id="payment_alert" style="background-color: #ff9c9c; color: #6e0000; padding: 15px; margin-top: 20px; border-radius: 4px; display: none">
+                              Bitte wähle eine Zahlungsmethode aus.
+                          </div>
+
+
+                      </div>
+
+                  </div>
+                  <!-- Bestellung abgeschlossen Tab -->
+                  <div id="tab_abgeschlossen" style="display: none">
+                      <div style="padding: 3% 25%">
+                          <div class="d-flex justify-content-center">
+                              <i class="far fa-check-circle fa-6x" style="color: #07b31b"></i>
+                          </div>
+                          <div class="d-flex justify-content-center" style="margin-top: 30px">
+                              <h3 style="text-align: center; color: #07b31b">Ihre Bestellung ist erfolgreich eingegangen!</h3>
+                          </div>
+                          <div class="d-flex justify-content-center" style="margin-top: 10px">
+                              <h5 style="text-align: center; color: #07b31b">Die bestellten Produkte werden innerhalb der nächsten 5 Werktage bei Ihnen ankommen.</h5>
+                          </div>
+                      </div>
+                  </div>
+
+                  <hr />
+
+
+                  <div style="padding: 1% 25%">
+
+                      <div class="row">
+                          <div class="col-3">
+                              <button type="button" id="button_previous" onclick="previousStep()" class="btn btn-primary btn-lg btn-rounded" style="display: none; background-color: #1E90FF; margin-bottom: 20px">Zurück</button>
+                          </div>
+                          <div class="col-6">
+
+                          </div>
+                          <div class="col-3 d-flex justify-content-end">
+                              <button type="button" id="button_next" onclick="nextStep()" class="btn btn-primary btn-lg btn-rounded" style="display: block; background-color: #1E90FF; margin-bottom: 20px">Weiter</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+
+
+          </div>
+
+
+
+          <!-- Footer -->
+          <footer class="text-center text-lg-start bg-light text-muted">
+              <hr style="margin-top: 0" />
+              <!-- Section: Links  -->
+              <section class="">
+                  <div class="container text-center text-md-start mt-5">
+                      <!-- Grid row -->
+                      <div class="row mt-3">
+                          <!-- Grid column -->
+                          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                              <!-- Content -->
+                              <h4 class="text-uppercase fw-bold mb-4">
+                                  <img src="../img/logo.png" height="40" style="margin-right: 15px">VirusTestShop
+                              </h4>
+                              <p>
+                                  Deutschlands führender Shop für Corona Tests und Schulungen
+                              </p>
+                          </div>
+                          <!-- Grid column -->
+                          <!-- Grid column -->
+                          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                              <!-- Links -->
+                              <h6 class="text-uppercase fw-bold mb-4">
+                                  Produkte
+                              </h6>
+                              <p>
+                                  <a href="./produktangebot.html" class="text-reset">Corona Schnelltests</a>
+                              </p>
+                              <p>
+                                  <a href="./produktangebot.html" class="text-reset">Corona PCR-Tests</a>
+                              </p>
+                              <p>
+                                  <a href="./produktangebot.html" class="text-reset">Schulungen</a>
+                              </p>
+                          </div>
+                          <!-- Grid column -->
+                          <!-- Grid column -->
+                          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                              <!-- Links -->
+                              <h6 class="text-uppercase fw-bold mb-4">
+                                  Nützliche Links
+                              </h6>
+                              <p>
+                                  <a href="./agb.html" class="text-reset">ABG</a>
+                              </p>
+                              <p>
+                                  <a href="./impressum.html" class="text-reset">Impressum</a>
+                              </p>
+                              <p>
+                                  <a href="./datenschutz.html" class="text-reset">Datenschutz</a>
+                              </p>
+                          </div>
+                          <!-- Grid column -->
+                          <!-- Grid column -->
+                          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                              <!-- Links -->
+                              <h6 class="text-uppercase fw-bold mb-4">
+                                  Kontakt
+                              </h6>
+                              <p><i class="fas fa-home me-3"></i> Heidenheim an der Brenz, DE 89518</p>
+                              <p>
+                                  <i class="fas fa-envelope me-3"></i>
+                                  corona-testshop@example.com
+                              </p>
+                              <p><i class="fas fa-phone me-3"></i> + 01 234 567 89</p>
+                          </div>
+                          <!-- Grid column -->
+                      </div>
+                      <!-- Grid row -->
+                  </div>
+              </section>
+              <!-- Section: Links  -->
+              <!-- Copyright -->
+              <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+                  © 2021 Copyright:
+                  <a class="text-reset fw-bold" href="#">virustestshop.de</a>
+              </div>
+              <!-- Copyright -->
+          </footer>
+          <!-- Footer -->
+
+      </div>
+
+      <!-- End your project here-->
+      <!-- MDB -->
+      <script type="text/javascript" src="../js/mdb.min.js"></script>
+      <script type="text/javascript" src="../js/kaufen.js"></script>
+  </body>
+</html>
