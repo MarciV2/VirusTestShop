@@ -2,14 +2,12 @@ function jetztKaufen() {
     var agb_isChecked = document.getElementById('checkbox_agb').checked;
     var datenschutz_isChecked = document.getElementById('checkbox_datenschutz').checked;
 
-    alert(document.cookie);
-
     if (!agb_isChecked) {
         document.getElementById('agb_alert').style.display = "block";
     } else if (!datenschutz_isChecked) {
         document.getElementById('datenschutz_alert').style.display = "block";
     } else {
-        
+        window.location.href = './kaufen.html';
     }
 }
 

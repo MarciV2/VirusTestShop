@@ -46,6 +46,15 @@
 	margin: 10px
 }
 
+.itemCardPayment:hover {
+	cursor: pointer;
+	background-color: #f0f0f0
+}
+
+.itemCardPaymentSelected {
+	background-color: #f0f0f0
+}
+
 
 .navbar a:hover {
 	background-color: rgba(0,0,0,0.2);

@@ -137,7 +137,7 @@
                 <!-- Right elements -->
                 <div class="d-flex align-items-center">
                     <!-- Shopping icon -->
-                    <a class="text-reset me-4" href="./warenkorb.html">
+                    <a class="text-reset me-4" href="./content/warenkorb.html">
                         <i class="fas fa-shopping-cart" style="color: #ffffff"></i>
                         <span id="product_counter" class="badge rounded-pill badge-notification bg-danger">11</span>
                     </a>
