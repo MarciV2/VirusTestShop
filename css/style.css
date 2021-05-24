@@ -57,13 +57,13 @@
 
 
 
-@media all and (min-width: 1400px) {
+@media all and (min-width: 1600px) {
 	.buyContainer {
 		padding: 3% 25%;
 	}
 }
 
-@media all and (min-width: 1000px) and (max-width: 1400px) {
+@media all and (min-width: 1000px) and (max-width: 1600px) {
 	.buyContainer {
 		padding: 3% 20%;
 	}

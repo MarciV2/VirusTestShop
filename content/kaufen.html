@@ -301,10 +301,10 @@
 
                                   <li class="list-group-item itemCardPayment" id="payment_paypal" onclick="selectPaypal()">
                                       <div class="row">
-                                          <div class="col-5">
+                                          <div class="col-md-5 col-10">
                                               <img src="https://rgblog.exali.de/wp-content/uploads/2018/01/paypal-784404_1280.png" height="60px" />
                                           </div>
-                                          <div class="col-6 d-flex align-items-center">
+                                          <div class="col-6 d-flex align-items-center d-md-block d-none">
                                               <h4 style="padding-top: 12px; margin-left: 3%">PayPal</h4>
                                           </div>
                                           <div class="col-1 d-flex align-items-center">
@@ -315,10 +315,10 @@
 
                                   <li class="list-group-item itemCardPayment" id="payment_credit" onclick="selectCreditcard()">
                                       <div class="row">
-                                          <div class="col-5">
+                                          <div class="col-md-5 col-10">
                                               <img src="../img/kreditkarte.png" height="60px" width="210px" />
                                           </div>
-                                          <div class="col-6 d-flex align-items-center">
+                                          <div class="col-6 d-flex align-items-center d-md-block d-none">
                                               <h4 style="padding-top: 12px; margin-left: 3%">Kreditkarte</h4>
                                           </div>
                                           <div class="col-1 d-flex align-items-center">
@@ -329,10 +329,10 @@
 
                                   <li class="list-group-item itemCardPayment" id="payment_giro" onclick="selectGiropay()">
                                       <div class="row">
-                                          <div class="col-5">
+                                          <div class="col-md-5 col-10">
                                               <img src="https://www.giropay.de/fileadmin/user_upload/giropay/logos/giropay_960px_color_rgb.png" height="60px" />
                                           </div>
-                                          <div class="col-6 d-flex align-items-center">
+                                          <div class="col-6 d-flex align-items-center d-md-block d-none">
                                               <h4 style="padding-top: 12px; margin-left: 3%">GiroPay</h4>
                                           </div>
                                           <div class="col-1 d-flex align-items-center">
@@ -369,17 +369,14 @@
                   <hr />
 
 
-                  <div style="padding: 1% 25%">
+                  <div class="buyContainer">
 
                       <div class="row">
-                          <div class="col-3">
-                              <button type="button" id="button_previous" onclick="previousStep()" class="btn btn-primary btn-lg btn-rounded" style="display: none; background-color: #1E90FF; margin-bottom: 20px">Zurück</button>
-                          </div>
                           <div class="col-6">
-
+                              <button type="button" id="button_previous" onclick="previousStep()" class="btn btn-primary btn-lg btn-rounded btn-block" style="display: none; background-color: #1E90FF; margin-bottom: 20px">Zurück</button>
                           </div>
-                          <div class="col-3 d-flex justify-content-end">
-                              <button type="button" id="button_next" onclick="nextStep()" class="btn btn-primary btn-lg btn-rounded" style="display: block; background-color: #1E90FF; margin-bottom: 20px">Weiter</button>
+                          <div class="col-6 d-flex justify-content-end">
+                              <button type="button" id="button_next" onclick="nextStep()" class="btn btn-primary btn-lg btn-rounded btn-block" style="display: block; background-color: #1E90FF; margin-bottom: 20px">Weiter</button>
                           </div>
                       </div>
                   </div>
