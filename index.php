@@ -109,6 +109,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="./content/produktangebot.php" style="color: white">Produktangebot</a>
                         </li>
+			    <li class="nav-item">
+                            <a class="nav-link" href="content/termine.html" style="color: white">Schulungstermine</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle"
                                style="color: white"
