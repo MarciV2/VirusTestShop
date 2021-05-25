@@ -127,7 +127,7 @@
                                     <a class="dropdown-item" href="https://www.stuttgarter-nachrichten.de/inhalt.corona-schnelltest-anleitung-mhsd.1c6201bd-dc78-4b03-b7d8-cf7d324b9b77.html">Corona Schnelltest</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="#">Corona PCR-Test</a>
+                                    <a class="dropdown-item" href="./content/produktangebot.php?orderBy=Preis%20ASC&kategorie=Schulungen">Corona PCR-Test</a>
                                 </li>
                             </ul>
                         </li>
