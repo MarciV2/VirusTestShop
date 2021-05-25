@@ -36,33 +36,33 @@ function useAlternativeAddress() {
 function selectPaypal() {
     selectedPaymentMethod = "paypal";
     document.getElementById('payment_paypal').setAttribute("class", "list-group-item itemCardPaymentSelected");
-    document.getElementById('checkmark_paypal').setAttribute("style", "padding-top: 4px; margin-right: 3%; display: block");
+    document.getElementById('checkmark_paypal').setAttribute("style", "padding-top: 3px; margin-right: 3%; display: block");
     document.getElementById('payment_credit').setAttribute("class", "list-group-item itemCardPayment");
-    document.getElementById('checkmark_credit').setAttribute("style", "padding-top: 4px; margin-right: 3%; display: none");
+    document.getElementById('checkmark_credit').setAttribute("style", "padding-top: 3px; margin-right: 3%; display: none");
     document.getElementById('payment_giro').setAttribute("class", "list-group-item itemCardPayment");
-    document.getElementById('checkmark_giro').setAttribute("style", "padding-top: 4px; margin-right: 3%; display: none");
+    document.getElementById('checkmark_giro').setAttribute("style", "padding-top: 3px; margin-right: 3%; display: none");
     document.getElementById('payment_alert').setAttribute("style", "background-color: #ff9c9c; color: #6e0000; padding: 15px; margin-top: 20px; border-radius: 4px; display: none");
 }
 
 function selectCreditcard() {
     selectedPaymentMethod = "credit";
     document.getElementById('payment_paypal').setAttribute("class", "list-group-item itemCardPayment");
-    document.getElementById('checkmark_paypal').setAttribute("style", "padding-top: 4px; margin-right: 3%; display: none");
+    document.getElementById('checkmark_paypal').setAttribute("style", "padding-top: 3px; margin-right: 3%; display: none");
     document.getElementById('payment_credit').setAttribute("class", "list-group-item itemCardPaymentSelected");
-    document.getElementById('checkmark_credit').setAttribute("style", "padding-top: 4px; margin-right: 3%; display: block");
+    document.getElementById('checkmark_credit').setAttribute("style", "padding-top: 3px; margin-right: 3%; display: block");
     document.getElementById('payment_giro').setAttribute("class", "list-group-item itemCardPayment");
-    document.getElementById('checkmark_giro').setAttribute("style", "padding-top: 4px; margin-right: 3%; display: none");
+    document.getElementById('checkmark_giro').setAttribute("style", "padding-top: 3px; margin-right: 3%; display: none");
     document.getElementById('payment_alert').setAttribute("style", "background-color: #ff9c9c; color: #6e0000; padding: 15px; margin-top: 20px; border-radius: 4px; display: none");
 }
 
 function selectGiropay() {
     selectedPaymentMethod = "giro";
     document.getElementById('payment_paypal').setAttribute("class", "list-group-item itemCardPayment");
-    document.getElementById('checkmark_paypal').setAttribute("style", "padding-top: 4px; margin-right: 3%; display: none");
+    document.getElementById('checkmark_paypal').setAttribute("style", "padding-top: 3px; margin-right: 3%; display: none");
     document.getElementById('payment_credit').setAttribute("class", "list-group-item itemCardPayment");
-    document.getElementById('checkmark_credit').setAttribute("style", "padding-top: 4px; margin-right: 3%; display: none");
+    document.getElementById('checkmark_credit').setAttribute("style", "padding-top: 3px; margin-right: 3%; display: none");
     document.getElementById('payment_giro').setAttribute("class", "list-group-item itemCardPaymentSelected");
-    document.getElementById('checkmark_giro').setAttribute("style", "padding-top: 4px; margin-right: 3%; display: block");
+    document.getElementById('checkmark_giro').setAttribute("style", "padding-top: 3px; margin-right: 3%; display: block");
     document.getElementById('payment_alert').setAttribute("style", "background-color: #ff9c9c; color: #6e0000; padding: 15px; margin-top: 20px; border-radius: 4px; display: none");
 }
 

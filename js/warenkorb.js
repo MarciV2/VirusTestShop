@@ -33,7 +33,7 @@ function updatePriceForRow(element_changed, element_to_update, single_price) {
 
 
 
-function removeChartRow(element_to_remove, name) {
+function removeCartRow(element_to_remove, name) {
     var product_counter = document.getElementById('product_counter');
     var current_amount = product_counter.innerHTML;
     product_counter.innerHTML = parseFloat(current_amount) - 1;

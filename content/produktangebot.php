@@ -207,9 +207,6 @@
                             </div>
                         </div>
                     </div>
-                  
-
-                  
 
 
                    <script>
@@ -281,6 +278,8 @@
                     document.getElementById('product_container').appendChild(new_item_row);
 
                     </script>
+
+
                 </div>
             </div>
 

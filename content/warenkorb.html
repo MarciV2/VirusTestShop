@@ -113,7 +113,7 @@
             </div>
 
             <div class="card itemCard">
-                <ul class="list-group list-group-flush" id="list_of_elements_in_chart">
+                <ul class="list-group list-group-flush" id="list_of_elements_in_cart">
 
 
                     <!--<li class="list-group-item">
@@ -181,7 +181,7 @@
                     newChild = newChild + (single_price * amount + "").replace(".", ",");
                     newChild = newChild + "</div>";
                     newChild = newChild + "<div class='col-lg-3 col-md-5 col-3 d-flex justify-content-end' style='margin-top: 5px'>";
-                    newChild = newChild + "<i class='fas fa-times' onclick=\"removeChartRow('list_group_item" + i + "', '" + product_name + "')\"></i>";
+                    newChild = newChild + "<i class='fas fa-times' onclick=\"removeCartRow('list_group_item" + i + "', '" + product_name + "')\"></i>";
                     newChild = newChild + "</div>";
                     newChild = newChild + "</div>";
                     newChild = newChild + "</div>";
@@ -192,7 +192,7 @@
                     htmlObject.setAttribute("class", "list-group-item");
                     htmlObject.setAttribute("id", "list_group_item" + i);
                     htmlObject.innerHTML = newChild;
-                    document.getElementById('list_of_elements_in_chart').appendChild(htmlObject);
+                    document.getElementById('list_of_elements_in_cart').appendChild(htmlObject);
                 }
             </script>
 
