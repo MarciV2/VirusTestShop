@@ -126,14 +126,18 @@
                   console.log("Produkt-ID: "+product_id);
                   for (var i = 0; i < packungen.length; i++) {
                       var tempPack = packungen[i].split(";");
-
                       if (tempPack[0] == product_id)
                           var packung = tempPack;
                   }
                   console.log("Packungs-Details"+packung);
                   var product_name = "";
+                  var product_preis = "";
+                  var product_description = "";
                   if (packung[1] != "") product_name = packung[4] + "x " + packung[1] + " - " + packung[2];
                   else product_name = packung[4] + "x " + packung[2];
+
+                  product_preis = packung[5]+"€";
+                  product_description = packung[3];
 
               </script>
 
@@ -143,17 +147,22 @@
                   <div class="row">
                       <div class="col-md-5" style="margin-top: 0px">
                           <div class="bg-image hover-zoom">
-                              <img src="https://www.disapo.de/documents/products/Detailansicht/17295755-coronatest.jpeg" class="w-100" />
+                              <script>
+                                  var imgLink = '"../img/' + product_id + '.png"';
+                                  document.write(" <img src=" + imgLink + " class='w - 100' />");
+                              </script>
+                             
                           </div>
                       </div>
                       <div class="col-md-7">
                           <div style="width: 100%;">
                               <h2 style="margin-top: 40px" id="name">
-                                  <script>document.getElementById("name").innerHTML=product_name</script>
+                                  <script>document.getElementById("name").innerHTML = product_name</script>
                               </h2>
                               <h3>
                                   <div class="d-flex justify-content-start">
-                                      <span class="badge" style="background-color: #1E90FF">4,99€</span>
+                                      <span class="badge" style="background-color: #1E90FF" id="preis">4,99€</span>
+                                      <script>document.getElementById("preis").innerHTML = product_preis</script>
                                       <div style="font-size: small">1)</div>
                                       <br />
                                       <div style="font-size: small; position: absolute; bottom: 10px">1) zzgl. Versandkosten</div>
@@ -161,8 +170,11 @@
                               </h3>
 
                               <br />
-
-                              <div class="accordion accordion-flush" style="margin-right: 20px">
+                              <h3>
+                                  Produkt-Beschreibung
+                              </h3>
+                              <script>document.write(product_description);</script>
+                             <!-- <div class="accordion accordion-flush" style="margin-right: 20px">
                                   <div class="accordion-item">
                                       <h2 class="accordion-header" id="flush-headingOne">
                                           <button class="accordion-button collapsed"
@@ -237,9 +249,9 @@
                                       </div>
                                   </div>
                               </div>
-
+                                 -->
                               <br />
-
+                              <br/>
                               <div class="row">
                                   <div class="col-md-2">
                                       <input id="number" type="number" value="1" min="1" style=" width: 100%; padding: 5px; text-align: center; border: none; border-bottom: 2px solid #1E90FF;">
