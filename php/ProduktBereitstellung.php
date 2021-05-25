@@ -35,7 +35,7 @@
     {
         console_log("Kann die Datenbank nicht verwenden");
         mysqli_close($verbindung);      # Verbindung schliessen bei vorangegagenem Zugriffsfehler
-        Header("../index.php");
+        Header("location: /index.php");
                                    # Programm beenden
     }
 

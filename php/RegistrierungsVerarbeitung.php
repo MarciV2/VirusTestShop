@@ -125,7 +125,7 @@ if(isset($_POST))
     
     
 
-    $sqlKunde = "INSERT INTO `kunde`(`Name`, `Vorname`, `Telefon`, `Email`, `Adresse_ID`, `Kundentyp_ID`, `Passwort`, `Loginname`)
+    $sqlKunde = "INSERT INTO `kunde`(`Name`, `Vorname`, `Telefon`, `Email`, `Adresse_ID`, `Kundentyp_ID`, `Passwort`, `LoginName`)
                     VALUES ('$vorname','$nachname','$telefon','$email','$adressID','$firmenkunde','$passwort', '$loginname')";
 
     console_log($sqlKunde);
@@ -135,7 +135,7 @@ if(isset($_POST))
     
     # User korrekt in der Datenbank eingetragen?
 
-    $sqlUserCheck = "SELECT `Loginname` FROM `kunde` WHERE `Loginname` = '$loginname'
+    $sqlUserCheck = "SELECT `Kundentyp_ID` FROM `kunde` WHERE `LoginName` = '$loginname'
                 LIMIT 1";
 
     console_log($sqlUserCheck);
@@ -143,16 +143,27 @@ if(isset($_POST))
     $sqlUserCheckErgebnis = mysqli_query($verbindung, $sqlUserCheck);
     console_log($sqlUserCheckErgebnis);
     $anzahlReihen = @mysqli_num_rows($sqlUserCheckErgebnis);
+   
+    $userDaten = mysqli_fetch_assoc($sqlUserCheckErgebnis);
+    $userKundentypID = $userDaten['Kundentyp_ID'];
 
-    if($anzahlReihen > 0)
+    $userDatenArray = array();
+    array_push($userDatenArray, $loginname);
+    array_push($userDatenArray, $passwort);
+
+    if($anzahlReihen > 0 && $userKundentypID == 1)
     {
         console_log("Registrierung und anschliessender Login erfolgreich.");
-         $_SESSION["login"] = 1;
+        $_SESSION["login"] = 1;        
+        $_SESSION["user"] = $userDatenArray;
 
-         $_SESSION["user"] = "$loginname,$passwort";
-
-         console_log($_SESSION);
-         #Loginzeitpunkt abspeichern?
+        console_log($_SESSION);
+    }
+    else if($anzahlReihen > 0 && $userKundentypID == 2)
+    {
+        console_log("Registrierung und anschliessender Login erfolgreich.");
+        $_SESSION["login"] = 2
+        $_SESSION["user"] = $userDatenArray
     }
     else
     {
@@ -178,6 +189,7 @@ if(isset($_POST))
 
 console_log("php durchgelaufen");
 mysqli_close($verbindung);
+header('location: /index.php');s
 
 ?>
  
