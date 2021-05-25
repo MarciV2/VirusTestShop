@@ -260,7 +260,7 @@
                     itemCard = itemCard + "</p>";
                     itemCard = itemCard + "<div class='row no-gutters'>";
                     itemCard = itemCard + "<div class='col-md-7'>";
-                    itemCard = itemCard + "<a class='btn btn-primary btn-rounded buttonTocartMarginBottom' onclick=\"addProductTocart(\'" + "product_name" + "\', " + "product_id" + ")\" style='display: block; background-color: #1E90FF'>In den Warenkorb</a>";
+                    itemCard = itemCard + "<a class='btn btn-primary btn-rounded buttonTocartMarginBottom' onclick=\"addProductToCart(\'" + "product_name" + "\', " + "product_id" + ")\" style='display: block; background-color: #1E90FF'>In den Warenkorb</a>";
                     itemCard = itemCard + "</div>";
                     itemCard = itemCard + "<div class='col-md-5'>";
                     itemCard = itemCard + "<a href='./produkt.html' class='btn btn-primary btn-rounded' style='display: block; background-color: #1E90FF'>Details</a>";
