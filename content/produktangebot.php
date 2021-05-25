@@ -237,8 +237,8 @@
 
                       var product_id=packung[0];
                       var product_name="";
-                    if(packung[1]!="") product_name=packung[1]+" - "+packung[2];
-                    else  product_name=packung[2];
+                    if(packung[1]!="") product_name=packung[4]+"x "+packung[1]+" - "+packung[2];
+                    else  product_name=packung[4]+"x "+packung[2];
                     var product_description="";
                     if(packung[3].length<=64)product_description=packung[3];
                     else {
