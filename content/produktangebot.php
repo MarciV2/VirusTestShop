@@ -50,7 +50,7 @@
                             <a class="nav-link" href="termine.html" style="color: white">Schulungstermine</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle"
+                            <a class="nav-link dropdown-toggle" 
                                style="color: white"
                                href="#"
                                id="navbarDropdownMenuLink"
