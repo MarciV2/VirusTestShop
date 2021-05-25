@@ -185,7 +185,7 @@
             Bei uns finden sie Produkte für Ihre Lieben zu Hause und für Ihr Unternehmen zum angenehmen Testen des Corona-Viruses.<br />
             Seit 2021 sind wir für Sie da, sowohl mit Tests als auch mit Schulungen für Tester.<br />
             Schauen Sie sich unsere Produkte gerne an.
-            Bei Fragen stehen wir Ihnen gerne hier [LINK] zur Verfügung
+            Bei Fragen stehen wir Ihnen gerne zur Verfügung
         </p>
 
       
