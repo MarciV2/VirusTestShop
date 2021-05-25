@@ -64,7 +64,7 @@
                                     <a class="dropdown-item" href="https://www.stuttgarter-nachrichten.de/inhalt.corona-schnelltest-anleitung-mhsd.1c6201bd-dc78-4b03-b7d8-cf7d324b9b77.html">Corona Schnelltest</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="#">Corona PCR-Test</a>
+                                    <a class="dropdown-item" href="./produktangebot.php?orderBy=Preis%20ASC&kategorie=Schulungen">Corona PCR-Test</a>
                                 </li>
                             </ul>
                         </li>
@@ -263,7 +263,7 @@
                     itemCard = itemCard + "</p>";
                     itemCard = itemCard + "<div class='row no-gutters'>";
                     itemCard = itemCard + "<div class='col-md-7'>";
-                    itemCard = itemCard + "<a class='btn btn-primary btn-rounded buttonTocartMarginBottom' onclick=\"addProductToCart(\'" + "product_name" + "\', " + "product_id" + ")\" style='display: block; background-color: #1E90FF'>In den Warenkorb</a>";
+                    itemCard = itemCard + "<a class='btn btn-primary btn-rounded buttonTocartMarginBottom' onclick=\"addProductToCart(\'" + product_name + "\', " + product_id + ")\" style='display: block; background-color: #1E90FF'>In den Warenkorb</a>";
                     itemCard = itemCard + "</div>";
                     itemCard = itemCard + "<div class='col-md-5'>";
                     itemCard = itemCard + "<a href='./produkt.html' class='btn btn-primary btn-rounded' style='display: block; background-color: #1E90FF'>Details</a>";
