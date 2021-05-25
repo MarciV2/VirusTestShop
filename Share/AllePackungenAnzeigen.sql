@@ -4,8 +4,8 @@ h.Name AS Hersteller,
 a.Artikelname AS Artikelname,
 a.Beschreibung AS Beschreibung,
 p.Packungsgroessee AS Packungsgröße, 
-p.Verkaufspreis AS Preis,
-p.Lagermenge AS Bestand,
+round(p.Verkaufspreis,2) AS Preis,
+p.Lagermenge AS Bestand
 
 
 FROM 

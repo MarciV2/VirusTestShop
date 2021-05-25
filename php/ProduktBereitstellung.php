@@ -68,7 +68,7 @@
         a.Artikelname AS Artikelname, 
         a.Beschreibung AS Beschreibung, 
         p.Packungsgroessee AS Packungsgroesse, 
-        p.Verkaufspreis AS Preis, 
+        round(p.Verkaufspreis,2) AS Preis, 
         p.Lagermenge AS Bestand,
         k.Bezeichnung AS Kategorie  
 
