@@ -104,6 +104,7 @@ DROP TABLE IF EXISTS `VTS`.`Kunde` ;
 
 CREATE TABLE IF NOT EXISTS `VTS`.`Kunde` (
   `Kunde_ID` INT NOT NULL AUTO_INCREMENT,
+  `LoginName` VARCHAR(45) NOT NULL,
   `Name` VARCHAR(45) NOT NULL,
   `Vorname` VARCHAR(45) NOT NULL,
   `Telefon` VARCHAR(45) NOT NULL,
@@ -129,6 +130,8 @@ CREATE INDEX `Adresse_ID_idx` ON `VTS`.`Kunde` (`Adresse_ID` ASC);
 CREATE INDEX `fk_Kunde_Kundentyp1_idx` ON `VTS`.`Kunde` (`Kundentyp_ID` ASC);
 
 CREATE UNIQUE INDEX `Email_UNIQUE` ON `VTS`.`Kunde` (`Email` ASC);
+
+CREATE UNIQUE INDEX `LoginName_UNIQUE` ON `VTS`.`Kunde` (`LoginName` ASC);
 
 
 -- -----------------------------------------------------
@@ -427,7 +430,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `VTS`;
-INSERT INTO `VTS`.`Kunde` (`Kunde_ID`, `Name`, `Vorname`, `Telefon`, `Email`, `Passwort`, `Adresse_ID`, `Kundentyp_ID`) VALUES (1, 'Vidmar', 'Marcel', '015755797545', 'marcel.vidmar.mv@gmail.com', 'gast', 1, 1);
+INSERT INTO `VTS`.`Kunde` (`Kunde_ID`, `LoginName`, `Name`, `Vorname`, `Telefon`, `Email`, `Passwort`, `Adresse_ID`, `Kundentyp_ID`) VALUES (1, 'mvidmar', 'Vidmar', 'Marcel', '015755797545', 'marcel.vidmar.mv@gmail.com', 'gast', 1, 1);
 
 COMMIT;
 
