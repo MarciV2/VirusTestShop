@@ -6,11 +6,24 @@ function jetztKaufen() {
         document.getElementById('agb_alert').style.display = "block";
     } else if (!datenschutz_isChecked) {
         document.getElementById('datenschutz_alert').style.display = "block";
+    } else if (getSumOfProductsInCart() <= 0) {
+
     } else {
         window.location.href = './kaufen.html';
     }
 }
 
+function getSumOfProductsInCart() {
+    var cart_cookie = JSON.parse(readCookie("cart_cookie"));
+    var sum = 0;
+
+    if (cart_cookie != null) {
+        Object.keys(cart_cookie).forEach(function (k) {
+            sum = sum + cart_cookie[k];
+        });
+    }
+    return sum;
+}
 
 function hideAlert(alert_name) {
     document.getElementById(alert_name).style.display = "none";

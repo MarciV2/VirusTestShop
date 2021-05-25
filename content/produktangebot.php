@@ -383,8 +383,7 @@
         </footer>
         <!-- Footer -->
     </div>
-    <br />
-    <br />
+
 
     <!-- End your project here-->
     <!-- MDB -->
@@ -395,5 +394,8 @@
     <script src="../src/simple-notify/simple-notify.min.js"></script>
 
     <script src="../js/produktangebote.js"></script>
+
+    <script src="../js/cartNumber.js"></script>
+
 </body>
 </html>

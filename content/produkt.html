@@ -123,20 +123,20 @@
 
                   var packungen = JSON.parse(readCookie("PackungCookie"));
                   var packung = null;
-                  console.log("Produkt-ID: "+product_id);
+                  console.log("Produkt-ID: " + product_id);
                   for (var i = 0; i < packungen.length; i++) {
                       var tempPack = packungen[i].split(";");
                       if (tempPack[0] == product_id)
                           var packung = tempPack;
                   }
-                  console.log("Packungs-Details"+packung);
+                  console.log("Packungs-Details" + packung);
                   var product_name = "";
                   var product_preis = "";
                   var product_description = "";
                   if (packung[1] != "") product_name = packung[4] + "x " + packung[1] + " - " + packung[2];
                   else product_name = packung[4] + "x " + packung[2];
 
-                  product_preis = packung[5]+"€";
+                  product_preis = packung[5] + "€";
                   product_description = packung[3];
 
               </script>
@@ -151,7 +151,7 @@
                                   var imgLink = '"../img/' + product_id + '.png"';
                                   document.write(" <img src=" + imgLink + " class='w - 100' />");
                               </script>
-                             
+
                           </div>
                       </div>
                       <div class="col-md-7">
@@ -174,84 +174,84 @@
                                   Produkt-Beschreibung
                               </h3>
                               <script>document.write(product_description);</script>
-                             <!-- <div class="accordion accordion-flush" style="margin-right: 20px">
-                                  <div class="accordion-item">
-                                      <h2 class="accordion-header" id="flush-headingOne">
-                                          <button class="accordion-button collapsed"
-                                                  type="button"
-                                                  data-mdb-toggle="collapse"
-                                                  data-mdb-target="#flush-collapseOne"
-                                                  aria-expanded="false"
-                                                  aria-controls="flush-collapseOne">
-                                              Inhalt
-                                          </button>
-                                      </h2>
-                                      <div id="flush-collapseOne"
-                                           class="accordion-collapse collapse"
-                                           aria-labelledby="flush-headingOne"
-                                           data-mdb-parent="#accordionFlushExample">
-                                          <div class="accordion-body">
-                                              <ul>
-                                                  <li>COVID-19-Antigen-Testkarte </li>
-                                                  <li>Speichelsammelgefäß (mit 1 ml Extraktionslösung) </li>
-                                                  <li>Einweg-Pipette</li>
-                                                  <li>Trichter (zum Sammeln des Speichels)</li>
-                                                  <li>Bedienungsanleitung auf Deutsch</li>
-                                              </ul>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="accordion-item">
-                                      <h2 class="accordion-header" id="flush-headingTwo">
-                                          <button class="accordion-button collapsed"
-                                                  type="button"
-                                                  data-mdb-toggle="collapse"
-                                                  data-mdb-target="#flush-collapseTwo"
-                                                  aria-expanded="false"
-                                                  aria-controls="flush-collapseTwo">
-                                              Vorteile
-                                          </button>
-                                      </h2>
-                                      <div id="flush-collapseTwo"
-                                           class="accordion-collapse collapse"
-                                           aria-labelledby="flush-headingTwo"
-                                           data-mdb-parent="#accordionFlushExample">
-                                          <div class="accordion-body">
-                                              <ul>
-                                                  <li>Neben dem herkömmlichen Coronavirus diagnostiziert der Test auch alle bisher bekannten Mutationen.</li>
-                                                  <li>Da der Test immer einzeln verpackt ist, ist er ideal für jeden der sich aufgrund von Symptomen, oder aber auch einfach provisorisch testen möchte.</li>
-                                                  <li>Die schlanke, platzsparende Verpackung bietet sich außerdem ideal für unterwegs an. So ist ein Test vor dem Friseurbesuch, der Schule oder dem Besuch im Pflegeheim problemlos möglich.</li>
-                                              </ul>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="accordion-item">
-                                      <h2 class="accordion-header" id="flush-headingThree">
-                                          <button class="accordion-button collapsed"
-                                                  type="button"
-                                                  data-mdb-toggle="collapse"
-                                                  data-mdb-target="#flush-collapseThree"
-                                                  aria-expanded="false"
-                                                  aria-controls="flush-collapseThree">
-                                              Hinweise
-                                          </button>
-                                      </h2>
-                                      <div id="flush-collapseThree"
-                                           class="accordion-collapse collapse"
-                                           aria-labelledby="flush-headingThree"
-                                           data-mdb-parent="#accordionFlushExample">
-                                          <div class="accordion-body">
-                                              <ul>
-                                                  <li>Positive Ergebnisse schließen dabei eine bakterielle Infektion oder Co-Infektion mit anderen Viren nicht aus.</li>
-                                                  <li>Negative Ergebnisse schließen SARS-CoV-2-Infektionen nicht aus und sollten nicht als alleinige Grundlage für den Nachweis verwendet werden und gegeben falls mit einem PCR-Test bestätigt werden.</li>
-                                              </ul>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                                 -->
+                              <!-- <div class="accordion accordion-flush" style="margin-right: 20px">
+                                 <div class="accordion-item">
+                                     <h2 class="accordion-header" id="flush-headingOne">
+                                         <button class="accordion-button collapsed"
+                                                 type="button"
+                                                 data-mdb-toggle="collapse"
+                                                 data-mdb-target="#flush-collapseOne"
+                                                 aria-expanded="false"
+                                                 aria-controls="flush-collapseOne">
+                                             Inhalt
+                                         </button>
+                                     </h2>
+                                     <div id="flush-collapseOne"
+                                          class="accordion-collapse collapse"
+                                          aria-labelledby="flush-headingOne"
+                                          data-mdb-parent="#accordionFlushExample">
+                                         <div class="accordion-body">
+                                             <ul>
+                                                 <li>COVID-19-Antigen-Testkarte </li>
+                                                 <li>Speichelsammelgefäß (mit 1 ml Extraktionslösung) </li>
+                                                 <li>Einweg-Pipette</li>
+                                                 <li>Trichter (zum Sammeln des Speichels)</li>
+                                                 <li>Bedienungsanleitung auf Deutsch</li>
+                                             </ul>
+                                         </div>
+                                     </div>
+                                 </div>
+                                 <div class="accordion-item">
+                                     <h2 class="accordion-header" id="flush-headingTwo">
+                                         <button class="accordion-button collapsed"
+                                                 type="button"
+                                                 data-mdb-toggle="collapse"
+                                                 data-mdb-target="#flush-collapseTwo"
+                                                 aria-expanded="false"
+                                                 aria-controls="flush-collapseTwo">
+                                             Vorteile
+                                         </button>
+                                     </h2>
+                                     <div id="flush-collapseTwo"
+                                          class="accordion-collapse collapse"
+                                          aria-labelledby="flush-headingTwo"
+                                          data-mdb-parent="#accordionFlushExample">
+                                         <div class="accordion-body">
+                                             <ul>
+                                                 <li>Neben dem herkömmlichen Coronavirus diagnostiziert der Test auch alle bisher bekannten Mutationen.</li>
+                                                 <li>Da der Test immer einzeln verpackt ist, ist er ideal für jeden der sich aufgrund von Symptomen, oder aber auch einfach provisorisch testen möchte.</li>
+                                                 <li>Die schlanke, platzsparende Verpackung bietet sich außerdem ideal für unterwegs an. So ist ein Test vor dem Friseurbesuch, der Schule oder dem Besuch im Pflegeheim problemlos möglich.</li>
+                                             </ul>
+                                         </div>
+                                     </div>
+                                 </div>
+                                 <div class="accordion-item">
+                                     <h2 class="accordion-header" id="flush-headingThree">
+                                         <button class="accordion-button collapsed"
+                                                 type="button"
+                                                 data-mdb-toggle="collapse"
+                                                 data-mdb-target="#flush-collapseThree"
+                                                 aria-expanded="false"
+                                                 aria-controls="flush-collapseThree">
+                                             Hinweise
+                                         </button>
+                                     </h2>
+                                     <div id="flush-collapseThree"
+                                          class="accordion-collapse collapse"
+                                          aria-labelledby="flush-headingThree"
+                                          data-mdb-parent="#accordionFlushExample">
+                                         <div class="accordion-body">
+                                             <ul>
+                                                 <li>Positive Ergebnisse schließen dabei eine bakterielle Infektion oder Co-Infektion mit anderen Viren nicht aus.</li>
+                                                 <li>Negative Ergebnisse schließen SARS-CoV-2-Infektionen nicht aus und sollten nicht als alleinige Grundlage für den Nachweis verwendet werden und gegeben falls mit einem PCR-Test bestätigt werden.</li>
+                                             </ul>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                                -->
                               <br />
-                              <br/>
+                              <br />
                               <div class="row">
                                   <div class="col-md-2">
                                       <input id="number" type="number" value="1" min="1" style=" width: 100%; padding: 5px; text-align: center; border: none; border-bottom: 2px solid #1E90FF;">
@@ -272,7 +272,7 @@
 
               </div>
           </div>
-           
+
 
           <!-- Footer -->
           <footer class="text-center text-lg-start bg-light text-muted">
@@ -358,11 +358,11 @@
       </div>
 
 
-      <br />
-      <br />
 
       <!-- End your project here-->
       <!-- MDB -->
       <script type="text/javascript" src="../js/mdb.min.js"></script>
-</body>
+      <script src="../js/cartNumber.js"></script>
+
+  </body>
 </html>
