@@ -29,3 +29,7 @@ function checkLogin(login)
     console.log("Test checkLogin"+login);
 }
 
+function clickAGBs()
+{
+	window.location = "/content/agb.html";
+}
