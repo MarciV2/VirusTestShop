@@ -346,7 +346,7 @@
 
     ?>
     
-    <script type="text/javascript" src="./src/simple-notify/simple-notify.min.js"></script>
+   <!-- <script type="text/javascript" src="./src/simple-notify/simple-notify.min.js"></script>-->
     <script type="text/javascript" src="/js/functionScripts.js"></script>
     <script type=text/javascript src=./js/index.js><?php echo "checkLogin($_SESSION[login])</script>"?>;
 
