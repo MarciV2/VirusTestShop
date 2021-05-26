@@ -35,8 +35,8 @@
                   <td><input class="big" type="text" placeholder="Login-Name" name="regloginname" id="RegLoginname" required /></td>
                 </tr>
                 <tr>
-                  <td><input class="big" type="password" placeholder="Passwort" name="passwort" required/><br></td>
-                  <td><input class="big" type="password" placeholder="Passwort wiederholen" name="wdhlg-passwort" required/></td>
+                  <td><input class="big" type="password" placeholder="Passwort" name="passwort" id="passwort" minlength="8" required /><br></td>
+                  <td><input class="big" type="password" placeholder="Passwort wiederholen" name="wdhlg-passwort" id="wdhlg-passwort" minlength="8" onchange="pwprüfen()" required /></td>
                 </tr>
                 <tr>
                   <td><input class="big" type="text" placeholder="Vorname" name="vorname" required></td>
@@ -44,10 +44,10 @@
                 </tr>
                 <tr>
                   <td><input class="big" type="text" placeholder="Straße" name="strasse" required></td>
-                  <td><input type="number" name="hausnummer" placeholder="Nr." min="1" max = "999" required><input type="number" placeholder="PLZ" name="plz" min="1000" max="99999" required></td>
+                  <td><input class="hausnummer" type="text" name="hausnummer" placeholder="Nr."  required> <input type="number" placeholder="PLZ" name="plz" min="1000" max="99999" required></td>
                 </tr>
                 <tr>
-                  <td><input class="big" tyoe="text" placeholder="Stadt" name="stadt" required></td>
+                  <td><input class="big" type="text" placeholder="Stadt" name="stadt" required></td>
                   <td><input class="big" type="text" placeholder="Stadtteil" name="stadtteil" required></td>
                 </tr>
                 <tr>
@@ -55,17 +55,17 @@
                   <td><input class="big" type="text" placeholder="Bundesland" name="bundesland" required></td>
                 </tr>
                 <tr>
-                  <td><input class="big" type="email" placeholder="E-Mail" name="email" required></td>
-                  <td><input class="big" type="email" placeholder="E-Mail wiederholen" name="wdhlg-email" required></td>
+                  <td><input class="big" type="email" placeholder="E-Mail" name="email" id="email" required></td>
+                  <td><input class="big" type="email" placeholder="E-Mail wiederholen" name="wdhlg-email" id="wdhlg-email" onchange="emailchecken()" required></td>
                 </tr>
                 <tr>
-                  <td><input class="big" type="text" placeholder="Telefon: Vorwahl + Nummer" name="telefon" required></td>
-                  <td><label>Firmenkunde: </label><select name="firmenkunde"><option value="0">Nein</option><option value="1">Ja</option></select></td>
+                  <td><input class="big" type="number" placeholder="Telefon: Vorwahl + Nummer" name="telefon" required></td>
+                  <td><label>Firmenkunde: </label><select name="firmenkunde"><option value="1">Nein</option><option value="2">Ja</option></select></td>
                 </tr>
             </table>
             
             <br>
-            <label class="agb" id="AGB" onmouseover="hoverAGBs('grey')" onmouseout="hoverAGBs('black')" onclick="clickAGBs()">Akzeptieren Sie unsere AGBs</label><input type ="checkbox" name="agb"><br>
+            <label class="agb" id="AGB" onmouseover="hoverAGBs('grey')" onmouseout="hoverAGBs('black')" onclick="clickAGBs()">Akzeptieren Sie unsere AGBs</label><input type ="checkbox" name="agb" required><br>
             <input type="submit" name="submitReg" value="Abschicken">
             <br>
             </center>
@@ -139,35 +139,24 @@
                 </div>
 
                 <!-- Right elements -->
-                  <div class="d-flex align-items-center">
-                      <!-- Shopping icon -->
-                      <a class="text-reset me-4" href="./content/warenkorb.html">
-                          <i class="fas fa-shopping-cart" style="color: #ffffff"></i>
-                          <span id="product_counter" class="badge rounded-pill badge-notification bg-danger" style="display: none">11</span>
-                      </a>
-                      <!-- Account icon -->
-                      <a class="text-reset me-3"
-                         href="#"
-                         id="navbarDropdownMenuLink"
-                         role="button"
-                         data-mdb-toggle="dropdown"
-                         aria-expanded="false">
-                          <i class="fas fa-user-circle" style="color: #ffffff"></i>
-                      </a>
-                      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                          <li>
-                              <a class="dropdown-item" href="#">Profil</a>
-                          </li>
-                          <li>
-                              <a class="dropdown-item" href="./content/bestellungen.php">Bestellungen</a>
-                          </li>
-                          <li><hr class="dropdown-divider" /></li>
-                          <li>
-                              <a class="dropdown-item" href="#">Logout</a>
-                          </li>
-                      </ul>
-                  </div>
-                  <!-- Right elements -->
+                <div class="d-flex align-items-center">
+                    <!-- Shopping icon -->
+                    <a class="text-reset me-4" href="./content/warenkorb.html">
+                        <i class="fas fa-shopping-cart" style="color: #ffffff"></i>
+                        <span id="product_counter" class="badge rounded-pill badge-notification bg-danger">11</span>
+                    </a>
+                    <!-- Bell icon -->
+                    <a class="text-reset me-4" href="#">
+                        <i class="fas fa-bell" style="color: #ffffff"></i>
+                    </a>
+                    <!-- Account icon -->
+                    <a onclick="einAusblendenLoginRegForm()" class="text-reset me-3"  >
+                        <i class="fas fa-user-circle" id="LoginButton"  style="color: #ffffff"></i>
+                    </a>
+
+
+                </div>
+                <!-- Right elements -->
             </div>
         </nav>
         <!-- Ende Navbar -->
@@ -199,6 +188,7 @@
             Schauen Sie sich unsere Produkte gerne an.
             Bei Fragen stehen wir Ihnen gerne zur Verfügung
         </p>
+		<?implode $_SESSION["user"];?>
 
       
         <br />
