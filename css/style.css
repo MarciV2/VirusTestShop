@@ -86,36 +86,32 @@
 	visibility: visible;
 }
 
-@media all and (min-width: 1400px) {
 .LandingLogin {	
-	margin-top: 58px;
-	right: 13%;
-	
+	margin-top: 80px;
+	right: 0;
+	left: auto;
 	padding-top: 10px;
 	width: 225px;
-	height: 260px;	
-	
+	height: 165px;	
+	top: 245px;
 	z-index: 25;
 	background: #1E90FF; 
 	border: solid #000000 2px; 
-	position: fixed;
+	position: absolute;
 	visibility: hidden;
 }
 
 .LandingLogin label.LabelLogin{
-	margin-top: 5px;
 	color: aliceblue;
 	padding-left: 32px;
 }
 
 .LandingLogin label.LabelChkbox{
-	margin-top: 5px;
 	color: aliceblue;
 	padding-left: 25px;
 }
 
 .LandingLogin label.NotRegistered{
-	margin-top: 5px;
 	color: black;
 	padding-left: 25px;
 }
@@ -171,200 +167,21 @@
 	color: red;
 	border-color: red;
 }
-}
-@media all and (max-width: 1400px) {
-.LandingLogin {	
-	margin-top: 58px;
-	right: 0%;
-	
-	padding-top: 10px;
-	width: 225px;
-	height: 260px;	
-	
-	z-index: 25;
-	background: #1E90FF; 
-	border: solid #000000 2px; 
-	position: fixed;
-	visibility: hidden;
-}
 
-.LandingLogin label.LabelLogin{
-	margin-top: 5px;
-	color: aliceblue;
-	padding-left: 32px;
-}
-
-.LandingLogin label.LabelChkbox{
-	margin-top: 5px;
-	color: aliceblue;
-	padding-left: 25px;
-}
-
-.LandingLogin label.NotRegistered{
-	margin-top: 5px;
-	color: black;
-	padding-left: 25px;
-}
-
-.LandingLogin label.NotRegistered:hover{
-	color: aliceblue;	
-}
-
-.LandingLogin input.login{
-	display: block;
-	color: black;
-   	background-color: aliceblue;
-   	border-style:solid;
-   	border-width: 1px;
-   	border-color: black;
-	text-align: center;
-	padding: 7px 10px;
-	cursor: pointer;
- 	text-decoration: none;
-  	margin-top: 5px;
-  	float: left;
-   	margin-left: 31px;
-}
-
-.LandingLogin input.login:hover{
-	background-color: #333;
-	border-color: aliceblue;
-	color: white;
-}
-
-
-.LandingLogin a{
-  	display: block;
- 	color: black;
-	background-color: aliceblue;
-	border-style:solid;
-	z-index: 50;
-	border-width: 1px;
-	border-color: black;
-  	text-align: center;
- 	padding: 6px 8px;
- 	cursor: pointer;
-	text-decoration: none;
-	margin-top: 5px;
-}
-
-.LandingLogin a.cancel{
-	float: right;
-	margin-right: 31px;
-}
-
-.LandingLogin a.cancel:hover{
-	color: red;
-	border-color: red;
-}
-}
-@media all and (max-width: 991px) {
-	.LandingLogin {	
-	margin-top: 45px;
-	right: 0%;
-	
-	padding-top: 10px;
-	width: 225px;
-	height: 260px;	
-	
-	z-index: 25;
-	background: #1E90FF; 
-	border: solid #000000 2px; 
-	position: fixed;
-	visibility: hidden;
-}
-
-.LandingLogin label.LabelLogin{
-	margin-top: 5px;
-	color: aliceblue;
-	padding-left: 32px;
-}
-
-.LandingLogin label.LabelChkbox{
-	margin-top: 5px;
-	color: aliceblue;
-	padding-left: 25px;
-}
-
-.LandingLogin label.NotRegistered{
-	margin-top: 5px;
-	color: black;
-	padding-left: 25px;
-}
-
-.LandingLogin label.NotRegistered:hover{
-	color: aliceblue;	
-}
-
-.LandingLogin input.login{
-	display: block;
-	color: black;
-   	background-color: aliceblue;
-   	border-style:solid;
-   	border-width: 1px;
-   	border-color: black;
-	text-align: center;
-	padding: 7px 10px;
-	cursor: pointer;
- 	text-decoration: none;
-  	margin-top: 5px;
-  	float: left;
-   	margin-left: 31px;
-}
-
-.LandingLogin input.login:hover{
-	background-color: #333;
-	border-color: aliceblue;
-	color: white;
-}
-
-
-.LandingLogin a{
-  	display: block;
- 	color: black;
-	background-color: aliceblue;
-	border-style:solid;
-	z-index: 50;
-	border-width: 1px;
-	border-color: black;
-  	text-align: center;
- 	padding: 6px 8px;
- 	cursor: pointer;
-	text-decoration: none;
-	margin-top: 5px;
-}
-
-.LandingLogin a.cancel{
-	float: right;
-	margin-right: 31px;
-}
-
-.LandingLogin a.cancel:hover{
-	color: red;
-	border-color: red;
-}
-}
-@media all and (min-width: 1400px) {
 .RegisterForm {
-	border-style:solid;
-	border-width: 2px;
-	border-bottom-color: black;
 	visibility: hidden;
 	z-index: 50;
-	width: 500px;
-	height: 500px;
-
-	margin-top: 58px;
-	right: 13%;
-	
-	padding-top: 10px;
-	position: fixed;
-  	background: #1E90FF;
+	width: 60%;
+	height: 550px;
+	margin-top: 55px;
+	margin-left: 20%;
+	position: absolute;
+  	background: yellow;
 	
 }
 
 .registrierung{
-	background: #1E90FF;
+	background:yellow;
 	margin-top: 25px;
 	margin-bottom: 2%;
 }
@@ -372,12 +189,10 @@
 .registrierung td{
 	padding: 3px;
 	width: 250px;
-	
 }
 
 
 .registrierung input {
-	margin-left: 10px;
 	padding: 15px;
 	height: 5px; 
 	border-radius: 2px;
@@ -428,179 +243,6 @@
 	top: 50%;
 	-ms-transform: translateY(-50%);
 	transform: translateY(-50%);
-}
-}
-@media all and (max-width: 1400px) {
-.RegisterForm {
-	border-style:solid;
-	border-width: 2px;
-	border-bottom-color: black;
-	visibility: hidden;
-	z-index: 50;
-	width: 500px;
-	height: 500px;
-
-	margin-top: 58px;
-	right: 0%;
-	
-	padding-top: 10px;
-	position: fixed;
-  	background: #1E90FF;
-	
-}
-
-.registrierung{
-	background: #1E90FF;
-	margin-top: 25px;
-	margin-bottom: 2%;
-}
-
-.registrierung td{
-	padding: 3px;
-	width: 250px;
-	
-}
-
-
-.registrierung input {
-	margin-left: 10px;
-	padding: 15px;
-	height: 5px; 
-	border-radius: 2px;
-	-webkit-border-radius: 5px;	
-}
-
-.registrierung input.big{
-	width: 178px;
-}
-
-
-.registrierung input[type=submit]{
-	background-color: aliceblue;
-	border-width: 2px;
-	border-color: black;
-	line-height: 6px;
-	font-weight: bold;
-
-}
-
-.registrierung input[type=submit]:hover{
-	background-color: black;
-	color: aliceblue;
-	border-color: aliceblue;
-	cursor: pointer;
-	text-align: center;	
-}
-
-.registrierung input[type=checkbox]{
-	min-height: 15px;
-}
-
-
-.select {
-	width: 100%;
-	font-weight: bold;
-	cursor: pointer;
-	background-color: #ffffff;
-	border: none;
-	border-bottom: 2px solid #1E90FF;
-	color: #1E90FF;
-	padding: 10px;
-}
-
-.vertical-center {
-	margin: 0;
-	position: absolute;
-	top: 50%;
-	-ms-transform: translateY(-50%);
-	transform: translateY(-50%);
-}
-}
-@media all and (max-width: 991px) {
-	.RegisterForm {
-	border-style:solid;
-	border-width: 2px;
-	border-bottom-color: black;
-	visibility: hidden;
-	z-index: 50;
-	width: 500px;
-	height: 500px;
-
-	margin-top: 45px;
-	right: 0%;
-	
-	padding-top: 10px;
-	position: fixed;
-  	background: #1E90FF;
-	
-}
-
-.registrierung{
-	background: #1E90FF;
-	margin-top: 25px;
-	margin-bottom: 2%;
-}
-
-.registrierung td{
-	padding: 3px;
-	width: 250px;
-	
-}
-
-
-.registrierung input {
-	margin-left: 10px;
-	padding: 15px;
-	height: 5px; 
-	border-radius: 2px;
-	-webkit-border-radius: 5px;	
-}
-
-.registrierung input.big{
-	width: 178px;
-}
-
-
-.registrierung input[type=submit]{
-	background-color: aliceblue;
-	border-width: 2px;
-	border-color: black;
-	line-height: 6px;
-	font-weight: bold;
-
-}
-
-.registrierung input[type=submit]:hover{
-	background-color: black;
-	color: aliceblue;
-	border-color: aliceblue;
-	cursor: pointer;
-	text-align: center;	
-}
-
-.registrierung input[type=checkbox]{
-	min-height: 15px;
-}
-
-
-.select {
-	width: 100%;
-	font-weight: bold;
-	cursor: pointer;
-	background-color: #ffffff;
-	border: none;
-	border-bottom: 2px solid #1E90FF;
-	color: #1E90FF;
-	padding: 10px;
-}
-
-.vertical-center {
-	margin: 0;
-	position: absolute;
-	top: 50%;
-	-ms-transform: translateY(-50%);
-	transform: translateY(-50%);
-}
 }
 
 .fa-times:hover {
