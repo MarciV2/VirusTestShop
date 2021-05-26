@@ -235,7 +235,7 @@
                    for(var i=0; i<packungen.length;i++){
                        var packung=packungen[i].split(";");
                       
-                      var itemCard = "<div class='card itemCard'>";
+                      var itemCard = "<div class='card itemCard' style=\"height: 95%\">";
 
                       var product_id=packung[0];
                       var product_name="";
@@ -260,7 +260,7 @@
                     itemCard = itemCard + "</p>";
                     itemCard = itemCard + "<div class='row no-gutters'>";
                     itemCard = itemCard + "<div class='col-md-7'>";
-                    itemCard = itemCard + "<a class='btn btn-primary btn-rounded buttonTocartMarginBottom' onclick=\"addProductToCart(\'" + product_name + "\', " + product_id + ")\" style='display: block; background-color: #1E90FF'>In den Warenkorb</a>";
+                    itemCard = itemCard + "<a class='btn btn-primary btn-rounded buttonToCartMarginBottom' onclick=\"addProductToCart(\'" + product_name + "\', " + product_id + ")\" style='display: block; background-color: #1E90FF'>In den Warenkorb</a>";
                     itemCard = itemCard + "</div>";
                     itemCard = itemCard + "<div class='col-md-5'>";
                     itemCard = itemCard + "<a href='./produkt.html?product_id=" + product_id + "' class='btn btn-primary btn-rounded' style='display: block; background-color: #1E90FF'>Details</a>";
@@ -270,9 +270,9 @@
                     itemCard = itemCard + "</div>";
 
                     var htmlObject = document.createElement('div');
-                                htmlObject.setAttribute("class", "col-lg-4 col-md-6");
-                                htmlObject.innerHTML = itemCard;
-                                new_item_row.appendChild(htmlObject);
+                    htmlObject.setAttribute("class", "col-lg-4 col-md-6");
+                    htmlObject.innerHTML = itemCard;
+                    new_item_row.appendChild(htmlObject);
                     }
 
                     document.getElementById('product_container').appendChild(new_item_row);
