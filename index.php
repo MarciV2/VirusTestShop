@@ -26,7 +26,7 @@
 <div class="RegisterForm" id="RegisterForm" onmouseout="">
     <form action="/php/RegistrierungsVerarbeitung.php" method="POST">
         <div class="regForm" id="regForm">
-            <center><h><b>Registrierung</b></h></center>
+            <center><h3><b>Registrierung</b></h3></center>
             <div class="registrierung" id="registrierung"> 
             <center>
             <table>
