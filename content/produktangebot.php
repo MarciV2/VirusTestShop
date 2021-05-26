@@ -206,19 +206,20 @@
                             </div>
                         </div>
                     </div>
+                    
 
 
                    <script>
 
                    function readCookie(name) {
-                    var nameEQ = name + "=";
-                    var ca = document.cookie.split(';');
-                    for(var i=0;i < ca.length;i++) {
-                        var c = ca[i];
-                        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-                        if (c.indexOf(nameEQ) == 0) return decodeURIComponent(c.substring(nameEQ.length,c.length)).replaceAll("+"," ");
-                    }
-                    return null;
+                        var nameEQ = name + "=";
+                        var ca = document.cookie.split(';');
+                        for(var i=0;i < ca.length;i++) {
+                            var c = ca[i];
+                            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                            if (c.indexOf(nameEQ) == 0) return decodeURIComponent(c.substring(nameEQ.length,c.length)).replaceAll("+"," ");
+                        }
+                        return null;
                    }
 
 
@@ -262,7 +263,7 @@
                     itemCard = itemCard + "<a class='btn btn-primary btn-rounded buttonTocartMarginBottom' onclick=\"addProductToCart(\'" + product_name + "\', " + product_id + ")\" style='display: block; background-color: #1E90FF'>In den Warenkorb</a>";
                     itemCard = itemCard + "</div>";
                     itemCard = itemCard + "<div class='col-md-5'>";
-                    itemCard = itemCard + "<a href='./produkt.html?product_id="+product_id+"' class='btn btn-primary btn-rounded' style='display: block; background-color: #1E90FF'>Details</a>";
+                    itemCard = itemCard + "<a href='./produkt.html?product_id=" + product_id + "' class='btn btn-primary btn-rounded' style='display: block; background-color: #1E90FF'>Details</a>";
                     itemCard = itemCard + "</div>";
                     itemCard = itemCard + "</div>";
                     itemCard = itemCard + "</div>";

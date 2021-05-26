@@ -1,4 +1,8 @@
 function addProductToCart(product_name, product_id) {
+
+    console.log(product_id);
+    console.log(product_name);
+
     new Notify({
         title: unescape("Zu Einkaufswagen hinzugef%FCgt"),
         text: product_name,
