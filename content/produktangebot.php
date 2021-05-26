@@ -206,24 +206,25 @@
                             </div>
                         </div>
                     </div>
+                    
 
 
                    <script>
 
                    function readCookie(name) {
-                    var nameEQ = name + "=";
-                    var ca = document.cookie.split(';');
-                    for(var i=0;i < ca.length;i++) {
-                        var c = ca[i];
-                        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-                        if (c.indexOf(nameEQ) == 0) return decodeURIComponent(c.substring(nameEQ.length,c.length)).replaceAll("+"," ");
-                    }
-                    return null;
+                        var nameEQ = name + "=";
+                        var ca = document.cookie.split(';');
+                        for(var i=0;i < ca.length;i++) {
+                            var c = ca[i];
+                            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                            if (c.indexOf(nameEQ) == 0) return decodeURIComponent(c.substring(nameEQ.length,c.length)).replaceAll("+"," ");
+                        }
+                        return null;
                    }
 
 
                    var packungen = JSON.parse(readCookie("PackungCookie"));
-                   console.log(packungen);
+                  // console.log(packungen);
                    //Anzeige gefundene Artikel aktualisieren
                    document.getElementById("artikel_count").innerText = packungen.length+ " Artikel gefunden";
 
@@ -234,7 +235,7 @@
                    for(var i=0; i<packungen.length;i++){
                        var packung=packungen[i].split(";");
                       
-                      var itemCard = "<div class='card itemCard'>";
+                      var itemCard = "<div class='card itemCard' style=\"height: 95%\">";
 
                       var product_id=packung[0];
                       var product_name="";
@@ -259,19 +260,19 @@
                     itemCard = itemCard + "</p>";
                     itemCard = itemCard + "<div class='row no-gutters'>";
                     itemCard = itemCard + "<div class='col-md-7'>";
-                    itemCard = itemCard + "<a class='btn btn-primary btn-rounded buttonTocartMarginBottom' onclick=\"addProductToCart(\'" + product_name + "\', " + product_id + ")\" style='display: block; background-color: #1E90FF'>In den Warenkorb</a>";
+                    itemCard = itemCard + "<a class='btn btn-primary btn-rounded buttonToCartMarginBottom' onclick=\"addProductToCart(\'" + product_name + "\', " + product_id + ")\" style='display: block; background-color: #1E90FF'>In den Warenkorb</a>";
                     itemCard = itemCard + "</div>";
                     itemCard = itemCard + "<div class='col-md-5'>";
-                    itemCard = itemCard + "<a href='./produkt.html?product_id="+product_id+"' class='btn btn-primary btn-rounded' style='display: block; background-color: #1E90FF'>Details</a>";
+                    itemCard = itemCard + "<a href='./produkt.html?product_id=" + product_id + "' class='btn btn-primary btn-rounded' style='display: block; background-color: #1E90FF'>Details</a>";
                     itemCard = itemCard + "</div>";
                     itemCard = itemCard + "</div>";
                     itemCard = itemCard + "</div>";
                     itemCard = itemCard + "</div>";
 
                     var htmlObject = document.createElement('div');
-                                htmlObject.setAttribute("class", "col-lg-4 col-md-6");
-                                htmlObject.innerHTML = itemCard;
-                                new_item_row.appendChild(htmlObject);
+                    htmlObject.setAttribute("class", "col-lg-4 col-md-6");
+                    htmlObject.innerHTML = itemCard;
+                    new_item_row.appendChild(htmlObject);
                     }
 
                     document.getElementById('product_container').appendChild(new_item_row);
@@ -327,15 +328,15 @@
                             <h6 class="text-uppercase fw-bold mb-4">
                                 Produkte
                             </h6>
-                            <p>
-                                <a href="./produktangebot.php" class="text-reset">Corona Schnelltests</a>
-                            </p>
-                            <p>
-                                <a href="./produktangebot.php" class="text-reset">Corona PCR-Tests</a>
-                            </p>
-                            <p>
-                                <a href="./produktangebot.php" class="text-reset">Schulungen</a>
-                            </p>
+                           <p>
+                                  <a href="./produktangebot.php?orderBy=Preis%20ASC&kategorie=Corona%20Schnelltests" class="text-reset">Corona Schnelltests</a>
+                              </p>
+                              <p>
+                                  <a href="./produktangebot.php?orderBy=Preis%20ASC&kategorie=Corona%20PCR-Tests" class="text-reset">Corona PCR-Tests</a>
+                              </p>
+                              <p>
+                                  <a href="./produktangebot.php?orderBy=Preis%20ASC&kategorie=Schulungen" class="text-reset">Schulungen</a>
+                              </p>
                         </div>
                         <!-- Grid column -->
                         <!-- Grid column -->

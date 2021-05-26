@@ -78,10 +78,11 @@
 <div class="LandingLogin" id="LandingLogin">
             <form action="/php/LoginVerarbeitung.php" method="POST">
                 <label id="Loginname" class="LabelLogin">Login:</label><center><input type="text" placeholder="Login" name="LoginName" id="LogLoginname" required></center>
-                <label id="LoginPasswort" class="LabelLogin">Passwort:</label><center><input type="text" placeholder="Passwort" name="LoginPasswort" id="LoginPasswort" require></center>
-                <input type="submit" class="login" id="login" value=Login>
-                <a class="cancel"  id="cancel" onclick="einAusblendenLoginRegForm()">Cancel</a>
+                <label id="LoginPasswort" class="LabelLogin">Passwort:</label><center><input type="password" placeholder="Passwort" name="LoginPasswort" id="LoginPasswort" minlength="8" required></center>
                 <label class="LabelChkbox" for id="LoginCheckbox">Anmeldedaten merken</label><input class="chkbox" type="checkbox" name="LoginCheckbox" id="LoginCheckbox">
+		<input type="submit" class="login" id="login" value=Login>
+                <a class="cancel"  id="cancel" onclick="einAusblendenLoginRegForm()">Cancel</a>
+                
                 <label onclick="nichtRegistriertHandler()" class="NotRegistered">Noch keinen Account?</label>
             </form>
         </div>
@@ -217,14 +218,14 @@
                                 Produkte
                             </h6>
                             <p>
-                                <a href="./content/produktangebot.php" class="text-reset">Corona Schnelltests</a>
-                            </p>
-                            <p>
-                                <a href="./content/produktangebot.php" class="text-reset">Corona PCR-Tests</a>
-                            </p>
-                            <p>
-                                <a href="./content/produktangebot.php" class="text-reset">Schulungen</a>
-                            </p>
+                                  <a href="./content/produktangebot.php?orderBy=Preis%20ASC&kategorie=Corona%20Schnelltests" class="text-reset">Corona Schnelltests</a>
+                              </p>
+                              <p>
+                                  <a href="./content/produktangebot.php?orderBy=Preis%20ASC&kategorie=Corona%20PCR-Tests" class="text-reset">Corona PCR-Tests</a>
+                              </p>
+                              <p>
+                                  <a href="./content/produktangebot.php?orderBy=Preis%20ASC&kategorie=Schulungen" class="text-reset">Schulungen</a>
+                              </p>
                         </div>
                         <!-- Grid column -->
                         <!-- Grid column -->

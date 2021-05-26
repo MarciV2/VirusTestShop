@@ -1,4 +1,8 @@
 function addProductToCart(product_name, product_id) {
+
+    console.log(product_id);
+    console.log(product_name);
+
     new Notify({
         title: unescape("Zu Einkaufswagen hinzugef%FCgt"),
         text: product_name,
@@ -29,7 +33,7 @@ function addProductToCart(product_name, product_id) {
 }
 
 function setTotalAmountOfProductsInCart() {
-    var product_counter = document.getElementById('product_counter');
+    var product_counter = document.getElementById("product_counter");
     if (getSumOfProductsInCart() <= 0) {
         product_counter.setAttribute("style", "display: none");
     } else {

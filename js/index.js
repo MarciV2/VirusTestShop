@@ -11,21 +11,12 @@
 //    }
 //};
 
-
-new Notify({
-    title: 'Notify Title',
-    text: 'Notify Message',
-    effect: 'slide',
-    speed: 300,
-    status: 'success',
-    autoclose: true,
-    autotimeout: 3000,
-    gap: 20,
-    distance: 20
-})
-
 function checkLogin(login)
 {
     console.log("Test checkLogin"+login);
 }
 
+function clickAGBs()
+{
+	window.location = "/content/agb.html";
+}
