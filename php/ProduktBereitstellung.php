@@ -53,7 +53,7 @@
     }
     //Kategorie-abfrage
     $kategorie=$_GET['kategorie'];
-    console_log($kategorie);
+    //console_log($kategorie);
    //Switch gegen SQL-Injection
    switch($kategorie){
         case "Corona Schnelltests"  : $kategorie="\n WHERE k.Bezeichnung = 'Test' \n"; break;
@@ -81,7 +81,7 @@
 
 
     $sqlPackungenCheck = mysqli_query($verbindung, $sqlPackungen);
-   console_log( $sqlPackungen);
+   //console_log( $sqlPackungen);
    //console_log(mysqli_error($verbindung));
     $valuePackungsArray = array();
     while($reihe2 = mysqli_fetch_assoc($sqlPackungenCheck)){ 

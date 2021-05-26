@@ -223,7 +223,7 @@
 
 
                    var packungen = JSON.parse(readCookie("PackungCookie"));
-                   console.log(packungen);
+                  // console.log(packungen);
                    //Anzeige gefundene Artikel aktualisieren
                    document.getElementById("artikel_count").innerText = packungen.length+ " Artikel gefunden";
 
@@ -327,15 +327,15 @@
                             <h6 class="text-uppercase fw-bold mb-4">
                                 Produkte
                             </h6>
-                            <p>
-                                <a href="./produktangebot.php" class="text-reset">Corona Schnelltests</a>
-                            </p>
-                            <p>
-                                <a href="./produktangebot.php" class="text-reset">Corona PCR-Tests</a>
-                            </p>
-                            <p>
-                                <a href="./produktangebot.php" class="text-reset">Schulungen</a>
-                            </p>
+                           <p>
+                                  <a href="./produktangebot.php?orderBy=Preis%20ASC&kategorie=Corona%20Schnelltests" class="text-reset">Corona Schnelltests</a>
+                              </p>
+                              <p>
+                                  <a href="./produktangebot.php?orderBy=Preis%20ASC&kategorie=Corona%20PCR-Tests" class="text-reset">Corona PCR-Tests</a>
+                              </p>
+                              <p>
+                                  <a href="./produktangebot.php?orderBy=Preis%20ASC&kategorie=Schulungen" class="text-reset">Schulungen</a>
+                              </p>
                         </div>
                         <!-- Grid column -->
                         <!-- Grid column -->

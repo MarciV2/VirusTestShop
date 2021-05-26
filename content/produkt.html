@@ -81,7 +81,7 @@
                       <!-- Shopping icon -->
                       <a class="text-reset me-4" href="./warenkorb.html">
                           <i class="fas fa-shopping-cart" style="color: #ffffff"></i>
-                          <span class="badge rounded-pill badge-notification bg-danger">11</span>
+                          <span id="product_counter" class="badge rounded-pill badge-notification bg-danger">11</span>
                       </a>
                       <!-- Bell icon -->
                       <a class="text-reset me-4" href="#">
@@ -174,82 +174,6 @@
                                   Produkt-Beschreibung
                               </h3>
                               <script>document.write(product_description);</script>
-                              <!-- <div class="accordion accordion-flush" style="margin-right: 20px">
-                                 <div class="accordion-item">
-                                     <h2 class="accordion-header" id="flush-headingOne">
-                                         <button class="accordion-button collapsed"
-                                                 type="button"
-                                                 data-mdb-toggle="collapse"
-                                                 data-mdb-target="#flush-collapseOne"
-                                                 aria-expanded="false"
-                                                 aria-controls="flush-collapseOne">
-                                             Inhalt
-                                         </button>
-                                     </h2>
-                                     <div id="flush-collapseOne"
-                                          class="accordion-collapse collapse"
-                                          aria-labelledby="flush-headingOne"
-                                          data-mdb-parent="#accordionFlushExample">
-                                         <div class="accordion-body">
-                                             <ul>
-                                                 <li>COVID-19-Antigen-Testkarte </li>
-                                                 <li>Speichelsammelgefäß (mit 1 ml Extraktionslösung) </li>
-                                                 <li>Einweg-Pipette</li>
-                                                 <li>Trichter (zum Sammeln des Speichels)</li>
-                                                 <li>Bedienungsanleitung auf Deutsch</li>
-                                             </ul>
-                                         </div>
-                                     </div>
-                                 </div>
-                                 <div class="accordion-item">
-                                     <h2 class="accordion-header" id="flush-headingTwo">
-                                         <button class="accordion-button collapsed"
-                                                 type="button"
-                                                 data-mdb-toggle="collapse"
-                                                 data-mdb-target="#flush-collapseTwo"
-                                                 aria-expanded="false"
-                                                 aria-controls="flush-collapseTwo">
-                                             Vorteile
-                                         </button>
-                                     </h2>
-                                     <div id="flush-collapseTwo"
-                                          class="accordion-collapse collapse"
-                                          aria-labelledby="flush-headingTwo"
-                                          data-mdb-parent="#accordionFlushExample">
-                                         <div class="accordion-body">
-                                             <ul>
-                                                 <li>Neben dem herkömmlichen Coronavirus diagnostiziert der Test auch alle bisher bekannten Mutationen.</li>
-                                                 <li>Da der Test immer einzeln verpackt ist, ist er ideal für jeden der sich aufgrund von Symptomen, oder aber auch einfach provisorisch testen möchte.</li>
-                                                 <li>Die schlanke, platzsparende Verpackung bietet sich außerdem ideal für unterwegs an. So ist ein Test vor dem Friseurbesuch, der Schule oder dem Besuch im Pflegeheim problemlos möglich.</li>
-                                             </ul>
-                                         </div>
-                                     </div>
-                                 </div>
-                                 <div class="accordion-item">
-                                     <h2 class="accordion-header" id="flush-headingThree">
-                                         <button class="accordion-button collapsed"
-                                                 type="button"
-                                                 data-mdb-toggle="collapse"
-                                                 data-mdb-target="#flush-collapseThree"
-                                                 aria-expanded="false"
-                                                 aria-controls="flush-collapseThree">
-                                             Hinweise
-                                         </button>
-                                     </h2>
-                                     <div id="flush-collapseThree"
-                                          class="accordion-collapse collapse"
-                                          aria-labelledby="flush-headingThree"
-                                          data-mdb-parent="#accordionFlushExample">
-                                         <div class="accordion-body">
-                                             <ul>
-                                                 <li>Positive Ergebnisse schließen dabei eine bakterielle Infektion oder Co-Infektion mit anderen Viren nicht aus.</li>
-                                                 <li>Negative Ergebnisse schließen SARS-CoV-2-Infektionen nicht aus und sollten nicht als alleinige Grundlage für den Nachweis verwendet werden und gegeben falls mit einem PCR-Test bestätigt werden.</li>
-                                             </ul>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                                -->
                               <br />
                               <br />
                               <div class="row">
@@ -257,7 +181,11 @@
                                       <input id="number" type="number" value="1" min="1" style=" width: 100%; padding: 5px; text-align: center; border: none; border-bottom: 2px solid #1E90FF;">
                                   </div>
                                   <div class="col-md-8">
-                                      <a href="./warenkorb.html" class="btn btn-primary btn-rounded" style="display: block; background-color: #1E90FF; height: 100%">In den Warenkorb</a>
+
+                                      <script>
+                                          document.write("<a class='btn btn-primary btn-rounded buttonTocartMarginBottom' onclick=\"addProductToCart(\'" + product_name + "\', " + product_id + ")\" style='display: block; background-color: #1E90FF'>In den Warenkorb</a>");
+                                      </script>
+
                                   </div>
                               </div>
 
@@ -300,13 +228,13 @@
                                   Produkte
                               </h6>
                               <p>
-                                  <a href="./produktangebot.html" class="text-reset">Corona Schnelltests</a>
+                                  <a href="./produktangebot.php?orderBy=Preis%20ASC&kategorie=Corona%20Schnelltests" class="text-reset">Corona Schnelltests</a>
                               </p>
                               <p>
-                                  <a href="./produktangebot.html" class="text-reset">Corona PCR-Tests</a>
+                                  <a href="./produktangebot.php?orderBy=Preis%20ASC&kategorie=Corona%20PCR-Tests" class="text-reset">Corona PCR-Tests</a>
                               </p>
                               <p>
-                                  <a href="./produktangebot.html" class="text-reset">Schulungen</a>
+                                  <a href="./produktangebot.php?orderBy=Preis%20ASC&kategorie=Schulungen" class="text-reset">Schulungen</a>
                               </p>
                           </div>
                           <!-- Grid column -->
@@ -362,6 +290,11 @@
       <!-- End your project here-->
       <!-- MDB -->
       <script type="text/javascript" src="../js/mdb.min.js"></script>
+
+      <script src="../src/simple-notify/simple-notify.min.js"></script>
+
+      <script src="../js/produktangebote.js"></script>
+
       <script src="../js/cartNumber.js"></script>
 
   </body>

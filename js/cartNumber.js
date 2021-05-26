@@ -1,5 +1,5 @@
 function setTotalAmountOfProductsInCart() {
-    var product_counter = document.getElementById('product_counter');
+    var product_counter = document.getElementById("product_counter");
     if (getSumOfProductsInCart() <= 0) {
         product_counter.setAttribute("style", "display: none");
     } else {

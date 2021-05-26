@@ -218,14 +218,14 @@
                                 Produkte
                             </h6>
                             <p>
-                                <a href="./content/produktangebot.php" class="text-reset">Corona Schnelltests</a>
-                            </p>
-                            <p>
-                                <a href="./content/produktangebot.php" class="text-reset">Corona PCR-Tests</a>
-                            </p>
-                            <p>
-                                <a href="./content/produktangebot.php" class="text-reset">Schulungen</a>
-                            </p>
+                                  <a href="./content/produktangebot.php?orderBy=Preis%20ASC&kategorie=Corona%20Schnelltests" class="text-reset">Corona Schnelltests</a>
+                              </p>
+                              <p>
+                                  <a href="./content/produktangebot.php?orderBy=Preis%20ASC&kategorie=Corona%20PCR-Tests" class="text-reset">Corona PCR-Tests</a>
+                              </p>
+                              <p>
+                                  <a href="./content/produktangebot.php?orderBy=Preis%20ASC&kategorie=Schulungen" class="text-reset">Schulungen</a>
+                              </p>
                         </div>
                         <!-- Grid column -->
                         <!-- Grid column -->
