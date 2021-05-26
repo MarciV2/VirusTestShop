@@ -28,74 +28,85 @@
     <div class="windowedPage">
         <!-- Start your project here-->
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top windowedPageNavbar">
-            <div class="container-fluid">
-                <button class="navbar-toggler"
-                        type="button"
-                        data-mdb-toggle="collapse"
-                        data-mdb-target="#navbarExample01"
-                        aria-controls="navbarExample01"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarExample01" margin="200px">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item active">
-                            <a class="nav-link" aria-current="page" href="../index.php" style="color: white">Startseite</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./produktangebot.php" style="color: white; font-weight: 900">Produktangebot</a>
-                        </li>
-                        	<li class="nav-item">
-                            <a class="nav-link" href="termine.html" style="color: white">Schulungstermine</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" 
-                               style="color: white"
-                               href="#"
-                               id="navbarDropdownMenuLink"
-                               role="button"
-                               data-mdb-toggle="dropdown"
-                               aria-expanded="false">
-                                Anleitungen
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li>
-                                    <a class="dropdown-item" href="https://www.stuttgarter-nachrichten.de/inhalt.corona-schnelltest-anleitung-mhsd.1c6201bd-dc78-4b03-b7d8-cf7d324b9b77.html">Corona Schnelltest</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="./produktangebot.php?orderBy=Preis%20ASC&kategorie=Schulungen">Corona PCR-Test</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://www.bundesregierung.de/breg-de/themen/coronavirus" style="color: white">Über Corona</a>
-                        </li>
-                    </ul>
-                </div>
+          <nav class="navbar navbar-expand-lg navbar-light fixed-top windowedPageNavbar">
+              <div class="container-fluid">
+                  <button class="navbar-toggler"
+                          type="button"
+                          data-mdb-toggle="collapse"
+                          data-mdb-target="#navbarExample01"
+                          aria-controls="navbarExample01"
+                          aria-expanded="false"
+                          aria-label="Toggle navigation">
+                      <i class="fas fa-bars"></i>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarExample01" margin="200px">
+                      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                          <li class="nav-item active">
+                              <a class="nav-link" aria-current="page" href="../index.php" style="color: white">Startseite</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="./produktangebot.php" style="color: white">Produktangebot</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="./termine.html" style="color: white">Schulungstermine</a>
+                          </li>
+                          <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle"
+                                 style="color: white"
+                                 href="#"
+                                 id="navbarDropdownMenuLink"
+                                 role="button"
+                                 data-mdb-toggle="dropdown"
+                                 aria-expanded="false">
+                                  Anleitungen
+                              </a>
+                              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                  <li>
+                                      <a class="dropdown-item" href="https://www.stuttgarter-nachrichten.de/inhalt.corona-schnelltest-anleitung-mhsd.1c6201bd-dc78-4b03-b7d8-cf7d324b9b77.html">Corona Schnelltest</a>
+                                  </li>
+                                  <li>
+                                      <a class="dropdown-item" href="./produktangebot.php?orderBy=Preis%20ASC&kategorie=Schulungen">Corona PCR-Test</a>
+                                  </li>
+                              </ul>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="https://www.bundesregierung.de/breg-de/themen/coronavirus" style="color: white">Über Corona</a>
+                          </li>
+                      </ul>
+                  </div>
 
-                <!-- Right elements -->
-              <div class="d-flex align-items-center">
-                    <!-- Shopping icon -->
-                    <a class="text-reset me-4" href="./warenkorb.html">
-                        <i class="fas fa-shopping-cart" style="color: #ffffff"></i>
-                        <span id="product_counter" class="badge rounded-pill badge-notification bg-danger">11</span>
-                    </a>
-                    <!-- Bell icon -->
-                    <a class="text-reset me-4" href="#">
-                        <i class="fas fa-bell" style="color: #ffffff"></i>
-                    </a>
-                    <!-- Account icon -->
-                    <a onclick="einAusblendenLoginRegForm()" class="text-reset me-3"  >
-                        <i class="fas fa-user-circle" id="LoginButton"  style="color: #ffffff"></i>
-                    </a>
-
-
-                </div>
-                <!-- Right elements -->
-            </div>
-        </nav>
+                  <!-- Right elements -->
+                  <div class="d-flex align-items-center">
+                      <!-- Shopping icon -->
+                      <a class="text-reset me-4" href="./warenkorb.html">
+                          <i class="fas fa-shopping-cart" style="color: #ffffff"></i>
+                          <span id="product_counter" class="badge rounded-pill badge-notification bg-danger" style="display: none">11</span>
+                      </a>
+                      <!-- Account icon -->
+                      <a class="text-reset me-3"
+                         href="#"
+                         id="navbarDropdownMenuLink"
+                         role="button"
+                         data-mdb-toggle="dropdown"
+                         aria-expanded="false">
+                          <i class="fas fa-user-circle" style="color: #ffffff"></i>
+                      </a>
+                      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                          <li>
+                              <a class="dropdown-item" href="#">Profil</a>
+                          </li>
+                          <li>
+                              <a class="dropdown-item" href="./bestellungen.php">Bestellungen</a>
+                          </li>
+                          <li><hr class="dropdown-divider" /></li>
+                          <li>
+                              <a class="dropdown-item" href="#">Logout</a>
+                          </li>
+                      </ul>
+                  </div>
+                  <!-- Right elements -->
+              </div>
+          </nav>
         <!-- Navbar -->
         <!-- Background image -->
         <div class="p-5 text-center bg-image" style="background-image: url('../img/corona.jpg'); height: 350px">
