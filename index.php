@@ -139,24 +139,35 @@
                 </div>
 
                 <!-- Right elements -->
-                <div class="d-flex align-items-center">
-                    <!-- Shopping icon -->
-                    <a class="text-reset me-4" href="./content/warenkorb.html">
-                        <i class="fas fa-shopping-cart" style="color: #ffffff"></i>
-                        <span id="product_counter" class="badge rounded-pill badge-notification bg-danger">11</span>
-                    </a>
-                    <!-- Bell icon -->
-                    <a class="text-reset me-4" href="#">
-                        <i class="fas fa-bell" style="color: #ffffff"></i>
-                    </a>
-                    <!-- Account icon -->
-                    <a onclick="einAusblendenLoginRegForm()" class="text-reset me-3"  >
-                        <i class="fas fa-user-circle" id="LoginButton"  style="color: #ffffff"></i>
-                    </a>
-
-
-                </div>
-                <!-- Right elements -->
+                  <div class="d-flex align-items-center">
+                      <!-- Shopping icon -->
+                      <a class="text-reset me-4" href="./content/warenkorb.html">
+                          <i class="fas fa-shopping-cart" style="color: #ffffff"></i>
+                          <span id="product_counter" class="badge rounded-pill badge-notification bg-danger" style="display: none">11</span>
+                      </a>
+                      <!-- Account icon -->
+                      <a class="text-reset me-3"
+                         href="#"
+                         id="navbarDropdownMenuLink"
+                         role="button"
+                         data-mdb-toggle="dropdown"
+                         aria-expanded="false">
+                          <i class="fas fa-user-circle" style="color: #ffffff"></i>
+                      </a>
+                      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                          <li>
+                              <a class="dropdown-item" href="#">Profil</a>
+                          </li>
+                          <li>
+                              <a class="dropdown-item" href="./content/bestellungen.php">Bestellungen</a>
+                          </li>
+                          <li><hr class="dropdown-divider" /></li>
+                          <li>
+                              <a class="dropdown-item" href="#">Logout</a>
+                          </li>
+                      </ul>
+                  </div>
+                  <!-- Right elements -->
             </div>
         </nav>
         <!-- Ende Navbar -->
