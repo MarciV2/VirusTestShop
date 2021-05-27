@@ -25,6 +25,8 @@ $verbindung = mysqli_connect($servername, $dbusername, $dbpasswort);
 if(!$verbindung)
 {
     console_log("Error Verbindung");
+    exit;
+    header("location: \index.php");
 }
 
 #konkrete Datenbank auf dem dem Server auswählen
@@ -35,7 +37,8 @@ if(!$datenbank)
 {
     console_log("Kann die Datenbank nicht verwenden");
     mysqli_close($verbindung);      # Verbindung schliessen bei vorangegagenem Zugriffsfehler
-    exit;                           # Programm beenden
+    exit;
+    header("location: \index.php");                           # Programm beenden
 }
 
 console_log($_POST);
@@ -76,7 +79,7 @@ if(isset($_POST))
     
 
 
-    $sqlUsernameCheck = "SELECT `Loginname` FROM `kunde` WHERE `Loginname` = '$loginname'";
+    $sqlUsernameCheck = "SELECT `LoginName` FROM `kunde` WHERE `LoginName` = '$loginname'";
     $sqlUserCheckErgebnis = mysqli_query($verbindung, $sqlUsernameCheck);
     $sqlUserCheckReihen = @mysqli_num_rows($sqlUserCheckErgebnis);
     console_log($sqlUsernameCheck);
@@ -89,7 +92,6 @@ if(isset($_POST))
         echo '<script type="text/javascript" src="/scripts/scripts.js">abortRegister()</scripts>';
         console_log("Username schon vergeben Bitte nutzen Sie einen anderen Username.");
         $_SESSION['login'] = 0;
-        exit;
     }
 
     #Select query für die Adress Id vorbereiten
@@ -97,6 +99,7 @@ if(isset($_POST))
                             `Straße` = '$strasse' AND 
                             `PLZ` = '$plz' AND
                             `Stadt` = '$stadt' AND
+                            `Hausnummer`= '$hausnummer' AND
                             `Stadtteil` = '$stadtteil' AND
                             `Bundesland` = '$bundesland' AND
                             `Land` = '$land' )
@@ -108,8 +111,8 @@ if(isset($_POST))
     #wenn die query kein ergebnis zurück liefert die neue Adrese pushen
     if($adressIDergebnisCheck < 1)
     {
-        $sqlAdresse = "INSERT INTO `adresse`(`Straße`, `PLZ`, `Stadt`, `Stadtteil`, `Bundesland`, `Land`)
-                        VALUES ('$strasse','$plz','$stadt','$stadtteil','$bundesland','$land')";
+        $sqlAdresse = "INSERT INTO `adresse`(`Straße`, `Hausnummer`, `PLZ`, `Stadt`, `Stadtteil`, `Bundesland`, `Land`)
+                        VALUES ('$strasse', '$hausnummer' ,'$plz','$stadt','$stadtteil','$bundesland','$land')";
         console_log($sqlAdresse);
         $adressIDInsertErgebnis = mysqli_query($verbindung, $sqlAdresse);
         #neue Adress ID abholen
@@ -125,13 +128,13 @@ if(isset($_POST))
     
     
 
-    $sqlKunde = "INSERT INTO `kunde`(`Name`, `Vorname`, `Telefon`, `Email`, `Adresse_ID`, `Kundentyp_ID`, `Passwort`, `LoginName`)
-                    VALUES ('$vorname','$nachname','$telefon','$email','$adressID','$firmenkunde','$passwort', '$loginname')";
+    $sqlKunde = "INSERT INTO `kunde`(`LoginName`, `Name`,  `Vorname`, `Telefon`, `Email`, `Adresse_ID`, `Kundentyp_ID`, `Passwort` )
+                    VALUES ('$loginname', '$nachname', '$vorname','$telefon', '$email','$adressID','$firmenkunde','$passwort' )";
 
     console_log($sqlKunde);
 
     $sqlKundeErgebnis = mysqli_query($verbindung, $sqlKunde);
-    console_log($sqlKundeErgebnis);    
+    console_log($sqlKundeErgebnis); 
     
     # User korrekt in der Datenbank eingetragen?
 
@@ -156,14 +159,15 @@ if(isset($_POST))
         console_log("Registrierung und anschliessender Login erfolgreich.");
         $_SESSION["login"] = 1;        
         $_SESSION["user"] = $userDatenArray;
-
+        exit;
         console_log($_SESSION);
     }
     else if($anzahlReihen > 0 && $userKundentypID == 2)
     {
         console_log("Registrierung und anschliessender Login erfolgreich.");
-        $_SESSION["login"] = 2
-        $_SESSION["user"] = $userDatenArray
+        $_SESSION["login"] = 2;
+        $_SESSION["user"] = $userDatenArray;
+        exit;
     }
     else
     {
@@ -181,15 +185,16 @@ if(isset($_POST))
     {
     console_log("Registrierung und Anmeldung erfolgreich.");
     mysqli_close($verbindung);
-    header('location: /index.php');    
     exit;
+    header('location: /index.php');
     }    
 }
 
 
 console_log("php durchgelaufen");
 mysqli_close($verbindung);
-header('location: /index.php');s
+exit;
+header('location: /index.php');
 
 ?>
  
