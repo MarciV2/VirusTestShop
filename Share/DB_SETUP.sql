@@ -74,7 +74,7 @@ DROP TABLE IF EXISTS `VTS`.`Adresse` ;
 
 CREATE TABLE IF NOT EXISTS `VTS`.`Adresse` (
   `Adresse_ID` INT NOT NULL AUTO_INCREMENT,
-  `Straße` VARCHAR(45) NULL,
+  `Strasse` VARCHAR(45) NULL,
   `Hausnummer` VARCHAR(45) NULL,
   `PLZ` INT NULL,
   `Stadt` VARCHAR(45) NULL,
@@ -409,7 +409,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `VTS`;
-INSERT INTO `VTS`.`Adresse` (`Adresse_ID`, `Straße`, `Hausnummer`, `PLZ`, `Stadt`, `Stadtteil`, `Bundesland`, `Land`) VALUES (1, 'Vorstadtstraße', '24', 73494, 'Rosenberg', 'Hohenberg', 'Baden-Württemberg', 'Deutschland');
+INSERT INTO `VTS`.`Adresse` (`Adresse_ID`, `Strasse`, `Hausnummer`, `PLZ`, `Stadt`, `Stadtteil`, `Bundesland`, `Land`) VALUES (1, 'Vorstadtstrasse', '24', 73494, 'Rosenberg', 'Hohenberg', 'Baden-Württemberg', 'Deutschland');
 
 COMMIT;
 
