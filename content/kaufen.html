@@ -269,7 +269,7 @@
                               </div>
                               <div class="col-sm-5">
                                   <div class="form-outline" style="margin-bottom: 15px">
-                                      <input type="text" id="hausnummer" class="form-control" disabled />
+                                      <input type="number" id="hausnummer" class="form-control" disabled />
                                       <label class="form-label" for="typeText">Hausnummer*</label>
                                   </div>
                               </div>
@@ -277,7 +277,7 @@
                           <div class="row">
                               <div class="col-sm-5">
                                   <div class="form-outline" style="margin-bottom: 15px">
-                                      <input type="text" id="plz" class="form-control" disabled />
+                                      <input type="number" id="plz" class="form-control" disabled />
                                       <label class="form-label" for="typeText">Postleitzahl*</label>
                                   </div>
                               </div>
@@ -302,6 +302,11 @@
                                   </div>
                               </div>
                           </div>
+
+                          <div id="lieferadresse_alert" style="background-color: #ff9c9c; color: #6e0000; padding: 15px; margin-top: 20px; border-radius: 4px; display: none">
+                              Bitte vervollständige oder korrigiere deine Angaben.
+                          </div>
+
                       </div>
 
                   </div>
@@ -408,8 +413,6 @@
                       document.getElementById("kaufenDiv").innerHTML = "<h4 style='padding: 60px; padding-top: 70px'>Sie müssen eingeloggt sein, um Produkte kaufen zu können.</h4>";
                   }
               </script>
-
-
           </div>
 
 

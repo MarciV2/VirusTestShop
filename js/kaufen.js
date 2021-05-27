@@ -92,7 +92,22 @@ function goToStep3() {
 }
 
 function nextStep() {
-    if (step == 2) {
+    if (step == 1) {
+        if (document.getElementById('useAlternativeAddress').checked == false) {
+            if (!checkValidation()) {
+                document.getElementById('lieferadresse_alert').setAttribute("style", "background-color: #ff9c9c; color: #6e0000; padding: 15px; margin-top: 20px; border-radius: 4px; display: block");
+            } else {
+                document.getElementById('lieferadresse_alert').setAttribute("style", "display: none");
+                step = step + 1;
+                document.getElementById('button_previous').setAttribute("style", "display: block; background-color: #1E90FF; margin-bottom: 20px");
+                setStepperColors();
+            }
+        } else {
+            step = step + 1;
+            document.getElementById('button_previous').setAttribute("style", "display: block; background-color: #1E90FF; margin-bottom: 20px");
+            setStepperColors();
+        }
+    } else if (step == 2) {
         if (selectedPaymentMethod == null) {
             document.getElementById('payment_alert').setAttribute("style", "background-color: #ff9c9c; color: #6e0000; padding: 15px; margin-top: 20px; border-radius: 4px; display: block");
         } else {
@@ -175,4 +190,35 @@ function setStepperColors() {
         document.getElementById('tab_zahlungsart').setAttribute("style", "display: none");
         document.getElementById('tab_abgeschlossen').setAttribute("style", "display: block");
     }
+}
+
+function checkValidation() {
+    formCorrect = true;
+
+    if (document.getElementById('vorname').value == "") {
+        formCorrect = false;
+    }
+    if (document.getElementById('nachname').value == "") {
+        formCorrect = false;
+    }
+    if (document.getElementById('email').value == "") {
+        formCorrect = false;
+    }
+    if (document.getElementById('strasse').value == "") {
+        formCorrect = false;
+    }
+    if (document.getElementById('hausnummer').value == "") {
+        formCorrect = false;
+    }
+    if (document.getElementById('plz').value == "") {
+        formCorrect = false;
+    }
+    if (document.getElementById('stadt').value == "") {
+        formCorrect = false;
+    }
+    if (document.getElementById('land').value == "") {
+        formCorrect = false;
+    }
+
+    return formCorrect;
 }
