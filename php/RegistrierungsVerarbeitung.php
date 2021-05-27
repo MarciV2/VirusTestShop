@@ -159,6 +159,7 @@ if(isset($_POST))
         console_log("Registrierung und anschliessender Login erfolgreich.");
         $_SESSION["login"] = 1;        
         $_SESSION["user"] = $userDatenArray;
+        $_SESSION["newReg"] = 1;
         exit;
         console_log($_SESSION);
     }
@@ -167,6 +168,7 @@ if(isset($_POST))
         console_log("Registrierung und anschliessender Login erfolgreich.");
         $_SESSION["login"] = 2;
         $_SESSION["user"] = $userDatenArray;
+        $_SESSION["newReg"] = 1;
         exit;
     }
     else

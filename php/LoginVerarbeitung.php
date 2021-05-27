@@ -67,12 +67,14 @@ if(isset($_POST))
         $_SESSION['login'] = 1;
 
         $_SESSION['user'] = $userDatenArray;
+        $_SESSION['newLogin'] = 1;
        
     }
     else if($anzahlReihen > 0 && $kundentypID == 2)
     {
         $_SESSION['login'] = 2;
         $_SESSION['user'] = $userDatenArray;
+        $_SESSION['newLogin'] = 1;
     }
     else 
     {
