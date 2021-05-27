@@ -96,7 +96,7 @@ if(isset($_POST))
 
     #Select query für die Adress Id vorbereiten
     $sqlSelectAdressID = "SELECT `Adresse_ID` FROM `adresse` WHERE (
-                            `Straße` = '$strasse' AND 
+                            `Strasse` = '$strasse' AND 
                             `PLZ` = '$plz' AND
                             `Stadt` = '$stadt' AND
                             `Hausnummer`= '$hausnummer' AND
@@ -111,7 +111,7 @@ if(isset($_POST))
     #wenn die query kein ergebnis zurück liefert die neue Adrese pushen
     if($adressIDergebnisCheck < 1)
     {
-        $sqlAdresse = "INSERT INTO `adresse`(`Straße`, `Hausnummer`, `PLZ`, `Stadt`, `Stadtteil`, `Bundesland`, `Land`)
+        $sqlAdresse = "INSERT INTO `adresse`(`Strasse`, `Hausnummer`, `PLZ`, `Stadt`, `Stadtteil`, `Bundesland`, `Land`)
                         VALUES ('$strasse', '$hausnummer' ,'$plz','$stadt','$stadtteil','$bundesland','$land')";
         console_log($sqlAdresse);
         $adressIDInsertErgebnis = mysqli_query($verbindung, $sqlAdresse);
