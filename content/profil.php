@@ -87,7 +87,7 @@
                       </a>
                       <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                           <li>
-                              <a class="dropdown-item" href="./profil.html">Profil</a>
+                              <a class="dropdown-item" href="./profil.php">Profil</a>
                           </li>
                           <li>
                               <a class="dropdown-item" href="./bestellungen.php">Bestellungen</a>
@@ -126,28 +126,27 @@
                           <br />
                           <div class="row">
                               <div class="col-6">Loginname: </div>
-                              <div class="col-6 d-flex justify-content-end"> XXXXXXXX</div>
+                              <div class="col-6 d-flex justify-content-end" id="field_loginname"> XXXXXXXX</div>
                           </div>
                           <div class="row">
                               <div class="col-6">Vorname: </div>
-                              <div class="col-6 d-flex justify-content-end"> XXXXXXXX</div>
+                              <div class="col-6 d-flex justify-content-end" id="field_vorname"> XXXXXXXX</div>
                           </div>
                           <div class="row">
                               <div class="col-6">Nachname: </div>
-                              <div class="col-6 d-flex justify-content-end"> XXXXXXXX</div>
+                              <div class="col-6 d-flex justify-content-end" id="field_nachname"> XXXXXXXX</div>
                           </div>
                           <div class="row">
                               <div class="col-6">E-Mail-Adresse: </div>
-                              <div class="col-6 d-flex justify-content-end"> XXXXXXXX</div>
+                              <div class="col-6 d-flex justify-content-end" id="field_email"> XXXXXXXX</div>
                           </div>
                           <div class="row">
                               <div class="col-6">Telefonnummer: </div>
-                              <div class="col-6 d-flex justify-content-end"> XXXXXXXX</div>
+                              <div class="col-6 d-flex justify-content-end" id="field_telnr"> XXXXXXXX</div>
                           </div>
                           <div class="row">
-                              <div class="col-6">Passwort: </div>
-                              <div class="col-6 d-flex justify-content-end"> XXXXXXXX</div>
-                          </div>
+                              <div class="col-6">Kundentyp: </div>
+                              <div class="col-6 d-flex justify-content-end" id="field_kundentyp"> XXXXXXXX</div>
                       </div>
                       <div class="col-md-2 d-flex justify-content-center">
                           <div style="height: 100%; width: 1px; background-color: gainsboro"></div>
@@ -158,27 +157,27 @@
                           <br />
                           <div class="row">
                               <div class="col-6">Land: </div>
-                              <div class="col-6 d-flex justify-content-end"> XXXXXXXX</div>
+                              <div class="col-6 d-flex justify-content-end" id="field_land"> XXXXXXXX</div>
                           </div>
                           <div class="row">
                               <div class="col-6">Bundesland: </div>
-                              <div class="col-6 d-flex justify-content-end"> XXXXXXXX</div>
+                              <div class="col-6 d-flex justify-content-end" id="field_bundesland"> XXXXXXXX</div>
                           </div>
                           <div class="row">
                               <div class="col-6">Stadt: </div>
-                              <div class="col-6 d-flex justify-content-end"> XXXXXXXX</div>
+                              <div class="col-6 d-flex justify-content-end" id="field_stadt"> XXXXXXXX</div>
                           </div>
                           <div class="row">
                               <div class="col-6">Stadtteil: </div>
-                              <div class="col-6 d-flex justify-content-end"> XXXXXXXX</div>
+                              <div class="col-6 d-flex justify-content-end" id="field_stadtteil"> XXXXXXXX</div>
                           </div>
                           <div class="row">
                               <div class="col-6">Postleitzahl: </div>
-                              <div class="col-6 d-flex justify-content-end"> XXXXXXXX</div>
+                              <div class="col-6 d-flex justify-content-end" id="field_plz"> XXXXXXXX</div>
                           </div>
                           <div class="row">
                               <div class="col-6">Straße: </div>
-                              <div class="col-6 d-flex justify-content-end"> Hauptstraße 100</div>
+                              <div class="col-6 d-flex justify-content-end" id="field_strasse"> Hauptstraße 100</div>
                           </div>
                       </div>
                   </div>
@@ -202,7 +201,10 @@
                   <br />
                   <br />
 
-
+                  <?php
+                    error_reporting(0);
+                    include_once("../php/ProfilDatenBereitstellung.php");
+                  ?>
 
               </div>
           </div>
@@ -299,9 +301,9 @@
 
       <script src="../src/simple-notify/simple-notify.min.js"></script>
 
-      <script src="../js/produktangebote.js"></script>
+    <!--  <script src="../js/produktangebote.js"></script>
 
-      <script src="../js/cartNumber.js"></script>
+      <script src="../js/cartNumber.js"></script> -->
 
   </body>
 </html>

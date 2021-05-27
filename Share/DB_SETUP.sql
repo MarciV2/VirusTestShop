@@ -62,9 +62,9 @@ CREATE TABLE IF NOT EXISTS `VTS`.`Artikel` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `fk_Artikel_Kategorie1_idx` ON `VTS`.`Artikel` (`Kategorie_ID` ASC);
+CREATE INDEX `fk_Artikel_Kategorie1_idx` ON `VTS`.`Artikel` (`Kategorie_ID` ASC) ;
 
-CREATE INDEX `fk_Artikel_Hersteller1_idx` ON `VTS`.`Artikel` (`Hersteller_ID` ASC);
+CREATE INDEX `fk_Artikel_Hersteller1_idx` ON `VTS`.`Artikel` (`Hersteller_ID` ASC) ;
 
 
 -- -----------------------------------------------------
@@ -74,7 +74,7 @@ DROP TABLE IF EXISTS `VTS`.`Adresse` ;
 
 CREATE TABLE IF NOT EXISTS `VTS`.`Adresse` (
   `Adresse_ID` INT NOT NULL AUTO_INCREMENT,
-  `Strasse` VARCHAR(45) NULL,
+  `Straße` VARCHAR(45) NULL,
   `Hausnummer` VARCHAR(45) NULL,
   `PLZ` INT NULL,
   `Stadt` VARCHAR(45) NULL,
@@ -125,13 +125,13 @@ CREATE TABLE IF NOT EXISTS `VTS`.`Kunde` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `Adresse_ID_idx` ON `VTS`.`Kunde` (`Adresse_ID` ASC);
+CREATE INDEX `Adresse_ID_idx` ON `VTS`.`Kunde` (`Adresse_ID` ASC) ;
 
-CREATE INDEX `fk_Kunde_Kundentyp1_idx` ON `VTS`.`Kunde` (`Kundentyp_ID` ASC);
+CREATE INDEX `fk_Kunde_Kundentyp1_idx` ON `VTS`.`Kunde` (`Kundentyp_ID` ASC) ;
 
-CREATE UNIQUE INDEX `Email_UNIQUE` ON `VTS`.`Kunde` (`Email` ASC);
+CREATE UNIQUE INDEX `Email_UNIQUE` ON `VTS`.`Kunde` (`Email` ASC) ;
 
-CREATE UNIQUE INDEX `LoginName_UNIQUE` ON `VTS`.`Kunde` (`LoginName` ASC);
+CREATE UNIQUE INDEX `LoginName_UNIQUE` ON `VTS`.`Kunde` (`LoginName` ASC) ;
 
 
 -- -----------------------------------------------------
@@ -201,15 +201,15 @@ CREATE TABLE IF NOT EXISTS `VTS`.`Bestellung` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `Kunde_ID_idx` ON `VTS`.`Bestellung` (`Kunde_ID` ASC);
+CREATE INDEX `Kunde_ID_idx` ON `VTS`.`Bestellung` (`Kunde_ID` ASC) ;
 
-CREATE INDEX `Lieferadresse_ID_idx` ON `VTS`.`Bestellung` (`Lieferdresse_ID` ASC);
+CREATE INDEX `Lieferadresse_ID_idx` ON `VTS`.`Bestellung` (`Lieferdresse_ID` ASC) ;
 
-CREATE INDEX `fk_Bestellung_Bezahlmethode1_idx` ON `VTS`.`Bestellung` (`Bezahlmethode_ID` ASC);
+CREATE INDEX `fk_Bestellung_Bezahlmethode1_idx` ON `VTS`.`Bestellung` (`Bezahlmethode_ID` ASC) ;
 
-CREATE INDEX `fk_Bestellung_Adresse1_idx` ON `VTS`.`Bestellung` (`Rechnungsadresse_ID` ASC);
+CREATE INDEX `fk_Bestellung_Adresse1_idx` ON `VTS`.`Bestellung` (`Rechnungsadresse_ID` ASC) ;
 
-CREATE INDEX `fk_Bestellung_Bestellstatus1_idx` ON `VTS`.`Bestellung` (`Bestellstatus_ID` ASC);
+CREATE INDEX `fk_Bestellung_Bestellstatus1_idx` ON `VTS`.`Bestellung` (`Bestellstatus_ID` ASC) ;
 
 
 -- -----------------------------------------------------
@@ -232,7 +232,7 @@ CREATE TABLE IF NOT EXISTS `VTS`.`Packung` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `fk_Packung_Artikel1_idx` ON `VTS`.`Packung` (`Artikel_ID` ASC);
+CREATE INDEX `fk_Packung_Artikel1_idx` ON `VTS`.`Packung` (`Artikel_ID` ASC) ;
 
 
 -- -----------------------------------------------------
@@ -244,7 +244,7 @@ CREATE TABLE IF NOT EXISTS `VTS`.`Bestellungsposition` (
   `Bestellungsposition_ID` INT NOT NULL AUTO_INCREMENT,
   `Preis` DOUBLE NULL,
   `Anzahl` INT NULL,
-  `Bestellpositionsnummer` VARCHAR(45) NOT NULL,
+  `Bestellpositionsnummer` VARCHAR(45) NULL,
   `Bestellung_ID` INT NOT NULL,
   `Packung_ID` INT NOT NULL,
   PRIMARY KEY (`Bestellungsposition_ID`),
@@ -260,11 +260,9 @@ CREATE TABLE IF NOT EXISTS `VTS`.`Bestellungsposition` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE UNIQUE INDEX `Bestellpositionsnummer_UNIQUE` ON `VTS`.`Bestellungsposition` (`Bestellpositionsnummer` ASC);
+CREATE INDEX `fk_Bestellungsposition_Bestellung1_idx` ON `VTS`.`Bestellungsposition` (`Bestellung_ID` ASC) ;
 
-CREATE INDEX `fk_Bestellungsposition_Bestellung1_idx` ON `VTS`.`Bestellungsposition` (`Bestellung_ID` ASC);
-
-CREATE INDEX `fk_Bestellungsposition_Packung1_idx` ON `VTS`.`Bestellungsposition` (`Packung_ID` ASC);
+CREATE INDEX `fk_Bestellungsposition_Packung1_idx` ON `VTS`.`Bestellungsposition` (`Packung_ID` ASC) ;
 
 
 -- -----------------------------------------------------
@@ -289,9 +287,9 @@ CREATE TABLE IF NOT EXISTS `VTS`.`Bestellfaehigkeit` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `fk_Bestellfaehigkeit_Kundentyp1_idx` ON `VTS`.`Bestellfaehigkeit` (`Kundentyp_ID` ASC);
+CREATE INDEX `fk_Bestellfaehigkeit_Kundentyp1_idx` ON `VTS`.`Bestellfaehigkeit` (`Kundentyp_ID` ASC) ;
 
-CREATE INDEX `fk_Bestellfaehigkeit_Kategorie1_idx` ON `VTS`.`Bestellfaehigkeit` (`Kategorie_ID` ASC);
+CREATE INDEX `fk_Bestellfaehigkeit_Kategorie1_idx` ON `VTS`.`Bestellfaehigkeit` (`Kategorie_ID` ASC) ;
 
 
 -- -----------------------------------------------------
@@ -311,7 +309,7 @@ CREATE TABLE IF NOT EXISTS `VTS`.`Lieferant` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `fk_Lieferant_Adresse1_idx` ON `VTS`.`Lieferant` (`Adresse_ID` ASC);
+CREATE INDEX `fk_Lieferant_Adresse1_idx` ON `VTS`.`Lieferant` (`Adresse_ID` ASC) ;
 
 
 -- -----------------------------------------------------
@@ -338,9 +336,9 @@ CREATE TABLE IF NOT EXISTS `VTS`.`Lieferfaehigkeit` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `fk_Lieferfaehigkeit_Lieferant1_idx` ON `VTS`.`Lieferfaehigkeit` (`Lieferant_ID` ASC);
+CREATE INDEX `fk_Lieferfaehigkeit_Lieferant1_idx` ON `VTS`.`Lieferfaehigkeit` (`Lieferant_ID` ASC) ;
 
-CREATE INDEX `fk_Lieferfaehigkeit_Packung1_idx` ON `VTS`.`Lieferfaehigkeit` (`Packung_ID` ASC);
+CREATE INDEX `fk_Lieferfaehigkeit_Packung1_idx` ON `VTS`.`Lieferfaehigkeit` (`Packung_ID` ASC) ;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
@@ -409,7 +407,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `VTS`;
-INSERT INTO `VTS`.`Adresse` (`Adresse_ID`, `Strasse`, `Hausnummer`, `PLZ`, `Stadt`, `Stadtteil`, `Bundesland`, `Land`) VALUES (1, 'Vorstadtstrasse', '24', 73494, 'Rosenberg', 'Hohenberg', 'Baden-Württemberg', 'Deutschland');
+INSERT INTO `VTS`.`Adresse` (`Adresse_ID`, `Straße`, `Hausnummer`, `PLZ`, `Stadt`, `Stadtteil`, `Bundesland`, `Land`) VALUES (1, 'Vorstadtstraße', '24', 73494, 'Rosenberg', 'Hohenberg', 'Baden-Württemberg', 'Deutschland');
 
 COMMIT;
 
