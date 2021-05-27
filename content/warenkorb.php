@@ -87,7 +87,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                         <li>
-                            <a class="dropdown-item" href="#">Profil</a>
+                            <a class="dropdown-item" href="./profil.php">Profil</a>
                         </li>
                         <li>
                             <a class="dropdown-item" href="./bestellungen.php">Bestellungen</a>
@@ -311,7 +311,7 @@
                             <h6 class="card-title">2,59 EUR</h6>
                         </div>
                         <div class="d-flex justify-content-end" style="margin-right: 50px; margin-top: 10px">
-                            <a href="#!" class="btn btn-primary btn-rounded" onclick=jetztKaufen(<?php echo $_SESSION['login'] ?>) style="display: block; background-color: #1E90FF">Jetzt kaufen</a>
+                            <a href="#!" class="btn btn-primary btn-rounded" onclick="jetztKaufen(<?php echo $_SESSION['login'] ?>)" style="display: block; background-color: #1E90FF">Jetzt kaufen</a>
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,9 @@
-<?php SESSION_START();
-?>
+<?php 
+if(!isset($_SESSION))
+    {
+        SESSION_START();
+    }
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">

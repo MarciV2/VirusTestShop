@@ -19,6 +19,20 @@ function addProductToCart(product_name, product_id, product_count) {
         gap: 20,
         distance: 70
     })
+    var cart_cookie = JSON.parse(getCookie("cart_cookie"));
+    var current_number_of_product = parseInt(cart_cookie[product_id]);
+
+    if (!current_number_of_product) {
+        current_number_of_product = 0;
+    }
+
+    current_number_of_product = parseInt(current_number_of_product) + parseInt(product_count);
+    cart_cookie[product_id] = current_number_of_product;
+
+    document.cookie = "cart_cookie=" + JSON.stringify(cart_cookie) + "; path=/";
+
+
+    setTotalAmountOfProductsInCart();
 }
    
 
