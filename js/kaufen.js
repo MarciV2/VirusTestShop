@@ -226,7 +226,7 @@ function checkValidation() {
 
     return formCorrect;
 }
-}
+
 
 function getPayMethodInt(payMethod) {
     switch (payMethod)
