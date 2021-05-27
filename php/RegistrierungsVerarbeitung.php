@@ -136,7 +136,7 @@ if(isset($_POST))
     
     # User korrekt in der Datenbank eingetragen?
 
-    $sqlUserCheck = "SELECT `Kundentyp_ID` FROM `kunde` WHERE `LoginName` = '$loginname'
+    $sqlUserCheck = "SELECT `Kundentyp_ID` FROM `kunde` WHERE `LoginName` = '$loginname' OR `Email` = '$email'
                 LIMIT 1";
 
     console_log($sqlUserCheck);
