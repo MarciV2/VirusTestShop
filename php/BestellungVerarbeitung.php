@@ -269,8 +269,8 @@ else
                             VALUES ('$preise[$i]', '$packungsAnzahlArray[$i]', '$bestellpositionsnummer', '$bestellungID', '$packungsIDArray[$i]')";
         console_log($sqlBestellungsposition);
         $sqlBestellungspositionErgebnis = mysqli_query($verbindung, $sqlBestellungsposition);
-        $sqlBestellungspositionErgebnisReihen = @mysqli_num_rows($sqlBestellungspositionErgebnis);
-        if($sqlBestellungspositionErgebnisReihen < 1)
+        
+        if(!$sqlBestellungspositionErgebnis)
         {
             console_log("Fehler beim Insert der Bestellungspositionen");
             mysqli_close($verbindung);
