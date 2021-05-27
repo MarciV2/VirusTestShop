@@ -24,8 +24,7 @@ $verbindung = mysqli_connect($servername, $dbusername, $dbpasswort);
 # Verbindung hergestellt?
 if(!$verbindung)
 {
-    console_log("Error Verbindung");
-    exit;
+    console_log("Error Verbindung");    
     header("location: \index.php");
 }
 
@@ -36,8 +35,7 @@ $datenbank = mysqli_select_db($verbindung, $dbname);
 if(!$datenbank)
 {
     console_log("Kann die Datenbank nicht verwenden");
-    mysqli_close($verbindung);      # Verbindung schliessen bei vorangegagenem Zugriffsfehler
-    exit;
+    mysqli_close($verbindung);      # Verbindung schliessen bei vorangegagenem Zugriffsfehler    
     header("location: \index.php");                           # Programm beenden
 }
 
@@ -160,16 +158,13 @@ if(isset($_POST))
         $_SESSION["login"] = 1;        
         $_SESSION["user"] = $userDatenArray;
         $_SESSION["newReg"] = 1;
-        exit;
-        console_log($_SESSION);
     }
     else if($anzahlReihen > 0 && $userKundentypID == 2)
     {
         console_log("Registrierung und anschliessender Login erfolgreich.");
         $_SESSION["login"] = 2;
         $_SESSION["user"] = $userDatenArray;
-        $_SESSION["newReg"] = 1;
-        exit;
+        $_SESSION["newReg"] = 1;        
     }
     else
     {
@@ -177,17 +172,15 @@ if(isset($_POST))
     }
 
     if(!isset($_SESSION["login"]))
-    {
-        
+    {        
         mysqli_close($verbindung);
         console_log("Fehler bei der Session");
-        exit;
+        header('location: /index.php');
     }
     else
     {
     console_log("Registrierung und Anmeldung erfolgreich.");
     mysqli_close($verbindung);
-    exit;
     header('location: /index.php');
     }    
 }
@@ -195,7 +188,6 @@ if(isset($_POST))
 
 console_log("php durchgelaufen");
 mysqli_close($verbindung);
-exit;
 header('location: /index.php');
 
 ?>
