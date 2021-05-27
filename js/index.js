@@ -24,7 +24,7 @@ function pwpruefen() {
     var result = pw1.localeCompare(pw2);
 
     if (result) {
-        alert("Passwörter müssen gleich sein!");
+        alert("PasswÃ¶rter mÃ¼ssen gleich sein!");
         pw1 = document.getElementById("passwort").value = null;
         pw2 = document.getElementById("wdhlg-passwort").value = null;
         document.getElementById("passwort").focus();
@@ -38,7 +38,7 @@ function emailchecken() {
 
     if (result) {
 
-        alert("Emails müssen gleich sein!");
+        alert("Emails mÃ¼ssen gleich sein!");
         email1 = document.getElementById("email").value = null;
         email2 = document.getElementById("wdhlg-email").value = null;
         document.getElementById("email").focus();
@@ -54,7 +54,7 @@ function logout() {
 function regSuccess() {
     new Notify({
         title: "Sie habe sich erfolgreich registriert!",
-        text: "Sie können sich jetzt mit ihren Zugangsdaten einloggen.",
+        text: "Sie kÃ¶nnen sich jetzt mit ihren Zugangsdaten einloggen.",
         effect: 'slide',
         speed: 300,
         status: 'success',

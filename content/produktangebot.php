@@ -45,7 +45,7 @@
                               <a class="nav-link" aria-current="page" href="../index.php" style="color: white">Startseite</a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link" href="./produktangebot.php" style="color: white">Produktangebot</a>
+                              <a class="nav-link" href="./produktangebot.php" style="color: white; font-weight: 900">Produktangebot</a>
                           </li>
                           <li class="nav-item">
                               <a class="nav-link" href="./termine.html" style="color: white">Schulungstermine</a>

@@ -26,7 +26,7 @@ function jetztKaufen(loggedIn) {
         })
     }
 
-
+    
 }
 
 function hideAlert(alert_name) {
