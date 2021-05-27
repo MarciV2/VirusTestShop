@@ -1,11 +1,16 @@
-function addProductToCart(product_name, product_id) {
+function addProductToCart(product_name, product_id, product_count) {
 
     console.log(product_id);
     console.log(product_name);
+    console.log(product_count);
+
+    var notifyPName = product_count;
+    if (product_count != 1) notifyPName = "(" + product_count + "x) " + product_name;
+
 
     new Notify({
         title: unescape("Zu Einkaufswagen hinzugef%FCgt"),
-        text: product_name,
+        text: notifyPName,
         effect: 'slide',
         speed: 300,
         status: 'success',
@@ -17,13 +22,13 @@ function addProductToCart(product_name, product_id) {
     })
 
     var cart_cookie = JSON.parse(getCookie("cart_cookie"));
-    var current_number_of_product = cart_cookie[product_id];
+    var current_number_of_product = parseInt(cart_cookie[product_id]);
 
     if (!current_number_of_product) {
         current_number_of_product = 0;
     }
 
-    current_number_of_product = current_number_of_product + 1;
+    current_number_of_product = parseInt(current_number_of_product) + parseInt(product_count);
     cart_cookie[product_id] = current_number_of_product;
 
     document.cookie = "cart_cookie=" + JSON.stringify(cart_cookie) + "; path=/";
