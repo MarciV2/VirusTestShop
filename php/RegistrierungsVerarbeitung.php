@@ -25,7 +25,7 @@ $verbindung = mysqli_connect($servername, $dbusername, $dbpasswort);
 if(!$verbindung)
 {
     console_log("Error Verbindung");    
-    header("location: \index.php");
+    header("location: ..\index.php");
 }
 
 #konkrete Datenbank auf dem dem Server auswählen
@@ -36,7 +36,7 @@ if(!$datenbank)
 {
     console_log("Kann die Datenbank nicht verwenden");
     mysqli_close($verbindung);      # Verbindung schliessen bei vorangegagenem Zugriffsfehler    
-    header("location: \index.php");                           # Programm beenden
+    header("location: ..\index.php");                           # Programm beenden
 }
 
 console_log($_POST);
@@ -175,20 +175,20 @@ if(isset($_POST))
     {        
         mysqli_close($verbindung);
         console_log("Fehler bei der Session");
-        header('location: /index.php');
+        header('location: ../index.php');
     }
     else
     {
     console_log("Registrierung und Anmeldung erfolgreich.");
     mysqli_close($verbindung);
-    header('location: /index.php');
+    header('location: ../index.php');
     }    
 }
 
 
 console_log("php durchgelaufen");
 mysqli_close($verbindung);
-header('location: /index.php');
+header('location: ../index.php');
 
 ?>
  
