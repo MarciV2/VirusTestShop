@@ -4,9 +4,8 @@ function addProductToCart(product_name, product_id, product_count) {
     console.log(product_name);
     console.log(product_count);
 
-    var notifyPName = product_count;
+    var notifyPName = product_name;
     if (product_count != 1) notifyPName = "(" + product_count + "x) " + product_name;
-
 
     new Notify({
         title: unescape("Zu Einkaufswagen hinzugef%FCgt"),
@@ -20,22 +19,8 @@ function addProductToCart(product_name, product_id, product_count) {
         gap: 20,
         distance: 70
     })
-
-    var cart_cookie = JSON.parse(getCookie("cart_cookie"));
-    var current_number_of_product = parseInt(cart_cookie[product_id]);
-
-    if (!current_number_of_product) {
-        current_number_of_product = 0;
-    }
-
-    current_number_of_product = parseInt(current_number_of_product) + parseInt(product_count);
-    cart_cookie[product_id] = current_number_of_product;
-
-    document.cookie = "cart_cookie=" + JSON.stringify(cart_cookie) + "; path=/";
-
-
-    setTotalAmountOfProductsInCart();
 }
+   
 
 function setTotalAmountOfProductsInCart() {
     var product_counter = document.getElementById("product_counter");
