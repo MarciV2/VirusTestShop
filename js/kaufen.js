@@ -42,6 +42,7 @@ function selectPaypal() {
     document.getElementById('payment_giro').setAttribute("class", "list-group-item itemCardPayment");
     document.getElementById('checkmark_giro').setAttribute("style", "padding-top: 3px; margin-right: 3%; display: none");
     document.getElementById('payment_alert').setAttribute("style", "background-color: #ff9c9c; color: #6e0000; padding: 15px; margin-top: 20px; border-radius: 4px; display: none");
+    getPayMethodInt(selectedPaymentMethod);
 }
 
 function selectCreditcard() {
@@ -53,6 +54,7 @@ function selectCreditcard() {
     document.getElementById('payment_giro').setAttribute("class", "list-group-item itemCardPayment");
     document.getElementById('checkmark_giro').setAttribute("style", "padding-top: 3px; margin-right: 3%; display: none");
     document.getElementById('payment_alert').setAttribute("style", "background-color: #ff9c9c; color: #6e0000; padding: 15px; margin-top: 20px; border-radius: 4px; display: none");
+    getPayMethodInt(selectedPaymentMethod);
 }
 
 function selectGiropay() {
@@ -64,6 +66,7 @@ function selectGiropay() {
     document.getElementById('payment_giro').setAttribute("class", "list-group-item itemCardPaymentSelected");
     document.getElementById('checkmark_giro').setAttribute("style", "padding-top: 3px; margin-right: 3%; display: block");
     document.getElementById('payment_alert').setAttribute("style", "background-color: #ff9c9c; color: #6e0000; padding: 15px; margin-top: 20px; border-radius: 4px; display: none");
+    getPayMethodInt(selectedPaymentMethod);
 }
 
 function goToStep1() {
@@ -174,5 +177,18 @@ function setStepperColors() {
         document.getElementById('tab_lieferadresse').setAttribute("style", "display: none");
         document.getElementById('tab_zahlungsart').setAttribute("style", "display: none");
         document.getElementById('tab_abgeschlossen').setAttribute("style", "display: block");
+        KaufForm.submit();
     }
+}
+
+function getPayMethodInt(payMethod) {
+    var cookiename = "pay";
+    switch (payMethod)
+    {
+        case "paypal": document.cookie = cookiename + "=" + 1; break;
+        case "credit": document.cookie = cookiename + "=" + 2; break;
+        case "giro": document.cookie = cookiename + "=" + 3; break;
+        default: break;
+    }
+
 }

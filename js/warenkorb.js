@@ -1,16 +1,32 @@
-function jetztKaufen() {
-    var agb_isChecked = document.getElementById('checkbox_agb').checked;
-    var datenschutz_isChecked = document.getElementById('checkbox_datenschutz').checked;
+function jetztKaufen(loggedIn) {
+    if (loggedIn) {
+        var agb_isChecked = document.getElementById('checkbox_agb').checked;
+        var datenschutz_isChecked = document.getElementById('checkbox_datenschutz').checked;
 
-    if (!agb_isChecked) {
-        document.getElementById('agb_alert').style.display = "block";
-    } else if (!datenschutz_isChecked) {
-        document.getElementById('datenschutz_alert').style.display = "block";
-    } else if (getSumOfProductsInCart() <= 0) {
+        if (!agb_isChecked) {
+            document.getElementById('agb_alert').style.display = "block";
+        } else if (!datenschutz_isChecked) {
+            document.getElementById('datenschutz_alert').style.display = "block";
+        } else if (getSumOfProductsInCart() <= 0) {
 
+        } else {
+            window.location.href = './kaufen.html';
+        }
     } else {
-        window.location.href = './kaufen.html';
+        new Notify({
+            title: unescape("Sie m%FCssen angemeldet sein, um einen Kauf t%E4tigen zu k%F6nnen."),
+            effect: 'slide',
+            speed: 300,
+            status: 'warning',
+            autoclose: true,
+            autotimeout: 3500,
+            position: 'right bottom',
+            gap: 20,
+            distance: 70
+        })
     }
+
+
 }
 
 function hideAlert(alert_name) {
@@ -47,7 +63,7 @@ function removeCartRow(packung_id, element_to_remove, name) {
     document.cookie = "cart_cookie=" + JSON.stringify(cart_cookie) + "; path=/";
 
     document.getElementById(element_to_remove).remove();
-    
+
     new Notify({
         title: "Aus Einkaufswagen entfernt",
         text: name,
@@ -75,7 +91,7 @@ function updateTotalPrice() {
     for (var i = 0; i < all_price_elements.length; i++) {
         sum = sum + parseFloat((all_price_elements[i].innerHTML).replace(",", "."));
     }
-    
+
     sum_total = sum.toFixed(2) + " EUR";
     sum_total = sum_total.replace(".", ",");
 
