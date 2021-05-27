@@ -156,26 +156,131 @@ else
 }
     #Bestellstatus_ID
     $bestellstatus = 1;
-    #Bestellt und Versanddatum
-    $bestellDatum = time();
-    $versandDatum = time() + 432000;
+    #Bestelldatum
+    $bestellDatum = "now()";
 
     #Preis ermitteln
-    $warenkorbInhalt
     $warenkorbLaenge = 0;
     foreach($warenkorbInhalt as $value)
     {
         $warenkorbLaenge ++;
     }
 
-
-    while()
- 
     
 
+    $sqlAnzahlProdukte = 'SELECT count(*) AS `Anzahl` FROM `packung`';
+    $anzahlProdukteErgebnis = mysqli_query($verbindung, $sqlAnzahlProdukte);
+    $anzahlProdukteReihen = @mysqli_num_rows($anzahlProdukteErgebnis);
+
+    if($anzahlProdukteReihen < 0)
+    {
+        mysqli_close($verbindung);
+        console_log("Fehler bei der Bestimmung der vorhandenen Produkte");
+        header("location: ../index.php");
+    }
     
-    #Bestellung 
-    #$bestellDatum, $versandDatum, 
+    $anzahlProdukteSQL = mysqli_fetch_assoc($anzahlProdukteErgebnis);   
+    $anzahlProdukte = $anzahlProdukteSQL["Anzahl"];
+    
+    $packungsAnzahlArray = array();
+    $packungsIDArray = array();
+    $i = 0; #zaehlvariable
+    $obergrenzeVerschPackungen = 0; #Ergibgt nach der While Schleife die obergrenze für die Anzahl an verschiedenen Packungen im Warenkorb.
+    
+    while($i <= $anzahlProdukte)
+    {
+        if(isset($warenkorbInhalt[$i]))
+        {
+            $packungsAnzahlArray[$obergrenzeVerschPackungen] = $warenkorbInhalt[$i];   #Gleichstellung der Array Indizes
+            $packungsIDArray[$obergrenzeVerschPackungen] = $i;                         #für die PackungsID und die Anzahl
+            $obergrenzeVerschPackungen++;
+        }
+       $i++; 
+    }
+    
+    console_log($anzahlProdukte);
+    console_log($packungsAnzahlArray);
+    console_log($packungsIDArray);
+    $i = 0;
 
+    #ArtikelPreise auslesen
+    $preise = array();
+    while($i < $obergrenzeVerschPackungen)
+    {
+        $sqlPreis = "SELECT `Verkaufspreis` FROM `packung` WHERE `Packung_ID` = '$packungsIDArray[$i]'";
+        $sqlPreisErgebnis = mysqli_query($verbindung, $sqlPreis);
+        console_log("sqlPreis: " . $sqlPreis);
+        $sqlPreisErgebnisReihe = @mysqli_num_rows($sqlPreisErgebnis);
+        if($sqlPreisErgebnisReihe < 0)
+        {
+            console_log("Probleme bei der Bestimmung des Preises eines Produkts");
+            exit;
+            header("location: ../index.php");
+        }
+        $preis = mysqli_fetch_assoc($sqlPreisErgebnis);
+       array_push($preise, $preis["Verkaufspreis"]*$packungsAnzahlArray[$i]);
+       $i++;
+    }
+    console_log($preise);
+      
+    #Bestellung einpflegen
+    $sqlBestellung = "INSERT INTO `bestellung`
+                       (`Bestelldatum`, `Lieferkosten`, `Kunde_ID`, `Bezahlmethode_ID`, `Rechnungsadresse_ID`, `Lieferdresse_ID`, `Bestellstatus_ID`)
+                        VALUES ($bestellDatum, 5.00, '$userID' , '$bezahlmethode', '$lieferadresseID' , '$lieferadresseID' , '$bestellstatus' )";
+    
+    $sqlBestellungErgebnis = mysqli_query($verbindung, $sqlBestellung);
+    
+    if(!$sqlBestellungErgebnis)
+    {
+        console_log("Fehler bei der Query");
+        
+        exit;
+        header("location: ../index.php");
+    }
 
+    console_log("Query durchgelaufen");
+
+    #BestellungID der gerade gepushten Bestellung für die Bestellpostionen
+
+    $sqlBestellungID = "SELECT `Bestellung_ID` FROM `bestellung`
+                        WHERE `Bestelldatum` = (SELECT MAX(`Bestelldatum`) FROM `bestellung` WHERE `Kunde_ID`= '$userID')";
+
+    console_log($sqlBestellungID);     
+    $sqlBestellungIDErgebnis = mysqli_query($verbindung, $sqlBestellungID);
+    $sqlBestellungIDErgebnisReihe = @mysqli_num_rows($sqlBestellungIDErgebnis);
+    if($sqlBestellungIDErgebnisReihe < 1)
+    {
+        console_log("Fehler bei Select letzte Bestellung");
+        mysqli_close($verbindung);
+        exit;
+        header("location: ../index.php");
+    }
+    $bestellungIDErgebnis = mysqli_fetch_assoc($sqlBestellungIDErgebnis);
+    $bestellungID = $bestellungIDErgebnis["Bestellung_ID"];
+    console_log($bestellungID);
+
+    #Bestellpositionen eintragen
+    #Bestellpositionsnummer array erstellen
+    $i = 0;
+    while($i < $obergrenzeVerschPackungen)
+    {
+        $bestellpositionsnummer = $i+1;
+        $sqlBestellungsposition = "INSERT INTO `bestellungsposition`(`Preis`, `Anzahl`, `Bestellpositionsnummer`, `Bestellung_ID`, `Packung_ID`)
+                            VALUES ('$preise[$i]', '$packungsAnzahlArray[$i]', '$bestellpositionsnummer', '$bestellungID', '$packungsIDArray[$i]')";
+        console_log($sqlBestellungsposition);
+        $sqlBestellungspositionErgebnis = mysqli_query($verbindung, $sqlBestellungsposition);
+        $sqlBestellungspositionErgebnisReihen = @mysqli_num_rows($sqlBestellungspositionErgebnis);
+        if($sqlBestellungspositionErgebnisReihen < 1)
+        {
+            console_log("Fehler beim Insert der Bestellungspositionen");
+            mysqli_close($verbindung);
+            exit;
+            header("location: ../index.php");
+        }
+        $i++;
+    }
+
+    console_log("Bestellung und Bestellungspositionen sind korrekt eingetragen");
+    $_SESSION["bestellung"] = 1;
+    header("location: ../index.php");
 ?>
