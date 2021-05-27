@@ -182,12 +182,11 @@ function setStepperColors() {
 }
 
 function getPayMethodInt(payMethod) {
-    var cookiename = "pay";
     switch (payMethod)
     {
-        case "paypal": document.cookie = cookiename + "=" + 1; break;
-        case "credit": document.cookie = cookiename + "=" + 2; break;
-        case "giro": document.cookie = cookiename + "=" + 3; break;
+        case "paypal": document.cookie = 'pay = 1;path=/php'; break;
+        case "credit": document.cookie = 'pay = 2;path=/php'; break;
+        case "giro": document.cookie = 'pay = 3;path=/php'; break;
         default: break;
     }
 
