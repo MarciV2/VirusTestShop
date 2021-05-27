@@ -148,7 +148,11 @@
                     </a>
                     <!-- Account icon -->
                     <?php
-                        $variablephp = $_SESSION["login"];
+                        if(!isset($_SESSION['login']))
+						{
+							$_SESSION['login']=0;
+						}
+                        $variablephp = $_SESSION['login'];
                     ?>
                     <script>
                         var variablejs = "<?php echo $variablephp; ?>";
