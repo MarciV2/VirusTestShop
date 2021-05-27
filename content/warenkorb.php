@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿<?php SESSION_START() ?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -71,7 +72,7 @@
                 <!-- Right elements -->
                 <div class="d-flex align-items-center">
                     <!-- Shopping icon -->
-                    <a class="text-reset me-4" href="./warenkorb.html">
+                    <a class="text-reset me-4" href="./warenkorb.php">
                         <i class="fas fa-shopping-cart" style="color: #ffffff"></i>
                         <span id="product_counter" class="badge rounded-pill badge-notification bg-danger" style="display: none">11</span>
                     </a>
@@ -305,7 +306,7 @@
                             <h6 class="card-title">2,59 EUR</h6>
                         </div>
                         <div class="d-flex justify-content-end" style="margin-right: 50px; margin-top: 10px">
-                            <a href="#!" class="btn btn-primary btn-rounded" onclick="jetztKaufen()" style="display: block; background-color: #1E90FF">Jetzt kaufen</a>
+                            <a href="#!" class="btn btn-primary btn-rounded" onclick=jetztKaufen(<?php echo $_SESSION['login'] ?>) style="display: block; background-color: #1E90FF">Jetzt kaufen</a>
                         </div>
                     </div>
                 </div>

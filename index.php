@@ -37,7 +37,7 @@
                 </tr>
                 <tr>
                   <td><input class="big" type="password" placeholder="Passwort" name="passwort" id="passwort" minlength="8" required /><br></td>
-                  <td><input class="big" type="password" placeholder="Passwort wiederholen" name="wdhlg-passwort" id="wdhlg-passwort" minlength="8" onchange="pwprüfen()" required /></td>
+                  <td><input class="big" type="password" placeholder="Passwort wiederholen" name="wdhlg-passwort" id="wdhlg-passwort" minlength="8" onchange="pwpruefen()" required /></td>
                 </tr>
                 <tr>
                   <td><input class="big" type="text" placeholder="Vorname" name="vorname" required></td>
@@ -142,13 +142,13 @@
                 <!-- Right elements -->
                 <div class="d-flex align-items-center">
                     <!-- Shopping icon -->
-                    <a class="text-reset me-4" href="./content/warenkorb.html">
+                    <a class="text-reset me-4" href="./content/warenkorb.php">
                         <i class="fas fa-shopping-cart" style="color: #ffffff"></i>
                         <span id="product_counter" class="badge rounded-pill badge-notification bg-danger" style="display: none">11</span>
                     </a>
                     <!-- Account icon -->
                     <?php
-                        $variablephp = $_SESSION['login'];
+                        $variablephp = $_SESSION["login"];
                     ?>
                     <script>
                         var variablejs = "<?php echo $variablephp; ?>";
@@ -374,5 +374,3 @@
 
 </body>
 </html>
-
-

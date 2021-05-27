@@ -45,28 +45,42 @@ if(isset($_POST))
     mysqli_real_escape_string($verbindung, $_POST["LoginPasswort"]);
     $loginpasswort = md5($_POST["LoginPasswort"]);
 
-    $sql = "SELECT `Loginname` FROM `kunde` WHERE 
-            `Loginname` = '$loginname' AND
+    $sql = "SELECT `Kundentyp_ID` FROM `kunde` WHERE 
+            `LoginName` = '$loginname' AND
             `Passwort` = '$loginpasswort' 
             LIMIT 1";
-    console_log($sql);
+    
 
     $queryErgebnis = mysqli_query($verbindung, $sql);
     $anzahlReihen = @mysqli_num_rows($queryErgebnis);
 
-    console_log($anzahlReihen);
+    $userDaten = mysqli_fetch_assoc($queryErgebnis);
+    $kundentypID = $userDaten['Kundentyp_ID'];
+    
 
-    if ($anzahlReihen > 0)
+    $userDatenArray = array();
+    array_push($userDatenArray, $loginname);
+    array_push($userDatenArray, $loginpasswort);
+
+    if ($anzahlReihen > 0 && $kundentypID == 1)
     {
         $_SESSION['login'] = 1;
 
-        $_SESSION['user'] = "$loginname,$loginpasswort";
+        $_SESSION['user'] = $userDatenArray;
+        $_SESSION['newLogin'] = 1;
        
     }
+    else if($anzahlReihen > 0 && $kundentypID == 2)
+    {
+        $_SESSION['login'] = 2;
+        $_SESSION['user'] = $userDatenArray;
+        $_SESSION['newLogin'] = 1;
+    }
     else 
-        {
-            console_log("Login Schiefgegangen");
-        }
+    {
+       console_log("Login Schiefgegangen");
+       header("location: /index.php");
+    }
     
 
     #User eingeloggt?
@@ -82,10 +96,7 @@ if(isset($_POST))
     
 }
 
-echo "Login erfolgreich";
-$cookiename = $loginname;
-$cookie_LoginValue = $_SESSION['login'];
-setcookie($cookiename, $cookie_LoginValue, time() + 86400, "/"); //86400 = 1 Tag
+console_log("Login erfolgreich");
 mysqli_close($verbindung);
-header('location:/../index.php');
+header('location: /index.php');
 ?>

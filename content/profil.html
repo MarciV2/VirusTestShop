@@ -19,15 +19,6 @@
 </head>
   <body>
 
-
-      <script>
-          function get(name) {
-              if (name = (new RegExp('[?&]' + encodeURIComponent(name) + '=([^&]*)')).exec(location.search))
-                  return decodeURIComponent(name[1]);
-          }
-
-          var product_id = get("product_id");
-      </script>
       <div class="windowedPage">
           <!-- Start your project here-->
           <!-- Navbar -->
@@ -81,7 +72,7 @@
                   <!-- Right elements -->
                   <div class="d-flex align-items-center">
                       <!-- Shopping icon -->
-                      <a class="text-reset me-4" href="./warenkorb.php">
+                      <a class="text-reset me-4" href="./warenkorb.html">
                           <i class="fas fa-shopping-cart" style="color: #ffffff"></i>
                           <span id="product_counter" class="badge rounded-pill badge-notification bg-danger" style="display: none">11</span>
                       </a>
@@ -96,7 +87,7 @@
                       </a>
                       <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                           <li>
-                              <a class="dropdown-item" href="#">Profil</a>
+                              <a class="dropdown-item" href="./profil.html">Profil</a>
                           </li>
                           <li>
                               <a class="dropdown-item" href="./bestellungen.php">Bestellungen</a>
@@ -122,97 +113,96 @@
 
           <div style="padding: 25px; background-color: #f9f9f9">
 
-              <script>
-                  function readCookie(name) {
-                      var nameEQ = name + "=";
-                      var ca = document.cookie.split(';');
-                      for (var i = 0; i < ca.length; i++) {
-                          var c = ca[i];
-                          while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-                          if (c.indexOf(nameEQ) == 0) return decodeURIComponent(c.substring(nameEQ.length, c.length)).replaceAll("+", " ");
-                      }
-                      return null;
-                  }
-
-                  var packungen = JSON.parse(readCookie("PackungCookie"));
-                  var packung = null;
-                  console.log("Produkt-ID: " + product_id);
-                  for (var i = 0; i < packungen.length; i++) {
-                      var tempPack = packungen[i].split(";");
-                      if (tempPack[0] == product_id)
-                          var packung = tempPack;
-                  }
-                  console.log("Packungs-Details" + packung);
-                  var product_name = "";
-                  var product_preis = "";
-                  var product_description = "";
-                  if (packung[1] != "") product_name = packung[4] + "x " + packung[1] + " - " + packung[2];
-                  else product_name = packung[4] + "x " + packung[2];
-
-                  product_preis = packung[5] + "€";
-                  product_description = packung[3];
-
-              </script>
-
-
 
               <div class="card itemCard">
-                  <div class="row">
-                      <div class="col-md-5" style="margin-top: 0px">
-                          <div class="bg-image hover-zoom">
-                              <script>
-                                  var imgLink = '"../img/' + product_id + '.png"';
-                                  document.write(" <img src=" + imgLink + " class='w - 100' />");
-                              </script>
 
+                  <h4 style="padding-top: 30px; padding-left: 6%; padding-bottom: 20px">Accountdetails</h4>
+                  <hr style="margin: 0% 3%" />
+                  <br />
+                  <div class="row" style="padding: 1% 10%">
+                      <div class="col-md-5">
+                          <br />
+                          <h5>Persönliche Daten</h5>
+                          <br />
+                          <div class="row">
+                              <div class="col-6">Loginname: </div>
+                              <div class="col-6 d-flex justify-content-end"> XXXXXXXX</div>
+                          </div>
+                          <div class="row">
+                              <div class="col-6">Vorname: </div>
+                              <div class="col-6 d-flex justify-content-end"> XXXXXXXX</div>
+                          </div>
+                          <div class="row">
+                              <div class="col-6">Nachname: </div>
+                              <div class="col-6 d-flex justify-content-end"> XXXXXXXX</div>
+                          </div>
+                          <div class="row">
+                              <div class="col-6">E-Mail-Adresse: </div>
+                              <div class="col-6 d-flex justify-content-end"> XXXXXXXX</div>
+                          </div>
+                          <div class="row">
+                              <div class="col-6">Telefonnummer: </div>
+                              <div class="col-6 d-flex justify-content-end"> XXXXXXXX</div>
+                          </div>
+                          <div class="row">
+                              <div class="col-6">Passwort: </div>
+                              <div class="col-6 d-flex justify-content-end"> XXXXXXXX</div>
                           </div>
                       </div>
-                      <div class="col-md-7">
-                          <div style="width: 100%;">
-                              <h2 style="margin-top: 40px" id="name">
-                                  <script>document.getElementById("name").innerHTML = product_name</script>
-                              </h2>
-                              <h3>
-                                  <div class="d-flex justify-content-start">
-                                      <span class="badge" style="background-color: #1E90FF" id="preis">4,99€</span>
-                                      <script>document.getElementById("preis").innerHTML = product_preis</script>
-                                      <div style="font-size: small">1)</div>
-                                      <br />
-                                      <div style="font-size: small; position: absolute; bottom: 10px">1) zzgl. Versandkosten</div>
-                                  </div>
-                              </h3>
-
-                              <br />
-                              <h3>
-                                  Produkt-Beschreibung
-                              </h3>
-                              <script>document.write(product_description);</script>
-                              <br />
-                              <br />
-                              <div class="row">
-                                  <div class="col-md-2">
-                                      <input id="itemCount" type="number" value="1" min="1" style=" width: 100%; padding: 5px; text-align: center; border: none; border-bottom: 2px solid #1E90FF;">
-                                  </div>
-                                  <div class="col-md-8">
-                                      <a class='btn btn-primary btn-rounded buttonTocartMarginBottom' onclick="addToCart()" style='display: block; background-color: #1E90FF'>In den Warenkorb</a>
-                                      <script>
-                                          function addToCart() {
-                                              addProductToCart(product_name, product_id, document.getElementById("itemCount").value);
-                                              console.log("Zum Einkaufswagen zufügen: "+product_name+ " ID: "+product_id+ " Anzahl: "+document.getElementById("itemCount").value)
-                                          }
-                                      </script>
-
-                                  </div>
-                              </div>
-
-                              <br />
-
-
+                      <div class="col-md-2 d-flex justify-content-center">
+                          <div style="height: 100%; width: 1px; background-color: gainsboro"></div>
+                      </div>
+                      <div class="col-md-5">
+                          <br />
+                          <h5>Adressangaben</h5>
+                          <br />
+                          <div class="row">
+                              <div class="col-6">Land: </div>
+                              <div class="col-6 d-flex justify-content-end"> XXXXXXXX</div>
                           </div>
-
-
+                          <div class="row">
+                              <div class="col-6">Bundesland: </div>
+                              <div class="col-6 d-flex justify-content-end"> XXXXXXXX</div>
+                          </div>
+                          <div class="row">
+                              <div class="col-6">Stadt: </div>
+                              <div class="col-6 d-flex justify-content-end"> XXXXXXXX</div>
+                          </div>
+                          <div class="row">
+                              <div class="col-6">Stadtteil: </div>
+                              <div class="col-6 d-flex justify-content-end"> XXXXXXXX</div>
+                          </div>
+                          <div class="row">
+                              <div class="col-6">Postleitzahl: </div>
+                              <div class="col-6 d-flex justify-content-end"> XXXXXXXX</div>
+                          </div>
+                          <div class="row">
+                              <div class="col-6">Straße: </div>
+                              <div class="col-6 d-flex justify-content-end"> Hauptstraße 100</div>
+                          </div>
                       </div>
                   </div>
+
+                  <br />
+                  <hr style="margin: 0% 3%" />
+                  <br />
+                  <br />
+
+                  <div class="row" style="margin: 0% 3%">
+                      <div class="col-lg-3"></div>
+                      <div class="col-lg-3 col-sm-6">
+                          <button type="button" id="button_previous" onclick="previousStep()" class="btn btn-primary btn-lg btn-rounded btn-block" style="background-color: #1E90FF; margin-bottom: 20px">Angaben bearbeiten</button>
+                      </div>
+                      <div class="col-lg-3 col-sm-6">
+                          <button type="button" id="button_previous" onclick="previousStep()" class="btn btn-primary btn-lg btn-rounded btn-block" style="background-color: #1E90FF; margin-bottom: 20px">Bestellhistorie</button>
+                      </div>
+                      <div class="col-lg-3"></div>
+                  </div>
+
+                  <br />
+                  <br />
+
+
 
               </div>
           </div>
