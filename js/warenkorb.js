@@ -63,7 +63,7 @@ function removeCartRow(packung_id, element_to_remove, name) {
     document.cookie = "cart_cookie=" + JSON.stringify(cart_cookie) + "; path=/";
 
     document.getElementById(element_to_remove).remove();
-    
+
     new Notify({
         title: "Aus Einkaufswagen entfernt",
         text: name,
@@ -91,7 +91,7 @@ function updateTotalPrice() {
     for (var i = 0; i < all_price_elements.length; i++) {
         sum = sum + parseFloat((all_price_elements[i].innerHTML).replace(",", "."));
     }
-    
+
     sum_total = sum.toFixed(2) + " EUR";
     sum_total = sum_total.replace(".", ",");
 
