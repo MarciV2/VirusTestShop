@@ -121,7 +121,7 @@
                         <h5 style="padding-top: 10px">Anzahl </h5>
                     </div>
                     <div class="col-lg-2 col-sm-3 col-4">
-                        <h5 style="padding-top: 10px">Preis in €</h5>
+                        <h5 style="padding-top: 10px">Preis in EUR</h5>
                     </div>
                 </div>
             </div>
@@ -304,8 +304,24 @@
                             <h6 class="card-title" style="margin-right: 20px">enthaltene Versandkosten:</h6>
                             <h6 class="card-title">2,59 EUR</h6>
                         </div>
+                        
+
                         <div class="d-flex justify-content-end" style="margin-right: 50px; margin-top: 10px">
-                            <a href="#!" class="btn btn-primary btn-rounded" onclick="jetztKaufen()" style="display: block; background-color: #1E90FF">Jetzt kaufen</a>
+                            <?php
+                            $variablephp = $_SESSION['login'];
+                            ?>
+                            <script>
+                                var variablejs = "<?php echo $variablephp; ?>";
+                                variablejs = 1;
+                                variablejs = parseInt(variablejs);
+                                if (variablejs > 0) {
+                                    var buy_button = '<a href="#!" class="btn btn-primary btn-rounded" onclick="jetztKaufen(true)" style="display: block; background-color: #1E90FF">Jetzt kaufen</a>';
+                                    document.write(buy_button);
+                                } else {
+                                    var buy_button = '<a href="#!" class="btn btn-primary btn-rounded" onclick="jetztKaufen(false)" style="display: block; background-color: #1E90FF">Jetzt kaufen</a>';
+                                    document.write(buy_button);
+                                }
+                            </script>
                         </div>
                     </div>
                 </div>

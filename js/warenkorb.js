@@ -1,16 +1,32 @@
-function jetztKaufen() {
-    var agb_isChecked = document.getElementById('checkbox_agb').checked;
-    var datenschutz_isChecked = document.getElementById('checkbox_datenschutz').checked;
+function jetztKaufen(loggedIn) {
+    if (loggedIn) {
+        var agb_isChecked = document.getElementById('checkbox_agb').checked;
+        var datenschutz_isChecked = document.getElementById('checkbox_datenschutz').checked;
 
-    if (!agb_isChecked) {
-        document.getElementById('agb_alert').style.display = "block";
-    } else if (!datenschutz_isChecked) {
-        document.getElementById('datenschutz_alert').style.display = "block";
-    } else if (getSumOfProductsInCart() <= 0) {
+        if (!agb_isChecked) {
+            document.getElementById('agb_alert').style.display = "block";
+        } else if (!datenschutz_isChecked) {
+            document.getElementById('datenschutz_alert').style.display = "block";
+        } else if (getSumOfProductsInCart() <= 0) {
 
+        } else {
+            window.location.href = './kaufen.html';
+        }
     } else {
-        window.location.href = './kaufen.html';
+        new Notify({
+            title: unescape("Sie m%FCssen angemeldet sein, um einen Kauf t%E4tigen zu k%F6nnen."),
+            effect: 'slide',
+            speed: 300,
+            status: 'warning',
+            autoclose: true,
+            autotimeout: 3500,
+            position: 'right bottom',
+            gap: 20,
+            distance: 70
+        })
     }
+
+    
 }
 
 function hideAlert(alert_name) {

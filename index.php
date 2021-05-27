@@ -18,6 +18,7 @@
     <!-- MDB -->
     <link rel="stylesheet" href="./css/mdb.min.css" />
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./src/simple-notify/simple-notify.min.css" />
 
    
     
@@ -66,7 +67,7 @@
             
             <br>
             <label class="agb" id="AGB" onmouseover="hoverAGBs('grey')" onmouseout="hoverAGBs('black')" onclick="clickAGBs()">Akzeptieren Sie unsere AGBs</label><input type ="checkbox" name="agb" required><br>
-            <input type="submit" name="submitReg" value="Abschicken">
+            <input type="submit" name="submitReg" value="Abschicken" onclick="regSuccess()">
             <br>
             </center>
             </div>
@@ -143,16 +144,33 @@
                     <!-- Shopping icon -->
                     <a class="text-reset me-4" href="./content/warenkorb.html">
                         <i class="fas fa-shopping-cart" style="color: #ffffff"></i>
-                        <span id="product_counter" class="badge rounded-pill badge-notification bg-danger">11</span>
-                    </a>
-                    <!-- Bell icon -->
-                    <a class="text-reset me-4" href="#">
-                        <i class="fas fa-bell" style="color: #ffffff"></i>
+                        <span id="product_counter" class="badge rounded-pill badge-notification bg-danger" style="display: none">11</span>
                     </a>
                     <!-- Account icon -->
-                    <a onclick="einAusblendenLoginRegForm()" class="text-reset me-3"  >
-                        <i class="fas fa-user-circle" id="LoginButton"  style="color: #ffffff"></i>
-                    </a>
+                    <?php
+                        $variablephp = $_SESSION['login'];
+                    ?>
+                    <script>
+                        var variablejs = "<?php echo $variablephp; ?>";
+                        variablejs = parseInt(variablejs);
+                        if(variablejs > 0){
+                            var account_icon = '<a class="text-reset me-3" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">';
+                            account_icon = account_icon + '<i class="fas fa-user-circle" style="color: #ffffff"></i>';
+                            account_icon = account_icon + '</a>';
+                            account_icon = account_icon + '<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">';
+                            account_icon = account_icon + '<li><a class="dropdown-item" href="#">Profil</a></li>';
+                            account_icon = account_icon + '<li><a class="dropdown-item" href="./content/bestellungen.php">Bestellungen</a></li>';
+                            account_icon = account_icon + '<li><hr class="dropdown-divider" /></li>';
+                            account_icon = account_icon + '<li><a class="dropdown-item" href="#" onclick="logout()">Logout</a></li>';
+                            account_icon = account_icon + '</ul>';
+                            document.write(account_icon);
+                        } else {
+                            var account_icon = '<a onclick="einAusblendenLoginRegForm()" class="text-reset me-3">';
+                            account_icon = account_icon + '<i class="fas fa-user-circle" id="LoginButton"  style="color: #ffffff"></i>';
+                            account_icon = account_icon + '</a>';
+                            document.write(account_icon);
+                        }
+                    </script>
 
 
                 </div>
@@ -350,7 +368,9 @@
     
    <!-- <script type="text/javascript" src="./src/simple-notify/simple-notify.min.js"></script>-->
     <script type="text/javascript" src="/js/functionScripts.js"></script>
+    <script src="../src/simple-notify/simple-notify.min.js"></script>
     <script type=text/javascript src=./js/index.js><?php echo "checkLogin($_SESSION[login])</script>"?>;
+    <script type="text/javascript" src="./js/index.js"></script>
 
 </body>
 </html>
