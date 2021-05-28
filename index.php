@@ -71,7 +71,7 @@ if(!isset($_SESSION))
             
             <br>
             <label class="agb" id="AGB" onmouseover="hoverAGBs('grey')" onmouseout="hoverAGBs('black')" onclick="clickAGBs()">Akzeptieren Sie unsere AGBs</label><input type ="checkbox" name="agb" required><br>
-            <input type="submit" name="submitReg" value="Abschicken" onclick="regSuccess()">
+            <input type="submit" name="submitReg" value="Abschicken">
             <br>
             </center>
             </div>
@@ -157,6 +157,17 @@ if(!isset($_SESSION))
 							$_SESSION['login']=0;
 						}
                         $variablephp = $_SESSION['login'];
+			if(!isset($_SESSION['newReg']))
+						{
+							$_SESSION['newReg']=0;
+						}
+                        $variablereg = $_SESSION['newReg'];
+						if(!isset($_SESSION['newLog']))
+						{
+							$_SESSION['newLog']=0;
+						}
+                        $variablelog = $_SESSION['newLog'];
+			
                     ?>
                     <script>
                         var variablejs = "<?php echo $variablephp; ?>";
@@ -379,6 +390,161 @@ if(!isset($_SESSION))
     <script src="../src/simple-notify/simple-notify.min.js"></script>
     <script type=text/javascript src=./js/index.js><?php echo "checkLogin($_SESSION[login])</script>"?>;
     <script type="text/javascript" src="./js/index.js"></script>
+<script>
+						
+						var variablereg = "<?php echo $variablereg; ?>";	
+						var variablelog = "<?php echo $variablelog; ?>";
+						
+						switch(variablereg){
+		case "0":		
+		
+		break;
+		
+		case "1":		
+		new Notify({
+		
+        title: "Fehler bei der Registrierung",
+        text: "Benutzername ist bereits schon vergeben.",
+        effect: 'slide',
+        speed: 300,
+        status: 'success',
+        autoclose: true,
+        autotimeout: 5000,
+        position: 'right bottom',
+        gap: 20,
+        distance: 70
+		}
+    )
+		break;
+		case "2":		
+		new Notify({
+		
+       title: "Fehler bei der Registrierung",
+        text: "Email bereits schon registiert.",
+        effect: 'slide',
+        speed: 300,
+        status: 'success',
+        autoclose: true,
+        autotimeout: 5000,
+        position: 'right bottom',
+        gap: 20,
+        distance: 70
+		}
+    )
+		break;
+		case "3":		
+		new Notify({
+		
+        title: "Sie habe sich erfolgreich als medizinischer-Kunde registriert!",
+        text: "Sie können sich jetzt mit ihren Zugangsdaten einloggen.",
+        effect: 'slide',
+        speed: 300,
+        status: 'success',
+        autoclose: true,
+        autotimeout: 5000,
+        position: 'right bottom',
+        gap: 20,
+        distance: 70
+		}
+    )
+		break;
+		case "4":		
+		new Notify({
+		
+        title: "Sie habe sich erfolgreich als Privatkunde registriert!",
+        text: "Sie können sich jetzt mit ihren Zugangsdaten einloggen.",
+        effect: 'slide',
+        speed: 300,
+        status: 'success',
+        autoclose: true,
+        autotimeout: 5000,
+        position: 'right bottom',
+        gap: 20,
+        distance: 70
+		}
+    )
+		break;
+		case "5":		
+		new Notify({
+		
+        title: "Fehler bei der Registierung",
+        text: "Session Fehler ist eingetreten.",
+        effect: 'slide',
+        speed: 300,
+        status: 'success',
+        autoclose: true,
+        autotimeout: 5000,
+        position: 'right bottom',
+        gap: 20,
+        distance: 70
+		}
+    )
+		break;
+		
+	
+						}
 
+						
+						
+						switch(variablelog){
+		case "0":		
+		
+		break;
+		
+		case "1":		
+		new Notify({
+		
+        title: "Fehler bei der Anmeldung",
+        text: "Benutzername oder Passwort falsch.",
+        effect: 'slide',
+        speed: 300,
+        status: 'success',
+        autoclose: true,
+        autotimeout: 5000,
+        position: 'right bottom',
+        gap: 20,
+        distance: 70
+		}
+    )
+		break;
+		case "2":		
+		new Notify({
+		
+       title: "Erfolgreiche Anmeldung",
+        text: "Sie wurden erfolgreich als Privatkunde angemeldet",
+        effect: 'slide',
+        speed: 300,
+        status: 'success',
+        autoclose: true,
+        autotimeout: 5000,
+        position: 'right bottom',
+        gap: 20,
+        distance: 70
+		}
+    )
+		break;
+		case "3":		
+		new Notify({
+		
+         title: "Erfolgreiche Anmeldung",
+        text: "Sie wurden erfolgreich als Medizinischer Kunde angemeldet",
+        effect: 'slide',
+        speed: 300,
+        status: 'success',
+        autoclose: true,
+        autotimeout: 5000,
+        position: 'right bottom',
+        gap: 20,
+        distance: 70
+		}
+    )
+		break;
+			
+						}
+						
+		<?php $_SESSION['newReg']=0;?>
+		<?php $_SESSION['newLog']=0;?>
+    </script> 
+	
 </body>
 </html>
