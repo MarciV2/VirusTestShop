@@ -90,8 +90,28 @@ if(isset($_POST))
         echo '<script type="text/javascript" src="/scripts/scripts.js">abortRegister()</scripts>';
         console_log("Username schon vergeben Bitte nutzen Sie einen anderen Username.");
         $_SESSION['login'] = 0;
+		$_SESSION['newReg'] = 1;
+		mysqli_close($verbindung);
+        header('location: ../index.php');
     }
-
+	
+	$sqlEmailCheck = "SELECT `email` FROM `kunde` WHERE `Email` = '$email'";
+    $sqlEmailCheckErgebnis = mysqli_query($verbindung, $sqlEmailCheck);
+    $sqlEmailCheckReihen = @mysqli_num_rows($sqlEmailCheckErgebnis);
+    console_log($sqlEmailCheck);
+    console_log($sqlEmailCheckErgebnis);
+ 
+ 
+ 
+    if($sqlEmailCheckReihen > 0)
+    {
+       
+        console_log("Email schon vergeben Bitte nutzen Sie einen andere Email.");
+        $_SESSION['login'] = 0;
+		$_SESSION['newReg'] = 2;
+		mysqli_close($verbindung);
+        header('location: ../index.php');
+    }
     #Select query für die Adress Id vorbereiten
     $sqlSelectAdressID = "SELECT `Adresse_ID` FROM `adresse` WHERE (
                             `Strasse` = '$strasse' AND 
@@ -157,24 +177,26 @@ if(isset($_POST))
         console_log("Registrierung und anschliessender Login erfolgreich.");
         $_SESSION["login"] = 1;        
         $_SESSION["user"] = $userDatenArray;
-        $_SESSION["newReg"] = 1;
+        $_SESSION["newReg"] = 3;
     }
     else if($anzahlReihen > 0 && $userKundentypID == 2)
     {
         console_log("Registrierung und anschliessender Login erfolgreich.");
         $_SESSION["login"] = 2;
         $_SESSION["user"] = $userDatenArray;
-        $_SESSION["newReg"] = 1;        
+        $_SESSION["newReg"] = 3;        
     }
     else
     {
         console_log("Fehler bei der Registrierung");
+		 $_SESSION["newReg"] = 4; 
     }
 
     if(!isset($_SESSION["login"]))
     {        
         mysqli_close($verbindung);
         console_log("Fehler bei der Session");
+		 $_SESSION["newReg"] = 5; 
         header('location: ../index.php');
     }
     else

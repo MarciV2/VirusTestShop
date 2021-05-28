@@ -65,19 +65,20 @@ if(isset($_POST))
     if ($anzahlReihen > 0 && $kundentypID == 1)
     {
         $_SESSION['login'] = 1;
-
+		$_SESSION['newLog'] = 2;
         $_SESSION['user'] = $userDatenArray;
-        $_SESSION['newLogin'] = 1;
+       
        
     }
     else if($anzahlReihen > 0 && $kundentypID == 2)
     {
         $_SESSION['login'] = 2;
         $_SESSION['user'] = $userDatenArray;
-        $_SESSION['newLogin'] = 1;
+       
+		$_SESSION['newLog'] = 3;
     }
     else 
-    {
+    {  $_SESSION['newLog'] = 1;
        console_log("Login Schiefgegangen");
        header("location: /index.php");
     }
