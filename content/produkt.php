@@ -225,7 +225,7 @@
                   if (packung[1] != "") product_name = packung[4] + "x " + packung[1] + " - " + packung[2];
                   else product_name = packung[4] + "x " + packung[2];
 
-                  product_preis = packung[5] + "€";
+                  product_preis = packung[5].replace(".", ",") + "€";
                   product_description = packung[3];
 
               </script>

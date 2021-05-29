@@ -332,7 +332,7 @@
                     else {
                         product_description=packung[3].substring(0,54)+"... <a href='./produkt.php?product_id="+product_id+"'>weiter lesen</a>";
                     }
-                    var product_preis=packung[5]+"€";
+                    var product_preis=packung[5].replace(".", ",")+"€";
 
                     itemCard = itemCard + "<div class='p-5 text-center bg-image' style=\"background-image: url('../img/"+product_id+".png'); height: 350px; background-size : contain\">";
                     itemCard = itemCard + "<div style='position:absolute; top: 0; right: 0; margin: 20px'>";
