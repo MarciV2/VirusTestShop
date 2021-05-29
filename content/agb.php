@@ -107,7 +107,7 @@
                             <a class="nav-link" href="./produktangebot.php" style="color: white">Produktangebot</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./termine.html" style="color: white">Schulungstermine</a>
+                            <a class="nav-link" href="./termine.php" style="color: white">Schulungstermine</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle"
@@ -137,7 +137,7 @@
                 <!-- Right elements -->
                 <div class="d-flex align-items-center">
                     <!-- Shopping icon -->
-                    <a class="text-reset me-4" href="./warenkorb.html">
+                    <a class="text-reset me-4" href="./warenkorb.php">
                         <i class="fas fa-shopping-cart" style="color: #ffffff"></i>
                         <span id="product_counter" class="badge rounded-pill badge-notification bg-danger" style="display: none">11</span>
                     </a>
@@ -188,7 +188,7 @@
         <div class="agb" style="margin-left:50px;margin-right:50px;">
             <p><h1>Allgemeinene Verkaufsbedingungen</h1></p>
             <p><strong>Geltungsbereich</strong></p>
-            <p>Diese Gesch&auml;ftsbedingungen gelten f&uuml;r alle K&auml;ufe bei Virustestshop <a href="impressum.html">Impressum</a>, die von Privatkunden get&auml;tigt werden.</p>
+            <p>Diese Gesch&auml;ftsbedingungen gelten f&uuml;r alle K&auml;ufe bei Virustestshop <a href="impressum.php">Impressum</a>, die von Privatkunden get&auml;tigt werden.</p>
             <p>Privatkunden in diesem Sinne sind Personen mit Wohnsitz und Lieferadresse in der Bundesrepublik Deutschland, soweit die von ihnen bestellten Waren weder ihrer gewerblichen noch ihrer selbstst&auml;ndigen beruflichen T&auml;tigkeit zugerechnet werden k&ouml;nnen.</p>
             <p><strong>&nbsp;</strong></p>
             <p><strong>Vertragsabschluss </strong></p>
@@ -310,13 +310,13 @@
                                 Nützliche Links
                             </h6>
                             <p>
-                                <a href="agb.html" class="text-reset">ABG</a>
+                                <a href="agb.php" class="text-reset">ABG</a>
                             </p>
                             <p>
-                                <a href="impressum.html" class="text-reset">Impressum</a>
+                                <a href="impressum.php" class="text-reset">Impressum</a>
                             </p>
                             <p>
-                                <a href="datenschutz.html" class="text-reset">Datenschutz</a>
+                                <a href="datenschutz.php" class="text-reset">Datenschutz</a>
                             </p>
                         </div>
                         <!-- Grid column -->
