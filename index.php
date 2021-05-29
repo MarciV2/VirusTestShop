@@ -116,7 +116,7 @@ if(!isset($_SESSION))
                             <a class="nav-link" href="./content/produktangebot.php" style="color: white">Produktangebot</a>
                         </li>
 			    <li class="nav-item">
-                            <a class="nav-link" href="content/termine.html" style="color: white">Schulungstermine</a>
+                            <a class="nav-link" href="content/termine.php" style="color: white">Schulungstermine</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle"
@@ -273,13 +273,13 @@ if(!isset($_SESSION))
                                 Nützliche Links
                             </h6>
                             <p>
-                                <a href="./content/agb.html" class="text-reset">ABG</a>
+                                <a href="./content/agb.php" class="text-reset">ABG</a>
                             </p>
                             <p>
-                                <a href="./content/impressum.html" class="text-reset">Impressum</a>
+                                <a href="./content/impressum.php" class="text-reset">Impressum</a>
                             </p>
                             <p>
-                                <a href="./content/datenschutz.html" class="text-reset">Datenschutz</a>
+                                <a href="./content/datenschutz.php" class="text-reset">Datenschutz</a>
                             </p>
                         </div>
                         <!-- Grid column -->
