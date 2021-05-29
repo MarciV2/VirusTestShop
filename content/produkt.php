@@ -163,6 +163,7 @@
                     <script>
                         var variablejs = "<?php echo $variablephp; ?>";
                         variablejs = parseInt(variablejs);
+						
                         if(variablejs > 0){
                             var account_icon = '<a class="text-reset me-3" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">';
                             account_icon = account_icon + '<i class="fas fa-user-circle" style="color: #ffffff"></i>';
@@ -384,7 +385,7 @@
       <script src="../js/produktangebote.js"></script>
 
       <script src="../js/cartNumber.js"></script>
-	 
+	 <script type="text/javascript" src="../js/functionScripts.js"></script>
     <script type=text/javascript src=../js/index.js><?php echo "checkLogin($_SESSION[login])</script>"?>;
     <script type="text/javascript" src="../js/index.js"></script>
   </body>
