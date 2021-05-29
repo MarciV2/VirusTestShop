@@ -190,10 +190,10 @@
                   <div class="row" style="margin: 0% 3%">
                       <div class="col-lg-3"></div>
                       <div class="col-lg-3 col-sm-6">
-                          <button type="button" id="button_previous" onclick="previousStep()" class="btn btn-primary btn-lg btn-rounded btn-block" style="background-color: #1E90FF; margin-bottom: 20px">Angaben bearbeiten</button>
+                        <a href='#' class='btn btn-primary btn-lg btn-rounded btn-block' style='background-color: #1E90FF'>Angaben bearbeiten</a>
                       </div>
                       <div class="col-lg-3 col-sm-6">
-                          <button type="button" id="button_previous" onclick="previousStep()" class="btn btn-primary btn-lg btn-rounded btn-block" style="background-color: #1E90FF; margin-bottom: 20px">Bestellhistorie</button>
+                        <a href='./bestellungen.php' class='btn btn-primary btn-lg btn-rounded btn-block' style='background-color: #1E90FF'>Bestellhistorie</a>
                       </div>
                       <div class="col-lg-3"></div>
                   </div>

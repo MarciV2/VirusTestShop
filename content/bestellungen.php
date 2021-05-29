@@ -1,5 +1,9 @@
 <?php SESSION_START();
 ?>
+<?php
+    include_once '../php/BestellungHistorieVerarbeitung.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -197,661 +201,248 @@
               <div class="card itemCard" style="padding: 1%">
                   <div>
                       
+                      <?php
+                          $sql = "SELECT * FROM `bestellung` ORDER BY `bestellung`.`Bestelldatum` DESC;";
+                          $result = mysqli_query($verbindung, $sql);
+                          $resultCheck =  mysqli_num_rows($result);
+
+                          if($resultCheck > 0){
+                              #while schleife füllt akkordeon mit bestellungen
+                              while($row = mysqli_fetch_assoc($result)){
+                                  $bestellung_id = $row['Bestellung_ID'];
+                                  $bestelldatum = substr($row['Bestelldatum'], 0, 16);
+                                  $versanddatum = $row['Versanddatum'];
+                                  if($versanddatum){
+                                        $versanddatum = substr($row['Bestelldatum'], 0, 10);
+                                  } else {
+                                        $versanddatum = "ausstehend";
+                                  }
+
+                                  #Bestellstatus abfragen
+                                  $bestellstatus = $row['Bestellstatus_ID'];
+                                  $sql_bestellstatus_text = "SELECT * FROM `bestellstatus` WHERE `bestellstatus`.`Bestellstatus_ID` = " . ($bestellstatus) . ";";
+                                  $result_bestellstatus = mysqli_query($verbindung, $sql_bestellstatus_text);
+                                  $row_bestellstatus = mysqli_fetch_assoc($result_bestellstatus);
+                                  $bestellstatus_text = $row_bestellstatus['Bezeichnung'];
+
+                                  #Lieferadresse abfragen
+                                  $lieferadresse = $row['Lieferdresse_ID'];
+                                  $sql_lieferadresse = "SELECT * FROM `adresse` WHERE `adresse`.`Adresse_ID` = " . ($lieferadresse) . ";";
+                                  $result_lieferadresse = mysqli_query($verbindung, $sql_lieferadresse);
+                                  $row_lieferadresse = mysqli_fetch_assoc($result_lieferadresse);
+                                  $lieferadresse_strasse = $row_lieferadresse['Strasse'];
+                                  $lieferadresse_hausnummer = $row_lieferadresse['Hausnummer'];
+                                  $lieferadresse_strasse_hausnummer = $lieferadresse_strasse . " " . $lieferadresse_hausnummer;
+                                  $lieferadresse_plz = $row_lieferadresse['PLZ'];
+                                  $lieferadresse_stadt = $row_lieferadresse['Stadt'];
+                                  $lieferadresse_plz_stadt = $lieferadresse_plz . " " . $lieferadresse_stadt;
+                                  $lieferadresse_land = $row_lieferadresse['Land'];
 
 
-
-                      <div class="accordion accordion-flush" id="accordionFlushExample">
-                          <div class="accordion-item">
-                              <h2 class="accordion-header" id="flush-headingOne">
-                                  <button class="accordion-button collapsed"
-                                          type="button"
-                                          data-mdb-toggle="collapse"
-                                          data-mdb-target="#flush-collapseOne"
-                                          aria-expanded="false"
-                                          aria-controls="flush-collapseOne">
-                                      <div class="row" style="width: 100%">
-                                          <div class="col-8">
-                                              Bestellung vom 26.05.2021
-                                          </div>
-                                          <div class="col-4 d-flex justify-content-end">
-                                              9999,99 €
-                                          </div>
-                                      </div>
-                                  </button>
-                              </h2>
-                              <div id="flush-collapseOne"
-                                   class="accordion-collapse collapse"
-                                   aria-labelledby="flush-headingOne">
-                                  <div class="accordion-body">
-
-                                      <div class="row">
-                                          <div class="col-lg-8 col-sm-8 col-7">
-                                              <h6 style="padding-top: 10px; padding-left: 20px">Produkt </h6>
-                                          </div>
-                                          <div class="col-lg-2 col-sm-2 col-3">
-                                              <h6 style="padding-top: 10px">Anzahl </h6>
-                                          </div>
-                                          <div class="col-lg-2 col-sm-2 col-2 d-flex justify-content-end">
-                                              <h6 style="padding-top: 10px; padding-right: 20px">Preis</h6>
-                                          </div>
-                                      </div>
-
-                                      <div style="height: 2px; background-color: gainsboro"></div>
-
-                                      <ul class="list-group list-group-flush" id="list_of_elements_in_cart">
-
-                                          <li class="list-group-item">
-                                              <div class="row">
-                                                  <div class="col-lg-8 col-sm-8 col-7">
-                                                      <div class="row">
-                                                          <div class="col-lg-2 col-3 d-md-block d-none">
-                                                              <img src="https://www.disapo.de/documents/products/Detailansicht/17295755-coronatest.jpeg" height="60px" />
-                                                          </div>
-                                                          <div class="col-lg-10 col-md-9 col-12 d-flex align-items-center">
-                                                              <h5 style="padding-top: 7px">1x Corona Schnelltest </h5>
-                                                          </div>
+                                    echo '<div class="accordion-item">';
+                                    echo '<h2 class="accordion-header" id="flush-heading' . ($bestellung_id) . '">
+                                              <button class="accordion-button collapsed"
+                                                      type="button"
+                                                      data-mdb-toggle="collapse"
+                                                      data-mdb-target="#flush-collapse' . ($bestellung_id) . '"
+                                                      aria-expanded="false"
+                                                      aria-controls="flush-collapse' . ($bestellung_id) . '">
+                                                  <div class="row" style="width: 100%">
+                                                      <div class="col-8">
+                                                          Bestellung vom ' . ($bestelldatum) . '
+                                                      </div>
+                                                      <div class="col-4 d-flex justify-content-end">
+                                                          Status: ' . ($bestellstatus_text) . '
                                                       </div>
                                                   </div>
-                                                  <div class="col-lg-2 col-sm-2 col-3 d-flex align-items-center">
-                                                      <h6 style="padding-top: 7px; margin-left: 5%">999</h6>
-                                                  </div>
-                                                  <div class="col-lg-2 col-sm-2 col-2 d-flex align-items-center justify-content-end">
-                                                      <h6 style="padding-top: 7px; margin-left: 5%">9999.99€</h6>
-                                                  </div>
-                                              </div>
-                                          </li>
-
-                                          <li class="list-group-item">
-                                              <div class="row">
-                                                  <div class="col-lg-8 col-sm-8 col-7">
-                                                      <div class="row">
-                                                          <div class="col-lg-2 col-3 d-md-block d-none">
-                                                              <img src="https://www.disapo.de/documents/products/Detailansicht/17295755-coronatest.jpeg" height="60px" />
-                                                          </div>
-                                                          <div class="col-lg-10 col-md-9 col-12 d-flex align-items-center">
-                                                              <h5 style="padding-top: 7px">1x Corona Schnelltest </h5>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                                  <div class="col-lg-2 col-sm-2 col-3 d-flex align-items-center">
-                                                      <h6 style="padding-top: 7px; margin-left: 5%">999</h6>
-                                                  </div>
-                                                  <div class="col-lg-2 col-sm-2 col-2 d-flex align-items-center justify-content-end">
-                                                      <h6 style="padding-top: 7px; margin-left: 5%">9999.99€</h6>
-                                                  </div>
-                                              </div>
-                                          </li>
-
-                                          <li class="list-group-item">
-                                              <div class="row">
-                                                  <div class="col-lg-8 col-sm-8 col-7">
-                                                      <div class="row">
-                                                          <div class="col-lg-2 col-3 d-md-block d-none">
-                                                              <img src="https://www.disapo.de/documents/products/Detailansicht/17295755-coronatest.jpeg" height="60px" />
-                                                          </div>
-                                                          <div class="col-lg-10 col-md-9 col-12 d-flex align-items-center">
-                                                              <h5 style="padding-top: 7px">1x Corona Schnelltest </h5>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                                  <div class="col-lg-2 col-sm-2 col-3 d-flex align-items-center">
-                                                      <h6 style="padding-top: 7px; margin-left: 5%">999</h6>
-                                                  </div>
-                                                  <div class="col-lg-2 col-sm-2 col-2 d-flex align-items-center justify-content-end">
-                                                      <h6 style="padding-top: 7px; margin-left: 5%">9999.99€</h6>
-                                                  </div>
-                                              </div>
-                                          </li>
-
-                                          <li class="list-group-item">
-                                              <div class="row">
-                                                  <div class="col-lg-8 col-sm-8 col-7">
-                                                      <div class="row">
-                                                          <div class="col-lg-2 col-3 d-md-block d-none">
-                                                              <img src="https://www.disapo.de/documents/products/Detailansicht/17295755-coronatest.jpeg" height="60px" />
-                                                          </div>
-                                                          <div class="col-lg-10 col-md-9 col-12 d-flex align-items-center">
-                                                              <h5 style="padding-top: 7px">1x Corona Schnelltest </h5>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                                  <div class="col-lg-2 col-sm-2 col-3 d-flex align-items-center">
-                                                      <h6 style="padding-top: 7px; margin-left: 5%">999</h6>
-                                                  </div>
-                                                  <div class="col-lg-2 col-sm-2 col-2 d-flex align-items-center justify-content-end">
-                                                      <h6 style="padding-top: 7px; margin-left: 5%">9999.99€</h6>
-                                                  </div>
-                                              </div>
-                                          </li>
-
-                                      </ul>
-
-                                      <div style="height: 1px; background-color: gainsboro"></div>
+                                              </button>
+                                          </h2>';
+                                    echo '<div id="flush-collapse' . ($bestellung_id) . '" class="accordion-collapse collapse" aria-labelledby="flush-heading' . ($bestellung_id) . '">';
+                                    echo '<div class="accordion-body">';
+                                    #heading of each accorion element (Produkt    Anzahl     Preis)
+                                    echo '<div class="row"> 
+                                            <div class="col-lg-8 col-sm-8 col-7">
+                                                <h6 style="padding-top: 10px; padding-left: 20px">Produkt </h6>
+                                            </div>
+                                            <div class="col-lg-2 col-sm-2 col-3">
+                                                <h6 style="padding-top: 10px">Anzahl </h6>
+                                            </div>
+                                            <div class="col-lg-2 col-sm-2 col-2 d-flex justify-content-end">
+                                                <h6 style="padding-top: 10px; padding-right: 20px">Preis</h6>
+                                            </div>
+                                        </div>';
+                                    echo '<div style="height: 2px; background-color: gainsboro"></div>';
+                                    echo '<ul class="list-group list-group-flush" id="list_of_elements_in_cart">';
 
 
-                                      <div class="row" style="padding: 2% 2%; font-size: small">
-                                          <div class="col-md-3">
-                                              <div class="row">
-                                                  <div class="col-6">
-                                                      Bestelldatum:
-                                                  </div>
-                                                  <div class="col-6 d-flex justify-content-end">
-                                                      26.05.2021
-                                                  </div>
-                                              </div>
-                                              <div class="row">
-                                                  <div class="col-6">
-                                                      Versanddatum:
-                                                  </div>
-                                                  <div class="col-6 d-flex justify-content-end">
-                                                      26.05.2021
-                                                  </div>
-                                              </div>
-                                              <div class="row">
-                                                  <div class="col-6">
-                                                      Bestell-Nr:
-                                                  </div>
-                                                  <div class="col-6 d-flex justify-content-end">
-                                                      9999-9999-999-2
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <div class="col-md-1 d-flex justify-content-center">
-                                              <div style="height: 100%; width: 1px; background-color: gainsboro"></div>
-                                          </div>
-                                          <div class="col-md-3">
-                                              <div class="row">
-                                                  <div class="col-6">
-                                                      Lieferadresse:
-                                                  </div>
-                                                  <div class="col-6 d-flex justify-content-end">
-                                                      Hauptstraße 1
-                                                  </div>
-                                              </div>
-                                              <div class="row">
-                                                  <div class="col-6">
-                                                  </div>
-                                                  <div class="col-6 d-flex justify-content-end">
-                                                      80999 München
-                                                  </div>
-                                              </div>
-                                              <div class="row">
-                                                  <div class="col-6">
-                                                  </div>
-                                                  <div class="col-6 d-flex justify-content-end">
-                                                      Deutschland
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <div class="col-md-1 d-flex justify-content-center">
-                                              <div style="height: 100%; width: 1px; background-color: gainsboro"></div>
-                                          </div>
-                                          <div class="col-md-4">
-                                              <div class="row">
-                                                  <div class="col-6">
-                                                      Gesamtpreis:
-                                                  </div>
-                                                  <div class="col-6 d-flex justify-content-end">
-                                                      9999,99 €
-                                                  </div>
-                                                  <div class="col-6">
-                                                      Davon MwSt (19%):
-                                                  </div>
-                                                  <div class="col-6 d-flex justify-content-end">
-                                                      1999,99 €
-                                                  </div>
-                                                  <div class="col-6">
-                                                      Versandkosten:
-                                                  </div>
-                                                  <div class="col-6 d-flex justify-content-end">
-                                                      99,99 €
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
+                                    $sql_bestellposition = "SELECT * FROM `bestellungsposition` WHERE `bestellungsposition`.`Bestellung_ID` = " . ($bestellung_id) . ";";
+                                    $result_bestellposition = mysqli_query($verbindung, $sql_bestellposition);
+                                    
+                                    $preis_summe = 0;
 
-                                      <div style="height: 1px; background-color: gainsboro"></div>
+                                    #while schleife füllt bestellung des akkordeons mit bestellten artikeln
+                                    while($row_bestellposition = mysqli_fetch_assoc($result_bestellposition)){
+                                        $preis =  $row_bestellposition['Preis'];
+                                        $preis_summe = $preis_summe + $preis;
+                                        $preis = number_format($preis, 2, ',', '.');
+                                        $anzahl = $row_bestellposition['Anzahl'];
 
-                                      <div style="font-size: small; padding: 1% 2%">
-                                          Probleme mit der Bestellung? Schreiben Sie uns eine Email an corona-testshop@example.com oder rufen Sie uns an unter + 01 234 567 89
-                                      </div>
-                                  </div>
+                                        #Bestellstatus abfragen
+                                        $packung_id = $row_bestellposition['Packung_ID'];
+                                        $sql_packung = "SELECT 
+                                                        `packung`.`Packungsgroessee` as groesse,
+                                                        `hersteller`.Name as hersteller,
+                                                        `artikel`.Artikelname as name
+                                                        FROM 
+                                                        `bestellungsposition`
+                                                        LEFT JOIN `packung` ON `bestellungsposition`.Packung_ID=`packung`.Packung_ID
+                                                        LEFT JOIN `artikel` ON `packung`.Artikel_ID=`artikel`.Artikel_ID
+                                                        LEFT JOIN `hersteller` ON `artikel`.Hersteller_ID=`hersteller`.Hersteller_ID
+                                                        WHERE `bestellungsposition`.`Bestellung_ID`=" . ($bestellung_id) . " AND `packung`.Packung_ID=" . ($packung_id) . ";";
+                                        $result_packung = mysqli_query($verbindung, $sql_packung);
+
+                                        $row_packung = mysqli_fetch_assoc($result_packung);
+                                        $packungsgroesse = $row_packung['groesse'];
+                                        $hersteller = $row_packung['hersteller'];
+                                        $name = $row_packung['name'];
+
+                                        $produktbezeichnung = $packungsgroesse . "x " . $hersteller . " - " . $name;
 
 
-                              </div>
-                          </div>
-                          <div class="accordion-item">
-                              <h2 class="accordion-header" id="flush-headingTwo">
-                                  <button class="accordion-button collapsed"
-                                          type="button"
-                                          data-mdb-toggle="collapse"
-                                          data-mdb-target="#flush-collapseTwo"
-                                          aria-expanded="false"
-                                          aria-controls="flush-collapseTwo">
-                                      <div class="row" style="width: 100%">
-                                          <div class="col-8">
-                                              Bestellung vom 26.05.2021
-                                          </div>
-                                          <div class="col-4 d-flex justify-content-end">
-                                              9999,99 €
-                                          </div>
-                                      </div>
-                                  </button>
-                              </h2>
-                              <div id="flush-collapseTwo"
-                                   class="accordion-collapse collapse"
-                                   aria-labelledby="flush-headingTwo">
-                                  <div class="accordion-body">
+                                        echo '<li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col-lg-8 col-sm-8 col-7">
+                                                        <div class="row">
+                                                            <div class="col-lg-2 col-3 d-md-block d-none">
+                                                                <img src="../img/' . ($packung_id) . '.png" height="60px" />
+                                                            </div>
+                                                            <div class="col-lg-10 col-md-9 col-12 d-flex align-items-center">
+                                                                <h5 style="padding-top: 7px">' . ($produktbezeichnung) . '</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-2 col-sm-2 col-3 d-flex align-items-center">
+                                                        <h6 style="padding-top: 7px; margin-left: 5%">' . ($anzahl) . '</h6>
+                                                    </div>
+                                                    <div class="col-lg-2 col-sm-2 col-2 d-flex align-items-center justify-content-end">
+                                                        <h6 style="padding-top: 7px; margin-left: 5%">' . ($preis) . ' €</h6>
+                                                    </div>
+                                                </div>
+                                            </li>';
+                                    }
 
-                                      <div class="row">
-                                          <div class="col-lg-8 col-sm-8 col-7">
-                                              <h6 style="padding-top: 10px; padding-left: 20px">Produkt </h6>
-                                          </div>
-                                          <div class="col-lg-2 col-sm-2 col-3">
-                                              <h6 style="padding-top: 10px">Anzahl </h6>
-                                          </div>
-                                          <div class="col-lg-2 col-sm-2 col-2 d-flex justify-content-end">
-                                              <h6 style="padding-top: 10px; padding-right: 20px">Preis</h6>
-                                          </div>
-                                      </div>
+                                    $preis_mwst = $preis_summe * 0.19;
+                                    $preis_mwst = number_format($preis_mwst, 2, ',', '.');
+                                    $preis_summe = number_format($preis_summe, 2, ',', '.');
+                                    $versandkosten = $row['Lieferkosten'];
+                                    $versandkosten = number_format($versandkosten, 2, ',', '.');
 
-                                      <div style="height: 2px; background-color: gainsboro"></div>
+                                    echo '</ul>';
 
-                                      <ul class="list-group list-group-flush" id="list_of_elements_in_cart">
-
-                                          <li class="list-group-item">
-                                              <div class="row">
-                                                  <div class="col-lg-8 col-sm-8 col-7">
-                                                      <div class="row">
-                                                          <div class="col-lg-2 col-3 d-md-block d-none">
-                                                              <img src="https://www.disapo.de/documents/products/Detailansicht/17295755-coronatest.jpeg" height="60px" />
-                                                          </div>
-                                                          <div class="col-lg-10 col-md-9 col-12 d-flex align-items-center">
-                                                              <h5 style="padding-top: 7px">1x Corona Schnelltest </h5>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                                  <div class="col-lg-2 col-sm-2 col-3 d-flex align-items-center">
-                                                      <h6 style="padding-top: 7px; margin-left: 5%">999</h6>
-                                                  </div>
-                                                  <div class="col-lg-2 col-sm-2 col-2 d-flex align-items-center justify-content-end">
-                                                      <h6 style="padding-top: 7px; margin-left: 5%">9999.99€</h6>
-                                                  </div>
-                                              </div>
-                                          </li>
-
-                                          <li class="list-group-item">
-                                              <div class="row">
-                                                  <div class="col-lg-8 col-sm-8 col-7">
-                                                      <div class="row">
-                                                          <div class="col-lg-2 col-3 d-md-block d-none">
-                                                              <img src="https://www.disapo.de/documents/products/Detailansicht/17295755-coronatest.jpeg" height="60px" />
-                                                          </div>
-                                                          <div class="col-lg-10 col-md-9 col-12 d-flex align-items-center">
-                                                              <h5 style="padding-top: 7px">1x Corona Schnelltest </h5>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                                  <div class="col-lg-2 col-sm-2 col-3 d-flex align-items-center">
-                                                      <h6 style="padding-top: 7px; margin-left: 5%">999</h6>
-                                                  </div>
-                                                  <div class="col-lg-2 col-sm-2 col-2 d-flex align-items-center justify-content-end">
-                                                      <h6 style="padding-top: 7px; margin-left: 5%">9999.99€</h6>
-                                                  </div>
-                                              </div>
-                                          </li>
-
-                                          <li class="list-group-item">
-                                              <div class="row">
-                                                  <div class="col-lg-8 col-sm-8 col-7">
-                                                      <div class="row">
-                                                          <div class="col-lg-2 col-3 d-md-block d-none">
-                                                              <img src="https://www.disapo.de/documents/products/Detailansicht/17295755-coronatest.jpeg" height="60px" />
-                                                          </div>
-                                                          <div class="col-lg-10 col-md-9 col-12 d-flex align-items-center">
-                                                              <h5 style="padding-top: 7px">1x Corona Schnelltest </h5>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                                  <div class="col-lg-2 col-sm-2 col-3 d-flex align-items-center">
-                                                      <h6 style="padding-top: 7px; margin-left: 5%">999</h6>
-                                                  </div>
-                                                  <div class="col-lg-2 col-sm-2 col-2 d-flex align-items-center justify-content-end">
-                                                      <h6 style="padding-top: 7px; margin-left: 5%">9999.99€</h6>
-                                                  </div>
-                                              </div>
-                                          </li>
-
-                                          <li class="list-group-item">
-                                              <div class="row">
-                                                  <div class="col-lg-8 col-sm-8 col-7">
-                                                      <div class="row">
-                                                          <div class="col-lg-2 col-3 d-md-block d-none">
-                                                              <img src="https://www.disapo.de/documents/products/Detailansicht/17295755-coronatest.jpeg" height="60px" />
-                                                          </div>
-                                                          <div class="col-lg-10 col-md-9 col-12 d-flex align-items-center">
-                                                              <h5 style="padding-top: 7px">1x Corona Schnelltest </h5>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                                  <div class="col-lg-2 col-sm-2 col-3 d-flex align-items-center">
-                                                      <h6 style="padding-top: 7px; margin-left: 5%">999</h6>
-                                                  </div>
-                                                  <div class="col-lg-2 col-sm-2 col-2 d-flex align-items-center justify-content-end">
-                                                      <h6 style="padding-top: 7px; margin-left: 5%">9999.99€</h6>
-                                                  </div>
-                                              </div>
-                                          </li>
-
-                                      </ul>
-
-                                      <div style="height: 1px; background-color: gainsboro"></div>
+                                    echo '<div style="height: 1px; background-color: gainsboro"></div>';
 
 
-                                      <div class="row" style="padding: 2% 2%; font-size: small">
-                                          <div class="col-md-3">
-                                              <div class="row">
-                                                  <div class="col-6">
-                                                      Bestelldatum:
-                                                  </div>
-                                                  <div class="col-6 d-flex justify-content-end">
-                                                      26.05.2021
-                                                  </div>
-                                              </div>
-                                              <div class="row">
-                                                  <div class="col-6">
-                                                      Versanddatum:
-                                                  </div>
-                                                  <div class="col-6 d-flex justify-content-end">
-                                                      26.05.2021
-                                                  </div>
-                                              </div>
-                                              <div class="row">
-                                                  <div class="col-6">
-                                                      Bestell-Nr:
-                                                  </div>
-                                                  <div class="col-6 d-flex justify-content-end">
-                                                      9999-9999-999-2
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <div class="col-md-1 d-flex justify-content-center">
-                                              <div style="height: 100%; width: 1px; background-color: gainsboro"></div>
-                                          </div>
-                                          <div class="col-md-3">
-                                              <div class="row">
-                                                  <div class="col-6">
-                                                      Lieferadresse:
-                                                  </div>
-                                                  <div class="col-6 d-flex justify-content-end">
-                                                      Hauptstraße 1
-                                                  </div>
-                                              </div>
-                                              <div class="row">
-                                                  <div class="col-6">
-                                                  </div>
-                                                  <div class="col-6 d-flex justify-content-end">
-                                                      80999 München
-                                                  </div>
-                                              </div>
-                                              <div class="row">
-                                                  <div class="col-6">
-                                                  </div>
-                                                  <div class="col-6 d-flex justify-content-end">
-                                                      Deutschland
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <div class="col-md-1 d-flex justify-content-center">
-                                              <div style="height: 100%; width: 1px; background-color: gainsboro"></div>
-                                          </div>
-                                          <div class="col-md-4">
-                                              <div class="row">
-                                                  <div class="col-6">
-                                                      Gesamtpreis:
-                                                  </div>
-                                                  <div class="col-6 d-flex justify-content-end">
-                                                      9999,99 €
-                                                  </div>
-                                                  <div class="col-6">
-                                                      Davon MwSt (19%):
-                                                  </div>
-                                                  <div class="col-6 d-flex justify-content-end">
-                                                      1999,99 €
-                                                  </div>
-                                                  <div class="col-6">
-                                                      Versandkosten:
-                                                  </div>
-                                                  <div class="col-6 d-flex justify-content-end">
-                                                      99,99 €
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-
-                                      <div style="height: 1px; background-color: gainsboro"></div>
-
-                                      <div style="font-size: small; padding: 1% 2%">
-                                          Probleme mit der Bestellung? Schreiben Sie uns eine Email an corona-testshop@example.com oder rufen Sie uns an unter + 01 234 567 89
-                                      </div>
-                                  </div>
-
-                              </div>
-                          </div>
-                          <div class="accordion-item">
-                              <h2 class="accordion-header" id="flush-headingThree">
-                                  <button class="accordion-button collapsed"
-                                          type="button"
-                                          data-mdb-toggle="collapse"
-                                          data-mdb-target="#flush-collapseThree"
-                                          aria-expanded="false"
-                                          aria-controls="flush-collapseThree">
-                                      Accordion Item #3
-                                  </button>
-                              </h2>
-                              <div id="flush-collapseThree"
-                                   class="accordion-collapse collapse"
-                                   aria-labelledby="flush-headingThree">
-                                  <div class="accordion-body">
-
-                                      <div class="row">
-                                          <div class="col-lg-8 col-sm-8 col-7">
-                                              <h6 style="padding-top: 10px; padding-left: 20px">Produkt </h6>
-                                          </div>
-                                          <div class="col-lg-2 col-sm-2 col-3">
-                                              <h6 style="padding-top: 10px">Anzahl </h6>
-                                          </div>
-                                          <div class="col-lg-2 col-sm-2 col-2 d-flex justify-content-end">
-                                              <h6 style="padding-top: 10px; padding-right: 20px">Preis</h6>
-                                          </div>
-                                      </div>
-
-                                      <div style="height: 2px; background-color: gainsboro"></div>
-
-                                      <ul class="list-group list-group-flush" id="list_of_elements_in_cart">
-
-                                          <li class="list-group-item">
-                                              <div class="row">
-                                                  <div class="col-lg-8 col-sm-8 col-7">
-                                                      <div class="row">
-                                                          <div class="col-lg-2 col-3 d-md-block d-none">
-                                                              <img src="https://www.disapo.de/documents/products/Detailansicht/17295755-coronatest.jpeg" height="60px" />
-                                                          </div>
-                                                          <div class="col-lg-10 col-md-9 col-12 d-flex align-items-center">
-                                                              <h5 style="padding-top: 7px">1x Corona Schnelltest </h5>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                                  <div class="col-lg-2 col-sm-2 col-3 d-flex align-items-center">
-                                                      <h6 style="padding-top: 7px; margin-left: 5%">999</h6>
-                                                  </div>
-                                                  <div class="col-lg-2 col-sm-2 col-2 d-flex align-items-center justify-content-end">
-                                                      <h6 style="padding-top: 7px; margin-left: 5%">9999.99€</h6>
-                                                  </div>
-                                              </div>
-                                          </li>
-
-                                          <li class="list-group-item">
-                                              <div class="row">
-                                                  <div class="col-lg-8 col-sm-8 col-7">
-                                                      <div class="row">
-                                                          <div class="col-lg-2 col-3 d-md-block d-none">
-                                                              <img src="https://www.disapo.de/documents/products/Detailansicht/17295755-coronatest.jpeg" height="60px" />
-                                                          </div>
-                                                          <div class="col-lg-10 col-md-9 col-12 d-flex align-items-center">
-                                                              <h5 style="padding-top: 7px">1x Corona Schnelltest </h5>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                                  <div class="col-lg-2 col-sm-2 col-3 d-flex align-items-center">
-                                                      <h6 style="padding-top: 7px; margin-left: 5%">999</h6>
-                                                  </div>
-                                                  <div class="col-lg-2 col-sm-2 col-2 d-flex align-items-center justify-content-end">
-                                                      <h6 style="padding-top: 7px; margin-left: 5%">9999.99€</h6>
-                                                  </div>
-                                              </div>
-                                          </li>
-
-                                          <li class="list-group-item">
-                                              <div class="row">
-                                                  <div class="col-lg-8 col-sm-8 col-7">
-                                                      <div class="row">
-                                                          <div class="col-lg-2 col-3 d-md-block d-none">
-                                                              <img src="https://www.disapo.de/documents/products/Detailansicht/17295755-coronatest.jpeg" height="60px" />
-                                                          </div>
-                                                          <div class="col-lg-10 col-md-9 col-12 d-flex align-items-center">
-                                                              <h5 style="padding-top: 7px">1x Corona Schnelltest </h5>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                                  <div class="col-lg-2 col-sm-2 col-3 d-flex align-items-center">
-                                                      <h6 style="padding-top: 7px; margin-left: 5%">999</h6>
-                                                  </div>
-                                                  <div class="col-lg-2 col-sm-2 col-2 d-flex align-items-center justify-content-end">
-                                                      <h6 style="padding-top: 7px; margin-left: 5%">9999.99€</h6>
-                                                  </div>
-                                              </div>
-                                          </li>
-
-                                          <li class="list-group-item">
-                                              <div class="row">
-                                                  <div class="col-lg-8 col-sm-8 col-7">
-                                                      <div class="row">
-                                                          <div class="col-lg-2 col-3 d-md-block d-none">
-                                                              <img src="https://www.disapo.de/documents/products/Detailansicht/17295755-coronatest.jpeg" height="60px" />
-                                                          </div>
-                                                          <div class="col-lg-10 col-md-9 col-12 d-flex align-items-center">
-                                                              <h5 style="padding-top: 7px">1x Corona Schnelltest </h5>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                                  <div class="col-lg-2 col-sm-2 col-3 d-flex align-items-center">
-                                                      <h6 style="padding-top: 7px; margin-left: 5%">999</h6>
-                                                  </div>
-                                                  <div class="col-lg-2 col-sm-2 col-2 d-flex align-items-center justify-content-end">
-                                                      <h6 style="padding-top: 7px; margin-left: 5%">9999.99€</h6>
-                                                  </div>
-                                              </div>
-                                          </li>
-
-                                      </ul>
-
-                                      <div style="height: 1px; background-color: gainsboro"></div>
+                                    echo '<div class="row" style="padding: 2% 2%; font-size: small">
+                                            <div class="col-md-3">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        Bestelldatum:
+                                                    </div>
+                                                    <div class="col-6 d-flex justify-content-end">
+                                                        ' . (substr($row['Bestelldatum'], 0, 10)) . '
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        Versanddatum:
+                                                    </div>
+                                                    <div class="col-6 d-flex justify-content-end">
+                                                        ' . ($versanddatum) . '
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        Bestell-Nr:
+                                                    </div>
+                                                    <div class="col-6 d-flex justify-content-end">
+                                                        ' . ($bestellung_id) . '
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1 d-flex justify-content-center">
+                                                <div style="height: 100%; width: 1px; background-color: gainsboro"></div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        Lieferadresse:
+                                                    </div>
+                                                    <div class="col-6 d-flex justify-content-end">
+                                                        ' . ($lieferadresse_strasse_hausnummer) . '
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                    </div>
+                                                    <div class="col-6 d-flex justify-content-end">
+                                                        ' . ($lieferadresse_plz_stadt) . '
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                    </div>
+                                                    <div class="col-6 d-flex justify-content-end">
+                                                        ' . ($lieferadresse_land) . '
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1 d-flex justify-content-center">
+                                                <div style="height: 100%; width: 1px; background-color: gainsboro"></div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        Gesamtpreis:
+                                                    </div>
+                                                    <div class="col-6 d-flex justify-content-end">
+                                                        ' . ($preis_summe) . ' €
+                                                    </div>
+                                                    <div class="col-6">
+                                                        Davon MwSt (19%):
+                                                    </div>
+                                                    <div class="col-6 d-flex justify-content-end">
+                                                        ' . ($preis_mwst) . ' €
+                                                    </div>
+                                                    <div class="col-6">
+                                                        Versandkosten:
+                                                    </div>
+                                                    <div class="col-6 d-flex justify-content-end">
+                                                        ' . ($versandkosten) . ' €
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>';
 
 
-                                      <div class="row" style="padding: 2% 2%; font-size: small">
-                                          <div class="col-md-3">
-                                              <div class="row">
-                                                  <div class="col-6">
-                                                      Bestelldatum:
-                                                  </div>
-                                                  <div class="col-6 d-flex justify-content-end">
-                                                      26.05.2021
-                                                  </div>
-                                              </div>
-                                              <div class="row">
-                                                  <div class="col-6">
-                                                      Versanddatum:
-                                                  </div>
-                                                  <div class="col-6 d-flex justify-content-end">
-                                                      26.05.2021
-                                                  </div>
-                                              </div>
-                                              <div class="row">
-                                                  <div class="col-6">
-                                                      Bestell-Nr:
-                                                  </div>
-                                                  <div class="col-6 d-flex justify-content-end">
-                                                      9999-9999-999-2
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <div class="col-md-1 d-flex justify-content-center">
-                                              <div style="height: 100%; width: 1px; background-color: gainsboro"></div>
-                                          </div>
-                                          <div class="col-md-3">
-                                              <div class="row">
-                                                  <div class="col-6">
-                                                      Lieferadresse:
-                                                  </div>
-                                                  <div class="col-6 d-flex justify-content-end">
-                                                      Hauptstraße 1
-                                                  </div>
-                                              </div>
-                                              <div class="row">
-                                                  <div class="col-6">
-                                                  </div>
-                                                  <div class="col-6 d-flex justify-content-end">
-                                                      80999 München
-                                                  </div>
-                                              </div>
-                                              <div class="row">
-                                                  <div class="col-6">
-                                                  </div>
-                                                  <div class="col-6 d-flex justify-content-end">
-                                                      Deutschland
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <div class="col-md-1 d-flex justify-content-center">
-                                              <div style="height: 100%; width: 1px; background-color: gainsboro"></div>
-                                          </div>
-                                          <div class="col-md-4">
-                                              <div class="row">
-                                                  <div class="col-6">
-                                                      Gesamtpreis:
-                                                  </div>
-                                                  <div class="col-6 d-flex justify-content-end">
-                                                      9999,99 €
-                                                  </div>
-                                                  <div class="col-6">
-                                                      Davon MwSt (19%):
-                                                  </div>
-                                                  <div class="col-6 d-flex justify-content-end">
-                                                      1999,99 €
-                                                  </div>
-                                                  <div class="col-6">
-                                                      Versandkosten:
-                                                  </div>
-                                                  <div class="col-6 d-flex justify-content-end">
-                                                      99,99 €
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
+                                    echo '<div style="height: 1px; background-color: gainsboro"></div>';
 
-                                      <div style="height: 1px; background-color: gainsboro"></div>
+                                    echo '<div style="font-size: small; padding: 1% 2%">
+                                            Probleme mit der Bestellung? Schreiben Sie uns eine Email an corona-testshop@example.com oder rufen Sie uns an unter + 01 234 567 89
+                                        </div>';
 
-                                      <div style="font-size: small; padding: 1% 2%">
-                                          Probleme mit der Bestellung? Schreiben Sie uns eine Email an corona-testshop@example.com oder rufen Sie uns an unter + 01 234 567 89
-                                      </div>
-                                  </div>
+                                    echo '</div>';
+                                    echo '</div>';
+                                    echo '</div>';
+                              }
 
-                              </div>
-                          </div>
-                      </div>
+                              echo '<div class="accordion accordion-flush" id="accordionFlush">';
+                          echo '</div>';
 
+                          } else {
+                                echo "<h4 style='text-align:center; margin-bottom: 20px'>Sie haben bisher noch keine Bestellung getätigt.</h4>";
+                          }
 
+                      ?>
 
                   </div>
 
