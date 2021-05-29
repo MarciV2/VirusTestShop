@@ -109,7 +109,7 @@
                               <a class="nav-link" href="./produktangebot.php" style="color: white">Produktangebot</a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link" href="./termine.html" style="color: white">Schulungstermine</a>
+                              <a class="nav-link" href="./termine.php" style="color: white">Schulungstermine</a>
                           </li>
                           <li class="nav-item dropdown">
                               <a class="nav-link dropdown-toggle"
@@ -906,13 +906,13 @@
                                   Nützliche Links
                               </h6>
                               <p>
-                                  <a href="./agb.html" class="text-reset">ABG</a>
+                                  <a href="./agb.php" class="text-reset">ABG</a>
                               </p>
                               <p>
-                                  <a href="./impressum.html" class="text-reset">Impressum</a>
+                                  <a href="./impressum.php" class="text-reset">Impressum</a>
                               </p>
                               <p>
-                                  <a href="./datenschutz.html" class="text-reset">Datenschutz</a>
+                                  <a href="./datenschutz.php" class="text-reset">Datenschutz</a>
                               </p>
                           </div>
                           <!-- Grid column -->
