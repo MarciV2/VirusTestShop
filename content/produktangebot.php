@@ -113,7 +113,7 @@
                               <a class="nav-link" href="./produktangebot.php" style="color: white; font-weight: 900">Produktangebot</a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link" href="./termine.html" style="color: white">Schulungstermine</a>
+                              <a class="nav-link" href="./termine.php" style="color: white">Schulungstermine</a>
                           </li>
                           <li class="nav-item dropdown">
                               <a class="nav-link dropdown-toggle"
@@ -143,7 +143,7 @@
                   <!-- Right elements -->
                   <div class="d-flex align-items-center">
                       <!-- Shopping icon -->
-                      <a class="text-reset me-4" href="./warenkorb.html">
+                      <a class="text-reset me-4" href="./warenkorb.php">
                           <i class="fas fa-shopping-cart" style="color: #ffffff"></i>
                           <span id="product_counter" class="badge rounded-pill badge-notification bg-danger" style="display: none">11</span>
                       </a>
@@ -330,7 +330,7 @@
                     var product_description="";
                     if(packung[3].length<=64)product_description=packung[3];
                     else {
-                        product_description=packung[3].substring(0,54)+"... <a href='./produkt.html?product_id="+product_id+"'>weiter lesen</a>";
+                        product_description=packung[3].substring(0,54)+"... <a href='./produkt.php?product_id="+product_id+"'>weiter lesen</a>";
                     }
                     var product_preis=packung[5]+"€";
 
@@ -349,7 +349,7 @@
                     itemCard = itemCard + "<a class='btn btn-primary btn-rounded buttonToCartMarginBottom' onclick=\"addProductToCart(\'" + product_name + "\', " + product_id + ")\" style='display: block; background-color: #1E90FF'>In den Warenkorb</a>";
                     itemCard = itemCard + "</div>";
                     itemCard = itemCard + "<div class='col-md-5'>";
-                    itemCard = itemCard + "<a href='./produkt.html?product_id=" + product_id + "' class='btn btn-primary btn-rounded' style='display: block; background-color: #1E90FF'>Details</a>";
+                    itemCard = itemCard + "<a href='./produkt.php?product_id=" + product_id + "' class='btn btn-primary btn-rounded' style='display: block; background-color: #1E90FF'>Details</a>";
                     itemCard = itemCard + "</div>";
                     itemCard = itemCard + "</div>";
                     itemCard = itemCard + "</div>";
@@ -418,13 +418,13 @@
                                 Nützliche Links
                             </h6>
                             <p>
-                                <a href="./agb.html" class="text-reset">ABG</a>
+                                <a href="./agb.php" class="text-reset">ABG</a>
                             </p>
                             <p>
-                                <a href="./impressum.html" class="text-reset">Impressum</a>
+                                <a href="./impressum.php" class="text-reset">Impressum</a>
                             </p>
                             <p>
-                                <a href="./datenschutz.html" class="text-reset">Datenschutz</a>
+                                <a href="./datenschutz.php" class="text-reset">Datenschutz</a>
                             </p>
                         </div>
                         <!-- Grid column -->
