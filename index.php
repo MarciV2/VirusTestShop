@@ -116,7 +116,7 @@ if(!isset($_SESSION))
                             <a class="nav-link" href="./content/produktangebot.php" style="color: white">Produktangebot</a>
                         </li>
 			    <li class="nav-item">
-                            <a class="nav-link" href="content/termine.html" style="color: white">Schulungstermine</a>
+                            <a class="nav-link" href="content/termine.php" style="color: white">Schulungstermine</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle"
@@ -177,7 +177,7 @@ if(!isset($_SESSION))
                             account_icon = account_icon + '<i class="fas fa-user-circle" style="color: #ffffff"></i>';
                             account_icon = account_icon + '</a>';
                             account_icon = account_icon + '<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">';
-                            account_icon = account_icon + '<li><a class="dropdown-item" href="#">Profil</a></li>';
+                            account_icon = account_icon + '<li><a class="dropdown-item" href="./content/profil.php">Profil</a></li>';
                             account_icon = account_icon + '<li><a class="dropdown-item" href="./content/bestellungen.php">Bestellungen</a></li>';
                             account_icon = account_icon + '<li><hr class="dropdown-divider" /></li>';
                             account_icon = account_icon + '<li><a class="dropdown-item" href="#" onclick="logout()">Logout</a></li>';
@@ -273,13 +273,13 @@ if(!isset($_SESSION))
                                 Nützliche Links
                             </h6>
                             <p>
-                                <a href="./content/agb.html" class="text-reset">ABG</a>
+                                <a href="./content/agb.php" class="text-reset">ABG</a>
                             </p>
                             <p>
-                                <a href="./content/impressum.html" class="text-reset">Impressum</a>
+                                <a href="./content/impressum.php" class="text-reset">Impressum</a>
                             </p>
                             <p>
-                                <a href="./content/datenschutz.html" class="text-reset">Datenschutz</a>
+                                <a href="./content/datenschutz.php" class="text-reset">Datenschutz</a>
                             </p>
                         </div>
                         <!-- Grid column -->

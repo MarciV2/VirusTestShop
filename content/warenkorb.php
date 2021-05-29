@@ -1,4 +1,5 @@
-﻿<?php SESSION_START() ?>
+﻿<?php SESSION_START();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +19,70 @@
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../src/simple-notify/simple-notify.min.css" />
 </head>
+<!--Register Form begin -->
+<div class="RegisterForm" id="RegisterForm" onmouseout="">
+    <form action="/php/RegistrierungsVerarbeitung.php" method="POST">
+        <div class="regForm" id="regForm">
+            <center><h><b>Registrierung</b></h></center>
+            <div class="registrierung" id="registrierung"> 
+            <center>
+            <table>
+              
+                <tr>
+                  <td><input class="big" type="text" placeholder="Login-Name" name="regloginname" id="RegLoginname" required /></td>
+                </tr>
+                <tr>
+                  <td><input class="big" type="password" placeholder="Passwort" name="passwort" id="passwort" minlength="8" required /><br></td>
+                  <td><input class="big" type="password" placeholder="Passwort wiederholen" name="wdhlg-passwort" id="wdhlg-passwort" minlength="8" onchange="pwprüfen()" required /></td>
+                </tr>
+                <tr>
+                  <td><input class="big" type="text" placeholder="Vorname" name="vorname" required></td>
+                  <td><input class="big" type="text" placeholder="Nachname" name="nachname" required></td>
+                </tr>
+                <tr>
+                  <td><input class="big" type="text" placeholder="Straße" name="strasse" required></td>
+                  <td><input class="hausnummer" type="text" name="hausnummer" placeholder="Nr."  required> <input type="number" placeholder="PLZ" name="plz" min="1000" max="99999" required></td>
+                </tr>
+                <tr>
+                  <td><input class="big" type="text" placeholder="Stadt" name="stadt" required></td>
+                  <td><input class="big" type="text" placeholder="Stadtteil" name="stadtteil" required></td>
+                </tr>
+                <tr>
+                  <td><input class="big" type="text" placeholder="Land" name="land" required></td>
+                  <td><input class="big" type="text" placeholder="Bundesland" name="bundesland" required></td>
+                </tr>
+                <tr>
+                  <td><input class="big" type="email" placeholder="E-Mail" name="email" id="email" required></td>
+                  <td><input class="big" type="email" placeholder="E-Mail wiederholen" name="wdhlg-email" id="wdhlg-email" onchange="emailchecken()" required></td>
+                </tr>
+                <tr>
+                  <td><input class="big" type="number" placeholder="Telefon: Vorwahl + Nummer" name="telefon" required></td>
+                  <td><label>Firmenkunde: </label><select name="firmenkunde"><option value="1">Nein</option><option value="2">Ja</option></select></td>
+                </tr>
+            </table>
+            
+            <br>
+            <label class="agb" id="AGB" onmouseover="hoverAGBs('grey')" onmouseout="hoverAGBs('black')" onclick="clickAGBs()">Akzeptieren Sie unsere AGBs</label><input type ="checkbox" name="agb" required><br>
+            <input type="submit" name="submitReg" value="Abschicken" >
+            <br>
+            </center>
+            </div>
+        </div>
+    </form>
+</div>
+<!--Register Form Ende -->
+<!-- Begin LoginForm -->
+<div class="LandingLogin" id="LandingLogin">
+            <form action="../php/LoginVerarbeitung.php" method="POST">
+                <label id="Loginname" class="LabelLogin">Login:</label><center><input type="text" placeholder="Login" name="LoginName" id="LogLoginname" required></center>
+                <label id="LoginPasswort" class="LabelLogin">Passwort:</label><center><input type="password" placeholder="Passwort" name="LoginPasswort" id="LoginPasswort" minlength="8" required></center>
+                <label class="LabelChkbox" for id="LoginCheckbox">Anmeldedaten merken</label><input class="chkbox" type="checkbox" name="LoginCheckbox" id="LoginCheckbox">
+		<input type="submit" class="login" id="login" value=Login>
+                <a class="cancel"  id="cancel" onclick="einAusblendenLoginRegForm()">Cancel</a>
+                
+                <label onclick="nichtRegistriertHandler()" class="NotRegistered">Noch keinen Account?</label>
+            </form>
+        </div>
 <body>
     <div class="windowedPage">
         <!-- Start your project here-->
@@ -42,7 +107,7 @@
                             <a class="nav-link" href="./produktangebot.php" style="color: white">Produktangebot</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./termine.html" style="color: white">Schulungstermine</a>
+                            <a class="nav-link" href="./termine.php" style="color: white">Schulungstermine</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle"
@@ -77,26 +142,35 @@
                         <span id="product_counter" class="badge rounded-pill badge-notification bg-danger" style="display: none">11</span>
                     </a>
                     <!-- Account icon -->
-                    <a class="text-reset me-3"
-                       href="#"
-                       id="navbarDropdownMenuLink"
-                       role="button"
-                       data-mdb-toggle="dropdown"
-                       aria-expanded="false">
-                        <i class="fas fa-user-circle" style="color: #ffffff"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                        <li>
-                            <a class="dropdown-item" href="./profil.php">Profil</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="./bestellungen.php">Bestellungen</a>
-                        </li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li>
-                            <a class="dropdown-item" href="#">Logout</a>
-                        </li>
-                    </ul>
+                    <?php
+						if(!isset($_SESSION['login']))
+						{
+							$_SESSION['login']=0;
+						}
+                        $variablephp = $_SESSION['login'];
+						
+                    ?>
+                    <script>
+                        var variablejs = "<?php echo $variablephp; ?>";
+                        variablejs = parseInt(variablejs);
+                        if(variablejs > 0){
+                            var account_icon = '<a class="text-reset me-3" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">';
+                            account_icon = account_icon + '<i class="fas fa-user-circle" style="color: #ffffff"></i>';
+                            account_icon = account_icon + '</a>';
+                            account_icon = account_icon + '<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">';
+                            account_icon = account_icon + '<li><a class="dropdown-item" href="./profil.php">Profil</a></li>';
+                            account_icon = account_icon + '<li><a class="dropdown-item" href="./bestellungen.php">Bestellungen</a></li>';
+                            account_icon = account_icon + '<li><hr class="dropdown-divider" /></li>';
+                            account_icon = account_icon + '<li><a class="dropdown-item" href="#" onclick="logout()">Logout</a></li>';
+                            account_icon = account_icon + '</ul>';
+                            document.write(account_icon);
+                        } else {
+                            var account_icon = '<a onclick="einAusblendenLoginRegForm()" class="text-reset me-3">';
+                            account_icon = account_icon + '<i class="fas fa-user-circle" id="LoginButton"  style="color: #ffffff"></i>';
+                            account_icon = account_icon + '</a>';
+                            document.write(account_icon);
+                        }
+						 </script>
                 </div>
                 <!-- Right elements -->
             </div>
@@ -122,7 +196,7 @@
                         <h5 style="padding-top: 10px">Anzahl </h5>
                     </div>
                     <div class="col-lg-2 col-sm-3 col-4">
-                        <h5 style="padding-top: 10px">Preis in €</h5>
+                        <h5 style="padding-top: 10px">Preis in EUR</h5>
                     </div>
                 </div>
             </div>
@@ -272,25 +346,20 @@
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="checkbox_agb" onclick="hideAlert('agb_alert')" />
                             <label class="form-check-label" for="flexCheckDefault">
-                            <div class="p-6">
-                                Ich akzeptiere die
-                                <a class="text-reset fw-bold" href="./agb.html">AGBs</a>
-                                und habe die Widerrufsbelehrung zur Kenntnis genommen.
-                            </div>
+                                Ich akzeptiere die AGBs und habe die Widerrufsbelehrung zur Kenntnis genommen.
+                            </label>
                         </div>
                         <div id="agb_alert" style="background-color: #ff9c9c; color: #6e0000; padding: 15px; margin-top: 10px; border-radius: 4px; width: 70%; display: none">
-                            Du musst die AGBs akzeptieren.
+                            Du musst die AGBs und Widerrufsbelehrung akzeptieren.
                         </div>
                         <br />
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="checkbox_datenschutz" onclick="hideAlert('datenschutz_alert')" />
                             <label class="form-check-label" for="flexCheckDefault">
-                                <div class="p-6">
-                                    Ich habe die
-                                    <a class="text-reset fw-bold" href="./datenschutz.html">Datenschutzbestimmungen</a>
-                                    gelesen und bin mit der <br />
+                                <p>
+                                    Ich habe die Datenschutzbestimmungen gelesen und bin mit der <br />
                                     Nutzung meiner personenbezogenen Daten einverstanden.
-                                </div>
+                                </p>
                             </label>
                         </div>
                         <div id="datenschutz_alert" style="background-color: #ff9c9c; color: #6e0000; padding: 15px; border-radius: 4px; width: 70%; display: none">
@@ -310,8 +379,24 @@
                             <h6 class="card-title" style="margin-right: 20px">enthaltene Versandkosten:</h6>
                             <h6 class="card-title">2,59 EUR</h6>
                         </div>
+                        
+
                         <div class="d-flex justify-content-end" style="margin-right: 50px; margin-top: 10px">
-                            <a href="#!" class="btn btn-primary btn-rounded" onclick="jetztKaufen(<?php echo $_SESSION['login'] ?>)" style="display: block; background-color: #1E90FF">Jetzt kaufen</a>
+                            <?php
+                            $variablephp = $_SESSION['login'];
+                            ?>
+                            <script>
+                                var variablejs = "<?php echo $variablephp; ?>";
+                                variablejs = 1;
+                                variablejs = parseInt(variablejs);
+                                if (variablejs > 0) {
+                                    var buy_button = '<a href="#!" class="btn btn-primary btn-rounded" onclick="jetztKaufen(true)" style="display: block; background-color: #1E90FF">Jetzt kaufen</a>';
+                                    document.write(buy_button);
+                                } else {
+                                    var buy_button = '<a href="#!" class="btn btn-primary btn-rounded" onclick="jetztKaufen(false)" style="display: block; background-color: #1E90FF">Jetzt kaufen</a>';
+                                    document.write(buy_button);
+                                }
+                            </script>
                         </div>
                     </div>
                 </div>
@@ -362,13 +447,13 @@
                                 Nützliche Links
                             </h6>
                             <p>
-                                <a href="./agb.html" class="text-reset">ABG</a>
+                                <a href="./agb.php" class="text-reset">ABG</a>
                             </p>
                             <p>
-                                <a href="./impressum.html" class="text-reset">Impressum</a>
+                                <a href="./impressum.php" class="text-reset">Impressum</a>
                             </p>
                             <p>
-                                <a href="./datenschutz.html" class="text-reset">Datenschutz</a>
+                                <a href="./datenschutz.php" class="text-reset">Datenschutz</a>
                             </p>
                         </div>
                         <!-- Grid column -->
@@ -408,8 +493,9 @@
     <script type="text/javascript" src="../js/mdb.min.js"></script>
     <!-- Custom scripts -->
     <script src="../src/simple-notify/simple-notify.min.js"></script>
-
+	<script type="text/javascript" src="../js/functionScripts.js"></script>
     <script src="../js/warenkorb.js"></script>
-
+<script type=text/javascript src=../js/index.js><?php echo "checkLogin($_SESSION[login])</script>"?>;
+    <script type="text/javascript" src="../js/index.js"></script>
 </body>
 </html>
