@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 if(!isset($_SESSION)) {
 	SESSION_START();
 }
@@ -346,14 +346,11 @@ if(!isset($_SESSION)) {
 				<br />
 
 				<div class="row" style="margin: 0% 3%">
-					<div class="col-lg-3"></div>
-					<div class="col-lg-3 col-sm-6">
-						<a href='#' class='btn btn-primary btn-lg btn-rounded btn-block' style='background-color: #1E90FF'>Angaben bearbeiten</a>
-					</div>
-					<div class="col-lg-3 col-sm-6">
+					<div class="col-lg-4 col-sm-3"></div>
+					<div class="col-lg-4 col-sm-6">
 						<a href='./bestellungen.php' class='btn btn-primary btn-lg btn-rounded btn-block' style='background-color: #1E90FF'>Bestellhistorie</a>
 					</div>
-					<div class="col-lg-3"></div>
+					<div class="col-lg-4 col-sm-3"></div>
 				</div>
 
 				<br />
