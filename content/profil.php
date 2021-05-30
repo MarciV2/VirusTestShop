@@ -140,6 +140,7 @@ if(!isset($_SESSION)) {
                     include_once("../php/BestellungHistorieVerarbeitung.php");
 
                     $loginname = $_SESSION["user"][0];
+					$cryptLoginname = md5($loginname);
                     $sqlQuery="SELECT k.Kunde_ID,
                         k.LoginName,
                         k.Vorname,
@@ -159,7 +160,7 @@ if(!isset($_SESSION)) {
                         JOIN Adresse a ON k.Adresse_ID=a.Adresse_ID
                         JOIN Kundentyp kt ON k.Kundentyp_ID=kt.Kundentyp_ID
 
-                        WHERE k.LoginName LIKE '".$loginname."'";
+                        WHERE k.LoginName LIKE '".$cryptLoginname."'";
 
                     $sqlResult = mysqli_query($verbindung, $sqlQuery);
                     $valueDatenArray = array();
