@@ -1,4 +1,6 @@
-﻿<?php SESSION_START();
+<?php SESSION_START();
+error_reporting(0);
+include_once("../php/ProduktBereitstellung.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
