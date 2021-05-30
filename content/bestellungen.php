@@ -1,7 +1,16 @@
 <?php SESSION_START();
-?>
-<?php
+    error_reporting(0);
+
     include_once '../php/BestellungHistorieVerarbeitung.php';
+
+    $logged_in = $_SESSION['login'];
+    if($logged_in > 0){
+        $user = $_SESSION['user'][0];
+        $sql_login = "SELECT * FROM `kunde` WHERE `kunde`.`LoginName`='" . ($user) . "';";
+        $result_login = mysqli_query($verbindung, $sql_login);
+        $row_login = mysqli_fetch_assoc($result_login);
+        $kunden_id = $row_login['Kunde_ID'];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -202,7 +211,8 @@
                   <div>
                       
                       <?php
-                          $sql = "SELECT * FROM `bestellung` ORDER BY `bestellung`.`Bestelldatum` DESC;";
+                      if($logged_in > 0){
+                          $sql = "SELECT * FROM `bestellung` WHERE `bestellung`.`Kunde_ID` = " . ($kunden_id) . " ORDER BY `bestellung`.`Bestelldatum` DESC;";
                           $result = mysqli_query($verbindung, $sql);
                           $resultCheck =  mysqli_num_rows($result);
 
@@ -287,7 +297,7 @@
                                         $preis = number_format($preis, 2, ',', '.');
                                         $anzahl = $row_bestellposition['Anzahl'];
 
-                                        #Bestellstatus abfragen
+                                        #Packungsinformationen abfragen (Name, Hersteller, ...)
                                         $packung_id = $row_bestellposition['Packung_ID'];
                                         $sql_packung = "SELECT 
                                                         `packung`.`Packungsgroessee` as groesse,
@@ -439,8 +449,11 @@
                           echo '</div>';
 
                           } else {
-                                echo "<h4 style='text-align:center; margin-bottom: 20px'>Sie haben bisher noch keine Bestellung getätigt.</h4>";
+                                echo "<h4 style='text-align:center; margin: 20px'>Sie haben bisher noch keine Bestellung getätigt.</h4>";
                           }
+                      } else {
+                            echo "<h4 style='text-align:center; margin: 20px'>Sie müssen angemeldet sein, um sich Ihren Bestellverlauf anzeigen zu lassen.</h4>";
+                      }
 
                       ?>
 

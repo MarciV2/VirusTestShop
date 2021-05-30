@@ -21,5 +21,5 @@ if(!$verbindung)
 {
     console_log("Error Verbindung");
 } else {
-    console_log("Verbindung  erflogreich");
+    console_log("Verbindung  erfolgreich");
 }

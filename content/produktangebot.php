@@ -325,7 +325,7 @@ include_once("../php/ProduktBereitstellung.php");
 
                       var product_id=packung[0];
                       var product_name="";
-                    if(packung[1]!="") product_name=packung[4]+"x "+packung[1]+" - "+packung[2];
+                    if(packung[1]!="") product_name=packung[4] + "x "+packung[1] + " - " + packung[2];
                     else  product_name=packung[4]+"x "+packung[2];
                     var product_description="";
                     if(packung[3].length<=64)product_description=packung[3];
@@ -346,7 +346,7 @@ include_once("../php/ProduktBereitstellung.php");
                     itemCard = itemCard + "</p>";
                     itemCard = itemCard + "<div class='row no-gutters'>";
                     itemCard = itemCard + "<div class='col-md-7'>";
-                    itemCard = itemCard + "<a class='btn btn-primary btn-rounded buttonToCartMarginBottom' onclick=\"addProductToCart(\'" + product_name + "\', " + product_id + ")\" style='display: block; background-color: #1E90FF'>In den Warenkorb</a>";
+                    itemCard = itemCard + "<a class='btn btn-primary btn-rounded buttonToCartMarginBottom' onclick=\"addProductToCart(\'" + product_name + "\', " + product_id + ", 1)\" style='display: block; background-color: #1E90FF'>In den Warenkorb</a>";
                     itemCard = itemCard + "</div>";
                     itemCard = itemCard + "<div class='col-md-5'>";
                     itemCard = itemCard + "<a href='./produkt.php?product_id=" + product_id + "' class='btn btn-primary btn-rounded' style='display: block; background-color: #1E90FF'>Details</a>";
