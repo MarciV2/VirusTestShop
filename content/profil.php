@@ -334,13 +334,13 @@ if(!isset($_SESSION)) {
 								Nützliche Links
 							</h6>
 							<p>
-								<a href="./agb.html" class="text-reset">ABG</a>
+								<a href="./agb.php" class="text-reset">ABG</a>
 							</p>
 							<p>
-								<a href="./impressum.html" class="text-reset">Impressum</a>
+								<a href="./impressum.php" class="text-reset">Impressum</a>
 							</p>
 							<p>
-								<a href="./datenschutz.html" class="text-reset">Datenschutz</a>
+								<a href="./datenschutz.php" class="text-reset">Datenschutz</a>
 							</p>
 						</div>
 						<!-- Grid column -->
