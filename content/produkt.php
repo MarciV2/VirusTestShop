@@ -1,4 +1,4 @@
-﻿<?php SESSION_START();
+<?php SESSION_START();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -153,13 +153,13 @@
                       </a>
                       <!-- Account icon -->
                        <?php
-						if(!isset($_SESSION['login']))
-						{
-							$_SESSION['login']=0;
-						}
-                        $variablephp = $_SESSION['login'];
-						
-                    ?>
+					   if(!isset($_SESSION['login']))
+					   {
+						   $_SESSION['login']=0;
+					   }
+					   $variablephp = $_SESSION['login'];
+					   
+                       ?>
                     <script>
                         var variablejs = "<?php echo $variablephp; ?>";
                         variablejs = parseInt(variablejs);

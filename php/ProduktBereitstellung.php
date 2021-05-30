@@ -74,7 +74,7 @@
 
         FROM 
         packung p 
-        JOIN artikel a ON a.Artikel_ID=p.Packung_ID 
+        JOIN artikel a ON a.Artikel_ID=p.Artikel_ID 
         LEFT JOIN hersteller h ON h.Hersteller_ID=a.Hersteller_ID 
         LEFT JOIN kategorie k ON k.kategorie_ID=a.kategorie_ID" . $kategorie . 
         " ORDER BY " . $orderByParam;

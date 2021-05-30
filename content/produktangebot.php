@@ -1,7 +1,7 @@
 <?php
-	SESSION_START();
-    error_reporting(0);
-    include_once("../php/ProduktBereitstellung.php");
+SESSION_START();
+error_reporting(0);
+include_once("../php/ProduktBereitstellung.php");
 ?>
 
 
@@ -149,13 +149,13 @@
                       </a>
                       <!-- Account icon -->
                       <?php
-						if(!isset($_SESSION['login']))
-						{
-							$_SESSION['login']=0;
-						}
-                        $variablephp = $_SESSION['login'];
-						
-                    ?>
+					  if(!isset($_SESSION['login']))
+					  {
+						  $_SESSION['login']=0;
+					  }
+					  $variablephp = $_SESSION['login'];
+					  
+                      ?>
                     <script>
                         var variablejs = "<?php echo $variablephp; ?>";
                         variablejs = parseInt(variablejs);
