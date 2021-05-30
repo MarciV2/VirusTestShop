@@ -292,55 +292,6 @@ CREATE INDEX `fk_Bestellfaehigkeit_Kundentyp1_idx` ON `VTS`.`Bestellfaehigkeit` 
 CREATE INDEX `fk_Bestellfaehigkeit_Kategorie1_idx` ON `VTS`.`Bestellfaehigkeit` (`Kategorie_ID` ASC) ;
 
 
--- -----------------------------------------------------
--- Table `VTS`.`Lieferant`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `VTS`.`Lieferant` ;
-
-CREATE TABLE IF NOT EXISTS `VTS`.`Lieferant` (
-  `Lieferant_ID` INT NOT NULL AUTO_INCREMENT,
-  `Name` VARCHAR(45) NULL,
-  `Adresse_ID` INT NOT NULL,
-  PRIMARY KEY (`Lieferant_ID`),
-  CONSTRAINT `fk_Lieferant_Adresse1`
-    FOREIGN KEY (`Adresse_ID`)
-    REFERENCES `VTS`.`Adresse` (`Adresse_ID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-CREATE INDEX `fk_Lieferant_Adresse1_idx` ON `VTS`.`Lieferant` (`Adresse_ID` ASC) ;
-
-
--- -----------------------------------------------------
--- Table `VTS`.`Lieferfaehigkeit`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `VTS`.`Lieferfaehigkeit` ;
-
-CREATE TABLE IF NOT EXISTS `VTS`.`Lieferfaehigkeit` (
-  `Lieferfaehigkeit_ID` INT NOT NULL AUTO_INCREMENT,
-  `Preis` DOUBLE NULL,
-  `Versandkosten` DOUBLE NULL,
-  `Lieferant_ID` INT NOT NULL,
-  `Packung_ID` INT NOT NULL,
-  PRIMARY KEY (`Lieferfaehigkeit_ID`),
-  CONSTRAINT `fk_Lieferfaehigkeit_Lieferant1`
-    FOREIGN KEY (`Lieferant_ID`)
-    REFERENCES `VTS`.`Lieferant` (`Lieferant_ID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Lieferfaehigkeit_Packung1`
-    FOREIGN KEY (`Packung_ID`)
-    REFERENCES `VTS`.`Packung` (`Packung_ID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-CREATE INDEX `fk_Lieferfaehigkeit_Lieferant1_idx` ON `VTS`.`Lieferfaehigkeit` (`Lieferant_ID` ASC) ;
-
-CREATE INDEX `fk_Lieferfaehigkeit_Packung1_idx` ON `VTS`.`Lieferfaehigkeit` (`Packung_ID` ASC) ;
-
-
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
@@ -403,32 +354,12 @@ COMMIT;
 
 
 -- -----------------------------------------------------
--- Data for table `VTS`.`Adresse`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `VTS`;
-INSERT INTO `VTS`.`Adresse` (`Adresse_ID`, `Strasse`, `Hausnummer`, `PLZ`, `Stadt`, `Stadtteil`, `Bundesland`, `Land`) VALUES (1, 'Vorstadtstrasse', '24', 73494, 'Rosenberg', 'Hohenberg', 'Baden-Württemberg', 'Deutschland');
-
-COMMIT;
-
-
--- -----------------------------------------------------
 -- Data for table `VTS`.`Kundentyp`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `VTS`;
 INSERT INTO `VTS`.`Kundentyp` (`Kundentyp_ID`, `Bezeichung`) VALUES (1, 'Privatkunde');
 INSERT INTO `VTS`.`Kundentyp` (`Kundentyp_ID`, `Bezeichung`) VALUES (2, 'Medizinischer Kunde');
-
-COMMIT;
-
-
--- -----------------------------------------------------
--- Data for table `VTS`.`Kunde`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `VTS`;
-INSERT INTO `VTS`.`Kunde` (`Kunde_ID`, `LoginName`, `Name`, `Vorname`, `Telefon`, `Email`, `Passwort`, `Adresse_ID`, `Kundentyp_ID`) VALUES (1, 'mvidmar', 'Vidmar', 'Marcel', '015755797545', 'marcel.vidmar.mv@gmail.com', 'gast', 1, 1);
 
 COMMIT;
 
