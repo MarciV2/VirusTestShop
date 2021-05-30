@@ -149,7 +149,7 @@
                       <!-- Shopping icon -->
                       <a class="text-reset me-4" href="./warenkorb.php">
                           <i class="fas fa-shopping-cart" style="color: #ffffff"></i>
-                          <span id="product_counter" class="badge rounded-pill badge-notification bg-danger" style="display: none">11</span>
+                          <span id="product_counter" class="badge rounded-pill badge-notification bg-danger" style="display: none" >11</span>
                       </a>
                       <!-- Account icon -->
                        <?php
@@ -267,14 +267,16 @@
                               <br />
                               <div class="row">
                                   <div class="col-md-2">
-                                      <input id="number" type="number" value="1" min="1" style=" width: 100%; padding: 5px; text-align: center; border: none; border-bottom: 2px solid #1E90FF;">
+                                      <input id="itemCount" type="number" value="1" min="1" style=" width: 100%; padding: 5px; text-align: center; border: none; border-bottom: 2px solid #1E90FF;">
                                   </div>
                                   <div class="col-md-8">
-
+                                      <a class='btn btn-primary btn-rounded buttonTocartMarginBottom' onclick="addToCart()" style='display: block; background-color: #1E90FF'>In den Warenkorb</a>
                                       <script>
-                                          document.write("<a class='btn btn-primary btn-rounded buttonTocartMarginBottom' onclick=\"addProductToCart(\'" + product_name + "\', " + product_id + ")\" style='display: block; background-color: #1E90FF'>In den Warenkorb</a>");
+                                          function addToCart() {
+                                              addProductToCart(product_name, product_id, document.getElementById("itemCount").value);
+                                              console.log("Zum Einkaufswagen zufügen: "+product_name+ " ID: "+product_id+ " Anzahl: "+document.getElementById("itemCount").value)
+                                          }
                                       </script>
-
                                   </div>
                               </div>
 
