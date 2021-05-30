@@ -273,7 +273,7 @@ if(!isset($_SESSION))
                                 Nützliche Links
                             </h6>
                             <p>
-                                <a href="./content/agb.php" class="text-reset">ABG</a>
+                                <a href="./content/agb.php" class="text-reset">AGB</a>
                             </p>
                             <p>
                                 <a href="./content/impressum.php" class="text-reset">Impressum</a>
