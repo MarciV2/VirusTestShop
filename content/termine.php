@@ -1,4 +1,4 @@
-﻿<?php SESSION_START();
+<?php SESSION_START();
 ?>
 
 <!DOCTYPE html>
@@ -141,7 +141,7 @@
                 <!-- Right elements -->
                 <div class="d-flex align-items-center">
                     <!-- Shopping icon -->
-                    <a class="text-reset me-4" href="./warenkorb.html">
+                    <a class="text-reset me-4" href="./warenkorb.php">
                         <i class="fas fa-shopping-cart" style="color: #ffffff"></i>
                         <span id="product_counter" class="badge rounded-pill badge-notification bg-danger" style="display: none">11</span>
                     </a>
@@ -257,13 +257,13 @@
                                 Nützliche Links
                             </h6>
                             <p>
-                                <a href="agb.html" class="text-reset">ABG</a>
+                                <a href="agb.php" class="text-reset">ABG</a>
                             </p>
                             <p>
-                                <a href="impressum.html" class="text-reset">Impressum</a>
+                                <a href="impressum.php" class="text-reset">Impressum</a>
                             </p>
                             <p>
-                                <a href="datenschutz.html" class="text-reset">Datenschutz</a>
+                                <a href="datenschutz.php" class="text-reset">Datenschutz</a>
                             </p>
                         </div>
                         <!-- Grid column -->
