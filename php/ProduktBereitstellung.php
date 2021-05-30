@@ -45,9 +45,9 @@
    $orderByParam=$_GET['orderBy'];
    //Switch abfrage gegen SQL-Injection
    switch($orderByParam){
-        case "Preis ASC"  : 
+        case "Preis ASC"  :
         case "Preis DESC" :
-        case "Packungsgroesse ASC"  : 
+        case "Packungsgroesse ASC"  :
         case "Packungsgroesse DESC" : break;
         default : $orderByParam="Preis ASC"; break;
     }
@@ -62,21 +62,22 @@
         default : $kategorie=""; break;
     }
 
-    $sqlPackungen = "SELECT 
-        p.Packung_ID, 
-        h.Name AS Hersteller, 
-        a.Artikelname AS Artikelname, 
-        a.Beschreibung AS Beschreibung, 
-        p.Packungsgroessee AS Packungsgroesse, 
-        round(p.Verkaufspreis,2) AS Preis, 
+    $sqlPackungen = "SELECT
+        p.Packung_ID,
+        p.Artikel_ID,
+        h.Name AS Hersteller,
+        a.Artikelname AS Artikelname,
+        a.Beschreibung AS Beschreibung,
+        p.Packungsgroessee AS Packungsgroesse,
+        round(p.Verkaufspreis,2) AS Preis,
         p.Lagermenge AS Bestand,
-        k.Bezeichnung AS Kategorie  
+        k.Bezeichnung AS Kategorie
 
-        FROM 
-        packung p 
-        JOIN artikel a ON a.Artikel_ID=p.Artikel_ID 
-        LEFT JOIN hersteller h ON h.Hersteller_ID=a.Hersteller_ID 
-        LEFT JOIN kategorie k ON k.kategorie_ID=a.kategorie_ID" . $kategorie . 
+        FROM
+        packung p
+        JOIN artikel a ON a.Artikel_ID=p.Artikel_ID
+        LEFT JOIN hersteller h ON h.Hersteller_ID=a.Hersteller_ID
+        LEFT JOIN kategorie k ON k.kategorie_ID=a.kategorie_ID" . $kategorie .
         " ORDER BY " . $orderByParam;
 
 
@@ -84,8 +85,8 @@
    //console_log( $sqlPackungen);
    //console_log(mysqli_error($verbindung));
     $valuePackungsArray = array();
-    while($reihe2 = mysqli_fetch_assoc($sqlPackungenCheck)){ 
-        $value= $reihe2["Packung_ID"] .";". $reihe2["Hersteller"] . ";" . $reihe2["Artikelname"] .";". $reihe2["Beschreibung"] .";" . $reihe2["Packungsgroesse"] . ";" . $reihe2["Preis"] . ";". $reihe2["Bestand"] . ";" ;
+    while($reihe2 = mysqli_fetch_assoc($sqlPackungenCheck)){
+        $value= $reihe2["Packung_ID"] .";". $reihe2["Hersteller"] . ";" . $reihe2["Artikelname"] .";". $reihe2["Beschreibung"] .";" . $reihe2["Packungsgroesse"] . ";" . $reihe2["Preis"] . ";". $reihe2["Bestand"] .";" . $reihe2["Artikel_ID"] . ";" ;
         array_push($valuePackungsArray,$value);
     }
     setcookie("PackungCookie",json_encode($valuePackungsArray),time()+3600);

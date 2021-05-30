@@ -310,7 +310,7 @@ include_once("../php/ProduktBereitstellung.php");
 
 
                    var packungen = JSON.parse(readCookie("PackungCookie"));
-                  // console.log(packungen);
+                   console.log(packungen);
                    //Anzeige gefundene Artikel aktualisieren
                    document.getElementById("artikel_count").innerText = packungen.length+ " Artikel gefunden";
 
@@ -334,7 +334,7 @@ include_once("../php/ProduktBereitstellung.php");
                     }
                     var product_preis=packung[5].replace(".", ",")+"€";
 
-                    itemCard = itemCard + "<div class='p-5 text-center bg-image' style=\"background-image: url('../img/"+product_id+".png'); height: 350px; background-size : contain\">";
+                    itemCard = itemCard + "<div class='p-5 text-center bg-image' style=\"background-image: url('../img/"+packung[7]+".png'); height: 350px; background-size : contain\">";
                     itemCard = itemCard + "<div style='position:absolute; top: 0; right: 0; margin: 20px'>";
                     itemCard = itemCard + "<span class='badge' style='background-color: #1E90FF; float: right; font-size:larger'>"+product_preis+"</span>";
                     itemCard = itemCard + "</div>";
