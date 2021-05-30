@@ -84,7 +84,7 @@ function removeCartRow(packung_id, element_to_remove, name) {
 
 function updateTotalPrice() {
     var all_price_elements = document.querySelectorAll('*[id^="price"]');
-    var sum = 0;
+    var sum = 5;
 
     var s = "";
 

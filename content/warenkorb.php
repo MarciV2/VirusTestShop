@@ -381,7 +381,7 @@ include_once("../php/ProduktBereitstellung.php");
                         </div>
                         <div class="d-flex justify-content-end" style="margin-right: 50px">
                             <h6 class="card-title" style="margin-right: 20px">enthaltene Versandkosten:</h6>
-                            <h6 class="card-title">2,59 EUR</h6>
+                            <h6 class="card-title">5,00 EUR</h6>
                         </div>
                         
 

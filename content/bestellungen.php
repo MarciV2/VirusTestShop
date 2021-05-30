@@ -288,7 +288,7 @@
                                     $sql_bestellposition = "SELECT * FROM `bestellungsposition` WHERE `bestellungsposition`.`Bestellung_ID` = " . ($bestellung_id) . ";";
                                     $result_bestellposition = mysqli_query($verbindung, $sql_bestellposition);
                                     
-                                    $preis_summe = 0;
+                                    $preis_summe = 5;
 
                                     #while schleife füllt bestellung des akkordeons mit bestellten artikeln
                                     while($row_bestellposition = mysqli_fetch_assoc($result_bestellposition)){
