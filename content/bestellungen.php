@@ -6,7 +6,7 @@
     $logged_in = $_SESSION['login'];
     if($logged_in > 0){
         $user = $_SESSION['user'][0];
-        $sql_login = "SELECT * FROM `kunde` WHERE `kunde`.`LoginName`='" . ($user) . "';";
+        $sql_login = "SELECT * FROM `kunde` WHERE `kunde`.`LoginName`='" . (md5($user)) . "';";
         $result_login = mysqli_query($verbindung, $sql_login);
         $row_login = mysqli_fetch_assoc($result_login);
         $kunden_id = $row_login['Kunde_ID'];
