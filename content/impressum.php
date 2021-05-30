@@ -155,6 +155,7 @@
                         var variablejs = "<?php echo $variablephp; ?>";
                         variablejs = parseInt(variablejs);
                         if(variablejs > 0){
+                            //Nur anzeigen wenn eingeloggt (profil, Bestellungen,...)
                             var account_icon = '<a class="text-reset me-3" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">';
                             account_icon = account_icon + '<i class="fas fa-user-circle" style="color: #ffffff"></i>';
                             account_icon = account_icon + '</a>';
@@ -166,6 +167,7 @@
                             account_icon = account_icon + '</ul>';
                             document.write(account_icon);
                         } else {
+                            //nur anzeigen wenn nicht eingeloggt (Einloggen/Registrieren)
                             var account_icon = '<a onclick="einAusblendenLoginRegForm()" class="text-reset me-3">';
                             account_icon = account_icon + '<i class="fas fa-user-circle" id="LoginButton"  style="color: #ffffff"></i>';
                             account_icon = account_icon + '</a>';
@@ -252,6 +254,7 @@
                             <p>
                                 <a href="./produktangebot.php?orderBy=Preis%20ASC&kategorie=Corona%20Schnelltests" class="text-reset">Corona Schnelltests</a>
                             </p>
+                            <!--Nur für Medizinische Kunden sichtbar-->
                            <?php
 						   if($_SESSION["login"]==2) echo "<p> <a href=\"./produktangebot.php?orderBy=Preis%20ASC&kategorie=Corona%20PCR-Tests\" class=\"text-reset\">Corona PCR-Tests</a>
                               </p>"

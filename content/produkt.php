@@ -157,14 +157,15 @@
 					   {
 						   $_SESSION['login']=0;
 					   }
-					   $variablephp = $_SESSION['login'];
+					   $login = $_SESSION['login'];
 					   
                        ?>
                     <script>
-                        var variablejs = "<?php echo $variablephp; ?>";
+                        var variablejs = "<?php echo $login; ?>";
                         variablejs = parseInt(variablejs);
 						
-                        if(variablejs > 0){
+                        if (variablejs > 0) {
+                            //Nur anzeigen wenn eingeloggt (profil, Bestellungen,...)
                             var account_icon = '<a class="text-reset me-3" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">';
                             account_icon = account_icon + '<i class="fas fa-user-circle" style="color: #ffffff"></i>';
                             account_icon = account_icon + '</a>';
@@ -176,6 +177,7 @@
                             account_icon = account_icon + '</ul>';
                             document.write(account_icon);
                         } else {
+                            //nur anzeigen wenn nicht eingeloggt (Einloggen/Registrieren)
                             var account_icon = '<a onclick="einAusblendenLoginRegForm()" class="text-reset me-3">';
                             account_icon = account_icon + '<i class="fas fa-user-circle" id="LoginButton"  style="color: #ffffff"></i>';
                             account_icon = account_icon + '</a>';
@@ -210,6 +212,7 @@
                       return null;
                   }
 
+                  //Cookie mit PackungsDetails auslesen
                   var packungen = JSON.parse(readCookie("PackungCookie"));
                   var packung = null;
                   console.log("Produkt-ID: " + product_id);
@@ -218,7 +221,7 @@
                       if (tempPack[0] == product_id)
                           var packung = tempPack;
                   }
-                  console.log("Packungs-Details" + packung);
+                  //console.log("Packungs-Details" + packung);
                   var product_name = "";
                   var product_preis = "";
                   var product_description = "";
@@ -231,7 +234,7 @@
               </script>
 
 
-
+              <!-- Elemente und default-Werte-->
               <div class="card itemCard">
                   <div class="row">
                       <div class="col-md-5" style="margin-top: 0px">
@@ -266,9 +269,11 @@
                               <br />
                               <br />
                               <div class="row">
+                                  <!-- Anzahl der Packungen zum zufügen-->
                                   <div class="col-md-2">
                                       <input id="itemCount" type="number" value="1" min="1" style=" width: 100%; padding: 5px; text-align: center; border: none; border-bottom: 2px solid #1E90FF;">
                                   </div>
+                                  <!-- zu warenkorb hinzufügen-->
                                   <div class="col-md-8">
                                       <a class='btn btn-primary btn-rounded buttonTocartMarginBottom' onclick="addToCart()" style='display: block; background-color: #1E90FF'>In den Warenkorb</a>
                                       <script>
@@ -321,6 +326,7 @@
                               <p>
                                   <a href="./produktangebot.php?orderBy=Preis%20ASC&kategorie=Corona%20Schnelltests" class="text-reset">Corona Schnelltests</a>
                               </p>
+                            <!--Nur für Medizinische Kunden sichtbar-->
                               <?php
 							  if($_SESSION["login"]==2) echo "<p> <a href=\"./produktangebot.php?orderBy=Preis%20ASC&kategorie=Corona%20PCR-Tests\" class=\"text-reset\">Corona PCR-Tests</a>
                               </p>"

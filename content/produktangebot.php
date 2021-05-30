@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 SESSION_START();
 error_reporting(0);
 include_once("../php/ProduktBereitstellung.php");
@@ -34,6 +34,7 @@ include_once("../php/ProduktBereitstellung.php");
             <center>
             <table>
               
+                <!-- Registrierung-Felder -->
                 <tr>
                   <td><input class="big" type="text" placeholder="Login-Name" name="regloginname" id="RegLoginname" required /></td>
                 </tr>
@@ -79,6 +80,7 @@ include_once("../php/ProduktBereitstellung.php");
 <!--Register Form Ende -->
 <!-- Begin LoginForm -->
 <div class="LandingLogin" id="LandingLogin">
+    <!-- Login Felder-->
             <form action="../php/LoginVerarbeitung.php" method="POST">
                 <label id="Loginname" class="LabelLogin">Login:</label><center><input type="text" placeholder="Login" name="LoginName" id="LogLoginname" required></center>
                 <label id="LoginPasswort" class="LabelLogin">Passwort:</label><center><input type="password" placeholder="Passwort" name="LoginPasswort" id="LoginPasswort" minlength="8" required></center>
@@ -149,6 +151,7 @@ include_once("../php/ProduktBereitstellung.php");
                       </a>
                       <!-- Account icon -->
                       <?php
+                      //Einlogstatus abfragen, default: nicht eingeloggt
 					  if(!isset($_SESSION['login']))
 					  {
 						  $_SESSION['login']=0;
@@ -161,6 +164,7 @@ include_once("../php/ProduktBereitstellung.php");
                         variablejs = parseInt(variablejs);
 						
                         if(variablejs > 0){
+                            //Nur anzeigen wenn eingeloggt (profil, Bestellungen,...)
                             var account_icon = '<a class="text-reset me-3" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">';
                             account_icon = account_icon + '<i class="fas fa-user-circle" style="color: #ffffff"></i>';
                             account_icon = account_icon + '</a>';
@@ -172,6 +176,7 @@ include_once("../php/ProduktBereitstellung.php");
                             account_icon = account_icon + '</ul>';
                             document.write(account_icon);
                         } else {
+                            //nur anzeigen wenn nicht eingeloggt (Einloggen/Registrieren)
                             var account_icon = '<a onclick="einAusblendenLoginRegForm()" class="text-reset me-3">';
                             account_icon = account_icon + '<i class="fas fa-user-circle" id="LoginButton"  style="color: #ffffff"></i>';
                             account_icon = account_icon + '</a>';
@@ -222,6 +227,7 @@ include_once("../php/ProduktBereitstellung.php");
                         <h4 style="padding-top: 20px; padding-left: 10px; color: #1E90FF">
                             Kategorien
                         </h4>
+                        <!-- Liste an Kategorien links, gesuchte kategorien mithilfe von HTTP-Get -->
                         <div style="padding-left: 20px">
                          <a href="#">
                                 <div onclick="location.href = URL_add_parameter(location.href, 'kategorie', ' ');">Alle anzeigen</div>
@@ -229,6 +235,7 @@ include_once("../php/ProduktBereitstellung.php");
                             <a href="#">
                                 <div onclick="location.href = URL_add_parameter(location.href, 'kategorie', 'Corona Schnelltests');">Corona Schnelltests</div>
                             </a>
+                            <!--Nur für Medizinische Kunden sichtbar-->
                             <?php
 							if($_SESSION["login"]==2) echo "<a href=\"#\">
                                 <div onclick=\"location.href = URL_add_parameter(location.href, 'kategorie', 'Corona PCR-Tests');\">Corona PCR-Tests</div>         </a>";
@@ -248,6 +255,7 @@ include_once("../php/ProduktBereitstellung.php");
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="d-flex justify-content-start">
+                                    <!-- Sortierungsparameter -->
                                     <h6 style="padding-top: 12px; padding-left: 10px; padding-right: 10px; color: #1E90FF"> Sortierung: </h6>
                                     <select class="select" style="width: 100%" id="selectOrderBy" onchange="onOrderChange()">
                                         <option value="Preis ASC">Preis aufsteigend</option>
@@ -322,7 +330,8 @@ include_once("../php/ProduktBereitstellung.php");
 
                    for(var i=0; i<packungen.length;i++){
                        var packung=packungen[i].split(";");
-                      
+
+                       //String für Item-Kachel mit dynamischen Werten aus cookie
                       var itemCard = "<div class='card itemCard' style=\"height: 95%\">";
 
                       var product_id=packung[0];
@@ -405,6 +414,7 @@ include_once("../php/ProduktBereitstellung.php");
                            <p>
                                   <a href="./produktangebot.php?orderBy=Preis%20ASC&kategorie=Corona%20Schnelltests" class="text-reset">Corona Schnelltests</a>
                               </p>
+                            <!--Nur für Medizinische Kunden sichtbar-->
                             <?php
 							if($_SESSION["login"]==2) echo "<p> <a href=\"./produktangebot.php?orderBy=Preis%20ASC&kategorie=Corona%20PCR-Tests\" class=\"text-reset\">Corona PCR-Tests</a>
                               </p>"

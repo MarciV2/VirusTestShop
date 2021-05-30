@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 if(!isset($_SESSION)) {
 	SESSION_START();
 }
@@ -159,13 +159,15 @@ if(!isset($_SESSION)) {
 						{
 							$_SESSION['login']=0;
 						}
-                        $variablephp = $_SESSION['login'];
+						//Anmeldestatus aus Session auslesen
+                        $login = $_SESSION['login'];
 						
                     ?>
                     <script>
-                        var variablejs = "<?php echo $variablephp; ?>";
+                        var variablejs = "<?php echo $login; ?>";
                         variablejs = parseInt(variablejs);
                         if(variablejs > 0){
+                            //Nur anzeigen wenn eingeloggt (profil, Bestellungen,...)
                             var account_icon = '<a class="text-reset me-3" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">';
                             account_icon = account_icon + '<i class="fas fa-user-circle" style="color: #ffffff"></i>';
                             account_icon = account_icon + '</a>';
@@ -177,6 +179,7 @@ if(!isset($_SESSION)) {
                             account_icon = account_icon + '</ul>';
                             document.write(account_icon);
                         } else {
+                            //nur anzeigen wenn nicht eingeloggt (Einloggen/Registrieren)
                             var account_icon = '<a onclick="einAusblendenLoginRegForm()" class="text-reset me-3">';
                             account_icon = account_icon + '<i class="fas fa-user-circle" id="LoginButton"  style="color: #ffffff"></i>';
                             account_icon = account_icon + '</a>';
@@ -210,6 +213,7 @@ if(!isset($_SESSION)) {
                     //error_reporting(0);
                     include_once("../php/BestellungHistorieVerarbeitung.php");
 
+					//Nutzer aus Session abfragen, zugehörige Daten aus DB holen
                     $loginname = $_SESSION["user"][0];
 					$cryptLoginname = md5($loginname);
                     $sqlQuery="SELECT k.Kunde_ID,
@@ -233,6 +237,7 @@ if(!isset($_SESSION)) {
 
                         WHERE k.LoginName LIKE '".$cryptLoginname."'";
 
+					//Variablen für Nutzerdaten
                     $sqlResult = mysqli_query($verbindung, $sqlQuery);
                     $valueDatenArray = array();
                     $nutzerdaten=mysqli_fetch_assoc($sqlResult);
@@ -247,8 +252,8 @@ if(!isset($_SESSION)) {
                     $stadtteil=$nutzerdaten["Stadtteil"];
                     $plz=$nutzerdaten["PLZ"];
                     $strasse=$nutzerdaten["Strasse"]." ".$nutzerdaten["Hausnummer"];
-					?>
-
+                    ?>
+					<!-- Felder mit Nutzerdaten -->
 					<div class="col-md-5">
 						<br />
 						<h5>Persönliche Daten</h5>
@@ -291,7 +296,7 @@ if(!isset($_SESSION)) {
 						</div>
 
 					</div>
-
+					<!-- Felder mit Adressdaten des Nutzers -->
 					<div class="col-md-2 d-flex justify-content-center">
 						<div style="height: 100%; width: 1px; background-color: gainsboro"></div>
 					</div>
@@ -345,6 +350,7 @@ if(!isset($_SESSION)) {
 				<br />
 				<br />
 
+				<!-- Buttons unten für Bestellhistorie-->
 				<div class="row" style="margin: 0% 3%">
 					<div class="col-lg-3"></div>
 					<div class="col-lg-3 col-sm-6">
@@ -390,6 +396,7 @@ if(!isset($_SESSION)) {
 							<p>
 								<a href="./produktangebot.php?orderBy=Preis%20ASC&kategorie=Corona%20Schnelltests" class="text-reset">Corona Schnelltests</a>
 							</p>
+							<!--Nur für Medizinische Kunden sichtbar-->
 							 <?php
 							 if($_SESSION["login"]==2) echo "<p> <a href=\"./produktangebot.php?orderBy=Preis%20ASC&kategorie=Corona%20PCR-Tests\" class=\"text-reset\">Corona PCR-Tests</a>
                               </p>"
