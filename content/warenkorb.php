@@ -347,25 +347,21 @@ include_once("../php/ProduktBereitstellung.php");
                     <div class="col-md-8" style="padding-left: 40px">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="checkbox_agb" onclick="hideAlert('agb_alert')" />
-                            <label class="form-check-label" for="flexCheckDefault">
-                                Ich akzeptiere die AGBs und habe die Widerrufsbelehrung zur Kenntnis genommen.
-                            </label>
-                        </div>
-                        <div id="agb_alert" style="background-color: #ff9c9c; color: #6e0000; padding: 15px; margin-top: 10px; border-radius: 4px; width: 70%; display: none">
-                            Du musst die AGBs und Widerrufsbelehrung akzeptieren.
+                            <div class="p-6">
+                                Ich akzeptiere die
+                                <a class="text-reset fw-bold" href="./agb.php">AGBs</a>
+                                und habe die Widerrufsbelehrung zur Kenntnis genommen.
+                            </div>
                         </div>
                         <br />
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="checkbox_datenschutz" onclick="hideAlert('datenschutz_alert')" />
-                            <label class="form-check-label" for="flexCheckDefault">
-                                <p>
-                                    Ich habe die Datenschutzbestimmungen gelesen und bin mit der <br />
-                                    Nutzung meiner personenbezogenen Daten einverstanden.
-                                </p>
-                            </label>
-                        </div>
-                        <div id="datenschutz_alert" style="background-color: #ff9c9c; color: #6e0000; padding: 15px; border-radius: 4px; width: 70%; display: none">
-                            Du musst die Datenschutzbestimmungen akzeptieren.
+                            <div class="p-6">
+                                Ich habe die
+                                <a class="text-reset fw-bold" href="./datenschutz.php">Datenschutzbestimmungen</a>
+                                gelesen und bin mit der <br />
+                                Nutzung meiner personenbezogenen Daten einverstanden.
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-4">
