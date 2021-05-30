@@ -405,7 +405,7 @@ if(!isset($_SESSION)) {
 								Nützliche Links
 							</h6>
 							<p>
-								<a href="./agb.php" class="text-reset">ABG</a>
+								<a href="./agb.php" class="text-reset">AGB</a>
 							</p>
 							<p>
 								<a href="./impressum.php" class="text-reset">Impressum</a>
