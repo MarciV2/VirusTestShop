@@ -64,7 +64,7 @@ function getCookie(cname) {
 }
 
 function getSumOfProductsInCart() {
-    var cart_cookie = JSON.parse(readCookie("cart_cookie"));
+    var cart_cookie = JSON.parse(getCookie("cart_cookie"));
     var sum = 0;
 
     if (cart_cookie != null) {

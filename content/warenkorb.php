@@ -353,6 +353,9 @@ include_once("../php/ProduktBereitstellung.php");
                                 und habe die Widerrufsbelehrung zur Kenntnis genommen.
                             </div>
                         </div>
+                        <div id="agb_alert" style="background-color: #ff9c9c; color: #6e0000; padding: 15px; margin-top: 10px; border-radius: 4px; width: 70%; display: none">
+                            Du musst die AGBs akzeptieren.
+                        </div>
                         <br />
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="checkbox_datenschutz" onclick="hideAlert('datenschutz_alert')" />
@@ -362,6 +365,9 @@ include_once("../php/ProduktBereitstellung.php");
                                 gelesen und bin mit der <br />
                                 Nutzung meiner personenbezogenen Daten einverstanden.
                             </div>
+                        </div>
+                        <div id="datenschutz_alert" style="background-color: #ff9c9c; color: #6e0000; padding: 15px; margin-top: 10px; border-radius: 4px; width: 70%; display: none">
+                            Du musst die AGBs akzeptieren.
                         </div>
                     </div>
                     <div class="col-md-4">
