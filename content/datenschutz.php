@@ -190,7 +190,7 @@
             </div>
         </div>
         <!-- Background image -->
-
+	<!-- Datenschutztext -->
         <div class="agb" style="margin-left:50px;margin-right:50px; margin-top:25px; margin-bottom:25px">
             <h1>Datenschutzerkl&auml;rung</h1>
             <p>Verantwortlicher im Sinne der Datenschutzgesetze, insbesondere der EU-Datenschutzgrundverordnung (DSGVO), ist:</p>
