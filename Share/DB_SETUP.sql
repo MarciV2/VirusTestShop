@@ -159,6 +159,20 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `VTS`.`Empfaenger`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `VTS`.`Empfaenger` ;
+
+CREATE TABLE IF NOT EXISTS `VTS`.`Empfaenger` (
+  `Empfaenger_ID` INT NOT NULL,
+  `Vorname` VARCHAR(45) NULL,
+  `Nachname` VARCHAR(45) NULL,
+  `Email` VARCHAR(45) NULL,
+  PRIMARY KEY (`Empfaenger_ID`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `VTS`.`Bestellung`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `VTS`.`Bestellung` ;
@@ -173,6 +187,7 @@ CREATE TABLE IF NOT EXISTS `VTS`.`Bestellung` (
   `Rechnungsadresse_ID` INT NOT NULL,
   `Lieferdresse_ID` INT NOT NULL,
   `Bestellstatus_ID` INT NOT NULL,
+  `Empfaenger_ID` INT NOT NULL,
   PRIMARY KEY (`Bestellung_ID`),
   CONSTRAINT `Kunde_ID`
     FOREIGN KEY (`Kunde_ID`)
@@ -198,6 +213,11 @@ CREATE TABLE IF NOT EXISTS `VTS`.`Bestellung` (
     FOREIGN KEY (`Bestellstatus_ID`)
     REFERENCES `VTS`.`Bestellstatus` (`Bestellstatus_ID`)
     ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Bestellung_Empfaenger1`
+    FOREIGN KEY (`Empfaenger_ID`)
+    REFERENCES `VTS`.`Empfaenger` (`Empfaenger_ID`)
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -210,6 +230,8 @@ CREATE INDEX `fk_Bestellung_Bezahlmethode1_idx` ON `VTS`.`Bestellung` (`Bezahlme
 CREATE INDEX `fk_Bestellung_Adresse1_idx` ON `VTS`.`Bestellung` (`Rechnungsadresse_ID` ASC) ;
 
 CREATE INDEX `fk_Bestellung_Bestellstatus1_idx` ON `VTS`.`Bestellung` (`Bestellstatus_ID` ASC) ;
+
+CREATE INDEX `fk_Bestellung_Empfaenger1_idx` ON `VTS`.`Bestellung` (`Empfaenger_ID` ASC) ;
 
 
 -- -----------------------------------------------------
@@ -424,10 +446,10 @@ COMMIT;
 START TRANSACTION;
 USE `VTS`;
 INSERT INTO `VTS`.`Bestellfaehigkeit` (`Bestellfaehigkeit_ID`, `Kundentyp_ID`, `Kategorie_ID`) VALUES (1, 1, 1);
-INSERT INTO `VTS`.`Bestellfaehigkeit` (`Bestellfaehigkeit_ID`, `Kundentyp_ID`, `Kategorie_ID`) VALUES (2, 1, 2);
-INSERT INTO `VTS`.`Bestellfaehigkeit` (`Bestellfaehigkeit_ID`, `Kundentyp_ID`, `Kategorie_ID`) VALUES (3, 2, 1);
-INSERT INTO `VTS`.`Bestellfaehigkeit` (`Bestellfaehigkeit_ID`, `Kundentyp_ID`, `Kategorie_ID`) VALUES (4, 2, 2);
-INSERT INTO `VTS`.`Bestellfaehigkeit` (`Bestellfaehigkeit_ID`, `Kundentyp_ID`, `Kategorie_ID`) VALUES (5, 2, 3);
+INSERT INTO `VTS`.`Bestellfaehigkeit` (`Bestellfaehigkeit_ID`, `Kundentyp_ID`, `Kategorie_ID`) VALUES (2, 2, 1);
+INSERT INTO `VTS`.`Bestellfaehigkeit` (`Bestellfaehigkeit_ID`, `Kundentyp_ID`, `Kategorie_ID`) VALUES (3, 2, 2);
+INSERT INTO `VTS`.`Bestellfaehigkeit` (`Bestellfaehigkeit_ID`, `Kundentyp_ID`, `Kategorie_ID`) VALUES (4, 2, 3);
+INSERT INTO `VTS`.`Bestellfaehigkeit` (`Bestellfaehigkeit_ID`, `Kundentyp_ID`, `Kategorie_ID`) VALUES (5, 1, 3);
 
 COMMIT;
 
