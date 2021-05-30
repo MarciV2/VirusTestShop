@@ -104,7 +104,7 @@ else
 				`Vorname` = '$empfaengerVorname' AND
 				`Nachname`= '$empfaengerNachname' AND
 				`Email` = '$empfaengerEmail' )";
-				console_log("$sqlEmpfaenger");
+				console_log($sqlEmpfaenger);
 	$sqlEmpfaengerErgebnis = mysqli_query($verbindung, $sqlEmpfaenger);
 	$sqlEmpfaengerErgebnisReihen = @mysqli_num_rows($sqlEmpfaengerErgebnis);
 	$empfaengerDaten = mysqli_fetch_assoc($sqlEmpfaengerErgebnis);

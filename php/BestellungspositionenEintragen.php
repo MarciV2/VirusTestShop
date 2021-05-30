@@ -10,8 +10,8 @@ if(!isset($_COOKIE[$cookieCart]))
 }
 else
 {
-    $warenkorbInhalt = json_decode($_COOKIE[$cookieCart], true);
-    setcookie($cookieCart,'',time()-1);
+    $warenkorbInhalt = json_decode($_COOKIE[$cookieCart], true,);
+    setcookie($cookieCart,'',time()-1,'/');
 }
 
 ### Preise bestimmen ###
