@@ -64,7 +64,6 @@
 
     $sqlPackungen = "SELECT
         p.Packung_ID,
-        p.Artikel_ID,
         h.Name AS Hersteller,
         a.Artikelname AS Artikelname,
         a.Beschreibung AS Beschreibung,
@@ -86,7 +85,7 @@
    //console_log(mysqli_error($verbindung));
     $valuePackungsArray = array();
     while($reihe2 = mysqli_fetch_assoc($sqlPackungenCheck)){
-        $value= $reihe2["Packung_ID"] .";". $reihe2["Hersteller"] . ";" . $reihe2["Artikelname"] .";". $reihe2["Beschreibung"] .";" . $reihe2["Packungsgroesse"] . ";" . $reihe2["Preis"] . ";". $reihe2["Bestand"] .";" . $reihe2["Artikel_ID"] . ";" ;
+        $value= $reihe2["Packung_ID"] .";". $reihe2["Hersteller"] . ";" . $reihe2["Artikelname"] .";". $reihe2["Beschreibung"] .";" . $reihe2["Packungsgroesse"] . ";" . $reihe2["Preis"] . ";". $reihe2["Bestand"] .";";
         array_push($valuePackungsArray,$value);
     }
     setcookie("PackungCookie",json_encode($valuePackungsArray),time()+3600);
