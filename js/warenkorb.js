@@ -10,7 +10,7 @@ function jetztKaufen(loggedIn) {
         } else if (getSumOfProductsInCart() <= 0) {
 
         } else {
-            window.location.href = './kaufen.html';
+            window.location.href = './kaufen.php';
         }
     } else {
         new Notify({
