@@ -45,7 +45,8 @@ if(isset($_POST))
 {
     console_log("submit ok --starte--");
     mysqli_real_escape_string($verbindung,$_POST['regloginname']);
-    $loginname = md5($_POST['regloginname']);
+    $loginname = $_POST['regloginname'];
+    $cryptLoginname = md5($loginname);
     mysqli_real_escape_string($verbindung,$_POST['passwort']);
     $passwort = md5($_POST['passwort']);
     mysqli_real_escape_string($verbindung,$_POST['wdhlg-passwort']);
@@ -77,7 +78,7 @@ if(isset($_POST))
     
 
 
-    $sqlUsernameCheck = "SELECT `LoginName` FROM `kunde` WHERE `LoginName` = '$loginname'";
+    $sqlUsernameCheck = "SELECT `LoginName` FROM `kunde` WHERE `LoginName` = '$cryptLoginname'";
     $sqlUserCheckErgebnis = mysqli_query($verbindung, $sqlUsernameCheck);
     $sqlUserCheckReihen = @mysqli_num_rows($sqlUserCheckErgebnis);
     console_log($sqlUsernameCheck);
@@ -147,7 +148,7 @@ if(isset($_POST))
     
 
     $sqlKunde = "INSERT INTO `kunde`(`LoginName`, `Name`,  `Vorname`, `Telefon`, `Email`, `Adresse_ID`, `Kundentyp_ID`, `Passwort` )
-                    VALUES ('$loginname', '$nachname', '$vorname','$telefon', '$email','$adressID','$firmenkunde','$passwort' )";
+                    VALUES ('$cryptLoginname', '$nachname', '$vorname','$telefon', '$email','$adressID','$firmenkunde','$passwort' )";
 
     console_log($sqlKunde);
 
@@ -156,7 +157,7 @@ if(isset($_POST))
     
     # User korrekt in der Datenbank eingetragen?
 
-    $sqlUserCheck = "SELECT `Kundentyp_ID` FROM `kunde` WHERE `LoginName` = '$loginname' OR `Email` = '$email'
+    $sqlUserCheck = "SELECT `Kundentyp_ID` FROM `kunde` WHERE `LoginName` = '$cryptLoginname' OR `Email` = '$email'
                 LIMIT 1";
 
     console_log($sqlUserCheck);

@@ -41,12 +41,13 @@ if(isset($_POST))
     # Um ANgriffen wie SQL-Injections vorzubeugen müssen die im Loginformular eingegebenen
     # Werte escapen
     mysqli_real_escape_string($verbindung, $_POST["LoginName"]);
-    $loginname = md5($_POST["LoginName"]);
+    $loginname = $_POST["LoginName"];
+    $cryptLoginname = md5($loginname);
     mysqli_real_escape_string($verbindung, $_POST["LoginPasswort"]);
     $loginpasswort = md5($_POST["LoginPasswort"]);
 
     $sql = "SELECT `Kundentyp_ID` FROM `kunde` WHERE 
-            `LoginName` = '$loginname' AND
+            `LoginName` = '$cryptLoginname' AND
             `Passwort` = '$loginpasswort' 
             LIMIT 1";
     
@@ -88,7 +89,6 @@ if(isset($_POST))
 
     if($_SESSION["login"] == 0)
     {
-        $cookiename = $loginname;
         $cookie_LoginValue = $_SESSION['login'];
         header('location: /index.php');
         mysqli_close($verbindung);

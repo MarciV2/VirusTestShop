@@ -163,6 +163,8 @@ else
     $warenkorbLaenge = 0;
     foreach($warenkorbInhalt as $value)
     {
+
+
         $warenkorbLaenge ++;
     }
 
