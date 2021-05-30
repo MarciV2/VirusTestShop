@@ -343,7 +343,7 @@
                                       </div>
                                   </div>
                                   <div class="form-outline">
-                                      <input type="text" id="email" name="altEmail" class="form-control" disabled />
+                                      <input type="text" id="altemail" name="altEmail" class="form-control" disabled />
                                       <label class="form-label" for="typeText">E-Mail-Adresse*</label>
                                   </div>
                                   <h4 style="margin-top: 25px">Adressangaben</h4>

@@ -12,7 +12,7 @@ function useAlternativeAddress() {
     if (document.getElementById('useAlternativeAddress').checked) {
         document.getElementById('vorname').setAttribute("disabled", "");
         document.getElementById('nachname').setAttribute("disabled", "");
-        document.getElementById('email').setAttribute("disabled", "");
+        document.getElementById('altemail').setAttribute("disabled", "");
         document.getElementById('strasse').setAttribute("disabled", "");
         document.getElementById('hausnummer').setAttribute("disabled", "");
         document.getElementById('plz').setAttribute("disabled", "");
@@ -22,13 +22,14 @@ function useAlternativeAddress() {
     } else {
         document.getElementById('vorname').removeAttribute("disabled");
         document.getElementById('nachname').removeAttribute("disabled");
-        document.getElementById('email').removeAttribute("disabled");
+        document.getElementById('altemail').removeAttribute("disabled");
         document.getElementById('strasse').removeAttribute("disabled");
         document.getElementById('hausnummer').removeAttribute("disabled");
         document.getElementById('plz').removeAttribute("disabled");
         document.getElementById('stadt').removeAttribute("disabled");
         document.getElementById('land').removeAttribute("disabled");
         document.getElementById('bundesland').removeAttribute("disabled");
+        getAlternativeAdress();
     }
 }
 
@@ -205,7 +206,7 @@ function checkValidation() {
     if (document.getElementById('nachname').value == "") {
         formCorrect = false;
     }
-    if (document.getElementById('email').value == "") {
+    if (document.getElementById('altemail').value == "") {
         formCorrect = false;
     }
     if (document.getElementById('strasse').value == "") {
@@ -228,7 +229,8 @@ function checkValidation() {
 }
 
 
-function getPayMethodInt(payMethod) {
+function getPayMethodInt(payMethod)
+{
     switch (payMethod)
     {
         case "paypal": document.cookie = 'pay = 1;path=/php'; break;
@@ -237,4 +239,9 @@ function getPayMethodInt(payMethod) {
         default: break;
     }
 
+}
+
+function getAlternativeAdress()
+{
+    document.cookie = 'altAdresse = 1;path=/php';
 }
