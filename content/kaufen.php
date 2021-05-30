@@ -1,4 +1,9 @@
-﻿<?php SESSION_START();
+<?php 
+    SESSION_START();
+    $logged_in = $_SESSION['login'];
+	if($logged_in < 1){
+		header('location: ../index.php');
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
