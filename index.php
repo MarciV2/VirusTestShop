@@ -152,12 +152,14 @@ if(!isset($_SESSION))
                     </a>
                     <!-- Account icon -->
                     <?php
+						//Prüfen ob Session Variable gesetzt ist falls nicht soll diese 0 sein
                         if(!isset($_SESSION['login']))
 						{
 							$_SESSION['login']=0;
 						}
+						//Sessionvariable an PHP Variable übergeben um später in js darauf zugreifen zu können
                         $variablephp = $_SESSION['login'];
-			if(!isset($_SESSION['newReg']))
+						if(!isset($_SESSION['newReg']))
 						{
 							$_SESSION['newReg']=0;
 						}
@@ -167,12 +169,14 @@ if(!isset($_SESSION))
 							$_SESSION['newLog']=0;
 						}
                         $variablelog = $_SESSION['newLog'];
-			
                     ?>
+					                <!-- Script bestimmt ob Menü mit logout/profil/bestellungen oder login prompt dargestellt wird -->
                     <script>
+						//Umwandeln der PHP variable in js variable
                         var variablejs = "<?php echo $variablephp; ?>";
                         variablejs = parseInt(variablejs);
                         if(variablejs > 0){
+							//logout/profil/bestellungen Darstellung
                             var account_icon = '<a class="text-reset me-3" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">';
                             account_icon = account_icon + '<i class="fas fa-user-circle" style="color: #ffffff"></i>';
                             account_icon = account_icon + '</a>';
@@ -184,6 +188,7 @@ if(!isset($_SESSION))
                             account_icon = account_icon + '</ul>';
                             document.write(account_icon);
                         } else {
+							//Login prompt Aufruf
                             var account_icon = '<a onclick="einAusblendenLoginRegForm()" class="text-reset me-3">';
                             account_icon = account_icon + '<i class="fas fa-user-circle" id="LoginButton"  style="color: #ffffff"></i>';
                             account_icon = account_icon + '</a>';
@@ -392,13 +397,15 @@ if(!isset($_SESSION))
     <script type=text/javascript src=./js/index.js><?php echo "checkLogin($_SESSION[login])</script>"?>;
     <script type="text/javascript" src="./js/index.js"></script>
 <script>
-						
+	//Script zur Ausgabe Notification beim einloggen/registrieren mit Statusmitteilung	
+						//login/register Status Variablen zu js konvertieren
 						var variablereg = "<?php echo $variablereg; ?>";	
 						var variablelog = "<?php echo $variablelog; ?>";
 						
+						//Registrierungsstatus Ausgabe
 						switch(variablereg){
+							
 		case "0":		
-		
 		break;
 		
 		case "1":		
@@ -486,7 +493,7 @@ if(!isset($_SESSION))
 						}
 
 						
-						
+						//Loginstatus Ausgabe
 						switch(variablelog){
 		case "0":		
 		
@@ -542,7 +549,7 @@ if(!isset($_SESSION))
 		break;
 			
 						}
-						
+		//Statusvariablen löschen				
 		<?php $_SESSION['newReg']=0;?>
 		<?php $_SESSION['newLog']=0;?>
     </script> 
