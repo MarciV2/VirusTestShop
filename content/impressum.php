@@ -143,37 +143,41 @@
                         <span id="product_counter" class="badge rounded-pill badge-notification bg-danger" style="display: none">11</span>
                     </a>
                     <!-- Account icon -->
-                    <?php
-						if(!isset($_SESSION['login']))
-						{
-							$_SESSION['login']=0;
-						}
+                   <?php
+			//Prüfen ob Session Variable gesetzt ist falls nicht soll diese 0 sein
+				if(!isset($_SESSION['login']))
+				{
+					$_SESSION['login']=0;
+				}
+			//Sessionvariable an PHP Variable übergeben um später in js darauf zugreifen zu können
                         $variablephp = $_SESSION['login'];
 						
                     ?>
+                                   <!-- Script bestimmt ob Menü mit logout/profil/bestellungen oder login prompt dargestellt wird -->
                     <script>
+						//Umwandeln der PHP variable in js variable
                         var variablejs = "<?php echo $variablephp; ?>";
                         variablejs = parseInt(variablejs);
                         if(variablejs > 0){
-                            //Nur anzeigen wenn eingeloggt (profil, Bestellungen,...)
+							//logout/profil/bestellungen Darstellung
                             var account_icon = '<a class="text-reset me-3" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">';
                             account_icon = account_icon + '<i class="fas fa-user-circle" style="color: #ffffff"></i>';
                             account_icon = account_icon + '</a>';
                             account_icon = account_icon + '<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">';
-                            account_icon = account_icon + '<li><a class="dropdown-item" href="./profil.php">Profil</a></li>';
-                            account_icon = account_icon + '<li><a class="dropdown-item" href="./bestellungen.php">Bestellungen</a></li>';
+                            account_icon = account_icon + '<li><a class="dropdown-item" href="./content/profil.php">Profil</a></li>';
+                            account_icon = account_icon + '<li><a class="dropdown-item" href="./content/bestellungen.php">Bestellungen</a></li>';
                             account_icon = account_icon + '<li><hr class="dropdown-divider" /></li>';
                             account_icon = account_icon + '<li><a class="dropdown-item" href="#" onclick="logout()">Logout</a></li>';
                             account_icon = account_icon + '</ul>';
                             document.write(account_icon);
                         } else {
-                            //nur anzeigen wenn nicht eingeloggt (Einloggen/Registrieren)
+							//Login prompt Aufruf
                             var account_icon = '<a onclick="einAusblendenLoginRegForm()" class="text-reset me-3">';
                             account_icon = account_icon + '<i class="fas fa-user-circle" id="LoginButton"  style="color: #ffffff"></i>';
                             account_icon = account_icon + '</a>';
                             document.write(account_icon);
                         }
-						 </script>
+                    </script>
                 </div>
                 <!-- Right elements -->
             </div>
@@ -187,7 +191,7 @@
             </div>
         </div>
         <!-- Background image -->
-
+	<!-- Impressumstext -->
         <div class="agb" style="margin-left:50px;margin-right:50px;margin-top: 25px;margin-bottom: 25px">
             <h1>Impressum</h1><p>Angaben gem&auml;&szlig; &sect; 5 TMG</p><p>
                 Max Muster <br>
