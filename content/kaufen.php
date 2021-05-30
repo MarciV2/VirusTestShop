@@ -540,7 +540,7 @@
                                   Nützliche Links
                               </h6>
                               <p>
-                                  <a href="./agb.html" class="text-reset">ABG</a>
+                                  <a href="./agb.html" class="text-reset">AGB</a>
                               </p>
                               <p>
                                   <a href="./impressum.html" class="text-reset">Impressum</a>
