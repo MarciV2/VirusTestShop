@@ -17,7 +17,8 @@
         echo 'console.log('.json_encode($data).')';
         echo '</script>';
     }
-
+	$login = $_SESSION["login"];
+    console_log($login);
     # Datenbankverbindung herstellen
     $verbindung = mysqli_connect($servername, $dbusername, $dbpasswort);
 
@@ -59,8 +60,11 @@
         case "Corona Schnelltests"  : $kategorie="\n WHERE k.Bezeichnung = 'Test' \n"; break;
         case "Corona PCR-Tests" :$kategorie="\n WHERE k.Bezeichnung = 'Medizinischer Test' \n"; break;
         case "Schulungen"  : $kategorie="\n WHERE k.Bezeichnung = 'Training' \n"; break;
-        default : $kategorie=""; break;
+        default : $kategorie="\n WHERE k.Bezeichnung LIKE '%' \n"; break;
     }
+
+   $kontoTypFilter=" AND b.Kundentyp_ID=1 ";
+   if($login==2)$kontoTypFilter="";
 
     $sqlPackungen = "SELECT
         p.Packung_ID,
@@ -70,18 +74,21 @@
         p.Packungsgroessee AS Packungsgroesse,
         round(p.Verkaufspreis,2) AS Preis,
         p.Lagermenge AS Bestand,
-        k.Bezeichnung AS Kategorie
+        k.Bezeichnung AS Kategorie,
+        b.Kundentyp_ID
 
         FROM
         packung p
         JOIN artikel a ON a.Artikel_ID=p.Artikel_ID
         LEFT JOIN hersteller h ON h.Hersteller_ID=a.Hersteller_ID
-        LEFT JOIN kategorie k ON k.kategorie_ID=a.kategorie_ID" . $kategorie .
+        LEFT JOIN kategorie k ON k.kategorie_ID=a.kategorie_ID
+        JOIN bestellfaehigkeit b ON k.Kategorie_ID=b.Kategorie_ID
+        " . $kategorie . $kontoTypFilter .
         " ORDER BY " . $orderByParam;
 
 
     $sqlPackungenCheck = mysqli_query($verbindung, $sqlPackungen);
-   //console_log( $sqlPackungen);
+   console_log( $sqlPackungen);
    //console_log(mysqli_error($verbindung));
     $valuePackungsArray = array();
     while($reihe2 = mysqli_fetch_assoc($sqlPackungenCheck)){

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 SESSION_START();
 error_reporting(0);
 include_once("../php/ProduktBereitstellung.php");
@@ -229,9 +229,11 @@ include_once("../php/ProduktBereitstellung.php");
                             <a href="#">
                                 <div onclick="location.href = URL_add_parameter(location.href, 'kategorie', 'Corona Schnelltests');">Corona Schnelltests</div>
                             </a>
-                            <a href="#">
-                                <div onclick="location.href = URL_add_parameter(location.href, 'kategorie', 'Corona PCR-Tests');">Corona PCR-Tests</div>
-                            </a>
+                            <?php
+							if($_SESSION["login"]==2) echo "<a href=\"#\">
+                                <div onclick=\"location.href = URL_add_parameter(location.href, 'kategorie', 'Corona PCR-Tests');\">Corona PCR-Tests</div>         </a>";
+                            ?>
+                            
                             <a href="#">
                                 <div onclick="location.href = URL_add_parameter(location.href, 'kategorie', 'Schulungen');">Schulungen</div>
                             </a>
@@ -403,9 +405,10 @@ include_once("../php/ProduktBereitstellung.php");
                            <p>
                                   <a href="./produktangebot.php?orderBy=Preis%20ASC&kategorie=Corona%20Schnelltests" class="text-reset">Corona Schnelltests</a>
                               </p>
-                              <p>
-                                  <a href="./produktangebot.php?orderBy=Preis%20ASC&kategorie=Corona%20PCR-Tests" class="text-reset">Corona PCR-Tests</a>
-                              </p>
+                            <?php
+							if($_SESSION["login"]==2) echo "<p> <a href=\"./produktangebot.php?orderBy=Preis%20ASC&kategorie=Corona%20PCR-Tests\" class=\"text-reset\">Corona PCR-Tests</a>
+                              </p>"
+                            ?>
                               <p>
                                   <a href="./produktangebot.php?orderBy=Preis%20ASC&kategorie=Schulungen" class="text-reset">Schulungen</a>
                               </p>

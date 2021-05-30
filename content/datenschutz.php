@@ -1,4 +1,4 @@
-﻿<?php SESSION_START();
+<?php SESSION_START();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -344,9 +344,10 @@
                             <p>
                                 <a href="./produktangebot.php?orderBy=Preis%20ASC&kategorie=Corona%20Schnelltests" class="text-reset">Corona Schnelltests</a>
                             </p>
-                            <p>
-                                <a href="./produktangebot.php?orderBy=Preis%20ASC&kategorie=Corona%20PCR-Tests" class="text-reset">Corona PCR-Tests</a>
-                            </p>
+                            <?php
+							if($_SESSION["login"]==2) echo "<p> <a href=\"./produktangebot.php?orderBy=Preis%20ASC&kategorie=Corona%20PCR-Tests\" class=\"text-reset\">Corona PCR-Tests</a>
+                              </p>"
+                            ?>
                             <p>
                                 <a href="./produktangebot.php?orderBy=Preis%20ASC&kategorie=Schulungen" class="text-reset">Schulungen</a>
                             </p>
