@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+<?php
+  if(!isset($_SESSION))
+  {
+     SESSION_START();
+  }
+  ?>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -18,6 +25,9 @@
     <link rel="stylesheet" href="../src/simple-notify/simple-notify.min.css" />
 </head>
   <body>
+  
+  
+
 
       <div class="windowedPage">
           <!-- Start your project here-->
@@ -42,7 +52,7 @@
                               <a class="nav-link" href="./produktangebot.php" style="color: white">Produktangebot</a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link" href="./termine.html" style="color: white">Schulungstermine</a>
+                              <a class="nav-link" href="./termine.php" style="color: white">Schulungstermine</a>
                           </li>
                           <li class="nav-item dropdown">
                               <a class="nav-link dropdown-toggle"
@@ -72,7 +82,7 @@
                   <!-- Right elements -->
                   <div class="d-flex align-items-center">
                       <!-- Shopping icon -->
-                      <a class="text-reset me-4" href="./warenkorb.html">
+                      <a class="text-reset me-4" href="./warenkorb.php">
                           <i class="fas fa-shopping-cart" style="color: #ffffff"></i>
                           <span id="product_counter" class="badge rounded-pill badge-notification bg-danger" style="display: none">11</span>
                       </a>
@@ -120,33 +130,78 @@
                   <hr style="margin: 0% 3%" />
                   <br />
                   <div class="row" style="padding: 1% 10%">
+
+                   <?php
+                    //error_reporting(0);
+                    include_once("../php/BestellungHistorieVerarbeitung.php");
+
+                    
+                    $loginname = $_SESSION["user"][0];
+                    $sqlQuery="SELECT k.Kunde_ID,
+                        k.LoginName,
+                        k.Vorname,
+                        k.Name,
+                        k.Email,
+                        k.Telefon,
+                        kt.Bezeichung,
+                        a.Land,
+                        a.Bundesland,
+                        a.Stadt,
+                        a.Stadtteil,
+                        a.PLZ,
+                        a.Strasse,
+                        a.Hausnummer
+
+                        FROM Kunde k
+                        JOIN Adresse a ON k.Adresse_ID=a.Adresse_ID
+                        JOIN Kundentyp kt ON k.Kundentyp_ID=kt.Kundentyp_ID
+
+                        WHERE k.LoginName LIKE '".$loginname."'";
+
+                    $sqlResult = mysqli_query($verbindung, $sqlQuery);
+                    $valueDatenArray = array();
+                    $nutzerdaten=mysqli_fetch_assoc($sqlResult);
+                    $vorname=$nutzerdaten["Vorname"];
+                    $nachname=$nutzerdaten["Name"];
+                    $email=$nutzerdaten["Email"];
+                    $telefon=$nutzerdaten["Telefon"];
+                    $kundentyp=$nutzerdaten["Bezeichung"];
+                    $land=$nutzerdaten["Land"];
+                    $bundesland=$nutzerdaten["Bundesland"];
+                    $stadt=$nutzerdaten["Stadt"];
+                    $stadtteil=$nutzerdaten["Stadtteil"];
+                    $plz=$nutzerdaten["PLZ"];
+                    $strasse=$nutzerdaten["Strasse"]." ".$nutzerdaten["Hausnummer"];
+                   
+                  ?>
+
                       <div class="col-md-5">
                           <br />
                           <h5>Persönliche Daten</h5>
                           <br />
                           <div class="row">
                               <div class="col-6">Loginname: </div>
-                              <div class="col-6 d-flex justify-content-end" id="field_loginname"> XXXXXXXX</div>
+                              <div class="col-6 d-flex justify-content-end" id="field_loginname"> <?php echo $loginname ?></div>
                           </div>
                           <div class="row">
                               <div class="col-6">Vorname: </div>
-                              <div class="col-6 d-flex justify-content-end" id="field_vorname"> XXXXXXXX</div>
+                              <div class="col-6 d-flex justify-content-end" id="field_vorname"> <?php echo $vorname ?></div>
                           </div>
                           <div class="row">
                               <div class="col-6">Nachname: </div>
-                              <div class="col-6 d-flex justify-content-end" id="field_nachname"> XXXXXXXX</div>
+                              <div class="col-6 d-flex justify-content-end" id="field_nachname"> <?php echo $nachname ?></div>
                           </div>
                           <div class="row">
                               <div class="col-6">E-Mail-Adresse: </div>
-                              <div class="col-6 d-flex justify-content-end" id="field_email"> XXXXXXXX</div>
+                              <div class="col-6 d-flex justify-content-end" id="field_email"> <?php echo $email ?></div>
                           </div>
                           <div class="row">
                               <div class="col-6">Telefonnummer: </div>
-                              <div class="col-6 d-flex justify-content-end" id="field_telnr"> XXXXXXXX</div>
+                              <div class="col-6 d-flex justify-content-end" id="field_telnr"> <?php echo $telefon ?></div>
                           </div>
                           <div class="row">
                               <div class="col-6">Kundentyp: </div>
-                              <div class="col-6 d-flex justify-content-end" id="field_kundentyp"> XXXXXXXX</div>
+                              <div class="col-6 d-flex justify-content-end" id="field_kundentyp"> <?php echo $kundentyp ?></div>
                       </div>
                       <div class="col-md-2 d-flex justify-content-center">
                           <div style="height: 100%; width: 1px; background-color: gainsboro"></div>
@@ -157,27 +212,27 @@
                           <br />
                           <div class="row">
                               <div class="col-6">Land: </div>
-                              <div class="col-6 d-flex justify-content-end" id="field_land"> XXXXXXXX</div>
+                              <div class="col-6 d-flex justify-content-end" id="field_land"> <?php echo $land ?></div>
                           </div>
                           <div class="row">
                               <div class="col-6">Bundesland: </div>
-                              <div class="col-6 d-flex justify-content-end" id="field_bundesland"> XXXXXXXX</div>
+                              <div class="col-6 d-flex justify-content-end" id="field_bundesland"> <?php echo $bundesland ?></div>
                           </div>
                           <div class="row">
                               <div class="col-6">Stadt: </div>
-                              <div class="col-6 d-flex justify-content-end" id="field_stadt"> XXXXXXXX</div>
+                              <div class="col-6 d-flex justify-content-end" id="field_stadt"> <?php echo $stadt ?></div>
                           </div>
                           <div class="row">
                               <div class="col-6">Stadtteil: </div>
-                              <div class="col-6 d-flex justify-content-end" id="field_stadtteil"> XXXXXXXX</div>
+                              <div class="col-6 d-flex justify-content-end" id="field_stadtteil"> <?php echo $stadtteil ?></div>
                           </div>
                           <div class="row">
                               <div class="col-6">Postleitzahl: </div>
-                              <div class="col-6 d-flex justify-content-end" id="field_plz"> XXXXXXXX</div>
+                              <div class="col-6 d-flex justify-content-end" id="field_plz"> <?php echo $plz ?></div>
                           </div>
                           <div class="row">
                               <div class="col-6">Straße: </div>
-                              <div class="col-6 d-flex justify-content-end" id="field_strasse"> Hauptstraße 100</div>
+                              <div class="col-6 d-flex justify-content-end" id="field_strasse"> <?php echo $strasse ?></div>
                           </div>
                       </div>
                   </div>
@@ -201,10 +256,7 @@
                   <br />
                   <br />
 
-                  <?php
-                    error_reporting(0);
-                    include_once("../php/ProfilDatenBereitstellung.php");
-                  ?>
+                 
 
               </div>
           </div>
@@ -292,7 +344,6 @@
           <!-- Footer -->
 
       </div>
-
 
 
       <!-- End your project here-->
