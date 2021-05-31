@@ -1,3 +1,4 @@
+// Setzt Anzahl der Produkte im Warenkorb (-> rotes Badge in Navbar am Warenkorb-Icon)
 function setTotalAmountOfProductsInCart() {
     var product_counter = document.getElementById("product_counter");
     if (getSumOfProductsInCart() <= 0) {
@@ -8,7 +9,8 @@ function setTotalAmountOfProductsInCart() {
     }
 }
 
-
+// Funktion gibt Cookie-Wert abhängig vom Cookie-Namen (cname) zurück
+// Funktion ist speziell für cart_cookie, da im Falle eines leeren Warenkorbes ein leere JSON-String zurückgegeben wird (-> {})
 function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
@@ -25,6 +27,8 @@ function getCookie(cname) {
     return "{}";
 }
 
+// Funktion durchläuft JSON-String des cart_cookies summiert dabei alle Produkte auf
+// -> gibt Summe aller Produkte im Warenkorb zurück 
 function getSumOfProductsInCart() {
     var cart_cookie = JSON.parse(getCookie("cart_cookie"));
     var sum = 0;
@@ -37,4 +41,5 @@ function getSumOfProductsInCart() {
     return sum;
 }
 
+//setzt Anzahl der Produkte im Warenkorb bei Seitenaufruf
 setTotalAmountOfProductsInCart();

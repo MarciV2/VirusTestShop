@@ -1,4 +1,4 @@
-var step = 1;
+var step = 1; //Varible, um Step des Steppers auf kaufen.php zu speichern
 
 var step_1_passed = false;
 var step_2_passed = false;
@@ -8,6 +8,8 @@ var selectedPaymentMethod = null;
 
 var use_alternative_address = false;
 
+// Funktion enabled bzw disabled Eingabemöglichkeiten der alternativen Adresse auf kaufen.php
+// Wird durch Klick auf checkbox (kaufen.php -> Step1) aufgerufen
 function useAlternativeAddress() {
     if (document.getElementById('useAlternativeAddress').checked) {
         document.getElementById('vorname').setAttribute("disabled", "");
@@ -35,7 +37,7 @@ function useAlternativeAddress() {
     }
 }
 
-
+// Funktion wählt Paypal als Zahlungsart aus (visuell als auch für die Variable selectedPaymentMethod)
 function selectPaypal() {
     selectedPaymentMethod = "paypal";
     document.getElementById('payment_paypal').setAttribute("class", "list-group-item itemCardPaymentSelected");
@@ -48,6 +50,7 @@ function selectPaypal() {
     getPayMethodInt(selectedPaymentMethod);
 }
 
+// Funktion wählt Kreditkarte als Zahlungsart aus (visuell als auch für die Variable selectedPaymentMethod)
 function selectCreditcard() {
     selectedPaymentMethod = "credit";
     document.getElementById('payment_paypal').setAttribute("class", "list-group-item itemCardPayment");
@@ -60,6 +63,7 @@ function selectCreditcard() {
     getPayMethodInt(selectedPaymentMethod);
 }
 
+// Funktion wählt Giropay als Zahlungsart aus (visuell als auch für die Variable selectedPaymentMethod)
 function selectGiropay() {
     selectedPaymentMethod = "giro";
     document.getElementById('payment_paypal').setAttribute("class", "list-group-item itemCardPayment");
@@ -72,6 +76,7 @@ function selectGiropay() {
     getPayMethodInt(selectedPaymentMethod);
 }
 
+// Funktion um per Klick auf Step im Stepper direkt auf ersten Step zu gelangen
 function goToStep1() {
     step = 1;
     document.getElementById('button_previous').setAttribute("style", "display: none; background-color: #1E90FF; margin-bottom: 20px");
@@ -79,6 +84,7 @@ function goToStep1() {
     setStepperColors();
 }
 
+// Funktion um per Klick auf Step im Stepper direkt auf zweiten Step zu gelangen (Step 2 muss hierfür bereits abgeschlossen worden sein)
 function goToStep2() {
     if (step_2_passed) {
         step = 2;
@@ -88,6 +94,7 @@ function goToStep2() {
     }
 }
 
+// Funktion um per Klick auf Step im Stepper direkt auf dritten Step zu gelangen (Step 3 muss hierfür bereits abgeschlossen worden sein)
 function goToStep3() {
     if (step_3_passed) {
         step = 3;
@@ -97,6 +104,7 @@ function goToStep3() {
     }
 }
 
+// Funktion um über den Button "Weiter"  durch die Steps des Steppers navigieren zu können
 function nextStep() {
     if (step == 1) {
         if (document.getElementById('useAlternativeAddress').checked == false) {
@@ -135,6 +143,7 @@ function nextStep() {
     
 }
 
+// Funktion um über den Button "Zurück"  durch die Steps des Steppers navigieren zu können
 function previousStep() {
     if (step > 1) {
         step = step - 1;
@@ -146,6 +155,8 @@ function previousStep() {
     setStepperColors();
 }
 
+// Funktion setzt Stepper Farben abhängig von 1. bereits durchlaufenen Steps -> grüne Farbe
+//                                            2. dem Ausgewählten Step -> dicke Schrift
 function setStepperColors() {
     if (step == 1) {
         if (step_1_passed) {
@@ -199,6 +210,9 @@ function setStepperColors() {
     }
 }
 
+
+// Funktion überprüft, ob alle auszufüllenden Felder ausgefüllt wurden
+// Falls nein wird false zurückgegeben
 function checkValidation() {
     formCorrect = true;
 

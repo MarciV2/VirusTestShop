@@ -1,3 +1,6 @@
+// Funktion wird von Button "Jetzt Kaufen" auf warenkorb.php aufgerufen
+// Prüft, ob AGBs und Datenschutz akzeptiert wurden oder Warenkorb leer ist und, ob User eingeloggt ist
+// Ansonsten wird User zu kaufen.php weitergeleitet
 function jetztKaufen(loggedIn) {
     if (loggedIn) {
         var agb_isChecked = document.getElementById('checkbox_agb').checked;
@@ -29,16 +32,13 @@ function jetztKaufen(loggedIn) {
     
 }
 
+// Setzt Sichtbarkeit eines alerts (alert_name) auf none
 function hideAlert(alert_name) {
     document.getElementById(alert_name).style.display = "none";
 }
 
-
-function setNewPrice() {
-    alert(document.getElementById(event.currentTarget));
-}
-
-
+// Setzt Anzahl eines bestimmten Produktes (packung_id) im Warenkorb neu
+// Aktualisiert außerdem Preis des Produktes dieser Reihe neu
 function updateAmountOfProduct(packung_id, element_changed, element_to_update, single_price) {
 
     var new_amount = document.getElementById(element_changed).value;
@@ -56,7 +56,8 @@ function updateAmountOfProduct(packung_id, element_changed, element_to_update, s
 }
 
 
-
+// Löscht Produkt aus Warenkorb aus cart_cookie und aus der Seite selbst
+// Gibt daraufhin ein Notify darüber aus
 function removeCartRow(packung_id, element_to_remove, name) {
     var cart_cookie = JSON.parse(getCookie("cart_cookie"));
     delete cart_cookie[packung_id];
@@ -82,11 +83,11 @@ function removeCartRow(packung_id, element_to_remove, name) {
 }
 
 
+// Funktion setzt Gesamtpreis im Warenkorb neu
+// Wird aufgerufen, sobald Anzahl einer Reihe (-> eines Produktes) aktualisiert wird
 function updateTotalPrice() {
     var all_price_elements = document.querySelectorAll('*[id^="price"]');
     var sum = 5;
-
-    var s = "";
 
     for (var i = 0; i < all_price_elements.length; i++) {
         sum = sum + parseFloat((all_price_elements[i].innerHTML).replace(",", "."));
@@ -104,7 +105,7 @@ function updateTotalPrice() {
     document.getElementById("mwst_price").innerHTML = sum_mwst;
 }
 
-
+// Setzt Anzahl der Produkte im Warenkorb (-> rotes Badge in Navbar am Warenkorb-Icon)
 function setTotalAmountOfProductsInCart() {
     var product_counter = document.getElementById("product_counter");
     if (getSumOfProductsInCart() <= 0) {
@@ -115,7 +116,8 @@ function setTotalAmountOfProductsInCart() {
     }
 }
 
-
+// Funktion gibt Cookie-Wert abhängig vom Cookie-Namen (cname) zurück
+// Funktion ist speziell für cart_cookie, da im Falle eines leeren Warenkorbes ein leere JSON-String zurückgegeben wird (-> {})
 function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
@@ -132,6 +134,8 @@ function getCookie(cname) {
     return "{}";
 }
 
+// Funktion durchläuft JSON-String des cart_cookies summiert dabei alle Produkte auf
+// -> gibt Summe aller Produkte im Warenkorb zurück 
 function getSumOfProductsInCart() {
     var cart_cookie = JSON.parse(getCookie("cart_cookie"));
     var sum = 0;
@@ -145,8 +149,7 @@ function getSumOfProductsInCart() {
 }
 
 
-
-
+//setzt Anzahl der Produkte im Warenkorb bei Seitenaufruf
 setTotalAmountOfProductsInCart();
 
 updateTotalPrice();

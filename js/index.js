@@ -1,15 +1,3 @@
-//var myNav = document.getElementById('navbar');
-//window.onscroll = function () {
-//    if (document.body.scrollTop >= 295 || document.documentElement.scrollTop >= 295) {
-//        myNav.classList.add("windowedPageNavbar");
-//        myNav.classList.remove("windowedPageNavbar-transparent");
-//    }
-
-//    else {
-//        myNav.classList.add("windowedPageNavbar-transparent");
-//        myNav.classList.remove("windowedPageNavbar");
-//    }
-//};
 //Zum überprüfen
 function checkLogin(login) {
     console.log("Test checkLogin" + login);
@@ -51,5 +39,6 @@ function emailchecken() {
 function logout() {
     document.cookie = "PHPSESSID=; path=/";
     location.reload();
+    document.cookie = "cart_cookie={}; path=/";
 }
 

@@ -1,3 +1,5 @@
+// Funktion fügt Produkt der ID product_id mit der Anzahl product_count dem cart_cookie hinzu
+// product_name wird benötigt um Notify anzeigen zu können
 function addProductToCart(product_name, product_id, product_count) {
 
     console.log(product_id);
@@ -34,8 +36,9 @@ function addProductToCart(product_name, product_id, product_count) {
 
     setTotalAmountOfProductsInCart();
 }
-   
 
+
+// Setzt Anzahl der Produkte im Warenkorb (-> rotes Badge in Navbar am Warenkorb-Icon)
 function setTotalAmountOfProductsInCart() {
     var product_counter = document.getElementById("product_counter");
     if (getSumOfProductsInCart() <= 0) {
@@ -47,6 +50,8 @@ function setTotalAmountOfProductsInCart() {
 }
 
 
+// Funktion gibt Cookie-Wert abhängig vom Cookie-Namen (cname) zurück
+// Funktion ist speziell für cart_cookie, da im Falle eines leeren Warenkorbes ein leere JSON-String zurückgegeben wird (-> {})
 function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
@@ -75,4 +80,5 @@ function getSumOfProductsInCart() {
     return sum;
 }
 
+//setzt Anzahl der Produkte im Warenkorb bei Seitenaufruf
 setTotalAmountOfProductsInCart();
