@@ -25,92 +25,6 @@
     <link rel="stylesheet" href="../css/mdb.min.css" />
     <link rel="stylesheet" href="../css/style.css"/>
 
-      <style>
-          .stepper-wrapper {
-              font-family: Arial;
-              margin-top: 50px;
-              display: flex;
-              justify-content: space-between;
-              margin-bottom: 20px;
-          }
-
-          .stepper-item {
-              position: relative;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              flex: 1;
-
-              @media (max-width: 768px) {
-                  font-size: 12px;
-              }
-          }
-
-              .stepper-item::before {
-                  position: absolute;
-                  content: "";
-                  border-bottom: 2px solid #ccc;
-                  width: 100%;
-                  top: 20px;
-                  left: -50%;
-                  z-index: 2;
-              }
-
-              .stepper-item::after {
-                  position: absolute;
-                  content: "";
-                  border-bottom: 2px solid #ccc;
-                  width: 100%;
-                  top: 20px;
-                  left: 50%;
-                  z-index: 2;
-              }
-
-              .stepper-item .step-counter {
-                  position: relative;
-                  z-index: 5;
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                  width: 40px;
-                  height: 40px;
-                  border-radius: 50%;
-                  background: #ccc;
-                  margin-bottom: 6px;
-              }
-
-              .stepper-item.active {
-                  font-weight: bold;
-              }
-
-              .stepper-item.completed .step-counter {
-                  background-color: #07b31b;
-              }
-
-              .stepper-item.completed::after {
-                  position: absolute;
-                  content: "";
-                  border-bottom: 2px solid #07b31b;
-                  width: 100%;
-                  top: 20px;
-                  left: 50%;
-                  z-index: 3;
-              }
-
-              .stepper-item:first-child::before {
-                  content: none;
-              }
-
-              .stepper-item:last-child::after {
-                  content: none;
-              }
-
-              .stepper-item:hover {
-                  cursor: pointer;
-                  background-color: #f0f0f0
-              }
-
-      </style>
   </head>
   <!--Register Form begin -->
 <div class="RegisterForm" id="RegisterForm" onmouseout="">
@@ -200,7 +114,7 @@
                               <a class="nav-link" href="./produktangebot.php" style="color: white">Produktangebot</a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link" href="./termine.html" style="color: white">Schulungstermine</a>
+                              <a class="nav-link" href="./termine.php" style="color: white">Schulungstermine</a>
                           </li>
                           <li class="nav-item dropdown">
                               <a class="nav-link dropdown-toggle"
@@ -230,7 +144,7 @@
                   <!-- Right elements -->
                   <div class="d-flex align-items-center">
                       <!-- Shopping icon -->
-                      <a class="text-reset me-4" href="./warenkorb.html">
+                      <a class="text-reset me-4" href="./warenkorb.php">
                           <i class="fas fa-shopping-cart" style="color: #ffffff"></i>
                           <span id="product_counter" class="badge rounded-pill badge-notification bg-danger" style="display: none">11</span>
                       </a>
@@ -548,13 +462,13 @@
                                   Nützliche Links
                               </h6>
                               <p>
-                                  <a href="./agb.html" class="text-reset">AGB</a>
+                                  <a href="./agb.php" class="text-reset">AGB</a>
                               </p>
                               <p>
-                                  <a href="./impressum.html" class="text-reset">Impressum</a>
+                                  <a href="./impressum.php" class="text-reset">Impressum</a>
                               </p>
                               <p>
-                                  <a href="./datenschutz.html" class="text-reset">Datenschutz</a>
+                                  <a href="./datenschutz.php" class="text-reset">Datenschutz</a>
                               </p>
                           </div>
                           <!-- Grid column -->
