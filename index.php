@@ -264,7 +264,7 @@ if(!isset($_SESSION))
                                   <a href="./content/produktangebot.php?orderBy=Preis%20ASC&kategorie=Corona%20Schnelltests" class="text-reset">Corona Schnelltests</a>
                               </p>
                               <?php
-							  if($_SESSION["login"]==2) echo "<p> <a href=\"./produktangebot.php?orderBy=Preis%20ASC&kategorie=Corona%20PCR-Tests\" class=\"text-reset\">Corona PCR-Tests</a>
+							  if($_SESSION["login"]==2) echo "<p> <a href=\"./content/produktangebot.php?orderBy=Preis%20ASC&kategorie=Corona%20PCR-Tests\" class=\"text-reset\">Corona PCR-Tests</a>
                               </p>"
                               ?>
                               <p>
