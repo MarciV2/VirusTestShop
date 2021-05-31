@@ -2,9 +2,9 @@
 
 Schritte zum aufsetzen des Virustestshop:
 
-  1.Dateien in /htdocs Ordner der installierten XAMPP version einfügen
+  1.Dateien in htdocs Ordner der installierten xampp Version einfügen
   
-  2.xamp starten und apache/mysql starten
+  2.xampp starten und apache/mysql starten
   
   3.DB_SETUP.sql aus dem share Ordner in der SQL statement console unter "http://localhost/phpmyadmin/" im Browser ausführen
   
@@ -12,4 +12,4 @@ Schritte zum aufsetzen des Virustestshop:
   
   5.Website unter "localhost" im Browser aufrufen
 
-Die von uns benutzte Software umfasst Xamp, Chrome und Mysqlworkbench
+Die von uns benutzte Software umfasst Xampp, Chrome und Mysqlworkbench
