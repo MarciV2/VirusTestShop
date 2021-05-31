@@ -24,7 +24,7 @@ foreach($warenkorbInhalt as $value)
 unset($value);
 
 
-$sqlAnzahlProdukte = 'SELECT count(*) AS `Anzahl` FROM `packung`';
+$sqlAnzahlProdukte = 'SELECT count(*) AS `Anzahl` FROM `packung`';  #Bekomme die Anzahl an Packungen aus der DB
 $anzahlProdukteErgebnis = mysqli_query($verbindung, $sqlAnzahlProdukte);
 $anzahlProdukteReihen = @mysqli_num_rows($anzahlProdukteErgebnis);
 
@@ -72,7 +72,6 @@ while($i < $obergrenzeVerschPackungen)
 }
 
 #Bestellpositionen eintragen
-#Bestellpositionsnummer array erstellen
 $i = 0;
 while($i < $obergrenzeVerschPackungen)
 {

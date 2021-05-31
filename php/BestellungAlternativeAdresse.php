@@ -90,7 +90,7 @@ if($sqlEmpfaengerErgebnisReihen > 0) #Empfaenger ist vorhanden
 	$empfaengerDaten = mysqli_fetch_assoc($sqlEmpfaengerErgebnis);
 	$empfaengerID = $empfaengerDaten["Empfaenger_ID"];
 }
-else
+else #Neuer Empfaenger muss eingetragen werden
 {
 	$sqlEmpfaenger = "INSERT INTO `empfaenger`(`Vorname`, `Nachname`, `Email`)
 						VALUES ('$empfaengerVorname', '$empfaengerNachname', '$empfaengerEmail')";
@@ -100,7 +100,7 @@ else
 	{
 		console_log("Fehler beim Eintragen des Empfaengers");
 	}
-	$sqlEmpfaenger = "SELECT `Empfaenger_ID` FROM `empfaenger` WHERE (
+	$sqlEmpfaenger = "SELECT `Empfaenger_ID` FROM `empfaenger` WHERE (  #gerade eingetragene Empfaenger_ID auslesen
 				`Vorname` = '$empfaengerVorname' AND
 				`Nachname`= '$empfaengerNachname' AND
 				`Email` = '$empfaengerEmail' )";

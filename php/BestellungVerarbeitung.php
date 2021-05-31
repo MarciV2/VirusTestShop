@@ -1,4 +1,5 @@
 <?php
+#Vorbereitung Serverdaten
 $servername = 'localhost';
 $dbname = 'vts';
 $dbusername = 'root';
@@ -7,7 +8,7 @@ $serverdaten = "mysql:host=$servername;dbname=$dbname";
 
 SESSION_START();
 
-
+#Fehlermeldung in der Konsole
 function console_log( $data ){
     echo '<script>';
     echo 'console.log('.json_encode($data).')';

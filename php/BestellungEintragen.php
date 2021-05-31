@@ -9,11 +9,12 @@
 $loginname = $_SESSION["user"][0];
 console_log($loginname);
 $cryptLoginname = md5($loginname);
-#Kunde_auslesen
+
+#Kunde_ID auslesen
 $sqlKunde = "SELECT `Kunde_ID` , `Name`, `Vorname`, `Email`  FROM `kunde` WHERE `LoginName` = '$cryptLoginname'";
 $sqlKundeErgebnis = mysqli_query($verbindung, $sqlKunde);
 $kundeCheck = @mysqli_num_rows($sqlKundeErgebnis);
-#Der Fehler, dass der Kunde nicht in der Datenbank vorhanden ist kann nicht vorkommen.
+
 
 #Daten aus der $sqlKundeErgebnis auslesen
 $kundeIDErgebnisDaten = mysqli_fetch_assoc($sqlKundeErgebnis);
@@ -32,7 +33,6 @@ $bestellStatusID = 1;
 
 # gespeicherte Rechnungsadresse auslesen
 $sqlRechnungsadresseID = "SELECT `Adresse_ID` FROM `kunde` WHERE `Kunde_ID` = '$kundeID'";
-#Rechnungsadresse bereitstellen
 $sqlRechnungsadresseIDErgebnis = mysqli_query($verbindung, $sqlRechnungsadresseID);
 $rechnungsadresseIDCheck = @mysqli_num_rows($sqlRechnungsadresseIDErgebnis);
 if($rechnungsadresseIDCheck > 0)
@@ -42,12 +42,12 @@ if($rechnungsadresseIDCheck > 0)
 }
 #Lieferadresse bestimmen
 $cookieAltLiefer = "altAdresse";
-if(!isset($_COOKIE[$cookieAltLiefer]))
+if(!isset($_COOKIE[$cookieAltLiefer])) #keine alternative Lieferadresse
 {
     $lieferadresseID = $rechnungsadresseID;
     $empfaengerID = 0;
 }
-else
+else #alternative Lieferadresse wurde eingetragen
 {
     setcookie($cookieAltLiefer,'',time()-1);
 	include_once './BestellungAlternativeAdresse.php';
