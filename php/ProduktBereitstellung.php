@@ -88,15 +88,15 @@
 
 
     $sqlPackungenCheck = mysqli_query($verbindung, $sqlPackungen);
-   console_log( $sqlPackungen);
-   console_log(mysqli_error($verbindung));
+   //console_log( $sqlPackungen);
+   //console_log(mysqli_error($verbindung));
    //cookie "löschen"
    setcookie("PackungCookie","", time() - 3600);
     $valuePackungsArray = array();
     while($reihe2 = mysqli_fetch_assoc($sqlPackungenCheck)){
         $value= $reihe2["Packung_ID"] .";". $reihe2["Hersteller"] . ";" . $reihe2["Artikelname"] .";". $reihe2["Beschreibung"] .";" . $reihe2["Packungsgroesse"] . ";" . $reihe2["Preis"] . ";". $reihe2["Bestand"] .";";
         array_push($valuePackungsArray,$value);
-        console_log($value);
+        //console_log($value);
     }
     //cookie mit richtigen Werten setzen
     setcookie("PackungCookie",json_encode($valuePackungsArray),time()+3600,'/');
