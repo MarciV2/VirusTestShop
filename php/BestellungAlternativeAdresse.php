@@ -34,7 +34,7 @@ $sqlAdressUeberpruefung = "SELECT `Adresse_ID` FROM `adresse` WHERE (
 							`Hausnummer` = '$lieferHausnummer' AND
 							`PLZ` = '$lieferPlz' AND
 							`Stadt` = '$lieferStadt' AND
-							`Bundesland` = '$lieferBundesland AND
+							`Bundesland` = '$lieferBundesland' AND
 							`Land` = '$lieferLand')";
 
 $adressUeberpruefungErgebnis = mysqli_query($verbindung, $sqlAdressUeberpruefung);
