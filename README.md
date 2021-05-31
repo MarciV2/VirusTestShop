@@ -2,7 +2,7 @@
 
 Schritte zum aufsetzen des Virustestshop:
 
-  1.Dateien in htdocs Ordner der installierten xampp version einfügen
+  1.Dateien in /htdocs Ordner der installierten XAMPP version einfügen
   
   2.xamp starten und apache/mysql starten
   
