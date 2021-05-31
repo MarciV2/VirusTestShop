@@ -185,19 +185,19 @@ if(isset($_POST))
         console_log("Registrierung und anschliessender Login erfolgreich.");
         $_SESSION["login"] = 2;
         $_SESSION["user"] = $userDatenArray;
-        $_SESSION["newReg"] = 3;        
+        $_SESSION["newReg"] = 4;        
     }
     else
     {
         console_log("Fehler bei der Registrierung");
-		 $_SESSION["newReg"] = 4; 
+		 $_SESSION["newReg"] = 5; 
     }
 
     if(!isset($_SESSION["login"]))
     {        
         mysqli_close($verbindung);
         console_log("Fehler bei der Session");
-		 $_SESSION["newReg"] = 5; 
+		 $_SESSION["newReg"] = 6; 
         header('location: ../index.php');
     }
     else
