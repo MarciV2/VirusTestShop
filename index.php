@@ -476,6 +476,22 @@ if(!isset($_SESSION))
 		new Notify({
 		
         title: "Fehler bei der Registierung",
+        text: "User konnte nicht angelegt werden.",
+        effect: 'slide',
+        speed: 300,
+        status: 'success',
+        autoclose: true,
+        autotimeout: 5000,
+        position: 'right bottom',
+        gap: 20,
+        distance: 70
+		}
+    )
+		break;
+		case "6":		
+		new Notify({
+		
+        title: "Fehler bei der Registierung",
         text: "Session Fehler ist eingetreten.",
         effect: 'slide',
         speed: 300,
@@ -488,7 +504,6 @@ if(!isset($_SESSION))
 		}
     )
 		break;
-		
 	
 						}
 
@@ -552,7 +567,7 @@ if(!isset($_SESSION))
 		//Statusvariablen löschen				
 		<?php $_SESSION['newReg']=0;?>
 		<?php $_SESSION['newLog']=0;?>
-    </script> 
+    </script>  
 	
 </body>
 </html>
