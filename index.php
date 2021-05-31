@@ -443,7 +443,7 @@ if(!isset($_SESSION))
 		case "3":		
 		new Notify({
 		
-        title: "Sie habe sich erfolgreich als medizinischer-Kunde registriert!",
+        title: "Sie habe sich erfolgreich als Privatkunde registriert!",
         text: "Sie können sich jetzt mit ihren Zugangsdaten einloggen.",
         effect: 'slide',
         speed: 300,
@@ -459,7 +459,7 @@ if(!isset($_SESSION))
 		case "4":		
 		new Notify({
 		
-        title: "Sie habe sich erfolgreich als Privatkunde registriert!",
+        title: "Sie habe sich erfolgreich als medizinischer-Kunde registriert!",
         text: "Sie können sich jetzt mit ihren Zugangsdaten einloggen.",
         effect: 'slide',
         speed: 300,
