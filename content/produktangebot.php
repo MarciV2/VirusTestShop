@@ -220,7 +220,7 @@ include_once("../php/ProduktBereitstellung.php");
             }
                                    
         </script>
-        <div style="padding: 25px; background-color: #f9f9f9">
+        <div style="padding: 1%; background-color: #f9f9f9">
             <div class="row">
                 <div class="col-xl-2">
                     <div class="card itemCard" style="padding: 5px; height: 100%">
@@ -357,7 +357,7 @@ include_once("../php/ProduktBereitstellung.php");
                     itemCard = itemCard + "</p>";
                     itemCard = itemCard + "<div class='row no-gutters'>";
                     itemCard = itemCard + "<div class='col-md-7'>";
-                    itemCard = itemCard + "<a class='btn btn-primary btn-rounded buttonToCartMarginBottom' onclick=\"addProductToCart(\'" + product_name + "\', " + product_id + ", 1)\" style='display: block; background-color: #1E90FF'>In den Warenkorb</a>";
+                    itemCard = itemCard + "<a class='btn btn-primary btn-rounded buttonToCartMarginBottom' onclick=\"addProductToCart(\'" + product_name + "\', " + product_id + ", 1)\" style='display: block; background-color: #1E90FF; margin-bottom: 2%'>In den Warenkorb</a>";
                     itemCard = itemCard + "</div>";
                     itemCard = itemCard + "<div class='col-md-5'>";
                     itemCard = itemCard + "<a href='./produkt.php?product_id=" + product_id + "' class='btn btn-primary btn-rounded' style='display: block; background-color: #1E90FF'>Details</a>";

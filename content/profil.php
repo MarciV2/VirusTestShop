@@ -199,7 +199,7 @@ if(!isset($_SESSION)) {
 		</div>
 		<!-- Background image -->
 
-		<div style="padding: 25px; background-color: #f9f9f9">
+		<div style="padding: 1%; background-color: #f9f9f9">
 
 
 			<div class="card itemCard">
@@ -451,6 +451,7 @@ if(!isset($_SESSION)) {
 			<!-- Copyright -->
 		</footer>
 		<!-- Footer -->
+		</div>
 
 
 		<!-- End your project here-->
@@ -461,6 +462,6 @@ if(!isset($_SESSION)) {
 		<script type="text/javascript" src="../js/functionScripts.js"></script>
 		<script src="../js/cartNumber.js"></script>
 		<script type=text/javascript src=../js/index.js><?php echo "checkLogin($_SESSION[login])</script>"?>;
-    <script type="text/javascript" src="../js/index.js"></script>
+		<script type="text/javascript" src="../js/index.js"></script>
 </body>
 </html>

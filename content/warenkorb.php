@@ -189,7 +189,7 @@ include_once("../php/ProduktBereitstellung.php");
         </div>
         <!-- Background image -->
 
-        <div style="padding: 25px; background-color: #f9f9f9">
+        <div style="padding: 1%; background-color: #f9f9f9">
 
             <div class="card itemCard">
                 <div class="row">
