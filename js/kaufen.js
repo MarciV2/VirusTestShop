@@ -19,6 +19,8 @@ function useAlternativeAddress() {
         document.getElementById('stadt').setAttribute("disabled", "");
         document.getElementById('land').setAttribute("disabled", "");
         document.getElementById('bundesland').setAttribute("disabled", "");
+        delAlternativeAdress();
+
     } else {
         document.getElementById('vorname').removeAttribute("disabled");
         document.getElementById('nachname').removeAttribute("disabled");
@@ -244,4 +246,9 @@ function getPayMethodInt(payMethod)
 function getAlternativeAdress()
 {
     document.cookie = 'altAdresse = 1;path=/php';
+}
+
+function delAlternativeAdress()
+{
+    document.cookie = 'altAdresse = "";path=/php; expires=';
 }
