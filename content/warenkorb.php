@@ -242,7 +242,7 @@ include_once("../php/ProduktBereitstellung.php");
             </div>
 
             <script>
-
+               
                 function readCookie(name) {
                     var nameEQ = name + "=";
                     var ca = document.cookie.split(';');
@@ -270,7 +270,7 @@ include_once("../php/ProduktBereitstellung.php");
 
                     var packungen = JSON.parse(readCookie("PackungCookie"));
                     var cart_cookie = JSON.parse(readCookie("cart_cookie"));
-
+                    //console.log(cart_cookie);
                     for (var packung_id in cart_cookie) {
 
                         var product_name = "";
@@ -280,12 +280,14 @@ include_once("../php/ProduktBereitstellung.php");
 
                         for (var i = 0; i < packungen.length; i++) {
                             var packung = packungen[i].split(";");
+                            //console.log(packung);
 
                             if (packung[0] == packung_id) {
 
-                                if (packung[1] != "") {
-                                    product_name = packung[4] + "x " + packung[1] + " - " + packung[2];
-                                }
+                                //Anzeigen als Packungsgroesse x hersteller - titel
+                                if (packung[1] != "") product_name = packung[4] + "x " + packung[1] + " - " + packung[2];
+                                    //Anzeigen als Packunsggroesse x titel
+                                else  product_name=packung[4]+"x "+packung[2];
                                 if (packung[5] != null) {
                                     var single_price = packung[5];
                                 }
