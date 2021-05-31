@@ -416,6 +416,16 @@ COMMIT;
 
 
 -- -----------------------------------------------------
+-- Data for table `VTS`.`Empfaenger`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `VTS`;
+INSERT INTO `VTS`.`Empfaenger` (`Empfaenger_ID`, `Vorname`, `Nachname`, `Email`) VALUES (0, "", "", "");
+
+COMMIT;
+
+
+-- -----------------------------------------------------
 -- Data for table `VTS`.`Packung`
 -- -----------------------------------------------------
 START TRANSACTION;
