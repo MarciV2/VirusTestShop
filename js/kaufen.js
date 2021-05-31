@@ -250,5 +250,6 @@ function getAlternativeAdress()
 
 function delAlternativeAdress()
 {
-    document.cookie = 'altAdresse = "";path=/php; expires=';
+    let date = new Date(Date.now() - 1);
+    document.cookie = 'altAdresse = "";path=/php; expires=' + date;
 }
